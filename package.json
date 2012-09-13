@@ -1,0 +1,23 @@
+{
+    "name": "hippo",
+    "title": "hippo",
+    "description": "Modern JavaScript library for DOM operations",
+    "version": "1.0",
+    "homepage": "http://hippo.com",
+    "author": {
+        "name": "Cody Lindley",
+        "url": "http://codylindley.com"
+    },
+    "repository": {
+    	"type": "git",
+		"url": "https://github.com/codylindley/hippojs"
+    	},
+    "bugs": {"url": "https://github.com/codylindley/hippojs/issues"},
+    "licenses": [
+        {
+			"type": "MIT",
+			"url": "http://opensource.org/licenses/mit-license.php"
+		}
+    ],
+    "keywords": []
+}

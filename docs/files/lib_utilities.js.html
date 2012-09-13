@@ -102,14 +102,26 @@
 *&#x2F;
 
 &#x2F;**
-* hippo.
+* hippo. e.g. hippo.version
 *
 * @class hippo.
 * @static
 *&#x2F;
 
 &#x2F;**
-* loop over anything
+* Returns the version of hippo
+*
+* @property version
+* @for hippo.
+* @static
+* @type String
+* @return {string}
+*&#x2F;
+hippo.version = &#x27;1.0&#x27;;
+
+&#x2F;**
+* loop over an object or array
+*
 * @method each
 * @static
 * @for hippo.
@@ -118,11 +130,19 @@
 * @return {Object}
 *&#x2F;
 hippo.each = function(object, callback){
-	var name, i = 0, length = object.length;
+	var name, i = 0, length = object.length, isObj = length;
 
-	for (; i &lt; length;){
-		if (callback.call(object[i], i, object[i++]) === false){
-			break;
+	if (isObj){
+		for (name in obj){
+			if ( callback.call( obj[ name ], name, obj[ name ] ) === false ) {
+				break;
+			}
+		}
+	}else{
+		for ( ; i &lt; length; ){
+			if ( callback.call( obj[ i ], i, obj[ i++ ] ) === false ) {
+				break;
+			}
 		}
 	}
 

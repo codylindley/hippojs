@@ -104,7 +104,7 @@
 var global = this;
 
 &#x2F;**
-* hippo function
+* hippo() e.g. hippo(&#x27;li&#x27;).addClass();
 *
 * @class hippo
 * @constructor
@@ -121,15 +121,6 @@ var createHippoObject = function(selector) {
 	this.length = nodes.length;
 	return this;
 };
-
-&#x2F;**
-* hippo.js version
-* @property version
-* @for hippo
-* @static
-* @type String
-*&#x2F;
-hippo.version = &#x27;1.0&#x27;;
 
 if(typeof exports !== &#x27;undefined&#x27;){&#x2F;&#x2F;export for use on server i.e. node
 	exports.hippo = hippo;

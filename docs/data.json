@@ -30,9 +30,7 @@
             "classes": {
                 "hippo": 1
             },
-            "fors": {
-                "hippo": 1
-            },
+            "fors": {},
             "namespaces": {}
         },
         "lib/utilities.js": {
@@ -69,9 +67,7 @@
             "classes": {
                 "hippo": 1
             },
-            "fors": {
-                "hippo": 1
-            },
+            "fors": {},
             "namespaces": {},
             "tag": "module",
             "file": "lib/core.js",
@@ -107,7 +103,7 @@
             "namespace": "",
             "file": "lib/core.js",
             "line": 10,
-            "description": "hippo function",
+            "description": "hippo() e.g. hippo('li').addClass();",
             "is_constructor": 1
         },
         "hippo.": {
@@ -122,7 +118,7 @@
             "namespace": "",
             "file": "lib/utilities.js",
             "line": 8,
-            "description": "hippo.",
+            "description": "hippo. e.g. hippo.version",
             "static": 1
         }
     },
@@ -145,20 +141,35 @@
             "module": "class.js"
         },
         {
-            "file": "lib/core.js",
-            "line": 29,
-            "description": "hippo.js version",
+            "file": "lib/manipulation/class.js",
+            "line": 23,
+            "description": "length of the hippo object",
             "itemtype": "property",
-            "name": "version",
-            "static": 1,
-            "type": "String",
+            "name": "length",
+            "type": "Number",
+            "default": "0",
             "class": "hippo",
-            "module": "core.js"
+            "module": "class.js"
         },
         {
             "file": "lib/utilities.js",
             "line": 15,
-            "description": "loop over anything",
+            "description": "Returns the version of hippo",
+            "itemtype": "property",
+            "name": "version",
+            "static": 1,
+            "type": "String",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "hippo.",
+            "module": "utilities.js"
+        },
+        {
+            "file": "lib/utilities.js",
+            "line": 26,
+            "description": "loop over an object or array",
             "itemtype": "method",
             "name": "each",
             "static": 1,

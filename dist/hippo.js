@@ -13,7 +13,7 @@
 var global = this;
 
 /**
-* hippo function
+* hippo() e.g. hippo('li').addClass();
 *
 * @class hippo
 * @constructor
@@ -30,15 +30,6 @@ var createHippoObject = function(selector) {
 	this.length = nodes.length;
 	return this;
 };
-
-/**
-* hippo.js version
-* @property version
-* @for hippo
-* @static
-* @type String
-*/
-hippo.version = '1.0';
 
 if(typeof exports !== 'undefined'){//export for use on server i.e. node
 	exports.hippo = hippo;
@@ -61,14 +52,26 @@ hippo.fn = createHippoObject.prototype = {
 */
 
 /**
-* hippo.
+* hippo. e.g. hippo.version
 *
 * @class hippo.
 * @static
 */
 
 /**
-* loop over anything
+* Returns the version of hippo
+*
+* @property version
+* @for hippo.
+* @static
+* @type String
+* @return {string}
+*/
+hippo.version = '1.0';
+
+/**
+* loop over an object or array
+*
 * @method each
 * @static
 * @for hippo.
@@ -77,11 +80,19 @@ hippo.fn = createHippoObject.prototype = {
 * @return {Object}
 */
 hippo.each = function(object, callback){
-	var name, i = 0, length = object.length;
+	var name, i = 0, length = object.length, isObj = length;
 
-	for (; i < length;){
-		if (callback.call(object[i], i, object[i++]) === false){
-			break;
+	if (isObj){
+		for (name in obj){
+			if ( callback.call( obj[ name ], name, obj[ name ] ) === false ) {
+				break;
+			}
+		}
+	}else{
+		for ( ; i < length; ){
+			if ( callback.call( obj[ i ], i, obj[ i++ ] ) === false ) {
+				break;
+			}
 		}
 	}
 
@@ -101,6 +112,7 @@ hippo.fn.each = function(callback){
 
 /**
  * Adds class
+ *
  * @method addClass
  * @for hippo
  * @param classString {String} class
@@ -112,6 +124,16 @@ hippo.fn.addClass = function(classString){
 	});
 	return this;
 };
+
+/**
+ * length of the hippo object
+ *
+ * @property length
+ * @type Number
+ * @for hippo
+ * @default 0
+ */
+hippo.fn.length = 0;
 
 //outro.js
 }.call(this)); //call anynoumous function, set this value, for function to global scope

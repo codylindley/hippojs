@@ -1,6 +1,6 @@
 /*! hippo - v1.0 - 2012-09-13
 * http://hippo.com
-* Copyright (c) 2012 ; Licensed  */
+* Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
 
@@ -64,4 +64,6 @@ hippo.fn.addClass = function(classString){
 	});
 	return this;
 };
+
+//outro.js
 }.call(this)); //call anynoumous function, set this value, for function to global scope

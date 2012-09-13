@@ -1,0 +1,185 @@
+{
+    "project": {
+        "name": "hippojs",
+        "description": "Modern JavaScript library for DOM operations",
+        "version": "1.0",
+        "url": "http://hippojs.com",
+        "logo": "",
+        "options": {
+            "paths": "lib",
+            "outdir": "docs"
+        }
+    },
+    "files": {
+        "lib/manipulation/class.js": {
+            "name": "lib/manipulation/class.js",
+            "modules": {
+                "class.js": 1
+            },
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {}
+        },
+        "lib/core.js": {
+            "name": "lib/core.js",
+            "modules": {
+                "core.js": 1
+            },
+            "classes": {
+                "hippo": 1
+            },
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {}
+        },
+        "lib/utilities.js": {
+            "name": "lib/utilities.js",
+            "modules": {
+                "utilities.js": 1
+            },
+            "classes": {
+                "hippo.": 1
+            },
+            "fors": {
+                "hippo.": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "class.js": {
+            "name": "class.js",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/manipulation/class.js",
+            "line": 2,
+            "description": "contains methods for operating on the class=\"\" attribute"
+        },
+        "core.js": {
+            "name": "core.js",
+            "submodules": {},
+            "classes": {
+                "hippo": 1
+            },
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/core.js",
+            "line": 10,
+            "description": "core.js"
+        },
+        "utilities.js": {
+            "name": "utilities.js",
+            "submodules": {},
+            "classes": {
+                "hippo.": 1
+            },
+            "fors": {
+                "hippo.": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/utilities.js",
+            "line": 8,
+            "description": "utilities.js"
+        }
+    },
+    "classes": {
+        "hippo": {
+            "name": "hippo",
+            "shortname": "hippo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "core.js",
+            "namespace": "",
+            "file": "lib/core.js",
+            "line": 10,
+            "description": "hippo function",
+            "is_constructor": 1
+        },
+        "hippo.": {
+            "name": "hippo.",
+            "shortname": "hippo.",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "utilities.js",
+            "namespace": "",
+            "file": "lib/utilities.js",
+            "line": 8,
+            "description": "hippo.",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/manipulation/class.js",
+            "line": 8,
+            "description": "Adds class",
+            "itemtype": "method",
+            "name": "addClass",
+            "params": [
+                {
+                    "name": "classString",
+                    "description": "class",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "hippo",
+            "module": "class.js"
+        },
+        {
+            "file": "lib/core.js",
+            "line": 29,
+            "description": "hippo.js version",
+            "itemtype": "property",
+            "name": "version",
+            "static": 1,
+            "type": "String",
+            "class": "hippo",
+            "module": "core.js"
+        },
+        {
+            "file": "lib/utilities.js",
+            "line": 15,
+            "description": "loop over anything",
+            "itemtype": "method",
+            "name": "each",
+            "static": 1,
+            "params": [
+                {
+                    "name": "object",
+                    "description": "an object",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "callback function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "hippo.",
+            "module": "utilities.js"
+        }
+    ]
+}

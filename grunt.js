@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+      banner: '/*<%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     qunit: {
       files: ['test/**/*.html']
@@ -29,10 +29,25 @@ module.exports = function(grunt) {
     lint: {
       afterconcat: ['dist/hippo.js']
     },
-    uglify: {}
+    uglify: {},
+    yuidoc: {
+      compile: {
+        'name': 'hippojs',
+        'description': 'Modern JavaScript library for DOM operations',
+        'version': '1.0',
+        'url': 'http://hippojs.com',
+        'logo':'',
+        options: {
+          paths: 'lib',
+          outdir: 'docs'
+        }
+      }
+    }
   });
 
   // Default task.
-  grunt.registerTask('default', 'qunit concat lint:afterconcat min');
+  grunt.registerTask('default', 'qunit concat lint:afterconcat min yuidoc');
+
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 };

@@ -1,14 +1,23 @@
-/*! hippo - v1.0 - 2012-09-13
+/*hippo - v1.0 - 2012-09-13
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
 
-//core.js
-//store reference to global context
+/**
+* core.js
+*
+* @module core.js
+**/
+
 var global = this;
 
-//hippo func
+/**
+* hippo function
+*
+* @class hippo
+* @constructor
+*/
 var hippo = function(selector) {
 	return new createHippoObject(selector);
 };
@@ -22,7 +31,13 @@ var createHippoObject = function(selector) {
 	return this;
 };
 
-//hippo version
+/**
+* hippo.js version
+* @property version
+* @for hippo
+* @static
+* @type String
+*/
 hippo.version = '1.0';
 
 if(typeof exports !== 'undefined'){//export for use on server i.e. node
@@ -34,12 +49,33 @@ if(typeof exports !== 'undefined'){//export for use on server i.e. node
 	}
 }
 
-//prototype
+//setup prototype
 hippo.fn = createHippoObject.prototype = {
     constructor:hippo
 };
 
-//utiliteis.js
+/**
+* utilities.js
+*
+* @module utilities.js
+*/
+
+/**
+* hippo.
+*
+* @class hippo.
+* @static
+*/
+
+/**
+* loop over anything
+* @method each
+* @static
+* @for hippo.
+* @param object {Object} an object
+* @param callback {Function} callback function
+* @return {Object}
+*/
 hippo.each = function(object, callback){
 	var name, i = 0, length = object.length;
 
@@ -57,7 +93,19 @@ hippo.fn.each = function(callback){
     return hippo.each(this, callback);
 };
 
-//class.js
+/**
+* contains methods for operating on the class="" attribute
+*
+* @module class.js
+*/
+
+/**
+ * Adds class
+ * @method addClass
+ * @for hippo
+ * @param classString {String} class
+ * @chainable
+ */
 hippo.fn.addClass = function(classString){
 	this.each(function(){
 		this.classList.add(classString);

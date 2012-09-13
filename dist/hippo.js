@@ -1,5 +1,5 @@
 /*! hippo - v1.0 - 2012-09-13
-* http://hippo.com
+* http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){

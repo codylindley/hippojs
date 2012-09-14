@@ -4,10 +4,22 @@
   <meta charset="utf-8">
   <title>QUnit Example</title>
   <link rel="stylesheet" href="qunit.css">
+  <script src="qunit.js"></script>
+  <script src="tests.js"></script>
+
+  <script src="../lib/core.js"></script>
+  <script src="../lib/utilities.js"></script>
+  <script src="../lib/looping.js"></script>
+  <script src="../lib/manipulation/class.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
-  <script src="qunit.js"></script>
-  <script src="tests.js"></script>
+  <div id="qunit-fixture">
+  	<ul>
+  		<li>1</li>
+  		<li>2</li>
+  		<li>3</li>
+  	</ul>
+  </div>
 </body>
 </html>

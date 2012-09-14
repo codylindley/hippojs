@@ -33,6 +33,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib/looping.js": {
+            "name": "lib/looping.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {}
+        },
         "lib/utilities.js": {
             "name": "lib/utilities.js",
             "modules": {
@@ -67,7 +76,9 @@
             "classes": {
                 "hippo": 1
             },
-            "fors": {},
+            "fors": {
+                "hippo": 1
+            },
             "namespaces": {},
             "tag": "module",
             "file": "lib/core.js",
@@ -103,8 +114,26 @@
             "namespace": "",
             "file": "lib/core.js",
             "line": 10,
-            "description": "hippo() e.g. hippo('li').addClass();",
-            "is_constructor": 1
+            "description": "`hippo('li')`  \n`hippo(document.getElementById('#foo'))`  \n`hippo('<div></div>')`",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "Selector|HTML",
+                    "description": "\n  A string containing a selector expression | A string containing HTML",
+                    "type": "String|String"
+                },
+                {
+                    "name": "Context",
+                    "description": "\n  A string containing a selector expression",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'html'"
+                }
+            ],
+            "return": {
+                "description": "{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}",
+                "type": "Object"
+            }
         },
         "hippo.": {
             "name": "hippo.",
@@ -141,15 +170,15 @@
             "module": "class.js"
         },
         {
-            "file": "lib/manipulation/class.js",
-            "line": 23,
+            "file": "lib/looping.js",
+            "line": 7,
             "description": "length of the hippo object",
             "itemtype": "property",
             "name": "length",
             "type": "Number",
             "default": "0",
             "class": "hippo",
-            "module": "class.js"
+            "module": "core.js"
         },
         {
             "file": "lib/utilities.js",
@@ -188,6 +217,26 @@
             "return": {
                 "description": "",
                 "type": "Object"
+            },
+            "class": "hippo.",
+            "module": "utilities.js"
+        },
+        {
+            "file": "lib/utilities.js",
+            "line": 59,
+            "description": "return JavaScript type",
+            "itemtype": "method",
+            "name": "type",
+            "static": 1,
+            "params": [
+                {
+                    "name": "Any",
+                    "description": "JavaScript Value"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
             },
             "class": "hippo.",
             "module": "utilities.js"

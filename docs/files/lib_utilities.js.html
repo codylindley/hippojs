@@ -130,23 +130,52 @@ hippo.version = &#x27;1.0&#x27;;
 * @return {Object}
 *&#x2F;
 hippo.each = function(object, callback){
-	var name, i = 0, length = object.length, isObj = length;
+	var name,
+	i = 0,
+	length = object.length,
+	isObj = length === undefined;
 
 	if (isObj){
-		for (name in obj){
-			if ( callback.call( obj[ name ], name, obj[ name ] ) === false ) {
+		for (name in object){
+			if (callback.call(object[ name ], name, object[ name ]) === false){
 				break;
 			}
 		}
 	}else{
-		for ( ; i &lt; length; ){
-			if ( callback.call( obj[ i ], i, obj[ i++ ] ) === false ) {
+		for (; i &lt; length;){
+			if (callback.call(object[ i ], i, object[ i++ ]) === false ){
 				break;
 			}
 		}
 	}
 
 	return object;
+};
+
+&#x2F;**
+* return JavaScript type
+*
+* @method type
+* @static
+* @for hippo.
+* @param Any JavaScript Value
+* @return {String}
+*&#x2F;
+
+hippo.type = function(value){
+	if(value === null) { return &#x27;null&#x27;; }
+
+	if(value === undefined) { return &#x27;undefined&#x27;; }
+
+	var ret = Object.prototype.toString.call(value).match(&#x2F;^\[object\s+(.*?)\]$&#x2F;)[1];
+
+	ret = ret? ret.toLowerCase() : &#x27;&#x27;;
+
+	if(ret == &#x27;number&#x27; &amp;&amp; isNaN(value)) {
+		return &#x27;NaN&#x27;;
+	}
+
+	return ret;
 };
     </pre>
 </div>

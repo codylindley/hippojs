@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-13
+/*hippo - v1.0 - 2012-09-14
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -8,27 +8,41 @@
 * core.js
 *
 * @module core.js
-**/
+*/
 
 var global = this;
 
 /**
-* hippo() e.g. hippo('li').addClass();
-*
-* @class hippo
-* @constructor
-*/
-var hippo = function(selector) {
-	return new createHippoObject(selector);
+`hippo('li')`  
+`hippo(document.getElementById('#foo'))`  
+`hippo('<div></div>')`  
+@class hippo
+@constructor
+@param Selector|HTML {String|String}
+  A string containing a selector expression | A string containing HTML
+@param [Context='html'] {String}
+  A string containing a selector expression
+@return {Object} {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
+**/
+var hippo = function(configParam,context){
+	return new createHippoObject(configParam,context);
 };
 
-var createHippoObject = function(selector) {
-	var nodes = document.querySelectorAll(selector);
+var createHippoObject = function(configParam,context){
+
+	//if no configParam
+	if(!configParam){
+		return this;
+	}
+
+	//ok, expect at the very least a configParam string
+	var nodes = (document.querySelectorAll(context)[0] || document).querySelectorAll(configParam);
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
 	this.length = nodes.length;
-	return this;
+
+	return this; //return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 };
 
 if(typeof exports !== 'undefined'){//export for use on server i.e. node
@@ -80,17 +94,20 @@ hippo.version = '1.0';
 * @return {Object}
 */
 hippo.each = function(object, callback){
-	var name, i = 0, length = object.length, isObj = length;
+	var name,
+	i = 0,
+	length = object.length,
+	isObj = length === undefined;
 
 	if (isObj){
-		for (name in obj){
-			if ( callback.call( obj[ name ], name, obj[ name ] ) === false ) {
+		for (name in object){
+			if (callback.call(object[ name ], name, object[ name ]) === false){
 				break;
 			}
 		}
 	}else{
-		for ( ; i < length; ){
-			if ( callback.call( obj[ i ], i, obj[ i++ ] ) === false ) {
+		for (; i < length;){
+			if (callback.call(object[ i ], i, object[ i++ ]) === false ){
 				break;
 			}
 		}
@@ -99,9 +116,47 @@ hippo.each = function(object, callback){
 	return object;
 };
 
+/**
+* return JavaScript type
+*
+* @method type
+* @static
+* @for hippo.
+* @param Any JavaScript Value
+* @return {String}
+*/
+
+hippo.type = function(value){
+	if(value === null) { return 'null'; }
+
+	if(value === undefined) { return 'undefined'; }
+
+	var ret = Object.prototype.toString.call(value).match(/^\[object\s+(.*?)\]$/)[1];
+
+	ret = ret? ret.toLowerCase() : '';
+
+	if(ret == 'number' && isNaN(value)) {
+		return 'NaN';
+	}
+
+	return ret;
+};
+
 //looping.js
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
+};
+
+/**
+ * length of the hippo object
+ *
+ * @property length
+ * @type Number
+ * @for hippo
+ * @default 0
+ */
+hippo.fn.size = function(){
+	console.log(this);
 };
 
 /**
@@ -124,16 +179,6 @@ hippo.fn.addClass = function(classString){
 	});
 	return this;
 };
-
-/**
- * length of the hippo object
- *
- * @property length
- * @type Number
- * @for hippo
- * @default 0
- */
-hippo.fn.length = 0;
 
 //outro.js
 }.call(this)); //call anynoumous function, set this value, for function to global scope

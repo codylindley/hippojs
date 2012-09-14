@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib&#x2F;core.js - hippojs</title>
+    <title>lib&#x2F;looping.js - hippojs</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -90,64 +90,26 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib&#x2F;core.js</h1>
+                        <h1 class="file-heading">File: lib&#x2F;looping.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 
-&#x2F;**
-* core.js
-*
-* @module core.js
-*&#x2F;
-
-var global = this;
-
-&#x2F;**
-&#x60;hippo(&#x27;li&#x27;)&#x60;  
-&#x60;hippo(document.getElementById(&#x27;#foo&#x27;))&#x60;  
-&#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;)&#x60;  
-@class hippo
-@constructor
-@param Selector|HTML {String|String}
-  A string containing a selector expression | A string containing HTML
-@param [Context=&#x27;html&#x27;] {String}
-  A string containing a selector expression
-@return {Object} {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
-**&#x2F;
-var hippo = function(configParam,context){
-	return new createHippoObject(configParam,context);
+&#x2F;&#x2F;looping.js
+hippo.fn.each = function(callback){
+    return hippo.each(this, callback);
 };
 
-var createHippoObject = function(configParam,context){
-
-	&#x2F;&#x2F;if no configParam
-	if(!configParam){
-		return this;
-	}
-
-	&#x2F;&#x2F;ok, expect at the very least a configParam string
-	var nodes = (document.querySelectorAll(context)[0] || document).querySelectorAll(configParam);
-	for (var i = 0; i &lt; nodes.length; i++) {
-		this[i] = nodes[i];
-	}
-	this.length = nodes.length;
-
-	return this; &#x2F;&#x2F;return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
-};
-
-if(typeof exports !== &#x27;undefined&#x27;){&#x2F;&#x2F;export for use on server i.e. node
-	exports.hippo = hippo;
-}else{&#x2F;&#x2F;else assume browser
-	global.hippo = hippo;
-	if(!(&#x27;$&#x27; in global)){
-		global.$ = hippo;
-	}
-}
-
-&#x2F;&#x2F;setup prototype
-hippo.fn = createHippoObject.prototype = {
-    constructor:hippo
+&#x2F;**
+ * length of the hippo object
+ *
+ * @property length
+ * @type Number
+ * @for hippo
+ * @default 0
+ *&#x2F;
+hippo.fn.size = function(){
+	console.log(this);
 };
     </pre>
 </div>

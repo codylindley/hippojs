@@ -114,7 +114,7 @@
             "namespace": "",
             "file": "lib/core.js",
             "line": 10,
-            "description": "`hippo('li')`  \n`hippo(document.getElementById('#foo'))`  \n`hippo('<div></div>')`",
+            "description": "`hippo('li')`  \n`hippo('li','ul')`  \n`hippo('<div></div>')`",
             "is_constructor": 1,
             "params": [
                 {

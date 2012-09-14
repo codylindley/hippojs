@@ -14,7 +14,7 @@ var global = this;
 
 /**
 `hippo('li')`  
-`hippo(document.getElementById('#foo'))`  
+`hippo('li','ul')`  
 `hippo('<div></div>')`  
 @class hippo
 @constructor

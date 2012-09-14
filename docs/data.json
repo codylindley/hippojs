@@ -231,11 +231,12 @@
             "params": [
                 {
                     "name": "Any",
-                    "description": "JavaScript Value"
+                    "description": "JavaScript Value",
+                    "type": "Object"
                 }
             ],
             "return": {
-                "description": "",
+                "description": "string|number|null|undefined|object|array",
                 "type": "String"
             },
             "class": "hippo.",

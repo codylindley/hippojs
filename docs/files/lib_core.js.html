@@ -121,21 +121,34 @@ var hippo = function(configParam,context){
 
 var createHippoObject = function(configParam,context){
 
-	&#x2F;&#x2F;if no configParam
+	&#x2F;&#x2F;if no configParam return html element
 	if(!configParam){
+		this.length = 1;
+		this[0] = document.documentElement;
 		return this;
 	}
 
-	&#x2F;&#x2F;ok, expect at the very least a configParam string
+	&#x2F;&#x2F;if HTML string
+	if(configParam.charAt(0) === &quot;&lt;&quot; &amp;&amp; configParam.charAt( configParam.length - 1 ) === &quot;&gt;&quot; &amp;&amp; configParam.length &gt;= 3){
+		var divElm = document.createElement(&#x27;div&#x27;);
+		var docFrag = document.createDocumentFragment();
+		docFrag.appendChild(divElm);
+		docFrag.querySelector(&#x27;div&#x27;).innerHTML = configParam;
+		this.length = 1;
+		this[0] = docFrag.querySelector(&#x27;div&#x27;).firstChild;
+		return this;
+	}
+
+	&#x2F;&#x2F;Assume selector string and use context if its passed
 	var nodes = (document.querySelectorAll(context)[0] || document).querySelectorAll(configParam);
 	for (var i = 0; i &lt; nodes.length; i++) {
 		this[i] = nodes[i];
 	}
 	this.length = nodes.length;
-
 	return this; &#x2F;&#x2F;return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 };
 
+&#x2F;&#x2F;deal with browser v.s. node
 if(typeof exports !== &#x27;undefined&#x27;){&#x2F;&#x2F;export for use on server i.e. node
 	exports.hippo = hippo;
 }else{&#x2F;&#x2F;else assume browser

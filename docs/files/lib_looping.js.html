@@ -53,6 +53,8 @@
             
                 <li><a href="..&#x2F;modules/core.js.html">core.js</a></li>
             
+                <li><a href="..&#x2F;modules/looping.js.html">looping.js</a></li>
+            
                 <li><a href="..&#x2F;modules/utilities.js.html">utilities.js</a></li>
             
             </ul>
@@ -95,21 +97,34 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 
-&#x2F;&#x2F;looping.js
+&#x2F;**
+looping over a hippo() object
+
+@module looping.js
+**&#x2F;
+
+&#x2F;**
+loop over each element
+ 
+ @method each
+ @for hippo
+ @param callback {Function}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
 };
 
 &#x2F;**
- * length of the hippo object
- *
- * @property length
- * @type Number
- * @for hippo
- * @default 0
- *&#x2F;
-hippo.fn.size = function(){
-	console.log(this);
+ total elements in the hippo object
+ 
+ @method total
+ @for hippo
+ @returns {Number}
+ **&#x2F;
+hippo.fn.total = function(){
+	return this.length;
 };
     </pre>
 </div>

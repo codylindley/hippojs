@@ -53,6 +53,8 @@
             
                 <li><a href="..&#x2F;modules/core.js.html">core.js</a></li>
             
+                <li><a href="..&#x2F;modules/looping.js.html">looping.js</a></li>
+            
                 <li><a href="..&#x2F;modules/utilities.js.html">utilities.js</a></li>
             
             </ul>
@@ -109,11 +111,11 @@ var global = this;
 &#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;)&#x60;  
 @class hippo
 @constructor
-@param Selector|HTML {String|String}
-  A string containing a selector expression | A string containing HTML
-@param [Context=&#x27;html&#x27;] {String}
+@param selector|HTML {String|String}
+  A string containing a selector expression or a string containing HTML
+@param [context=&#x27;&lt;html&gt;&#x27;] {String}
   A string containing a selector expression
-@return {Object} {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
+@return {Object} hippo() object e.g. &#x60;{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}&#x60;
 **&#x2F;
 var hippo = function(configParam,context){
 	return new createHippoObject(configParam,context);
@@ -131,7 +133,7 @@ var createHippoObject = function(configParam,context){
 	&#x2F;&#x2F;if HTML string
 	if(configParam.charAt(0) === &quot;&lt;&quot; &amp;&amp; configParam.charAt( configParam.length - 1 ) === &quot;&gt;&quot; &amp;&amp; configParam.length &gt;= 3){
 		var divElm = document.createElement(&#x27;div&#x27;);
-		var docFrag = document.createDocumentFragment();
+		var docFrag = document.createDocumentFragment();
 		docFrag.appendChild(divElm);
 		docFrag.querySelector(&#x27;div&#x27;).innerHTML = configParam;
 		this.length = 1;

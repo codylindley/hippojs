@@ -7,6 +7,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "modules": [
         "class.js",
         "core.js",
+        "looping.js",
         "utilities.js"
     ],
     "allModules": [
@@ -19,6 +20,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "core.js",
             "name": "core.js",
             "description": "core.js"
+        },
+        {
+            "displayName": "looping.js",
+            "name": "looping.js",
+            "description": "looping over a hippo() object"
         },
         {
             "displayName": "utilities.js",

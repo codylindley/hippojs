@@ -53,6 +53,8 @@
             
                 <li><a href="..&#x2F;modules/core.js.html">core.js</a></li>
             
+                <li><a href="..&#x2F;modules/looping.js.html">looping.js</a></li>
+            
                 <li><a href="..&#x2F;modules/utilities.js.html">utilities.js</a></li>
             
             </ul>
@@ -131,13 +133,13 @@
             
                 <li class="arg">
                     
-                        <code>Selector|HTML</code>
+                        <code>selector|HTML</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[Context=&#x27;html&#x27;]</code>
+                        <code class="optional">[context=&#x27;&lt;html&gt;&#x27;]</code>
                     
                 </li>
             
@@ -196,14 +198,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">Selector|HTML</code>
+                        <code class="param-name">selector|HTML</code>
                         <span class="type">String | String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>A string containing a selector expression | A string containing HTML</p>
+                        <p>A string containing a selector expression or a string containing HTML</p>
                     </div>
 
                     
@@ -211,7 +213,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name optional">[Context=&#x27;html&#x27;]</code>
+                        <code class="param-name optional">[context=&#x27;&lt;html&gt;&#x27;]</code>
                         <span class="type">String</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
@@ -238,7 +240,7 @@
                     
                         <span class="type">Object</span>:
                     
-                    {0:ELEMENT<em>NODE,1:ELEMENT</em>NODE,length:2}
+                    hippo() object e.g. <code>{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}</code>
                 
             </div>
         </div>
@@ -257,8 +259,6 @@
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -281,18 +281,36 @@
                                 
                             </li>
                         
-                    </ul>
-                </div>
-            
+                            <li class="index-item method">
+                                <a href="#method_each">each</a>
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
+                                
+                                
+                            </li>
                         
-                            <li class="index-item property">
-                                <a href="#property_length">length</a>
+                            <li class="index-item method">
+                                <a href="#method_hasClass">hasClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_removeClass">removeClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_toggleClass">toggleClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_total">total</a>
 
                                 
                                 
@@ -300,6 +318,8 @@
                         
                     </ul>
                 </div>
+            
+
             
 
             
@@ -321,7 +341,7 @@
             
                 <li class="arg">
                     
-                        <code>classString</code>
+                        <code>class</code>
                     
                 </li>
             
@@ -329,6 +349,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
     
 
     
@@ -369,7 +393,7 @@
     </div>
 
     <div class="description">
-        <p>Adds class</p>
+        <p>Adds class attribute value</p>
     </div>
 
     
@@ -380,14 +404,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">classString</code>
+                        <code class="param-name">class</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>class</p>
+                         
                     </div>
 
                     
@@ -398,22 +422,471 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-            </div>
+                    <div id="method_each" class="method item">
+    <h3 class="name"><code>each</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/looping.js.html">looping.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_looping.js.html#l8"><code>lib&#x2F;looping.js:8</code></a>
+        
+        </p>
+
+
         
 
         
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
+    </div>
+
+    <div class="description">
+        <p>loop over each element</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">callback</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
 
                 
-                    <div id="property_length" class="property item">
-    <h3 class="name"><code>length</code></h3>
-    <span class="type">Number</span>
+                    <div id="method_hasClass" class="method item">
+    <h3 class="name"><code>hasClass</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>class</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/class.js.html">class.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_manipulation_class.js.html#l56"><code>lib&#x2F;manipulation&#x2F;class.js:56</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>is class attribute value already defined</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">class</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_removeClass" class="method item">
+    <h3 class="name"><code>removeClass</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>class</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/class.js.html">class.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_manipulation_class.js.html#l24"><code>lib&#x2F;manipulation&#x2F;class.js:24</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>removes class attribute value</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">class</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_toggleClass" class="method item">
+    <h3 class="name"><code>toggleClass</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>class</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/class.js.html">class.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_manipulation_class.js.html#l40"><code>lib&#x2F;manipulation&#x2F;class.js:40</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>toggle class attribute value</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">class</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_total" class="method item">
+    <h3 class="name"><code>total</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
 
     
 
@@ -427,6 +900,8 @@
         
             
                 
+                    <p>Provided by the <a href="../modules/looping.js.html">looping.js</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -434,9 +909,10 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_looping.js.html#l7"><code>lib&#x2F;looping.js:7</code></a>
+        <a href="..&#x2F;files&#x2F;lib_looping.js.html#l21"><code>lib&#x2F;looping.js:21</code></a>
         
         </p>
+
 
         
 
@@ -444,13 +920,23 @@
     </div>
 
     <div class="description">
-        <p>length of the hippo object</p>
+        <p>total elements in the hippo object</p>
     </div>
 
     
-        <p><strong>Default:</strong> 0</p>
-    
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                
+            </div>
+        </div>
     
 
     
@@ -458,6 +944,8 @@
 
                 
             </div>
+        
+
         
 
         

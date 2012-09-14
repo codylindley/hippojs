@@ -18,11 +18,11 @@ var global = this;
 `hippo('<div></div>')`  
 @class hippo
 @constructor
-@param Selector|HTML {String|String}
-  A string containing a selector expression | A string containing HTML
-@param [Context='html'] {String}
+@param selector|HTML {String|String}
+  A string containing a selector expression or a string containing HTML
+@param [context='<html>'] {String}
   A string containing a selector expression
-@return {Object} {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
+@return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 var hippo = function(configParam,context){
 	return new createHippoObject(configParam,context);
@@ -40,7 +40,7 @@ var createHippoObject = function(configParam,context){
 	//if HTML string
 	if(configParam.charAt(0) === "<" && configParam.charAt( configParam.length - 1 ) === ">" && configParam.length >= 3){
 		var divElm = document.createElement('div');
-		var docFrag = document.createDocumentFragment();
+		var docFrag = document.createDocumentFragment();
 		docFrag.appendChild(divElm);
 		docFrag.querySelector('div').innerHTML = configParam;
 		this.length = 1;
@@ -73,39 +73,41 @@ hippo.fn = createHippoObject.prototype = {
 };
 
 /**
-* utilities.js
-*
-* @module utilities.js
-*/
+utilities.js
+
+@module utilities.js
+**/
 
 /**
-* hippo. e.g. hippo.version
-*
-* @class hippo.
-* @static
-*/
+hippo. e.g. hippo.version
+
+@class hippo.
+@static
+**/
 
 /**
-* Returns the version of hippo
-*
-* @property version
-* @for hippo.
-* @static
-* @type String
-* @return {string}
-*/
+Returns the version of hippo
+
+@property version
+@for hippo.
+@static
+@type String
+@return {string}
+**/
 hippo.version = '1.0';
 
 /**
-* loop over an object or array
-*
-* @method each
-* @static
-* @for hippo.
-* @param object {Object} an object
-* @param callback {Function} callback function
-* @return {Object}
-*/
+loop over an object or array
+
+@method each
+@static
+@for hippo.
+@param Object|Array {Object|Array}
+	An Array or Object to iterate over
+@param callback {Function}
+	A callback Function
+@return returns the Object or Array passed in
+**/
 hippo.each = function(object, callback){
 	var name,
 	i = 0,
@@ -114,13 +116,13 @@ hippo.each = function(object, callback){
 
 	if (isObj){
 		for (name in object){
-			if (callback.call(object[ name ], name, object[ name ]) === false){
+			if (callback.call(object[name], name, object[name]) === false){
 				break;
 			}
 		}
 	}else{
 		for (; i < length;){
-			if (callback.call(object[ i ], i, object[ i++ ]) === false ){
+			if (callback.call(object[i], i, object[i++]) === false ){
 				break;
 			}
 		}
@@ -130,14 +132,15 @@ hippo.each = function(object, callback){
 };
 
 /**
-* return JavaScript type
-*
-* @method type
-* @static
-* @for hippo.
-* @param {Object} Any JavaScript Value
-* @return {String} string|number|null|undefined|object|array
-*/
+* return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'
+
+@method type
+@static
+@for hippo.
+@param value {}
+  Any JavaScript value
+@return 'string'|'number'|'null'|'undefined'|'object'|'array'
+**/
 
 hippo.type = function(value){
 	if(value === null) { return 'null'; }
@@ -155,42 +158,101 @@ hippo.type = function(value){
 	return ret;
 };
 
-//looping.js
+/**
+looping over a hippo() object
+
+@module looping.js
+**/
+
+/**
+loop over each element
+ 
+ @method each
+ @for hippo
+ @param callback {Function}
+ @chainable
+ @returns {Object} hippo() object
+ **/
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
 };
 
 /**
- * length of the hippo object
- *
- * @property length
- * @type Number
- * @for hippo
- * @default 0
- */
-hippo.fn.size = function(){
-	console.log(this);
+ total elements in the hippo object
+ 
+ @method total
+ @for hippo
+ @returns {Number}
+ **/
+hippo.fn.total = function(){
+	return this.length;
 };
 
 /**
-* contains methods for operating on the class="" attribute
-*
-* @module class.js
-*/
+contains methods for operating on the class="" attribute
+
+@module class.js
+**/
 
 /**
- * Adds class
- *
- * @method addClass
- * @for hippo
- * @param classString {String} class
- * @chainable
- */
+ Adds class attribute value
+
+ @method addClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
 hippo.fn.addClass = function(classString){
 	this.each(function(){
 		this.classList.add(classString);
 	});
 	return this;
+};
+
+/**
+ removes class attribute value
+
+ @method removeClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.removeClass = function(classString){
+	this.each(function(){
+		this.classList.remove(classString);
+	});
+	return this;
+};
+
+/**
+ toggle class attribute value
+
+ @method toggleClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.toggleClass = function(classString){
+	this.each(function(){
+		this.classList.toggle(classString);
+	});
+	return this;
+};
+
+/**
+ is class attribute value already defined
+
+ @method hasClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Boolean}
+ **/
+hippo.fn.hasClass = function(classString){
+	return this.classList.contains(classString);
 };
 
 //outro.js

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib&#x2F;manipulation&#x2F;class.js - hippojs</title>
+    <title>looping.js - hippojs</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -92,78 +92,37 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib&#x2F;manipulation&#x2F;class.js</h1>
+                        <h1>looping.js Module</h1>
+<div class="box clearfix meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
+    
 
-&#x2F;**
-contains methods for operating on the class=&quot;&quot; attribute
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;lib_looping.js.html#l2"><code>lib&#x2F;looping.js:2</code></a>
+        </div>
+    
 
-@module class.js
-**&#x2F;
+    
+</div>
 
-&#x2F;**
- Adds class attribute value
 
- @method addClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **&#x2F;
-hippo.fn.addClass = function(classString){
-	this.each(function(){
-		this.classList.add(classString);
-	});
-	return this;
-};
 
-&#x2F;**
- removes class attribute value
+<div class="box intro">
+    <p>looping over a hippo() object</p>
+</div>
 
- @method removeClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **&#x2F;
-hippo.fn.removeClass = function(classString){
-	this.each(function(){
-		this.classList.remove(classString);
-	});
-	return this;
-};
 
-&#x2F;**
- toggle class attribute value
 
- @method toggleClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **&#x2F;
-hippo.fn.toggleClass = function(classString){
-	this.each(function(){
-		this.classList.toggle(classString);
-	});
-	return this;
-};
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+    </div>
 
-&#x2F;**
- is class attribute value already defined
-
- @method hasClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Boolean}
- **&#x2F;
-hippo.fn.hasClass = function(classString){
-	return this.classList.contains(classString);
-};
-    </pre>
+    <div class="yui3-u-1-2">
+        
+    </div>
 </div>
 
                     </div>

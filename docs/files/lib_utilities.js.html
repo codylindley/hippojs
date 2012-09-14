@@ -53,6 +53,8 @@
             
                 <li><a href="..&#x2F;modules/core.js.html">core.js</a></li>
             
+                <li><a href="..&#x2F;modules/looping.js.html">looping.js</a></li>
+            
                 <li><a href="..&#x2F;modules/utilities.js.html">utilities.js</a></li>
             
             </ul>
@@ -96,39 +98,41 @@
     <pre class="code prettyprint linenums">
 
 &#x2F;**
-* utilities.js
-*
-* @module utilities.js
-*&#x2F;
+utilities.js
+
+@module utilities.js
+**&#x2F;
 
 &#x2F;**
-* hippo. e.g. hippo.version
-*
-* @class hippo.
-* @static
-*&#x2F;
+hippo. e.g. hippo.version
+
+@class hippo.
+@static
+**&#x2F;
 
 &#x2F;**
-* Returns the version of hippo
-*
-* @property version
-* @for hippo.
-* @static
-* @type String
-* @return {string}
-*&#x2F;
+Returns the version of hippo
+
+@property version
+@for hippo.
+@static
+@type String
+@return {string}
+**&#x2F;
 hippo.version = &#x27;1.0&#x27;;
 
 &#x2F;**
-* loop over an object or array
-*
-* @method each
-* @static
-* @for hippo.
-* @param object {Object} an object
-* @param callback {Function} callback function
-* @return {Object}
-*&#x2F;
+loop over an object or array
+
+@method each
+@static
+@for hippo.
+@param Object|Array {Object|Array}
+	An Array or Object to iterate over
+@param callback {Function}
+	A callback Function
+@return returns the Object or Array passed in
+**&#x2F;
 hippo.each = function(object, callback){
 	var name,
 	i = 0,
@@ -137,13 +141,13 @@ hippo.each = function(object, callback){
 
 	if (isObj){
 		for (name in object){
-			if (callback.call(object[ name ], name, object[ name ]) === false){
+			if (callback.call(object[name], name, object[name]) === false){
 				break;
 			}
 		}
 	}else{
 		for (; i &lt; length;){
-			if (callback.call(object[ i ], i, object[ i++ ]) === false ){
+			if (callback.call(object[i], i, object[i++]) === false ){
 				break;
 			}
 		}
@@ -153,14 +157,15 @@ hippo.each = function(object, callback){
 };
 
 &#x2F;**
-* return JavaScript type
-*
-* @method type
-* @static
-* @for hippo.
-* @param {Object} Any JavaScript Value
-* @return {String} string|number|null|undefined|object|array
-*&#x2F;
+* return JavaScript datatype as string e.g. &#x27;string&#x27;|&#x27;number&#x27;|&#x27;null&#x27;|&#x27;undefined&#x27;|&#x27;object&#x27;|&#x27;array&#x27;
+
+@method type
+@static
+@for hippo.
+@param value {}
+  Any JavaScript value
+@return &#x27;string&#x27;|&#x27;number&#x27;|&#x27;null&#x27;|&#x27;undefined&#x27;|&#x27;object&#x27;|&#x27;array&#x27;
+**&#x2F;
 
 hippo.type = function(value){
 	if(value === null) { return &#x27;null&#x27;; }

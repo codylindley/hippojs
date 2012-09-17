@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-14
+/*hippo - v1.0 - 2012-09-17
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -75,7 +75,7 @@ hippo.fn = createHippoObject.prototype = {
 /**
 utilities.js
 
-@module utilities.js
+@module helpers.js
 **/
 
 /**
@@ -161,7 +161,7 @@ hippo.type = function(value){
 /**
 looping over a hippo() object
 
-@module looping.js
+@module miscellaneous.js
 **/
 
 /**
@@ -186,6 +186,10 @@ hippo.fn.each = function(callback){
  **/
 hippo.fn.total = function(){
 	return this.length;
+};
+
+hippo.fn.toArray = function(){
+	return Array.prototype.slice.call(this);
 };
 
 /**

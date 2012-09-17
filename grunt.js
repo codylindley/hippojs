@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['<banner:meta.banner>', 'lib/intro.js', 'lib/core.js', 'lib/utilities.js', 'lib/looping.js', 'lib/manipulation/class.js', 'lib/outro.js'],
+        src: ['<banner:meta.banner>', 'lib/intro.js', 'lib/core.js', 'lib/helpers.js', 'lib/miscellaneous.js', 'lib/manipulation/class.js', 'lib/outro.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },

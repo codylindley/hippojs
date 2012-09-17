@@ -33,27 +33,27 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/looping.js": {
-            "name": "lib/looping.js",
+        "lib/helpers.js": {
+            "name": "lib/helpers.js",
             "modules": {
-                "looping.js": 1
-            },
-            "classes": {},
-            "fors": {
-                "hippo": 1
-            },
-            "namespaces": {}
-        },
-        "lib/utilities.js": {
-            "name": "lib/utilities.js",
-            "modules": {
-                "utilities.js": 1
+                "helpers.js": 1
             },
             "classes": {
                 "hippo.": 1
             },
             "fors": {
                 "hippo.": 1
+            },
+            "namespaces": {}
+        },
+        "lib/miscellaneous.js": {
+            "name": "lib/miscellaneous.js",
+            "modules": {
+                "miscellaneous.js": 1
+            },
+            "classes": {},
+            "fors": {
+                "hippo": 1
             },
             "namespaces": {}
         }
@@ -85,21 +85,8 @@
             "line": 10,
             "description": "core.js"
         },
-        "looping.js": {
-            "name": "looping.js",
-            "submodules": {},
-            "classes": {},
-            "fors": {
-                "hippo": 1
-            },
-            "namespaces": {},
-            "tag": "module",
-            "file": "lib/looping.js",
-            "line": 2,
-            "description": "looping over a hippo() object"
-        },
-        "utilities.js": {
-            "name": "utilities.js",
+        "helpers.js": {
+            "name": "helpers.js",
             "submodules": {},
             "classes": {
                 "hippo.": 1
@@ -109,9 +96,22 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/utilities.js",
+            "file": "lib/helpers.js",
             "line": 8,
             "description": "utilities.js"
+        },
+        "miscellaneous.js": {
+            "name": "miscellaneous.js",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/miscellaneous.js",
+            "line": 2,
+            "description": "looping over a hippo() object"
         }
     },
     "classes": {
@@ -156,9 +156,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "utilities.js",
+            "module": "helpers.js",
             "namespace": "",
-            "file": "lib/utilities.js",
+            "file": "lib/helpers.js",
             "line": 8,
             "description": "hippo. e.g. hippo.version",
             "static": 1
@@ -250,41 +250,7 @@
             "module": "class.js"
         },
         {
-            "file": "lib/looping.js",
-            "line": 8,
-            "description": "loop over each element",
-            "itemtype": "method",
-            "name": "each",
-            "params": [
-                {
-                    "name": "callback",
-                    "description": "",
-                    "type": "Function"
-                }
-            ],
-            "chainable": 1,
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo",
-            "module": "looping.js"
-        },
-        {
-            "file": "lib/looping.js",
-            "line": 21,
-            "description": "total elements in the hippo object",
-            "itemtype": "method",
-            "name": "total",
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "class": "hippo",
-            "module": "looping.js"
-        },
-        {
-            "file": "lib/utilities.js",
+            "file": "lib/helpers.js",
             "line": 15,
             "description": "Returns the version of hippo",
             "itemtype": "property",
@@ -296,10 +262,10 @@
                 "type": "String"
             },
             "class": "hippo.",
-            "module": "utilities.js"
+            "module": "helpers.js"
         },
         {
-            "file": "lib/utilities.js",
+            "file": "lib/helpers.js",
             "line": 26,
             "description": "loop over an object or array",
             "itemtype": "method",
@@ -321,10 +287,10 @@
                 "description": "returns the Object or Array passed in"
             },
             "class": "hippo.",
-            "module": "utilities.js"
+            "module": "helpers.js"
         },
         {
-            "file": "lib/utilities.js",
+            "file": "lib/helpers.js",
             "line": 61,
             "description": "return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'",
             "itemtype": "method",
@@ -340,7 +306,41 @@
                 "description": "'string'|'number'|'null'|'undefined'|'object'|'array'"
             },
             "class": "hippo.",
-            "module": "utilities.js"
+            "module": "helpers.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 8,
+            "description": "loop over each element",
+            "itemtype": "method",
+            "name": "each",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 21,
+            "description": "total elements in the hippo object",
+            "itemtype": "method",
+            "name": "total",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
         }
     ]
 }

@@ -7,8 +7,8 @@ YUI.add("yuidoc-meta", function(Y) {
     "modules": [
         "class.js",
         "core.js",
-        "looping.js",
-        "utilities.js"
+        "helpers.js",
+        "miscellaneous.js"
     ],
     "allModules": [
         {
@@ -22,14 +22,14 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "core.js"
         },
         {
-            "displayName": "looping.js",
-            "name": "looping.js",
-            "description": "looping over a hippo() object"
+            "displayName": "helpers.js",
+            "name": "helpers.js",
+            "description": "utilities.js"
         },
         {
-            "displayName": "utilities.js",
-            "name": "utilities.js",
-            "description": "utilities.js"
+            "displayName": "miscellaneous.js",
+            "name": "miscellaneous.js",
+            "description": "looping over a hippo() object"
         }
     ]
 } };

@@ -117,7 +117,7 @@ hippo.fn.each = function(callback){
 };
 
 &#x2F;**
- total elements in the hippo object
+total elements in the hippo object
  
  @method total
  @for hippo
@@ -127,8 +127,27 @@ hippo.fn.total = function(){
 	return this.length;
 };
 
+&#x2F;**
+convert hippo object of DOM elements into JavaScript array of elements
+ 
+ @method toArray
+ @for hippo
+ @returns {Array}
+ **&#x2F;
 hippo.fn.toArray = function(){
 	return Array.prototype.slice.call(this);
+};
+
+&#x2F;**
+get a DOM node from the hippo object at a specific index (zero based).
+ 
+ @method get
+ @for hippo
+ @param callback {Number}
+ @returns {Node}
+ **&#x2F;
+hippo.fn.get = function(number){
+	return number === null ? this[0] : this[number];
 };
     </pre>
 </div>

@@ -1,6 +1,3 @@
-[hippo.js](http://hippo.js.com/) - Modern JavaScript library for DOM operations
+[hippo.js](http://hippo.js.com/) - a wishful jQuery inspired DOM Library for use in modern browsers
 ==================================================
-
-More information coming soon
---------------------------------------
 

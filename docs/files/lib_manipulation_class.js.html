@@ -161,7 +161,7 @@ hippo.fn.toggleClass = function(classString){
  @returns {Boolean}
  **&#x2F;
 hippo.fn.hasClass = function(classString){
-	return this.classList.contains(classString);
+	return this[0].classList.contains(classString);
 };
     </pre>
 </div>

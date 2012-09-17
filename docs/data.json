@@ -299,7 +299,7 @@
             "params": [
                 {
                     "name": "value",
-                    "description": "\n Any JavaScript value"
+                    "description": "\n  Any JavaScript value"
                 }
             ],
             "return": {
@@ -338,6 +338,39 @@
             "return": {
                 "description": "",
                 "type": "Number"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 32,
+            "description": "convert hippo object of DOM elements into JavaScript array of elements",
+            "itemtype": "method",
+            "name": "toArray",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 43,
+            "description": "get a DOM node from the hippo object at a specific index (zero based).",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Node"
             },
             "class": "hippo",
             "module": "miscellaneous.js"

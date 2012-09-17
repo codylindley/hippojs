@@ -132,7 +132,7 @@ hippo.each = function(object, callback){
 };
 
 /**
-* return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'
+return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'
 
 @method type
 @static
@@ -178,7 +178,7 @@ hippo.fn.each = function(callback){
 };
 
 /**
- total elements in the hippo object
+total elements in the hippo object
  
  @method total
  @for hippo
@@ -188,8 +188,27 @@ hippo.fn.total = function(){
 	return this.length;
 };
 
+/**
+convert hippo object of DOM elements into JavaScript array of elements
+ 
+ @method toArray
+ @for hippo
+ @returns {Array}
+ **/
 hippo.fn.toArray = function(){
 	return Array.prototype.slice.call(this);
+};
+
+/**
+get a DOM node from the hippo object at a specific index (zero based).
+ 
+ @method get
+ @for hippo
+ @param callback {Number}
+ @returns {Node}
+ **/
+hippo.fn.get = function(number){
+	return number === null ? this[0] : this[number];
 };
 
 /**
@@ -256,7 +275,7 @@ hippo.fn.toggleClass = function(classString){
  @returns {Boolean}
  **/
 hippo.fn.hasClass = function(classString){
-	return this.classList.contains(classString);
+	return this[0].classList.contains(classString);
 };
 
 //outro.js

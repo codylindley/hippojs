@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     lint: {
-      all: ["grunt.js", "lib/*.js"]
+      all: ["grunt.js", "lib/*.js", '<config:test.tasks>']
     },
 
     jshint: {
@@ -21,8 +21,14 @@ module.exports = function(grunt) {
         node: true,
         es5: true
       }
+    },
+    
+    // Unit tests.
+    test: {
+      tasks: ['test/*_test.js']
     }
   });
 
-  grunt.registerTask("default", "lint");
+  // By default, lint and run all tests.
+  grunt.registerTask('default', 'lint test');
 };

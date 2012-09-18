@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     yuidoc: {
       compile: {
         'name': 'hippojs',
-        'description': 'Modern JavaScript library for DOM operations',
+        'description': 'hippo.js is a wishful jQuery inspired DOM Library for use in modern browsers',
         'version': '1.0',
         'url': 'http://hippojs.com',
         'logo':'',

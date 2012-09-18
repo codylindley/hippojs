@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-17
+/*hippo - v1.0 - 2012-09-18
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 

@@ -19,6 +19,47 @@ test('invoke hippo(\'li\',\'#qunit-fixture\') with selector string & string sele
 
 test('invoke hippo(\'<ul><li></li></ul>\') with HTML string',function(){
 	var hippoLi = hippo('<ul><li></li></ul>');
-	ok(hippoLi, 'No problem passing html string selector ');
+	ok(hippoLi, 'No problem passing html string selector');
 	equal(hippoLi[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+test('invoke hippo([node,node]) with array of node references',function(){
+	var hippoObj = hippo([document.body,document.documentElement,document.head]);
+	ok(hippoObj, 'No problem passing array of node references');
+	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+test('invoke hippo(NodeList)',function(){
+	var hippoObj = hippo(document.body.children);
+	ok(hippoObj, 'No problem passing NodeList');
+	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+test('invoke hippo(HTMLCollection || HTMLAllCollection)',function(){
+	var hippoObj = hippo(document.all);
+	ok(hippoObj, 'No problem passing HTMLCollection or HTMLAllCollection');
+	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+test('invoke hippo(Node)',function(){
+	var hippoObj = hippo(document.body);
+	ok(hippoObj, 'No problem passing node reference');
+	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+module('helpers.js');
+
+test('hippo.type returns accurate types',function(){
+	equal(hippo.type({}),'object','hippo.type({}) returns an \'object\'');
+	equal(hippo.type([]),'array','hippo.type({}) returns an \'array\'');
+	equal(hippo.type(''),'string','hippo.type(\'\') returns an \'string\'');
+	equal(hippo.type(2),'number','hippo.type(2) returns an \'number\'');
+	equal(hippo.type(null),'null','hippo.type(null) returns \'an object\'');
+	equal(hippo.type(undefined),'undefined','hippo(.typeundefined) returns an \'undefined\'');
+	equal(hippo.type(NaN),'NaN','hippo.type(NaN) returns an \'NaN\'');
+});
+
+test('hippo.isArray() returns accurate boolean',function(){
+	equal(hippo.isArray({}),false,'hippo.isArray({}) returns an false');
+	equal(hippo.isArray([]),true,'hippo.isArray([]) returns an true');
 });

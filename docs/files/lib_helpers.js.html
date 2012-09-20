@@ -119,7 +119,7 @@ Returns the version of hippo
 @type String
 @return {string}
 **&#x2F;
-hippo.version = &#x27;1.0&#x27;;
+hippo.version = &#x27;0.1&#x27;;
 
 &#x2F;**
 loop over an object or array
@@ -162,11 +162,10 @@ return JavaScript datatype as string e.g. &#x27;string&#x27;|&#x27;number&#x27;|
 @method type
 @static
 @for hippo.
-@param value {}
+@param value {Object}
   Any JavaScript value
 @return &#x27;string&#x27;|&#x27;number&#x27;|&#x27;null&#x27;|&#x27;undefined&#x27;|&#x27;object&#x27;|&#x27;array&#x27;
 **&#x2F;
-
 hippo.type = function(value){
 	if(value === null) { return &#x27;null&#x27;; }
 
@@ -181,6 +180,20 @@ hippo.type = function(value){
 	}
 
 	return ret;
+};
+
+&#x2F;**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method isArray
+@static
+@for hippo.
+@param value {Object}
+  Any JavaScript value
+@return {Boolean}
+**&#x2F;
+hippo.isArray = Array.isArray || function(arrayReference){
+		return hippo.type(arrayReference) === &quot;array&quot;;
 };
     </pre>
 </div>

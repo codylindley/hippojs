@@ -82,7 +82,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/core.js",
-            "line": 10,
+            "line": 11,
             "description": "core.js"
         },
         "helpers.js": {
@@ -126,8 +126,8 @@
             "module": "core.js",
             "namespace": "",
             "file": "lib/core.js",
-            "line": 10,
-            "description": "`hippo('li')`  \n`hippo('li','ul')`  \n`hippo('<div></div>')`",
+            "line": 11,
+            "description": "`hippo('li')`  \n`hippo('li','ul')`  \n`hippo('<div></div>')`  \n`hippo(document.body)`  \n`hippo([document.body,document.head])`  \n`hippo(document.body.children)`  \n`hippo(document.all)`",
             "is_constructor": 1,
             "params": [
                 {
@@ -299,11 +299,33 @@
             "params": [
                 {
                     "name": "value",
-                    "description": "\n  Any JavaScript value"
+                    "description": "\n  Any JavaScript value",
+                    "type": "Object"
                 }
             ],
             "return": {
                 "description": "'string'|'number'|'null'|'undefined'|'object'|'array'"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "lib/helpers.js",
+            "line": 87,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "isArray",
+            "static": 1,
+            "params": [
+                {
+                    "name": "value",
+                    "description": "\n  Any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
             },
             "class": "hippo.",
             "module": "helpers.js"
@@ -371,6 +393,27 @@
             "return": {
                 "description": "",
                 "type": "Node"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 55,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "clone",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
             },
             "class": "hippo",
             "module": "miscellaneous.js"

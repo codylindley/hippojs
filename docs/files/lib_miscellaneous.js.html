@@ -149,6 +149,22 @@ get a DOM node from the hippo object at a specific index (zero based).
 hippo.fn.get = function(number){
 	return number === null ? this[0] : this[number];
 };
+
+&#x2F;**
+clone element nodes in hippo object
+ 
+ @method clone
+ @for hippo
+ @param callback {Boolean}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.clone = function(number){
+	this.each(function(){
+		
+	});
+	return this;
+};
     </pre>
 </div>
 

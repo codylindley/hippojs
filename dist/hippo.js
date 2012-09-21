@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-20
+/*hippo - v1.0 - 2012-09-21
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -29,64 +29,67 @@ var doc = rootObject.document;
   A string containing a selector expression
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
-var hippo = function(configParam,context){
-	return new CreateHippoObject(configParam,context);
+
+//return a new hippo object containing the node elements descibed by the elements parameter
+var hippo = function(elements,context){
+	return new CreateHippoObject(elements,context); //construct object
 };
 
-var CreateHippoObject = function(configParam,context){
+var CreateHippoObject = function(elements,context){
 
-	//if no configParam assume html element was sent
-	if(!configParam){
+	//if no elements assume html element was sent
+	if(!elements){
 		this.length = 1;
 		this[0] = document.documentElement;
 		return this;
 	}
 
-	//if HTML string, construct domfragment, then return object
-	if(typeof configParam === 'string' && configParam.charAt(0) === "<" && configParam.charAt( configParam.length - 1 ) === ">" && configParam.length >= 3){
-		var divElm = document.createElement('div');
-		var docFrag = document.createDocumentFragment();
-		docFrag.appendChild(divElm);
-		docFrag.querySelector('div').innerHTML = configParam;
-		this.length = 1;
-		this[0] = docFrag.querySelector('div').firstChild;
-		return this;
+	//if HTML string, construct domfragment, fill object, then return object
+	if(typeof elements === 'string' &&
+		elements.charAt(0) === "<" &&
+		elements.charAt( elements.length - 1 ) === ">" &&
+		elements.length >= 3){
+			var divElm = document.createElement('div');
+			var docFrag = document.createDocumentFragment();
+			docFrag.appendChild(divElm);
+			docFrag.querySelector('div').innerHTML = elements;
+			this.length = 1;
+			this[0] = docFrag.querySelector('div').firstChild;
+			return this;
 	}
 
-	//if a single element node reference is passed
-	if(typeof configParam === 'object' && configParam.nodeName){
+	//if a single element node reference is passed, fill object, return object
+	if(typeof elements === 'object' && elements.nodeName){
 		this.length = 1;
-		this[0] = configParam;
+		this[0] = elements;
 		return this;
 	}
 
 	//other wise assume selector string, nodelist, or array, and use context if its passed
 	var nodes;
 
-	if(typeof configParam !== 'string'){//its not a string so its an array or nodelist
-		nodes = configParam;
+	if(typeof elements !== 'string'){//its not a string so its an array or nodelist
+		nodes = elements;
 	}else{//if its a string create a nodelist, use context if provided
-		nodes = (doc.querySelectorAll(context)[0] || doc).querySelectorAll(configParam);
+		nodes = (doc.querySelectorAll(context)[0] || doc).querySelectorAll(elements);
 	}
-	//loop over array or nodelist and place in 'this' object
+	//loop over array or nodelist and place in fill object
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
 	//give the object a length value
 	this.length = nodes.length;
 
+	//return object
 	return this; //return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 };
 
-//expose hippo to global scope and deal with browser v.s. node
-if(typeof exports !== 'undefined'){//export for use on server i.e. node
-	exports.hippo = hippo;
-}else{//else assume browser
-	rootObject.hippo = hippo;
-	if(!('$' in rootObject)){
-		rootObject.$ = hippo;
-	}
+//expose hippo to global scope and create $ shortcut
+rootObject.hippo = hippo;
+if(!('$' in rootObject)){
+	rootObject.$ = hippo;
 }
+
 
 //setup prototype
 hippo.fn = CreateHippoObject.prototype = {

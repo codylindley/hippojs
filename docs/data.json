@@ -291,7 +291,7 @@
         },
         {
             "file": "lib/helpers.js",
-            "line": 61,
+            "line": 60,
             "description": "return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'",
             "itemtype": "method",
             "name": "type",
@@ -311,7 +311,7 @@
         },
         {
             "file": "lib/helpers.js",
-            "line": 87,
+            "line": 86,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
             "name": "isArray",
@@ -321,6 +321,26 @@
                     "name": "value",
                     "description": "\n  Any JavaScript value",
                     "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "lib/helpers.js",
+            "line": 100,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "isFunction",
+            "static": 1,
+            "params": [
+                {
+                    "name": "JavasScript",
+                    "description": "value"
                 }
             ],
             "return": {
@@ -354,6 +374,27 @@
         {
             "file": "lib/miscellaneous.js",
             "line": 21,
+            "description": "filter elements",
+            "itemtype": "method",
+            "name": "filter",
+            "params": [
+                {
+                    "name": "selector|function",
+                    "description": "",
+                    "type": "String|Function"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 60,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -366,7 +407,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 32,
+            "line": 71,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -379,13 +420,13 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 43,
+            "line": 82,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
             "params": [
                 {
-                    "name": "callback",
+                    "name": "index",
                     "description": "",
                     "type": "Number"
                 }
@@ -399,7 +440,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 55,
+            "line": 94,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",

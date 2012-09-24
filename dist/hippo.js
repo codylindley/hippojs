@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-21
+/*hippo - v1.0 - 2012-09-24
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -132,27 +132,26 @@ loop over an object or array
 	A callback Function
 @return returns the Object or Array passed in
 **/
-hippo.each = function(object, callback){
+hippo.each = function(objectOrArray, callback){
 	var name,
 	i = 0,
-	length = object.length,
-	isObj = length === undefined;
+	length = objectOrArray.length;
 
-	if (isObj){
-		for (name in object){
-			if (callback.call(object[name], name, object[name]) === false){
+	if (length === undefined){//is {} with no length property
+		for (name in objectOrArray){
+			if (callback.call(objectOrArray[name], name, objectOrArray[name]) === false){
 				break;
 			}
 		}
-	}else{
+	}else{//is {} or [] with a length
 		for (; i < length;){
-			if (callback.call(object[i], i, object[i++]) === false ){
+			if (callback.call(objectOrArray[i], i, objectOrArray[i++]) === false ){
 				break;
 			}
 		}
 	}
 
-	return object;
+	return objectOrArray;
 };
 
 /**
@@ -192,7 +191,20 @@ return true if the array passed in is constructed from the Array() Constructor
 @return {Boolean}
 **/
 hippo.isArray = Array.isArray || function(arrayReference){
-		return hippo.type(arrayReference) === "array";
+	return hippo.type(arrayReference) === "array";
+};
+
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method isFunction
+@static
+@for hippo.
+@param JavasScript value 
+@return {Boolean}
+**/
+hippo.isFunction = function(funcReference){
+	return hippo.type(funcReference) === "function";
 };
 
 /**
@@ -212,6 +224,45 @@ loop over each element
  **/
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
+};
+
+/**
+filter elements
+ 
+ @method filter
+ @for hippo
+ @param selector|function {String|Function}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.filter = function(callbackFilter){
+	var doc = document.body;
+	var results = []; //store function that return true
+
+	if(hippo.isFunction(callbackFilter)){
+
+		this.each(function(name,value){ //loop over each element
+			if(callbackFilter.call(value)){// call callBackFilter function setting this value to element in hippo object
+				//if the function returns true push to the array
+				results.push(value);
+			}
+		});
+		return this.constructor(results);//construct new hippo object from array
+
+	}else if(typeof callbackFilter === 'string'){
+		
+		this.each(function(name,value){ //loop over each element
+			if((doc.matchesSelector||doc.mozMatchesSelector||doc.webkitMatchesSelector||doc.oMatchesSelector||doc.msMatchesSelector).call(value,callbackFilter)){
+				results.push(value);
+			}
+		});
+		return this.constructor(results); //construct new hippo object from array
+
+	}else{
+
+		return this;
+
+	}
 };
 
 /**
@@ -241,11 +292,11 @@ get a DOM node from the hippo object at a specific index (zero based).
  
  @method get
  @for hippo
- @param callback {Number}
+ @param index {Number}
  @returns {Node}
  **/
-hippo.fn.get = function(number){
-	return number === null ? this[0] : this[number];
+hippo.fn.get = function(index){
+	return index === undefined ? this[0] : this[index];
 };
 
 /**
@@ -257,11 +308,8 @@ clone element nodes in hippo object
  @chainable
  @returns {Object} hippo() object
  **/
-hippo.fn.clone = function(number){
-	this.each(function(){
-		
-	});
-	return this;
+hippo.fn.clone = function(copy){
+	return this.constructor(this[0].cloneNode(copy?copy:false));
 };
 
 /**

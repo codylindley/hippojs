@@ -133,27 +133,26 @@ loop over an object or array
 	A callback Function
 @return returns the Object or Array passed in
 **&#x2F;
-hippo.each = function(object, callback){
+hippo.each = function(objectOrArray, callback){
 	var name,
 	i = 0,
-	length = object.length,
-	isObj = length === undefined;
+	length = objectOrArray.length;
 
-	if (isObj){
-		for (name in object){
-			if (callback.call(object[name], name, object[name]) === false){
+	if (length === undefined){&#x2F;&#x2F;is {} with no length property
+		for (name in objectOrArray){
+			if (callback.call(objectOrArray[name], name, objectOrArray[name]) === false){
 				break;
 			}
 		}
-	}else{
+	}else{&#x2F;&#x2F;is {} or [] with a length
 		for (; i &lt; length;){
-			if (callback.call(object[i], i, object[i++]) === false ){
+			if (callback.call(objectOrArray[i], i, objectOrArray[i++]) === false ){
 				break;
 			}
 		}
 	}
 
-	return object;
+	return objectOrArray;
 };
 
 &#x2F;**
@@ -193,7 +192,20 @@ return true if the array passed in is constructed from the Array() Constructor
 @return {Boolean}
 **&#x2F;
 hippo.isArray = Array.isArray || function(arrayReference){
-		return hippo.type(arrayReference) === &quot;array&quot;;
+	return hippo.type(arrayReference) === &quot;array&quot;;
+};
+
+&#x2F;**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method isFunction
+@static
+@for hippo.
+@param JavasScript value 
+@return {Boolean}
+**&#x2F;
+hippo.isFunction = function(funcReference){
+	return hippo.type(funcReference) === &quot;function&quot;;
 };
     </pre>
 </div>

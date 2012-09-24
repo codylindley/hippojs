@@ -64,6 +64,11 @@ test('hippo.isArray() returns accurate boolean',function(){
 	equal(hippo.isArray([]),true,'hippo.isArray([]) returns an true');
 });
 
+test('hippo.isFunction() returns accurate boolean',function(){
+	equal(hippo.isFunction(function(){}),true,'hippo.isFunction(function(){}) returns an true');
+	equal(hippo.isFunction([]),false,'hippo.isFunction([]) returns an false');
+});
+
 test('hippo.version returns string',function(){
 	equal(typeof hippo.version,'string','hippo.version returns string');
 });

@@ -117,6 +117,45 @@ hippo.fn.each = function(callback){
 };
 
 &#x2F;**
+filter elements
+ 
+ @method filter
+ @for hippo
+ @param selector|function {String|Function}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.filter = function(callbackFilter){
+	var doc = document.body;
+	var results = []; &#x2F;&#x2F;store function that return true
+
+	if(hippo.isFunction(callbackFilter)){
+
+		this.each(function(name,value){ &#x2F;&#x2F;loop over each element
+			if(callbackFilter.call(value)){&#x2F;&#x2F; call callBackFilter function setting this value to element in hippo object
+				&#x2F;&#x2F;if the function returns true push to the array
+				results.push(value);
+			}
+		});
+		return this.constructor(results);&#x2F;&#x2F;construct new hippo object from array
+
+	}else if(typeof callbackFilter === &#x27;string&#x27;){
+		
+		this.each(function(name,value){ &#x2F;&#x2F;loop over each element
+			if((doc.matchesSelector||doc.mozMatchesSelector||doc.webkitMatchesSelector||doc.oMatchesSelector||doc.msMatchesSelector).call(value,callbackFilter)){
+				results.push(value);
+			}
+		});
+		return this.constructor(results); &#x2F;&#x2F;construct new hippo object from array
+
+	}else{
+
+		return this;
+
+	}
+};
+
+&#x2F;**
 total elements in the hippo object
  
  @method total
@@ -143,11 +182,11 @@ get a DOM node from the hippo object at a specific index (zero based).
  
  @method get
  @for hippo
- @param callback {Number}
+ @param index {Number}
  @returns {Node}
  **&#x2F;
-hippo.fn.get = function(number){
-	return number === null ? this[0] : this[number];
+hippo.fn.get = function(index){
+	return index === undefined ? this[0] : this[index];
 };
 
 &#x2F;**
@@ -159,11 +198,8 @@ clone element nodes in hippo object
  @chainable
  @returns {Object} hippo() object
  **&#x2F;
-hippo.fn.clone = function(number){
-	this.each(function(){
-		
-	});
-	return this;
+hippo.fn.clone = function(copy){
+	return this.constructor(this[0].cloneNode(copy?copy:false));
 };
     </pre>
 </div>

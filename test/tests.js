@@ -63,3 +63,14 @@ test('hippo.isArray() returns accurate boolean',function(){
 	equal(hippo.isArray({}),false,'hippo.isArray({}) returns an false');
 	equal(hippo.isArray([]),true,'hippo.isArray([]) returns an true');
 });
+
+test('hippo.version returns string',function(){
+	equal(typeof hippo.version,'string','hippo.version returns string');
+});
+
+module('class.js');
+
+test('hippo().addClass',function(){
+	hippo('li').addClass('testClass');
+	equal(hippo('li').hasClass('testClass'),true,'');
+});

@@ -127,7 +127,7 @@
             "namespace": "",
             "file": "lib/core.js",
             "line": 11,
-            "description": "`hippo('li')`  \n`hippo('li','ul')`  \n`hippo('<div></div>')`  \n`hippo(document.body)`  \n`hippo([document.body,document.head])`  \n`hippo(document.body.children)`  \n`hippo(document.all)`",
+            "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection",
             "is_constructor": 1,
             "params": [
                 {
@@ -136,11 +136,9 @@
                     "type": "String|String"
                 },
                 {
-                    "name": "context",
-                    "description": "\n  A string containing a selector expression",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'<html>'"
+                    "name": "selector|Element|Document",
+                    "description": "\n  A string selector or node (Element or Document), defaults to current html element",
+                    "type": "String||Node"
                 }
             ],
             "return": {
@@ -374,7 +372,7 @@
         {
             "file": "lib/miscellaneous.js",
             "line": 21,
-            "description": "filter elements",
+            "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
             "params": [
@@ -447,7 +445,7 @@
             "params": [
                 {
                     "name": "callback",
-                    "description": "",
+                    "description": "\n  default is false, passing true does a deep clone, meaning not just the first selected element but all of its children too",
                     "type": "Boolean"
                 }
             ],

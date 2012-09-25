@@ -60,10 +60,13 @@ test('invoke hippo(Selector,Document)',function(){
 	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
 });
 
-test('invoke hippo(Selector,iframe Document)',function(){
-	//this test won't run correctly
-	var hippoObj = hippo('li',window.frames[0].document);
-	ok(hippoObj, 'No problem passing node reference');
+//only works, locally if ran from server, or on safari, opera, firefox
+asyncTest('invoke hippo(Selector,window.frames[0].document)',function(){
+	setTimeout(function(){
+		var hippoObj = hippo('body',window.frames[0].document);
+		ok(hippoObj, 'No problem passing node reference');
+		start();
+	}, 1000);
 });
 
 module('helpers.js');
@@ -112,6 +115,11 @@ test('hippo().filter(selector||Function)', function(){
 	equal(hippoLi.filter(function(){return hippo(this).hasClass('firstLi');}).length,'1','get only li with .firstLi class using function');
 });
 
+test('hippo().find(selector)', function(){
+	var hippoLi = hippo('ul').find('.firstLi');
+	equal(hippoLi[0].className,'firstLi','get only li with .firstLi class using selector');
+});
+
 test('hippo().total()', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
 	equal(hippoLi.total(),3,'total li\'s in fixture, should be 3');
@@ -139,7 +147,24 @@ test('hippo().clone()', function(){
 
 module('class.js');
 
-test('hippo().addClass',function(){
+test('hippo().addClass()',function(){
 	hippo('li').addClass('testClass');
-	equal(hippo('li').hasClass('testClass'),true,'');
+	equal(hippo('li').hasClass('testClass'),true,'add a class');
+});
+
+test('hippo().removeClass()',function(){
+	hippo('li').addClass('testClass');
+	hippo('li').removeClass('testClass');
+	equal(hippo('li').hasClass('testClass'),false,'remove a class');
+});
+
+test('hippo().hasClass()',function(){
+	hippo('li').addClass('testClass');
+	equal(hippo('li').hasClass('testClass'),true,'verify it has a class');
+});
+
+test('hippo().toggleClass',function(){
+	hippo('li').addClass('testClass');
+	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),false,'toggle class, remove it');
+	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),true,'togglle class, add it');
 });

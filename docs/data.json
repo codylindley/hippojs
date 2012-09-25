@@ -372,6 +372,27 @@
         {
             "file": "lib/miscellaneous.js",
             "line": 21,
+            "description": "loop over each element, finding its descendants that match the passed in selector",
+            "itemtype": "method",
+            "name": "find",
+            "params": [
+                {
+                    "name": "Selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "lib/miscellaneous.js",
+            "line": 43,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -392,7 +413,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 60,
+            "line": 82,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -405,7 +426,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 71,
+            "line": 93,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -418,7 +439,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 82,
+            "line": 104,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
@@ -438,7 +459,7 @@
         },
         {
             "file": "lib/miscellaneous.js",
-            "line": 94,
+            "line": 116,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",

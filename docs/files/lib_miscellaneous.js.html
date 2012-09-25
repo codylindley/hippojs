@@ -117,6 +117,28 @@ hippo.fn.each = function(callback){
 };
 
 &#x2F;**
+loop over each element, finding its descendants that match the passed in selector
+
+@method find
+@for hippo
+@param Selector {String}
+@chainable
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.find = function(selector){
+	results = [];
+    this.each(function(){
+		var collection = this.querySelectorAll(selector);&#x2F;&#x2F; get nodelist containing elements that match selector
+		if(collection.length){&#x2F;&#x2F;if a match is found, then loop over nodlist pushing elements to array
+			hippo.each(collection,function(name,value){
+				results.push(value);
+			});
+		}
+    });
+    return this.constructor(results); &#x2F;&#x2F;construct new hippo object from array
+};
+
+&#x2F;**
 filter elements by selector expression or callback function
  
 @method filter

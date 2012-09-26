@@ -6,13 +6,13 @@
         "url": "http://hippojs.com",
         "logo": "",
         "options": {
-            "paths": "lib",
+            "paths": "source",
             "outdir": "docs"
         }
     },
     "files": {
-        "lib/manipulation/class.js": {
-            "name": "lib/manipulation/class.js",
+        "source/manipulation/class.js": {
+            "name": "source/manipulation/class.js",
             "modules": {
                 "class.js": 1
             },
@@ -22,8 +22,8 @@
             },
             "namespaces": {}
         },
-        "lib/core.js": {
-            "name": "lib/core.js",
+        "source/core.js": {
+            "name": "source/core.js",
             "modules": {
                 "core.js": 1
             },
@@ -33,8 +33,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/helpers.js": {
-            "name": "lib/helpers.js",
+        "source/helpers.js": {
+            "name": "source/helpers.js",
             "modules": {
                 "helpers.js": 1
             },
@@ -46,8 +46,8 @@
             },
             "namespaces": {}
         },
-        "lib/miscellaneous.js": {
-            "name": "lib/miscellaneous.js",
+        "source/miscellaneous.js": {
+            "name": "source/miscellaneous.js",
             "modules": {
                 "miscellaneous.js": 1
             },
@@ -68,7 +68,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/manipulation/class.js",
+            "file": "source/manipulation/class.js",
             "line": 2,
             "description": "contains methods for operating on the class=\"\" attribute"
         },
@@ -81,7 +81,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/core.js",
+            "file": "source/core.js",
             "line": 11,
             "description": "core.js"
         },
@@ -96,7 +96,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 8,
             "description": "utilities.js"
         },
@@ -109,7 +109,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 2,
             "description": "looping over a hippo() object"
         }
@@ -125,7 +125,7 @@
             "extension_for": [],
             "module": "core.js",
             "namespace": "",
-            "file": "lib/core.js",
+            "file": "source/core.js",
             "line": 11,
             "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection",
             "is_constructor": 1,
@@ -156,7 +156,7 @@
             "extension_for": [],
             "module": "helpers.js",
             "namespace": "",
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 8,
             "description": "hippo. e.g. hippo.version",
             "static": 1
@@ -164,7 +164,7 @@
     },
     "classitems": [
         {
-            "file": "lib/manipulation/class.js",
+            "file": "source/manipulation/class.js",
             "line": 8,
             "description": "Adds class attribute value",
             "itemtype": "method",
@@ -185,7 +185,7 @@
             "module": "class.js"
         },
         {
-            "file": "lib/manipulation/class.js",
+            "file": "source/manipulation/class.js",
             "line": 24,
             "description": "removes class attribute value",
             "itemtype": "method",
@@ -206,7 +206,7 @@
             "module": "class.js"
         },
         {
-            "file": "lib/manipulation/class.js",
+            "file": "source/manipulation/class.js",
             "line": 40,
             "description": "toggle class attribute value",
             "itemtype": "method",
@@ -227,7 +227,7 @@
             "module": "class.js"
         },
         {
-            "file": "lib/manipulation/class.js",
+            "file": "source/manipulation/class.js",
             "line": 56,
             "description": "is class attribute value already defined",
             "itemtype": "method",
@@ -248,7 +248,7 @@
             "module": "class.js"
         },
         {
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 15,
             "description": "Returns the version of hippo",
             "itemtype": "property",
@@ -263,7 +263,7 @@
             "module": "helpers.js"
         },
         {
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 26,
             "description": "loop over an object or array",
             "itemtype": "method",
@@ -288,7 +288,7 @@
             "module": "helpers.js"
         },
         {
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 60,
             "description": "return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'object'|'array'",
             "itemtype": "method",
@@ -308,7 +308,7 @@
             "module": "helpers.js"
         },
         {
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 86,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
@@ -329,7 +329,7 @@
             "module": "helpers.js"
         },
         {
-            "file": "lib/helpers.js",
+            "file": "source/helpers.js",
             "line": 100,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
@@ -349,7 +349,7 @@
             "module": "helpers.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 8,
             "description": "loop over each element",
             "itemtype": "method",
@@ -370,7 +370,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 21,
             "description": "loop over each element, finding its descendants that match the passed in selector",
             "itemtype": "method",
@@ -391,7 +391,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 43,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
@@ -412,7 +412,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 82,
             "description": "total elements in the hippo object",
             "itemtype": "method",
@@ -425,7 +425,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 93,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
@@ -438,7 +438,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 104,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
@@ -458,7 +458,7 @@
             "module": "miscellaneous.js"
         },
         {
-            "file": "lib/miscellaneous.js",
+            "file": "source/miscellaneous.js",
             "line": 116,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",

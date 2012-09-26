@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['<banner:meta.banner>', 'lib/intro.js', 'lib/core.js', 'lib/helpers.js', 'lib/miscellaneous.js', 'lib/manipulation/class.js', 'lib/outro.js'],
+        src: ['<banner:meta.banner>', 'source/intro.js', 'source/core.js', 'source/helpers.js', 'source/miscellaneous.js', 'source/manipulation/class.js', 'source/outro.js'],
         dest: 'builds/<%= pkg.name %>.js'
       }
     },
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         'url': 'http://hippojs.com',
         'logo':'',
         options: {
-          paths: 'lib',
+          paths: 'source',
           outdir: 'docs'
         }
       }

@@ -28,7 +28,7 @@ var doc = rootObject.document;
 @param selector|HTML {String|String}
   A string containing a selector expression or a string containing HTML
 @param selector|Element|Document {String||Node}
-  A string selector or node (Element or Document), defaults to current html element
+  A string selector or node (Element or Document), defaults to current document
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 
@@ -62,7 +62,8 @@ var CreateHippoObject = function(elements,context){
 	if(typeof elements === 'string' &&
 		elements.charAt(0) === "<" &&
 		elements.charAt( elements.length - 1 ) === ">" &&
-		elements.length >= 3){
+		elements.length >= 3){//yup html string
+			//create div & docfrag, append div to docfrag, then set its div's innerHTML to the string, then get first child
 			var divElm = d.createElement('div');
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
@@ -348,70 +349,6 @@ clone element nodes in hippo object
 **/
 hippo.fn.clone = function(copy){
 	return this.constructor(this[0].cloneNode(copy?copy:false));
-};
-
-/**
-contains methods for operating on the class="" attribute
-
-@module class.js
-**/
-
-/**
- Adds class attribute value
-
- @method addClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **/
-hippo.fn.addClass = function(classString){
-	return this.each(function(){
-		this.classList.add(classString);
-	});
-};
-
-/**
- removes class attribute value
-
- @method removeClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **/
-hippo.fn.removeClass = function(classString){
-	return this.each(function(){
-		this.classList.remove(classString);
-	});
-};
-
-/**
- toggle class attribute value
-
- @method toggleClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
- **/
-hippo.fn.toggleClass = function(classString){
-	return this.each(function(){
-		this.classList.toggle(classString);
-	});
-};
-
-/**
- is class attribute value already defined
-
- @method hasClass
- @for hippo
- @param class {String}
- @chainable
- @returns {Boolean}
- **/
-hippo.fn.hasClass = function(classString){
-	return this[0].classList.contains(classString);
 };
 
 }).call(this); //invoke function, set the value of this using call() to current global head object

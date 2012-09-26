@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['<banner:meta.banner>', 'source/intro.js', 'source/core.js', 'source/helpers.js', 'source/miscellaneous.js', 'source/class.js', 'source/attributes.js', 'source/outro.js'],
+        src: ['<banner:meta.banner>', 'source/intro.js', 'source/core.js', 'source/helpers.js', 'source/miscellaneous.js', 'source/attributes.js', 'source/outro.js'],
         dest: 'builds/<%= pkg.name %>.js'
       }
     },

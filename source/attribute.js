@@ -6,7 +6,7 @@ contains methods for operating on the element attributes
 **/
 
 /**
- sets attribute value
+ sets attribute value for all elements in the set
 
  @method setAttr
  @for hippo
@@ -31,7 +31,7 @@ hippo.fn.setAttr = function(attr,value){
 };
 
 /**
- gets attribute value, or has of attribute values
+ gets attribute value, or array of attribute values from first element in the set
 
  @method addAttr
  @for hippo
@@ -48,7 +48,7 @@ hippo.fn.getAttr = function(attr){
 };
 
 /**
- remove attribute value
+ remove attribute value from all elements in the set
 
  @method removeAttr
  @for hippo
@@ -68,7 +68,7 @@ hippo.fn.removeAttr = function(attr){
 };
 
 /**
- has attribute value
+ does the first element in the set have the attribute value
 
  @method hasAttr
  @for hippo
@@ -77,4 +77,62 @@ hippo.fn.removeAttr = function(attr){
  **/
 hippo.fn.hasAttr = function(attr){
 	return this[0].hasAttribute(attr);
+};
+
+/**
+ Adds class attribute value
+
+ @method addClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.addClass = function(classString){
+	return this.each(function(){
+		this.classList.add(classString);
+	});
+};
+
+/**
+ removes class attribute value
+
+ @method removeClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.removeClass = function(classString){
+	return this.each(function(){
+		this.classList.remove(classString);
+	});
+};
+
+/**
+ toggle class attribute value
+
+ @method toggleClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.toggleClass = function(classString){
+	return this.each(function(){
+		this.classList.toggle(classString);
+	});
+};
+
+/**
+ is class attribute value already defined
+
+ @method hasClass
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Boolean}
+ **/
+hippo.fn.hasClass = function(classString){
+	return this[0].classList.contains(classString);
 };

@@ -23,7 +23,7 @@ var doc = rootObject.document;
 @param selector|HTML {String|String}
   A string containing a selector expression or a string containing HTML
 @param selector|Element|Document {String||Node}
-  A string selector or node (Element or Document), defaults to current html element
+  A string selector or node (Element or Document), defaults to current document
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 
@@ -57,7 +57,8 @@ var CreateHippoObject = function(elements,context){
 	if(typeof elements === 'string' &&
 		elements.charAt(0) === "<" &&
 		elements.charAt( elements.length - 1 ) === ">" &&
-		elements.length >= 3){
+		elements.length >= 3){//yup html string
+			//create div & docfrag, append div to docfrag, then set its div's innerHTML to the string, then get first child
 			var divElm = d.createElement('div');
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);

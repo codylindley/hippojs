@@ -161,7 +161,7 @@
                 },
                 {
                     "name": "selector|Element|Document",
-                    "description": "\n  A string selector or node (Element or Document), defaults to current html element",
+                    "description": "\n  A string selector or node (Element or Document), defaults to current document",
                     "type": "String||Node"
                 }
             ],
@@ -190,7 +190,7 @@
         {
             "file": "source/attribute.js",
             "line": 8,
-            "description": "sets attribute value",
+            "description": "sets attribute value for all elements in the set",
             "itemtype": "method",
             "name": "setAttr",
             "params": [
@@ -217,7 +217,7 @@
         {
             "file": "source/attribute.js",
             "line": 33,
-            "description": "gets attribute value, or has of attribute values",
+            "description": "gets attribute value, or array of attribute values from first element in the set",
             "itemtype": "method",
             "name": "addAttr",
             "params": [
@@ -237,7 +237,7 @@
         {
             "file": "source/attribute.js",
             "line": 50,
-            "description": "remove attribute value",
+            "description": "remove attribute value from all elements in the set",
             "itemtype": "method",
             "name": "removeAttr",
             "params": [
@@ -258,7 +258,7 @@
         {
             "file": "source/attribute.js",
             "line": 70,
-            "description": "has attribute value",
+            "description": "does the first element in the set have the attribute value",
             "itemtype": "method",
             "name": "hasAttr",
             "params": [
@@ -268,6 +268,90 @@
                     "type": "String"
                 }
             ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 82,
+            "description": "Adds class attribute value",
+            "itemtype": "method",
+            "name": "addClass",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 97,
+            "description": "removes class attribute value",
+            "itemtype": "method",
+            "name": "removeClass",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 112,
+            "description": "toggle class attribute value",
+            "itemtype": "method",
+            "name": "toggleClass",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 127,
+            "description": "is class attribute value already defined",
+            "itemtype": "method",
+            "name": "hasClass",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
             "return": {
                 "description": "",
                 "type": "Boolean"

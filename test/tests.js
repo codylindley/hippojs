@@ -145,7 +145,7 @@ test('hippo().clone()', function(){
 	equal(hippoLiClonedTrue.get(0).children.length,3,'clones selected node and all its children');
 });
 
-module('class.js');
+module('attributes.js');
 
 test('hippo().addClass()',function(){
 	hippo('li').addClass('testClass');
@@ -168,8 +168,6 @@ test('hippo().toggleClass()',function(){
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),false,'toggle class, remove it');
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),true,'togglle class, add it');
 });
-
-module('attributes.js');
 
 test('hippo().setAttr()',function(){
 	hippo('li').setAttr('inert','inert');

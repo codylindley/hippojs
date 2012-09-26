@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>source&#x2F;miscellaneous.js - hippojs</title>
+    <title>source&#x2F;attribute.js - hippojs</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -94,137 +94,74 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: source&#x2F;miscellaneous.js</h1>
+                        <h1 class="file-heading">File: source&#x2F;attribute.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 
 &#x2F;**
-looping over a hippo() object
+contains methods for operating on the element attributes
 
-@module miscellaneous.js
+@module attribute.js
 **&#x2F;
 
 &#x2F;**
-loop over each element
+ sets attribute value
 
-@method each
-@for hippo
-@param callback {Function}
-@chainable
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.each = function(callback){
-    return hippo.each(this, callback);
+ @method setAttr
+ @for hippo
+ @param attribute {String}
+ @param value {String}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.setAttr = function(attr,value){
+	this.each(function(){
+		this.setAttribute(attr,(value?value:attr)); &#x2F;&#x2F;account for boolean attributes where we need to set disable=&#x27;disabled&#x27;;
+	});
+	return this;
 };
 
 &#x2F;**
-loop over each element, finding its descendants that match the passed in selector
+ gets attribute value
 
-@method find
-@for hippo
-@param Selector {String}
-@chainable
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.find = function(selector){
-	results = [];
-    this.each(function(){
-		var collection = this.querySelectorAll(selector);&#x2F;&#x2F; get nodelist containing elements that match selector
-		if(collection.length){&#x2F;&#x2F;if a match is found, then loop over nodlist pushing elements to array
-			hippo.each(collection,function(name,value){
-				results.push(value);
-			});
-		}
-    });
-    return this.constructor(results); &#x2F;&#x2F;construct new hippo object from array
+ @method addAttr
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.getAttr = function(attr){
+	return this[0].getAttribute(attr);
 };
 
 &#x2F;**
-filter elements by selector expression or callback function
- 
-@method filter
-@for hippo
-@param selector|function {String|Function}
-@chainable
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.filter = function(callbackFilter){
-	var d = doc.body;
-	var results = []; &#x2F;&#x2F;store function that return true
+ remove attribute value
 
-	if(hippo.isFunction(callbackFilter)){
-
-		this.each(function(name,value){ &#x2F;&#x2F;loop over each element
-			if(callbackFilter.call(value)){&#x2F;&#x2F; call callBackFilter function setting this value to element in hippo object
-				&#x2F;&#x2F;if the function returns true push to the array
-				results.push(value);
-			}
-		});
-		return this.constructor(results);&#x2F;&#x2F;construct new hippo object from array
-
-	}else if(typeof callbackFilter === &#x27;string&#x27;){
-		
-		this.each(function(name,value){ &#x2F;&#x2F;loop over each element
-			if((doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(value,callbackFilter)){
-				results.push(value);
-			}
-		});
-		return this.constructor(results); &#x2F;&#x2F;construct new hippo object from array
-
-	}else{
-
-		return this;
-
-	}
+ @method removeAttr
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.removeAttr = function(attr){
+	this.each(function(){
+		this.removeAttribute(attr);
+	});
+	return this;
 };
 
 &#x2F;**
-total elements in the hippo object
+ has attribute value
 
-@method total
-@for hippo
-@returns {Number}
-**&#x2F;
-hippo.fn.total = function(){
-	return this.length;
-};
-
-&#x2F;**
-convert hippo object of DOM elements into JavaScript array of elements
- 
-@method toArray
-@for hippo
-@returns {Array}
-**&#x2F;
-hippo.fn.toArray = function(){
-	return Array.prototype.slice.call(this);
-};
-
-&#x2F;**
-get a DOM node from the hippo object at a specific index (zero based).
- 
-@method get
-@for hippo
-@param index {Number}
-@returns {Node}
-**&#x2F;
-hippo.fn.get = function(index){
-	return index === undefined ? this[0] : this[index];
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method clone
-@for hippo
-@param callback {Boolean}
-  default is false, passing true does a deep clone, meaning not just the first selected element but all of its children too
-@chainable
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.clone = function(copy){
-	return this.constructor(this[0].cloneNode(copy?copy:false));
+ @method hasAttr
+ @for hippo
+ @param class {String}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.hasAttr = function(attr){
+	return this[0].hasAttribute(attr);
 };
     </pre>
 </div>

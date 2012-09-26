@@ -11,8 +11,19 @@
         }
     },
     "files": {
-        "source/manipulation/class.js": {
-            "name": "source/manipulation/class.js",
+        "source/attribute.js": {
+            "name": "source/attribute.js",
+            "modules": {
+                "attribute.js": 1
+            },
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {}
+        },
+        "source/class.js": {
+            "name": "source/class.js",
             "modules": {
                 "class.js": 1
             },
@@ -59,6 +70,19 @@
         }
     },
     "modules": {
+        "attribute.js": {
+            "name": "attribute.js",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "source/attribute.js",
+            "line": 2,
+            "description": "contains methods for operating on the element attributes"
+        },
         "class.js": {
             "name": "class.js",
             "submodules": {},
@@ -68,7 +92,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "source/manipulation/class.js",
+            "file": "source/class.js",
             "line": 2,
             "description": "contains methods for operating on the class=\"\" attribute"
         },
@@ -164,7 +188,96 @@
     },
     "classitems": [
         {
-            "file": "source/manipulation/class.js",
+            "file": "source/attribute.js",
+            "line": 8,
+            "description": "sets attribute value",
+            "itemtype": "method",
+            "name": "setAttr",
+            "params": [
+                {
+                    "name": "attribute",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 25,
+            "description": "gets attribute value",
+            "itemtype": "method",
+            "name": "addAttr",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 38,
+            "description": "remove attribute value",
+            "itemtype": "method",
+            "name": "removeAttr",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 54,
+            "description": "has attribute value",
+            "itemtype": "method",
+            "name": "hasAttr",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/class.js",
             "line": 8,
             "description": "Adds class attribute value",
             "itemtype": "method",
@@ -185,7 +298,7 @@
             "module": "class.js"
         },
         {
-            "file": "source/manipulation/class.js",
+            "file": "source/class.js",
             "line": 24,
             "description": "removes class attribute value",
             "itemtype": "method",
@@ -206,7 +319,7 @@
             "module": "class.js"
         },
         {
-            "file": "source/manipulation/class.js",
+            "file": "source/class.js",
             "line": 40,
             "description": "toggle class attribute value",
             "itemtype": "method",
@@ -227,7 +340,7 @@
             "module": "class.js"
         },
         {
-            "file": "source/manipulation/class.js",
+            "file": "source/class.js",
             "line": 56,
             "description": "is class attribute value already defined",
             "itemtype": "method",

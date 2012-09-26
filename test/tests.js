@@ -168,3 +168,27 @@ test('hippo().toggleClass',function(){
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),false,'toggle class, remove it');
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),true,'togglle class, add it');
 });
+
+module('attributes.js');
+
+test('hippo().setAttr()',function(){
+	hippo('li').setAttr('inert','inert');
+	equal(hippo('li').getAttr('inert'),'inert','add a attr');
+});
+
+test('hippo().removeAttr()',function(){
+	hippo('li').setAttr('inert','inert');
+	hippo('li').removeAttr('inert');
+	equal(hippo('li').getAttr('inert'),undefined,'remove a attr');
+});
+
+test('hippo().getAttr()',function(){
+	hippo('li').setAttr('inert','inert');
+	equal(hippo('li').getAttr('inert'),'inert','get a attr');
+});
+
+test('hippo().hasAttr()',function(){
+	hippo('li').setAttr('inert','inert');
+	equal(hippo('li').hasAttr('inert'),true,'has a attr');
+});
+

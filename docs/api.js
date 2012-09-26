@@ -5,12 +5,18 @@ YUI.add("yuidoc-meta", function(Y) {
         "hippo."
     ],
     "modules": [
+        "attribute.js",
         "class.js",
         "core.js",
         "helpers.js",
         "miscellaneous.js"
     ],
     "allModules": [
+        {
+            "displayName": "attribute.js",
+            "name": "attribute.js",
+            "description": "contains methods for operating on the element attributes"
+        },
         {
             "displayName": "class.js",
             "name": "class.js",

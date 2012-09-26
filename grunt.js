@@ -13,13 +13,13 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['<banner:meta.banner>', 'lib/intro.js', 'lib/core.js', 'lib/helpers.js', 'lib/miscellaneous.js', 'lib/manipulation/class.js', 'lib/outro.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        dest: 'builds/<%= pkg.name %>.js'
       }
     },
     min: {
       dist: {
         src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
+        dest: 'builds/<%= pkg.name %>.min.js'
       }
     },
     watch: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       tasks: 'lint qunit'
     },
     lint: {
-      afterconcat: ['dist/hippo.js']
+      afterconcat: ['builds/hippo.js']
     },
     uglify: {},
     yuidoc: {

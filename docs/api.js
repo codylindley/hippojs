@@ -6,7 +6,6 @@ YUI.add("yuidoc-meta", function(Y) {
     ],
     "modules": [
         "attribute.js",
-        "class.js",
         "core.js",
         "helpers.js",
         "miscellaneous.js"
@@ -16,11 +15,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "attribute.js",
             "name": "attribute.js",
             "description": "contains methods for operating on the element attributes"
-        },
-        {
-            "displayName": "class.js",
-            "name": "class.js",
-            "description": "contains methods for operating on the class=\"\" attribute"
         },
         {
             "displayName": "core.js",

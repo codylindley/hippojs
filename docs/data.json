@@ -22,17 +22,6 @@
             },
             "namespaces": {}
         },
-        "source/class.js": {
-            "name": "source/class.js",
-            "modules": {
-                "class.js": 1
-            },
-            "classes": {},
-            "fors": {
-                "hippo": 1
-            },
-            "namespaces": {}
-        },
         "source/core.js": {
             "name": "source/core.js",
             "modules": {
@@ -82,19 +71,6 @@
             "file": "source/attribute.js",
             "line": 2,
             "description": "contains methods for operating on the element attributes"
-        },
-        "class.js": {
-            "name": "class.js",
-            "submodules": {},
-            "classes": {},
-            "fors": {
-                "hippo": 1
-            },
-            "namespaces": {},
-            "tag": "module",
-            "file": "source/class.js",
-            "line": 2,
-            "description": "contains methods for operating on the class=\"\" attribute"
         },
         "core.js": {
             "name": "core.js",
@@ -358,90 +334,6 @@
             },
             "class": "hippo",
             "module": "attribute.js"
-        },
-        {
-            "file": "source/class.js",
-            "line": 8,
-            "description": "Adds class attribute value",
-            "itemtype": "method",
-            "name": "addClass",
-            "params": [
-                {
-                    "name": "class",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "chainable": 1,
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo",
-            "module": "class.js"
-        },
-        {
-            "file": "source/class.js",
-            "line": 23,
-            "description": "removes class attribute value",
-            "itemtype": "method",
-            "name": "removeClass",
-            "params": [
-                {
-                    "name": "class",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "chainable": 1,
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo",
-            "module": "class.js"
-        },
-        {
-            "file": "source/class.js",
-            "line": 38,
-            "description": "toggle class attribute value",
-            "itemtype": "method",
-            "name": "toggleClass",
-            "params": [
-                {
-                    "name": "class",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "chainable": 1,
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo",
-            "module": "class.js"
-        },
-        {
-            "file": "source/class.js",
-            "line": 53,
-            "description": "is class attribute value already defined",
-            "itemtype": "method",
-            "name": "hasClass",
-            "params": [
-                {
-                    "name": "class",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "chainable": 1,
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "hippo",
-            "module": "class.js"
         },
         {
             "file": "source/helpers.js",

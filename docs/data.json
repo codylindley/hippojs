@@ -195,9 +195,9 @@
             "name": "setAttr",
             "params": [
                 {
-                    "name": "attribute",
+                    "name": "attribute(s)",
                     "description": "",
-                    "type": "String"
+                    "type": "String|Object"
                 },
                 {
                     "name": "value",
@@ -205,6 +205,7 @@
                     "type": "String"
                 }
             ],
+            "optional": 1,
             "chainable": 1,
             "return": {
                 "description": "hippo() object",
@@ -215,35 +216,34 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 25,
-            "description": "gets attribute value",
+            "line": 33,
+            "description": "gets attribute value, or has of attribute values",
             "itemtype": "method",
             "name": "addAttr",
             "params": [
                 {
-                    "name": "class",
+                    "name": "attribute",
                     "description": "",
                     "type": "String"
                 }
             ],
-            "chainable": 1,
+            "optional": 1,
             "return": {
-                "description": "hippo() object",
-                "type": "Object"
+                "description": "either an array containing all attributes or a single value from a specific attribute passed in"
             },
             "class": "hippo",
             "module": "attribute.js"
         },
         {
             "file": "source/attribute.js",
-            "line": 38,
+            "line": 50,
             "description": "remove attribute value",
             "itemtype": "method",
             "name": "removeAttr",
             "params": [
                 {
-                    "name": "class",
-                    "description": "",
+                    "name": "value",
+                    "description": "\n  pass more than one value with by providing a space inbetween values",
                     "type": "String"
                 }
             ],
@@ -257,7 +257,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 54,
+            "line": 70,
             "description": "has attribute value",
             "itemtype": "method",
             "name": "hasAttr",
@@ -268,10 +268,9 @@
                     "type": "String"
                 }
             ],
-            "chainable": 1,
             "return": {
-                "description": "hippo() object",
-                "type": "Object"
+                "description": "",
+                "type": "Boolean"
             },
             "class": "hippo",
             "module": "attribute.js"
@@ -299,7 +298,7 @@
         },
         {
             "file": "source/class.js",
-            "line": 24,
+            "line": 23,
             "description": "removes class attribute value",
             "itemtype": "method",
             "name": "removeClass",
@@ -320,7 +319,7 @@
         },
         {
             "file": "source/class.js",
-            "line": 40,
+            "line": 38,
             "description": "toggle class attribute value",
             "itemtype": "method",
             "name": "toggleClass",
@@ -341,7 +340,7 @@
         },
         {
             "file": "source/class.js",
-            "line": 56,
+            "line": 53,
             "description": "is class attribute value already defined",
             "itemtype": "method",
             "name": "hasClass",

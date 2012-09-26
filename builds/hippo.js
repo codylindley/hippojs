@@ -321,7 +321,7 @@ convert hippo object of DOM elements into JavaScript array of elements
 @returns {Array}
 **/
 hippo.fn.toArray = function(){
-	return Array.prototype.slice.call(this);
+	return [].slice.call(this);
 };
 
 /**
@@ -366,10 +366,9 @@ contains methods for operating on the class="" attribute
  @returns {Object} hippo() object
  **/
 hippo.fn.addClass = function(classString){
-	this.each(function(){
+	return this.each(function(){
 		this.classList.add(classString);
 	});
-	return this;
 };
 
 /**
@@ -382,10 +381,9 @@ hippo.fn.addClass = function(classString){
  @returns {Object} hippo() object
  **/
 hippo.fn.removeClass = function(classString){
-	this.each(function(){
+	return this.each(function(){
 		this.classList.remove(classString);
 	});
-	return this;
 };
 
 /**
@@ -398,10 +396,9 @@ hippo.fn.removeClass = function(classString){
  @returns {Object} hippo() object
  **/
 hippo.fn.toggleClass = function(classString){
-	this.each(function(){
+	return this.each(function(){
 		this.classList.toggle(classString);
 	});
-	return this;
 };
 
 /**

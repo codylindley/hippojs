@@ -98,7 +98,7 @@ convert hippo object of DOM elements into JavaScript array of elements
 @returns {Array}
 **/
 hippo.fn.toArray = function(){
-	return Array.prototype.slice.call(this);
+	return [].slice.call(this);
 };
 
 /**

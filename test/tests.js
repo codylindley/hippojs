@@ -163,7 +163,7 @@ test('hippo().hasClass()',function(){
 	equal(hippo('li').hasClass('testClass'),true,'verify it has a class');
 });
 
-test('hippo().toggleClass',function(){
+test('hippo().toggleClass()',function(){
 	hippo('li').addClass('testClass');
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),false,'toggle class, remove it');
 	equal(hippo('li').toggleClass('testClass').hasClass('testClass'),true,'togglle class, add it');
@@ -173,22 +173,31 @@ module('attributes.js');
 
 test('hippo().setAttr()',function(){
 	hippo('li').setAttr('inert','inert');
+	hippo('li').setAttr({'foo':'bar'});
 	equal(hippo('li').getAttr('inert'),'inert','add a attr');
+	equal(hippo('li').getAttr('foo'),'bar','add a {attr:value}');
+	hippo('li').removeAttr('doo ioo foo');
 });
 
 test('hippo().removeAttr()',function(){
-	hippo('li').setAttr('inert','inert');
-	hippo('li').removeAttr('inert');
-	equal(hippo('li').getAttr('inert'),undefined,'remove a attr');
+	hippo('li').setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
+	hippo('li').removeAttr('foo');
+	hippo('li').removeAttr('doo ioo');
+	equal(hippo('li').getAttr('foo'),undefined,'remove single attr');
+	equal(hippo('li').getAttr('ioo'),undefined,'remove more than one');
+	equal(hippo('li').getAttr('doo'),undefined,'remove more than one');
 });
 
 test('hippo().getAttr()',function(){
-	hippo('li').setAttr('inert','inert');
-	equal(hippo('li').getAttr('inert'),'inert','get a attr');
+	hippo('li').setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
+	equal(hippo('li').getAttr('foo'),'bar','get a attr');
+	equal(typeof hippo('li').getAttr().length,'number','get all attributes in array');
+	hippo('li').removeAttr('doo ioo foo');
 });
 
 test('hippo().hasAttr()',function(){
 	hippo('li').setAttr('inert','inert');
 	equal(hippo('li').hasAttr('inert'),true,'has a attr');
+	hippo('li').removeAttr('inert');
 });
 

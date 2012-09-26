@@ -10,29 +10,41 @@ contains methods for operating on the element attributes
 
  @method setAttr
  @for hippo
- @param attribute {String}
+ @param attribute(s) {String|Object}
  @param value {String}
+ @optional
  @chainable
  @returns {Object} hippo() object
  **/
 hippo.fn.setAttr = function(attr,value){
-	this.each(function(){
-		this.setAttribute(attr,(value?value:attr)); //account for boolean attributes where we need to set disable='disabled';
+	var attrIsString = typeof attr === 'string';
+	return this.each(function(){
+		var that = this;
+		if(attrIsString){
+			this.setAttribute(attr,(value?value:attr)); //account for boolean attributes where we need to set disable='disabled';
+		}else{
+			hippo.each(attr,function(name,value){
+				that.setAttribute(name,value);
+			});
+		}
 	});
-	return this;
 };
 
 /**
- gets attribute value
+ gets attribute value, or has of attribute values
 
  @method addAttr
  @for hippo
- @param class {String}
- @chainable
- @returns {Object} hippo() object
+ @param attribute {String}
+ @optional
+ @returns either an array containing all attributes or a single value from a specific attribute passed in
  **/
 hippo.fn.getAttr = function(attr){
-	return this[0].getAttribute(attr);
+	if(attr){
+		return this[0].getAttribute(attr);
+	}else{
+		return [].slice.call(this[0].attributes);
+	}
 };
 
 /**
@@ -40,15 +52,19 @@ hippo.fn.getAttr = function(attr){
 
  @method removeAttr
  @for hippo
- @param class {String}
+ @param value {String}
+   pass more than one value with by providing a space inbetween values
  @chainable
  @returns {Object} hippo() object
  **/
 hippo.fn.removeAttr = function(attr){
-	this.each(function(){
-		this.removeAttribute(attr);
+	var attrArray = attr.split(/\s+/);
+	return this.each(function(){
+		var that = this;
+		hippo.each(attrArray,function(name,value){
+			that.removeAttribute(value);
+		});
 	});
-	return this;
 };
 
 /**
@@ -57,8 +73,7 @@ hippo.fn.removeAttr = function(attr){
  @method hasAttr
  @for hippo
  @param class {String}
- @chainable
- @returns {Object} hippo() object
+ @returns {Boolean} 
  **/
 hippo.fn.hasAttr = function(attr){
 	return this[0].hasAttribute(attr);

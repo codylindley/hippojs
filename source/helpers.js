@@ -69,17 +69,12 @@ return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'
 **/
 hippo.type = function(value){
 	if(value === null) { return 'null'; }
-
 	if(value === undefined) { return 'undefined'; }
-
 	var ret = Object.prototype.toString.call(value).match(/^\[object\s+(.*?)\]$/)[1];
-
 	ret = ret? ret.toLowerCase() : '';
-
 	if(ret == 'number' && isNaN(value)) {
 		return 'NaN';
 	}
-
 	return ret;
 };
 

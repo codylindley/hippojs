@@ -167,17 +167,12 @@ return JavaScript datatype as string e.g. &#x27;string&#x27;|&#x27;number&#x27;|
 **&#x2F;
 hippo.type = function(value){
 	if(value === null) { return &#x27;null&#x27;; }
-
 	if(value === undefined) { return &#x27;undefined&#x27;; }
-
 	var ret = Object.prototype.toString.call(value).match(&#x2F;^\[object\s+(.*?)\]$&#x2F;)[1];
-
 	ret = ret? ret.toLowerCase() : &#x27;&#x27;;
-
 	if(ret == &#x27;number&#x27; &amp;&amp; isNaN(value)) {
 		return &#x27;NaN&#x27;;
 	}
-
 	return ret;
 };
 

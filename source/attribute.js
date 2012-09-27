@@ -53,7 +53,7 @@ hippo.fn.getAttr = function(attr){
  @method removeAttr
  @for hippo
  @param value {String}
-   pass more than one value with by providing a space inbetween values
+   pass more than one value by providing a space inbetween values
  @chainable
  @returns {Object} hippo() object
  **/
@@ -85,12 +85,17 @@ hippo.fn.hasAttr = function(attr){
  @method addClass
  @for hippo
  @param class {String}
+   pass more than one value by providing a space inbetween values
  @chainable
  @returns {Object} hippo() object
  **/
 hippo.fn.addClass = function(classString){
+	var classStringArray = classString.split(/\s+/);
 	return this.each(function(){
-		this.classList.add(classString);
+		var that = this;
+		hippo.each(classStringArray,function(name,value){
+			that.classList.add(value);
+		});
 	});
 };
 
@@ -100,12 +105,17 @@ hippo.fn.addClass = function(classString){
  @method removeClass
  @for hippo
  @param class {String}
+   pass more than one value by providing a space inbetween values
  @chainable
  @returns {Object} hippo() object
  **/
 hippo.fn.removeClass = function(classString){
+	var classStringArray = classString.split(/\s+/);
 	return this.each(function(){
-		this.classList.remove(classString);
+		var that = this;
+		hippo.each(classStringArray,function(name,value){
+			that.classList.remove(value);
+		});
 	});
 };
 
@@ -115,12 +125,17 @@ hippo.fn.removeClass = function(classString){
  @method toggleClass
  @for hippo
  @param class {String}
+   pass more than one value by providing a space inbetween values
  @chainable
  @returns {Object} hippo() object
  **/
 hippo.fn.toggleClass = function(classString){
+	var classStringArray = classString.split(/\s+/);
 	return this.each(function(){
-		this.classList.toggle(classString);
+		var that = this;
+		hippo.each(classStringArray,function(name,value){
+			that.classList.toggle(value);
+		});
 	});
 };
 

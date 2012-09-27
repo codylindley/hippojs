@@ -219,7 +219,7 @@
             "params": [
                 {
                     "name": "value",
-                    "description": "\n  pass more than one value with by providing a space inbetween values",
+                    "description": "\n  pass more than one value by providing a space inbetween values",
                     "type": "String"
                 }
             ],
@@ -260,7 +260,7 @@
             "params": [
                 {
                     "name": "class",
-                    "description": "",
+                    "description": "\n  pass more than one value by providing a space inbetween values",
                     "type": "String"
                 }
             ],
@@ -274,14 +274,14 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 97,
+            "line": 102,
             "description": "removes class attribute value",
             "itemtype": "method",
             "name": "removeClass",
             "params": [
                 {
                     "name": "class",
-                    "description": "",
+                    "description": "\n  pass more than one value by providing a space inbetween values",
                     "type": "String"
                 }
             ],
@@ -295,14 +295,14 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 112,
+            "line": 122,
             "description": "toggle class attribute value",
             "itemtype": "method",
             "name": "toggleClass",
             "params": [
                 {
                     "name": "class",
-                    "description": "",
+                    "description": "\n  pass more than one value by providing a space inbetween values",
                     "type": "String"
                 }
             ],
@@ -316,7 +316,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 127,
+            "line": 142,
             "description": "is class attribute value already defined",
             "itemtype": "method",
             "name": "hasClass",
@@ -397,7 +397,7 @@
         },
         {
             "file": "source/helpers.js",
-            "line": 86,
+            "line": 81,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
             "name": "isArray",
@@ -418,7 +418,7 @@
         },
         {
             "file": "source/helpers.js",
-            "line": 100,
+            "line": 95,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
             "name": "isFunction",

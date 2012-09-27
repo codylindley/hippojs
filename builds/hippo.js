@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-09-26
+/*hippo - v1.0 - 2012-09-27
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -182,17 +182,12 @@ return JavaScript datatype as string e.g. 'string'|'number'|'null'|'undefined'|'
 **/
 hippo.type = function(value){
 	if(value === null) { return 'null'; }
-
 	if(value === undefined) { return 'undefined'; }
-
 	var ret = Object.prototype.toString.call(value).match(/^\[object\s+(.*?)\]$/)[1];
-
 	ret = ret? ret.toLowerCase() : '';
-
 	if(ret == 'number' && isNaN(value)) {
 		return 'NaN';
 	}
-
 	return ret;
 };
 

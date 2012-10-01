@@ -55,6 +55,8 @@
             
                 <li><a href="..&#x2F;modules/helpers.js.html">helpers.js</a></li>
             
+                <li><a href="..&#x2F;modules/manipulation.js.html">manipulation.js</a></li>
+            
                 <li><a href="..&#x2F;modules/miscellaneous.js.html">miscellaneous.js</a></li>
             
             </ul>
@@ -98,10 +100,27 @@
     <pre class="code prettyprint linenums">
 
 &#x2F;**
-looping over a hippo() object
+contains methods for operating on the wrapped set of elements in the hippo object
 
 @module miscellaneous.js
 **&#x2F;
+
+&#x2F;**
+add element to set
+
+@method add
+@for hippo
+@param {selector|node|htmlString}
+@chainable
+@returns {Object} hippo() object with new element added
+**&#x2F;
+hippo.fn.add = function(htmlStringOrNodeOrSelector,addToStart){
+	var newSet  = [].slice.call(this); &#x2F;&#x2F;turn hippo object into array
+	&#x2F;&#x2F;push or unshift new element into array
+	newSet[addToStart?&#x27;unshift&#x27;:&#x27;push&#x27;](hippo(htmlStringOrNodeOrSelector)[0]);
+	&#x2F;&#x2F;create new hippo object from array and return it
+    return hippo(newSet);
+};
 
 &#x2F;**
 loop over each element
@@ -114,6 +133,18 @@ loop over each element
 **&#x2F;
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
+};
+
+&#x2F;**
+Check if the first element matches the CSS selector
+
+@method matchesSelector
+@for hippo
+@param selector {String}
+@returns {Boolean}
+**&#x2F;
+hippo.fn.matchesSelector = function(selector){
+    return hippo.matchesSelector(this[0],selector);
 };
 
 &#x2F;**
@@ -164,7 +195,7 @@ hippo.fn.filter = function(callbackFilter){
 	}else if(typeof callbackFilter === &#x27;string&#x27;){
 		
 		this.each(function(name,value){ &#x2F;&#x2F;loop over each element
-			if((doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(value,callbackFilter)){
+			if(hippo.matchesSelector(value,callbackFilter)){
 				results.push(value);
 			}
 		});

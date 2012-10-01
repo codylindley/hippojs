@@ -1,17 +1,18 @@
-/*hippo - v1.0 - 2012-09-27
+/*hippo - v1.0 - 2012-10-01
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
 
 /**
-* core.js
+* setup hippo() function, constuctor, and prototype shortcut
 *
 * @module core.js
 */
 
 var rootObject = this;
 var doc = rootObject.document;
+var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
 `hippo('li')` //Selector  
@@ -68,8 +69,14 @@ var CreateHippoObject = function(elements,context){
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
 			docFrag.querySelector('div').innerHTML = elements;
-			this.length = 1;
-			this[0] = docFrag.querySelector('div').firstChild;
+			var numberOfChildren = docFrag.querySelector('div').children.length;
+
+			for (var z = 0; z < numberOfChildren; z++) {
+				this[z] = docFrag.querySelector('div').children[z];
+			}
+			//give the object a length value
+			this.length = numberOfChildren;
+
 			return this;
 	}
 
@@ -113,7 +120,7 @@ hippo.fn = CreateHippoObject.prototype = {
 };
 
 /**
-utilities.js
+utilities for hippo.js
 
 @module helpers.js
 **/
@@ -219,10 +226,44 @@ hippo.isFunction = function(funcReference){
 };
 
 /**
-looping over a hippo() object
+return true if the array passed in is constructed from the Array() Constructor
+
+@method matchesSelector
+@static
+@for hippo.
+@param element {Node}
+@param selector {String}
+@return {Boolean}
+**/
+hippo.matchesSelector = function(node,selector){
+	var d = doc.body;
+	return (doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(node,selector);
+};
+
+
+
+/**
+contains methods for operating on the wrapped set of elements in the hippo object
 
 @module miscellaneous.js
 **/
+
+/**
+add element to set
+
+@method add
+@for hippo
+@param {selector|node|htmlString}
+@chainable
+@returns {Object} hippo() object with new element added
+**/
+hippo.fn.add = function(htmlStringOrNodeOrSelector,addToStart){
+	var newSet  = [].slice.call(this); //turn hippo object into array
+	//push or unshift new element into array
+	newSet[addToStart?'unshift':'push'](hippo(htmlStringOrNodeOrSelector)[0]);
+	//create new hippo object from array and return it
+    return hippo(newSet);
+};
 
 /**
 loop over each element
@@ -235,6 +276,18 @@ loop over each element
 **/
 hippo.fn.each = function(callback){
     return hippo.each(this, callback);
+};
+
+/**
+Check if the first element matches the CSS selector
+
+@method matchesSelector
+@for hippo
+@param selector {String}
+@returns {Boolean}
+**/
+hippo.fn.matchesSelector = function(selector){
+    return hippo.matchesSelector(this[0],selector);
 };
 
 /**
@@ -285,7 +338,7 @@ hippo.fn.filter = function(callbackFilter){
 	}else if(typeof callbackFilter === 'string'){
 		
 		this.each(function(name,value){ //loop over each element
-			if((doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(value,callbackFilter)){
+			if(hippo.matchesSelector(value,callbackFilter)){
 				results.push(value);
 			}
 		});

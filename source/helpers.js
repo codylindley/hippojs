@@ -1,6 +1,6 @@
 
 /**
-utilities.js
+utilities for hippo.js
 
 @module helpers.js
 **/
@@ -104,3 +104,19 @@ return true if the array passed in is constructed from the Array() Constructor
 hippo.isFunction = function(funcReference){
 	return hippo.type(funcReference) === "function";
 };
+
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method matchesSelector
+@static
+@for hippo.
+@param element {Node}
+@param selector {String}
+@return {Boolean}
+**/
+hippo.matchesSelector = function(node,selector){
+	var d = doc.body;
+	return (doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(node,selector);
+};
+

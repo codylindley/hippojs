@@ -46,6 +46,17 @@
             },
             "namespaces": {}
         },
+        "source/manipulation.js": {
+            "name": "source/manipulation.js",
+            "modules": {
+                "manipulation.js": 1
+            },
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {}
+        },
         "source/miscellaneous.js": {
             "name": "source/miscellaneous.js",
             "modules": {
@@ -82,8 +93,8 @@
             "namespaces": {},
             "tag": "module",
             "file": "source/core.js",
-            "line": 11,
-            "description": "core.js"
+            "line": 12,
+            "description": "setup hippo() function, constuctor, and prototype shortcut"
         },
         "helpers.js": {
             "name": "helpers.js",
@@ -98,7 +109,20 @@
             "tag": "module",
             "file": "source/helpers.js",
             "line": 8,
-            "description": "utilities.js"
+            "description": "utilities for hippo.js"
+        },
+        "manipulation.js": {
+            "name": "manipulation.js",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "hippo": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "source/manipulation.js",
+            "line": 2,
+            "description": "contains methods for operating on elements"
         },
         "miscellaneous.js": {
             "name": "miscellaneous.js",
@@ -111,7 +135,7 @@
             "tag": "module",
             "file": "source/miscellaneous.js",
             "line": 2,
-            "description": "looping over a hippo() object"
+            "description": "contains methods for operating on the wrapped set of elements in the hippo object"
         }
     },
     "classes": {
@@ -126,7 +150,7 @@
             "module": "core.js",
             "namespace": "",
             "file": "source/core.js",
-            "line": 11,
+            "line": 12,
             "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection",
             "is_constructor": 1,
             "params": [
@@ -437,8 +461,146 @@
             "module": "helpers.js"
         },
         {
+            "file": "source/helpers.js",
+            "line": 108,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "matchesSelector",
+            "static": 1,
+            "params": [
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "Node"
+                },
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 8,
+            "description": "need description",
+            "itemtype": "method",
+            "name": "replaceWith",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 24,
+            "description": "need description",
+            "itemtype": "method",
+            "name": "empty",
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 38,
+            "description": "need description",
+            "itemtype": "method",
+            "name": "remove",
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 52,
+            "description": "Add content to the DOM before each element in the set",
+            "itemtype": "method",
+            "name": "before",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string, Node, or Selector",
+                    "type": "String|Node|Selector"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 74,
+            "description": "Add content to the DOM before the element selected by the selector expression",
+            "itemtype": "method",
+            "name": "insertBefore",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string, Node, or Selector",
+                    "type": "String|Node|Selector"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
             "file": "source/miscellaneous.js",
             "line": 8,
+            "description": "add element to set",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "Selector|node|htmlString"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object with new element added",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "source/miscellaneous.js",
+            "line": 25,
             "description": "loop over each element",
             "itemtype": "method",
             "name": "each",
@@ -459,7 +621,27 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 21,
+            "line": 38,
+            "description": "Check if the first element matches the CSS selector",
+            "itemtype": "method",
+            "name": "matchesSelector",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo",
+            "module": "miscellaneous.js"
+        },
+        {
+            "file": "source/miscellaneous.js",
+            "line": 50,
             "description": "loop over each element, finding its descendants that match the passed in selector",
             "itemtype": "method",
             "name": "find",
@@ -480,7 +662,7 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 43,
+            "line": 72,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -501,7 +683,7 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 82,
+            "line": 111,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -514,7 +696,7 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 93,
+            "line": 122,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -527,7 +709,7 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 104,
+            "line": 133,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
@@ -547,7 +729,7 @@
         },
         {
             "file": "source/miscellaneous.js",
-            "line": 116,
+            "line": 145,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",

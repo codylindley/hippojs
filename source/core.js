@@ -1,12 +1,13 @@
 
 /**
-* core.js
+* setup hippo() function, constuctor, and prototype shortcut
 *
 * @module core.js
 */
 
 var rootObject = this;
 var doc = rootObject.document;
+var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
 `hippo('li')` //Selector  
@@ -63,8 +64,14 @@ var CreateHippoObject = function(elements,context){
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
 			docFrag.querySelector('div').innerHTML = elements;
-			this.length = 1;
-			this[0] = docFrag.querySelector('div').firstChild;
+			var numberOfChildren = docFrag.querySelector('div').children.length;
+
+			for (var z = 0; z < numberOfChildren; z++) {
+				this[z] = docFrag.querySelector('div').children[z];
+			}
+			//give the object a length value
+			this.length = numberOfChildren;
+
 			return this;
 	}
 

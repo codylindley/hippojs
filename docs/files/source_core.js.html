@@ -55,6 +55,8 @@
             
                 <li><a href="..&#x2F;modules/helpers.js.html">helpers.js</a></li>
             
+                <li><a href="..&#x2F;modules/manipulation.js.html">manipulation.js</a></li>
+            
                 <li><a href="..&#x2F;modules/miscellaneous.js.html">miscellaneous.js</a></li>
             
             </ul>
@@ -98,13 +100,14 @@
     <pre class="code prettyprint linenums">
 
 &#x2F;**
-* core.js
+* setup hippo() function, constuctor, and prototype shortcut
 *
 * @module core.js
 *&#x2F;
 
 var rootObject = this;
 var doc = rootObject.document;
+var regXContainsHTML = &#x2F;^(?:[^#&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|#([\w\-]*)$)&#x2F;;
 
 &#x2F;**
 &#x60;hippo(&#x27;li&#x27;)&#x60; &#x2F;&#x2F;Selector  
@@ -161,8 +164,14 @@ var CreateHippoObject = function(elements,context){
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
 			docFrag.querySelector(&#x27;div&#x27;).innerHTML = elements;
-			this.length = 1;
-			this[0] = docFrag.querySelector(&#x27;div&#x27;).firstChild;
+			var numberOfChildren = docFrag.querySelector(&#x27;div&#x27;).children.length;
+
+			for (var z = 0; z &lt; numberOfChildren; z++) {
+				this[z] = docFrag.querySelector(&#x27;div&#x27;).children[z];
+			}
+			&#x2F;&#x2F;give the object a length value
+			this.length = numberOfChildren;
+
 			return this;
 	}
 

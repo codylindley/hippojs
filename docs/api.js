@@ -8,6 +8,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "attribute.js",
         "core.js",
         "helpers.js",
+        "manipulation.js",
         "miscellaneous.js"
     ],
     "allModules": [
@@ -19,17 +20,22 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "core.js",
             "name": "core.js",
-            "description": "core.js"
+            "description": "setup hippo() function, constuctor, and prototype shortcut"
         },
         {
             "displayName": "helpers.js",
             "name": "helpers.js",
-            "description": "utilities.js"
+            "description": "utilities for hippo.js"
+        },
+        {
+            "displayName": "manipulation.js",
+            "name": "manipulation.js",
+            "description": "contains methods for operating on elements"
         },
         {
             "displayName": "miscellaneous.js",
             "name": "miscellaneous.js",
-            "description": "looping over a hippo() object"
+            "description": "contains methods for operating on the wrapped set of elements in the hippo object"
         }
     ]
 } };

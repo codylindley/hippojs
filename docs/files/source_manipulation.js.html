@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>source&#x2F;helpers.js - hippojs</title>
+    <title>source&#x2F;manipulation.js - hippojs</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -94,130 +94,97 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: source&#x2F;helpers.js</h1>
+                        <h1 class="file-heading">File: source&#x2F;manipulation.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 
 &#x2F;**
-utilities for hippo.js
+contains methods for operating on elements
 
-@module helpers.js
+@module manipulation.js
 **&#x2F;
 
 &#x2F;**
-hippo. e.g. hippo.version
+need description
 
-@class hippo.
-@static
-**&#x2F;
-
-&#x2F;**
-Returns the version of hippo
-
-@property version
-@for hippo.
-@static
-@type String
-@return {string}
-**&#x2F;
-hippo.version = &#x27;0.1&#x27;;
+ @method replaceWith
+ @for hippo
+ @param value {String}
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.replaceWith = function(value){ &#x2F;&#x2F;unclear if modern browser still leak memory
+	var stringHtml = doc.querySelector(value).outerHTML;
+	return this.each(function(){
+			this.outerHTML = stringHtml;
+	});
+};
 
 &#x2F;**
-loop over an object or array
+need description
 
-@method each
-@static
-@for hippo.
-@param Object|Array {Object|Array}
-	An Array or Object to iterate over
-@param callback {Function}
-	A callback Function
-@return returns the Object or Array passed in
-**&#x2F;
-hippo.each = function(objectOrArray, callback){
-	var name,
-	i = 0,
-	length = objectOrArray.length;
+ @method empty
+ @for hippo
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.empty = function(){ &#x2F;&#x2F;unclear if modern browser still leak memory
+	return this.each(function(){
+		this.innerHTML = &#x27;&#x27;;
+	});
+};
 
-	if (length === undefined){&#x2F;&#x2F;is {} with no length property
-		for (name in objectOrArray){
-			if (callback.call(objectOrArray[name], name, objectOrArray[name]) === false){
-				break;
-			}
+&#x2F;**
+ need description
+
+ @method remove
+ @for hippo
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.remove = function(){ &#x2F;&#x2F;unclear if modern browser still leak memory
+	return this.each(function(){
+		this.parentNode.removeChild(this);
+	});
+};
+
+&#x2F;**
+ Add content to the DOM before each element in the set
+
+ @method before
+ @for hippo
+ @param {String|Node|Selector}
+   html string, Node, or Selector
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.before = function(htmlStringOrNodeOrSelector){
+	return this.each(function(){
+		if(regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){ &#x2F;&#x2F;html string
+			this.insertAdjacentHTML(&#x27;beforebegin&#x27;,htmlStringOrNodeOrSelector);
+		}else if(typeof htmlStringOrNodeOrSelector === &#x27;string&#x27;){ &#x2F;&#x2F;selector
+			this.insertAdjacentHTML(&#x27;beforebegin&#x27;,hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
+		}else{ &#x2F;&#x2F;node
+			this.insertAdjacentHTML(&#x27;beforebegin&#x27;,htmlStringOrNodeOrSelector.outerHTML);
 		}
-	}else{&#x2F;&#x2F;is {} or [] with a length
-		for (; i &lt; length;){
-			if (callback.call(objectOrArray[i], i, objectOrArray[i++]) === false ){
-				break;
-			}
-		}
-	}
-
-	return objectOrArray;
+	});
 };
 
 &#x2F;**
-return JavaScript datatype as string e.g. &#x27;string&#x27;|&#x27;number&#x27;|&#x27;null&#x27;|&#x27;undefined&#x27;|&#x27;object&#x27;|&#x27;array&#x27;
+ Add content to the DOM before the element selected by the selector expression
 
-@method type
-@static
-@for hippo.
-@param value {Object}
-  Any JavaScript value
-@return &#x27;string&#x27;|&#x27;number&#x27;|&#x27;null&#x27;|&#x27;undefined&#x27;|&#x27;object&#x27;|&#x27;array&#x27;
-**&#x2F;
-hippo.type = function(value){
-	if(value === null) { return &#x27;null&#x27;; }
-	if(value === undefined) { return &#x27;undefined&#x27;; }
-	var ret = Object.prototype.toString.call(value).match(&#x2F;^\[object\s+(.*?)\]$&#x2F;)[1];
-	ret = ret? ret.toLowerCase() : &#x27;&#x27;;
-	if(ret == &#x27;number&#x27; &amp;&amp; isNaN(value)) {
-		return &#x27;NaN&#x27;;
-	}
-	return ret;
-};
-
-&#x2F;**
-return true if the array passed in is constructed from the Array() Constructor
-
-@method isArray
-@static
-@for hippo.
-@param value {Object}
-  Any JavaScript value
-@return {Boolean}
-**&#x2F;
-hippo.isArray = Array.isArray || function(arrayReference){
-	return hippo.type(arrayReference) === &quot;array&quot;;
-};
-
-&#x2F;**
-return true if the array passed in is constructed from the Array() Constructor
-
-@method isFunction
-@static
-@for hippo.
-@param JavasScript value 
-@return {Boolean}
-**&#x2F;
-hippo.isFunction = function(funcReference){
-	return hippo.type(funcReference) === &quot;function&quot;;
-};
-
-&#x2F;**
-return true if the array passed in is constructed from the Array() Constructor
-
-@method matchesSelector
-@static
-@for hippo.
-@param element {Node}
-@param selector {String}
-@return {Boolean}
-**&#x2F;
-hippo.matchesSelector = function(node,selector){
-	var d = doc.body;
-	return (doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(node,selector);
+ @method insertBefore
+ @for hippo
+ @param {String|Node|Selector}
+   html string, Node, or Selector
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
+	return this.each(function(){
+		hippo(htmlStringOrNodeOrSelector).before(this);
+	});
 };
 
 

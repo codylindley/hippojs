@@ -390,6 +390,28 @@ hippo.fn.get = function(index){
 };
 
 /**
+Get the last element of the current set
+ 
+@method last
+@for hippo
+@returns {Node}
+**/
+hippo.fn.last = function(){
+	return hippo(this[this.length - 1]);
+};
+
+/**
+Get the first element of the current set
+ 
+@method first
+@for hippo
+@returns {Node}
+**/
+hippo.fn.first = function(){
+	return hippo(this[0]);
+};
+
+/**
 clone element nodes in hippo object
  
 @method clone
@@ -509,11 +531,11 @@ hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
 hippo.fn.after = function(htmlStringOrNodeOrSelector){
 	return this.each(function(){
 		if(regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){ //html string
-			this.insertAdjacentHTML('beforeEnd',htmlStringOrNodeOrSelector);
+			this.insertAdjacentHTML('afterend',htmlStringOrNodeOrSelector);
 		}else if(typeof htmlStringOrNodeOrSelector === 'string'){ //selector
-			this.insertAdjacentHTML('beforeEnd',hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
+			this.insertAdjacentHTML('afterend',hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
 		}else{ //node
-			this.insertAdjacentHTML('beforeEnd',htmlStringOrNodeOrSelector.outerHTML);
+			this.insertAdjacentHTML('afterend',htmlStringOrNodeOrSelector.outerHTML);
 		}
 	});
 };
@@ -538,6 +560,122 @@ hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
 		hippo(htmlStringOrNodeOrSelector).after(this);
 	});
 };
+
+/**
+ Append content to the DOM inside each individual element in the set
+
+ @method append
+ @for hippo
+ @param {String|Node}
+   html string/text string or Element Node
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.append = function(htmlStringOrtextStringOrNode){
+	return this.each(function(){
+		if(typeof htmlStringOrtextStringOrNode === 'string'){ //selector
+			this.insertAdjacentHTML('beforeend',htmlStringOrtextStringOrNode);
+		}else{ //node
+			this.insertAdjacentHTML('beforeend',htmlStringOrtextStringOrNode.outerHTML);
+		}
+	});
+};
+
+/**
+ Append content to the DOM inside the selector
+
+ @method appendTo
+ @for hippo
+ @param {String}
+   selector
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.appendTo = function(selector){
+	return this.each(function(){
+		hippo(selector).append(this);
+	});
+};
+
+/**
+ prepend content to the DOM inside each individual element in the set
+
+ @method prepend
+ @for hippo
+ @param {String|Node}
+   html string/text string or Element Node
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.prepend = function(htmlStringOrtextStringOrNode){
+	return this.each(function(){
+		if(typeof htmlStringOrtextStringOrNode === 'string'){ //selector
+			this.insertAdjacentHTML('afterbegin',htmlStringOrtextStringOrNode);
+		}else{ //node
+			this.insertAdjacentHTML('afterbegin',htmlStringOrtextStringOrNode.outerHTML);
+		}
+	});
+};
+
+/**
+ prepend content to the DOM inside the selector
+
+ @method prependTo
+ @for hippo
+ @param {String}
+   selector
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.prependTo = function(selector){
+	return this.each(function(){
+		hippo(selector).prepend(this);
+	});
+};
+
+/**
+ Set HTML contents of elements in the set, or get innerHTML of first element
+
+ @method html
+ @for hippo
+ @param {String}
+   selector
+ @optional
+ @chainable
+ @returns {Object} hippo() object or innerHTML
+ **/
+ hippo.fn.html = function(htmlStringOrTextString){
+	if(htmlStringOrTextString){
+		return this.each(function(){
+			this.innerHTML = htmlStringOrTextString;
+		});
+	}else{
+		return this[0].innerHTML;
+	}
+};
+
+
+/**
+ Set text contents of elements in the set, or get textContent of first element
+
+ @method text
+ @for hippo
+ @param {String}
+   selector
+ @optional
+ @chainable
+ @returns {Object} hippo() object or textContent
+ **/
+hippo.fn.text = function(textString){
+	if(textString){
+		return this.each(function(){
+			this.textContent = textString;
+		});
+	}else{
+		return this[0].textContent;
+	}
+};
+
 
 
 

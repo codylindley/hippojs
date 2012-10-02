@@ -512,6 +512,32 @@
         {
             "file": "source/core-methods.js",
             "line": 145,
+            "description": "Get the last element of the current set",
+            "itemtype": "method",
+            "name": "last",
+            "return": {
+                "description": "",
+                "type": "Node"
+            },
+            "class": "hippo",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 156,
+            "description": "Get the first element of the current set",
+            "itemtype": "method",
+            "name": "first",
+            "return": {
+                "description": "",
+                "type": "Node"
+            },
+            "class": "hippo",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 167,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",
@@ -785,6 +811,134 @@
             "chainable": 1,
             "return": {
                 "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 138,
+            "description": "Append content to the DOM inside each individual element in the set",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string/text string or Element Node",
+                    "type": "String|Node"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 158,
+            "description": "Append content to the DOM inside the selector",
+            "itemtype": "method",
+            "name": "appendTo",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "selector",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 174,
+            "description": "prepend content to the DOM inside each individual element in the set",
+            "itemtype": "method",
+            "name": "prepend",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string/text string or Element Node",
+                    "type": "String|Node"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 194,
+            "description": "prepend content to the DOM inside the selector",
+            "itemtype": "method",
+            "name": "prependTo",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "selector",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 210,
+            "description": "Set HTML contents of elements in the set, or get innerHTML of first element",
+            "itemtype": "method",
+            "name": "html",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "selector",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object or innerHTML",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 232,
+            "description": "Set text contents of elements in the set, or get textContent of first element",
+            "itemtype": "method",
+            "name": "text",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "selector",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object or textContent",
                 "type": "Object"
             },
             "class": "hippo",

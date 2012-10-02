@@ -48,3 +48,13 @@ test('hippo().add()', function(){
 	var hippoHTML = hippo('<li></li>').add('<li><li>');
 	equal(hippoHTML.total(),2,'only clones one element node');
 });
+
+test('hippo().last()', function(){
+	var hippoLi = hippo('li','#qunit-fixture');
+	equal(hippoLi.last().hasClass('lastLi'),true);
+});
+
+test('hippo().first()', function(){
+	var hippoLi = hippo('li','#qunit-fixture');
+	equal(hippoLi.first().hasClass('firstLi'),true);
+});

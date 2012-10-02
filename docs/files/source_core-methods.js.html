@@ -243,6 +243,28 @@ hippo.fn.get = function(index){
 };
 
 &#x2F;**
+Get the last element of the current set
+ 
+@method last
+@for hippo
+@returns {Node}
+**&#x2F;
+hippo.fn.last = function(){
+	return hippo(this[this.length - 1]);
+};
+
+&#x2F;**
+Get the first element of the current set
+ 
+@method first
+@for hippo
+@returns {Node}
+**&#x2F;
+hippo.fn.first = function(){
+	return hippo(this[0]);
+};
+
+&#x2F;**
 clone element nodes in hippo object
  
 @method clone

@@ -2,7 +2,7 @@
 /**
 contains methods for operating on the wrapped set of elements in the hippo object
 
-@module miscellaneous.js
+@module core-methods.js
 **/
 
 /**

@@ -119,6 +119,7 @@ var regXContainsHTML = &#x2F;^(?:[^#&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|#([\w\-]*)$
 &#x60;hippo([document.body,document.head])&#x60; &#x2F;&#x2F;Array  
 &#x60;hippo(document.body.children)&#x60; &#x2F;&#x2F;NodeList  
 &#x60;hippo(document.all)&#x60; &#x2F;&#x2F;HTMLCollection  
+&#x60;hippo(hippo())&#x60; &#x2F;&#x2F;a hippo object itself 
 @class hippo
 @constructor
 @param selector|HTML {String|String}
@@ -147,7 +148,7 @@ var CreateHippoObject = function(elements,context){
 		d = doc;&#x2F;&#x2F;point at scoped document i.e. var doc = document in next scope up
 	}
 
-	&#x2F;&#x2F;if no elements assume html element was sent
+	&#x2F;&#x2F;if no elements, return html element
 	if(!elements){
 		this.length = 1;
 		this[0] = document.documentElement;
@@ -163,16 +164,17 @@ var CreateHippoObject = function(elements,context){
 			var divElm = d.createElement(&#x27;div&#x27;);
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
-			docFrag.querySelector(&#x27;div&#x27;).innerHTML = elements;
-			var numberOfChildren = docFrag.querySelector(&#x27;div&#x27;).children.length;
-
+			var queryDiv = docFrag.querySelector(&#x27;div&#x27;);
+			queryDiv.innerHTML = elements;
+			var numberOfChildren = queryDiv.children.length;
+			&#x2F;&#x2F;loop over nodelist and fill object
 			for (var z = 0; z &lt; numberOfChildren; z++) {
-				this[z] = docFrag.querySelector(&#x27;div&#x27;).children[z];
+				this[z] = queryDiv.children[z];
 			}
 			&#x2F;&#x2F;give the object a length value
 			this.length = numberOfChildren;
-
-			return this;
+			&#x2F;&#x2F;return object
+			return this; &#x2F;&#x2F;return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 	}
 
 	&#x2F;&#x2F;if a single element node reference is passed, fill object, return object
@@ -191,7 +193,7 @@ var CreateHippoObject = function(elements,context){
 		&#x2F;&#x2F;if its a string selector create a context first, then run query again, or use current document
 		nodes = (typeof context === &#x27;string&#x27; ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
 	}
-	&#x2F;&#x2F;loop over array or nodelist and place in fill object
+	&#x2F;&#x2F;loop over array or nodelist and fill object
 	for (var i = 0; i &lt; nodes.length; i++) {
 		this[i] = nodes[i];
 	}

@@ -24,6 +24,12 @@ test('invoke hippo(\'<ul><li></li></ul>\') with HTML string',function(){
 	equal(hippoLi[0].nodeType,1,'Its an ELEMENT_NODE');
 });
 
+test('invoke hippo(\'<li></li><li></li>\') with HTML string',function(){
+	var hippoLi = hippo('<li></li><li></li>');
+	ok(hippoLi, 'No problem passing html string selector');
+	equal(hippoLi.total(),2,'contains two elements now');
+});
+
 test('invoke hippo([node,node]) with array of node references',function(){
 	var hippoObj = hippo([document.body,document.documentElement,document.head]);
 	ok(hippoObj, 'No problem passing array of node references');
@@ -58,6 +64,14 @@ test('invoke hippo(Selector,Document)',function(){
 	var hippoObj = hippo('li',document);
 	ok(hippoObj, 'No problem passing node reference');
 	equal(hippoObj[0].nodeType,1,'Its an ELEMENT_NODE');
+});
+
+test('invoke hippo(hippo())',function(){
+	var hippoLi = hippo(hippo('li.firstLi','#qunit-fixture'));
+	ok(hippoLi, 'No problem passing node reference');
+	equal(hippoLi[0].nodeType,1,'Its an ELEMENT_NODE');
+	equal(hippoLi.matchesSelector('.firstLi'),true);
+	equal(hippoLi.total('.firstLi'),1);
 });
 
 //only works, locally if ran from server, or on safari, opera, firefox
@@ -148,6 +162,14 @@ test('hippo().clone()', function(){
 	var hippoLiClonedTrue = hippo('#qunit-fixture ul').clone(true);
 	equal(hippoLiCloned.total(),1,'only clones one element node');
 	equal(hippoLiClonedTrue.get(0).children.length,3,'clones selected node and all its children');
+});
+
+test('hippo().add()', function(){
+	var hippoLi = hippo('li.firstLi','#qunit-fixture').add('.lastLi');
+	equal(hippoLi.total(),2,'only clones one element node');
+
+	var hippoHTML = hippo('<li></li>').add('<li><li>');
+	equal(hippoHTML.total(),2,'only clones one element node');
 });
 
 module('attributes.js');

@@ -19,6 +19,7 @@ var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 `hippo([document.body,document.head])` //Array  
 `hippo(document.body.children)` //NodeList  
 `hippo(document.all)` //HTMLCollection  
+`hippo(hippo())` //a hippo object itself 
 @class hippo
 @constructor
 @param selector|HTML {String|String}
@@ -47,7 +48,7 @@ var CreateHippoObject = function(elements,context){
 		d = doc;//point at scoped document i.e. var doc = document in next scope up
 	}
 
-	//if no elements assume html element was sent
+	//if no elements, return html element
 	if(!elements){
 		this.length = 1;
 		this[0] = document.documentElement;
@@ -63,16 +64,17 @@ var CreateHippoObject = function(elements,context){
 			var divElm = d.createElement('div');
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
-			docFrag.querySelector('div').innerHTML = elements;
-			var numberOfChildren = docFrag.querySelector('div').children.length;
-
+			var queryDiv = docFrag.querySelector('div');
+			queryDiv.innerHTML = elements;
+			var numberOfChildren = queryDiv.children.length;
+			//loop over nodelist and fill object
 			for (var z = 0; z < numberOfChildren; z++) {
-				this[z] = docFrag.querySelector('div').children[z];
+				this[z] = queryDiv.children[z];
 			}
 			//give the object a length value
 			this.length = numberOfChildren;
-
-			return this;
+			//return object
+			return this; //return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 	}
 
 	//if a single element node reference is passed, fill object, return object
@@ -91,7 +93,7 @@ var CreateHippoObject = function(elements,context){
 		//if its a string selector create a context first, then run query again, or use current document
 		nodes = (typeof context === 'string' ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
 	}
-	//loop over array or nodelist and place in fill object
+	//loop over array or nodelist and fill object
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}

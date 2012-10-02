@@ -6,16 +6,21 @@ YUI.add("yuidoc-meta", function(Y) {
     ],
     "modules": [
         "attribute.js",
+        "core-methods.js",
         "core.js",
         "helpers.js",
-        "manipulation.js",
-        "miscellaneous.js"
+        "manipulation.js"
     ],
     "allModules": [
         {
             "displayName": "attribute.js",
             "name": "attribute.js",
             "description": "contains methods for operating on the element attributes"
+        },
+        {
+            "displayName": "core-methods.js",
+            "name": "core-methods.js",
+            "description": "contains methods for operating on the wrapped set of elements in the hippo object"
         },
         {
             "displayName": "core.js",
@@ -31,11 +36,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "manipulation.js",
             "name": "manipulation.js",
             "description": "contains methods for operating on elements"
-        },
-        {
-            "displayName": "miscellaneous.js",
-            "name": "miscellaneous.js",
-            "description": "contains methods for operating on the wrapped set of elements in the hippo object"
         }
     ]
 } };

@@ -51,13 +51,13 @@
             
                 <li><a href="..&#x2F;modules/attribute.js.html">attribute.js</a></li>
             
+                <li><a href="..&#x2F;modules/core-methods.js.html">core-methods.js</a></li>
+            
                 <li><a href="..&#x2F;modules/core.js.html">core.js</a></li>
             
                 <li><a href="..&#x2F;modules/helpers.js.html">helpers.js</a></li>
             
                 <li><a href="..&#x2F;modules/manipulation.js.html">manipulation.js</a></li>
-            
-                <li><a href="..&#x2F;modules/miscellaneous.js.html">miscellaneous.js</a></li>
             
             </ul>
         </div>
@@ -182,8 +182,56 @@ hippo.fn.before = function(htmlStringOrNodeOrSelector){
  @returns {Object} hippo() object
  **&#x2F;
 hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
+	&#x2F;&#x2F;deal with inserting a doc frag, infront of another doc frag i.e. hippo(&#x27;&lt;li&gt;&lt;&#x2F;li&gt;&#x27;).insertBefore(&#x27;&lt;li class=&quot;test&quot;&gt;&lt;li&gt;&#x27;)
+	if(this[0].parentNode.className === &#x27;hippo-doc-frag-wrapper&#x27; &amp;&amp; regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){
+		return hippo(this[0]).add(htmlStringOrNodeOrSelector,true);
+	}
+	&#x2F;&#x2F;else, do a normal insertBefore
 	return this.each(function(){
 		hippo(htmlStringOrNodeOrSelector).before(this);
+	});
+};
+
+&#x2F;**
+ Add content to the DOM after each element in the set
+
+ @method after
+ @for hippo
+ @param {String|Node|Selector}
+   html string, Node, or Selector
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.after = function(htmlStringOrNodeOrSelector){
+	return this.each(function(){
+		if(regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){ &#x2F;&#x2F;html string
+			this.insertAdjacentHTML(&#x27;beforeEnd&#x27;,htmlStringOrNodeOrSelector);
+		}else if(typeof htmlStringOrNodeOrSelector === &#x27;string&#x27;){ &#x2F;&#x2F;selector
+			this.insertAdjacentHTML(&#x27;beforeEnd&#x27;,hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
+		}else{ &#x2F;&#x2F;node
+			this.insertAdjacentHTML(&#x27;beforeEnd&#x27;,htmlStringOrNodeOrSelector.outerHTML);
+		}
+	});
+};
+
+&#x2F;**
+ Add content to the DOM after the element selected by the selector expression
+
+ @method insertAfter
+ @for hippo
+ @param {String|Node|Selector}
+   html string, Node, or Selector
+ @chainable
+ @returns {Object} hippo() object
+ **&#x2F;
+hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
+	&#x2F;&#x2F;deal with inserting a doc frag, infront of another doc frag i.e. hippo(&#x27;&lt;li&gt;&lt;&#x2F;li&gt;&#x27;).insertBefore(&#x27;&lt;li class=&quot;test&quot;&gt;&lt;li&gt;&#x27;)
+	if(this[0].parentNode.className === &#x27;hippo-doc-frag-wrapper&#x27; &amp;&amp; regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){
+		return hippo(this[0]).add(htmlStringOrNodeOrSelector);
+	}
+	&#x2F;&#x2F;else, do a normal insertBefore
+	return this.each(function(){
+		hippo(htmlStringOrNodeOrSelector).after(this);
 	});
 };
 

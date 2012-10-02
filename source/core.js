@@ -5,6 +5,7 @@
 * @module core.js
 */
 
+//private vars 
 var rootObject = this;
 var doc = rootObject.document;
 var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
@@ -62,6 +63,7 @@ var CreateHippoObject = function(elements,context){
 		elements.length >= 3){//yup html string
 			//create div & docfrag, append div to docfrag, then set its div's innerHTML to the string, then get first child
 			var divElm = d.createElement('div');
+			divElm.className = 'hippo-doc-frag-wrapper';
 			var docFrag = d.createDocumentFragment();
 			docFrag.appendChild(divElm);
 			var queryDiv = docFrag.querySelector('div');

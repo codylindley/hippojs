@@ -1,6 +1,4 @@
 
-<center>
-
 ![Augustine of Hippo](https://raw.github.com/codylindley/hippojs/master/saint-augustine.jpeg)
 
 

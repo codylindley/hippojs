@@ -70,7 +70,7 @@ test('invoke hippo(hippo())',function(){
 	var hippoLi = hippo(hippo('li.firstLi','#qunit-fixture'));
 	ok(hippoLi, 'No problem passing node reference');
 	equal(hippoLi[0].nodeType,1,'Its an ELEMENT_NODE');
-	equal(hippoLi.matchesSelector('.firstLi'),true);
+	equal(hippoLi.is('.firstLi'),true);
 	equal(hippoLi.total('.firstLi'),1);
 });
 

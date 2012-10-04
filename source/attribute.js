@@ -9,7 +9,7 @@ contains methods for operating on the element attributes
  sets attribute value for all elements in the set
 
  @method setAttr
- @for hippo
+ @for hippo()
  @param attribute(s) {String|Object}
  @param value {String}
  @optional
@@ -34,7 +34,7 @@ hippo.fn.setAttr = function(attr,value){
  gets attribute value, or array of attribute values from first element in the set
 
  @method addAttr
- @for hippo
+ @for hippo()
  @param attribute {String}
  @optional
  @returns either an array containing all attributes or a single value from a specific attribute passed in
@@ -51,7 +51,7 @@ hippo.fn.getAttr = function(attr){
  remove attribute value from all elements in the set
 
  @method removeAttr
- @for hippo
+ @for hippo()
  @param value {String}
    pass more than one value by providing a space inbetween values
  @chainable
@@ -71,7 +71,7 @@ hippo.fn.removeAttr = function(attr){
  does the first element in the set have the attribute value
 
  @method hasAttr
- @for hippo
+ @for hippo()
  @param class {String}
  @returns {Boolean} 
  **/
@@ -83,7 +83,7 @@ hippo.fn.hasAttr = function(attr){
  Adds class attribute value
 
  @method addClass
- @for hippo
+ @for hippo()
  @param class {String}
    pass more than one value by providing a space inbetween values
  @chainable
@@ -103,7 +103,7 @@ hippo.fn.addClass = function(classString){
  removes class attribute value
 
  @method removeClass
- @for hippo
+ @for hippo()
  @param class {String}
    pass more than one value by providing a space inbetween values
  @chainable
@@ -123,7 +123,7 @@ hippo.fn.removeClass = function(classString){
  toggle class attribute value
 
  @method toggleClass
- @for hippo
+ @for hippo()
  @param class {String}
    pass more than one value by providing a space inbetween values
  @chainable
@@ -143,7 +143,7 @@ hippo.fn.toggleClass = function(classString){
  is class attribute value already defined
 
  @method hasClass
- @for hippo
+ @for hippo()
  @param class {String}
  @chainable
  @returns {Boolean}

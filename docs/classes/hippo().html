@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>hippo - hippojs</title>
+    <title>hippo() - hippojs</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0</em>
+            <em>API Docs for: 0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -41,7 +41,7 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/hippo.html">hippo</a></li>
+                <li><a href="..&#x2F;classes/hippo().html">hippo()</a></li>
             
                 <li><a href="..&#x2F;classes/hippo..html">hippo.</a></li>
             
@@ -94,7 +94,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>hippo Class</h1>
+                        <h1>hippo() Class</h1>
 <div class="box meta">
     
 
@@ -120,10 +120,10 @@
 <div class="box intro">
     <p><code>hippo('li')</code> //Selector <br />
 <code>hippo('li','ul')</code> //Selector &amp; Selector context <br />
-<code>hippo('li',document.body)</code> //Selector &amp; Element context <br />
+<code>hippo('li',document.body)</code> //Selector &amp; Element Node context <br />
 <code>hippo('&lt;div&gt;&lt;/div&gt;')</code> //HTML <br />
 <code>hippo('&lt;div&gt;&lt;/div&gt;','window.frames[0].document')</code> //HTML &amp; Document context <br />
-<code>hippo(document.body)</code> //Element <br />
+<code>hippo(document.body)</code> //Element Node <br />
 <code>hippo([document.body,document.head])</code> //Array <br />
 <code>hippo(document.body.children)</code> //NodeList <br />
 <code>hippo(document.all)</code> //HTMLCollection <br />
@@ -133,8 +133,8 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_hippo" class="method item">
-    <h3 class="name"><code>hippo</code></h3>
+        <div id="method_hippo()" class="method item">
+    <h3 class="name"><code>hippo()</code></h3>
 
     
         <div class="args">
@@ -142,13 +142,13 @@
             
                 <li class="arg">
                     
-                        <code>selector|HTML</code>
+                        <code>selector&#x2F;HTML|Node|hippo()</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>selector|Element|Document</code>
+                        <code>selector|Node</code>
                     
                 </li>
             
@@ -207,14 +207,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">selector|HTML</code>
-                        <span class="type">String | String</span>
+                        <code class="param-name">selector&#x2F;HTML|Node|hippo()</code>
+                        <span class="type">String | Node | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>A string containing a selector expression or a string containing HTML</p>
+                        <p>A string selector, node, or hippo() object, if you leave it empty default to HTML element</p>
                     </div>
 
                     
@@ -222,14 +222,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">selector|Element|Document</code>
-                        <span class="type">String |  | Node</span>
+                        <code class="param-name">selector|Node</code>
+                        <span class="type">String | Node</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>A string selector or node (Element or Document), defaults to current document</p>
+                        <p>A string containing a selector expression or node (i.e. element or document)</p>
                     </div>
 
                     
@@ -332,6 +332,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_children">children</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_clone">clone</a>
 
                                 
@@ -347,6 +354,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_empty">empty</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_eq">eq</a>
 
                                 
                                 
@@ -375,6 +389,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_get">get</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_has">has</a>
 
                                 
                                 
@@ -416,6 +437,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_is">is</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_last">last</a>
 
                                 
@@ -423,7 +451,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_matchesSelector">matchesSelector</a>
+                                <a href="#method_outerHtml">outerHtml</a>
 
                                 
                                 
@@ -479,6 +507,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_slice">slice</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_text">text</a>
 
                                 
@@ -514,7 +549,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_wrap">wrap</a>
+                                <a href="#method_wrapInner">wrapInner</a>
 
                                 
                                 
@@ -545,7 +580,7 @@
             
                 <li class="arg">
                     
-                        <code>UNKNOWN</code>
+                        <code>selector&#x2F;HTML|Node|Hippo()</code>
                     
                 </li>
             
@@ -586,7 +621,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l8"><code>source&#x2F;core-methods.js:8</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l209"><code>source&#x2F;core-methods.js:209</code></a>
         
         </p>
 
@@ -608,14 +643,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">UNKNOWN</code>
-                        <span class="type">Selector | Node | HtmlString</span>
+                        <code class="param-name">selector&#x2F;HTML|Node|Hippo()</code>
+                        <span class="type">String |  | Node |  | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>A string selector, node, or hippo() object, if you leave it empty default to HTML element</p>
                     </div>
 
                     
@@ -906,7 +941,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l115"><code>source&#x2F;manipulation.js:115</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l114"><code>source&#x2F;manipulation.js:114</code></a>
         
         </p>
 
@@ -1014,7 +1049,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l163"><code>source&#x2F;manipulation.js:163</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l162"><code>source&#x2F;manipulation.js:162</code></a>
         
         </p>
 
@@ -1122,7 +1157,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l188"><code>source&#x2F;manipulation.js:188</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l187"><code>source&#x2F;manipulation.js:187</code></a>
         
         </p>
 
@@ -1230,7 +1265,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l67"><code>source&#x2F;manipulation.js:67</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l66"><code>source&#x2F;manipulation.js:66</code></a>
         
         </p>
 
@@ -1267,6 +1302,81 @@
             
             </ul>
         </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_children" class="method item">
+    <h3 class="name"><code>children</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l130"><code>source&#x2F;core-methods.js:130</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>reduce set to the children elements of each element in the set</p>
+    </div>
+
     
 
     
@@ -1338,7 +1448,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l167"><code>source&#x2F;core-methods.js:167</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l250"><code>source&#x2F;core-methods.js:250</code></a>
         
         </p>
 
@@ -1446,7 +1556,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l25"><code>source&#x2F;core-methods.js:25</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l88"><code>source&#x2F;core-methods.js:88</code></a>
         
         </p>
 
@@ -1544,7 +1654,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l37"><code>source&#x2F;manipulation.js:37</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l36"><code>source&#x2F;manipulation.js:36</code></a>
         
         </p>
 
@@ -1558,6 +1668,114 @@
         <p>remove DOM contents of each element in the set</p>
     </div>
 
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_eq" class="method item">
+    <h3 class="name"><code>eq</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>number</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l117"><code>source&#x2F;core-methods.js:117</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>reduce set to a single element</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">number</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1629,7 +1847,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l72"><code>source&#x2F;core-methods.js:72</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l170"><code>source&#x2F;core-methods.js:170</code></a>
         
         </p>
 
@@ -1737,7 +1955,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l50"><code>source&#x2F;core-methods.js:50</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l148"><code>source&#x2F;core-methods.js:148</code></a>
         
         </p>
 
@@ -1833,7 +2051,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l156"><code>source&#x2F;core-methods.js:156</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l238"><code>source&#x2F;core-methods.js:238</code></a>
         
         </p>
 
@@ -1915,7 +2133,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l133"><code>source&#x2F;core-methods.js:133</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l72"><code>source&#x2F;core-methods.js:72</code></a>
         
         </p>
 
@@ -1962,6 +2180,111 @@
                 
                     
                         <span class="type">Node</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_has" class="method item">
+    <h3 class="name"><code>has</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l31"><code>source&#x2F;core-methods.js:31</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Check if any of the elements childrens, in the set, matches the CSS selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
                     
                 
             </div>
@@ -2234,7 +2557,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l278"><code>source&#x2F;manipulation.js:278</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l277"><code>source&#x2F;manipulation.js:277</code></a>
         
         </p>
 
@@ -2342,7 +2665,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l142"><code>source&#x2F;manipulation.js:142</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l141"><code>source&#x2F;manipulation.js:141</code></a>
         
         </p>
 
@@ -2450,7 +2773,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l94"><code>source&#x2F;manipulation.js:94</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l93"><code>source&#x2F;manipulation.js:93</code></a>
         
         </p>
 
@@ -2508,80 +2831,8 @@
 </div>
 
                 
-                    <div id="method_last" class="method item">
-    <h3 class="name"><code>last</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Node</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l145"><code>source&#x2F;core-methods.js:145</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Get the last element of the current set</p>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Node</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_matchesSelector" class="method item">
-    <h3 class="name"><code>matchesSelector</code></h3>
+                    <div id="method_is" class="method item">
+    <h3 class="name"><code>is</code></h3>
 
     
         <div class="args">
@@ -2628,7 +2879,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l38"><code>source&#x2F;core-methods.js:38</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l12"><code>source&#x2F;core-methods.js:12</code></a>
         
         </p>
 
@@ -2639,7 +2890,7 @@
     </div>
 
     <div class="description">
-        <p>Check if the first element matches the CSS selector</p>
+        <p>Check if any of the elements in the set matches the CSS selector</p>
     </div>
 
     
@@ -2676,6 +2927,186 @@
                     
                         <span class="type">Boolean</span>:
                     
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_last" class="method item">
+    <h3 class="name"><code>last</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Node</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l227"><code>source&#x2F;core-methods.js:227</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get the last element of the current set</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Node</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_outerHtml" class="method item">
+    <h3 class="name"><code>outerHtml</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>!~YUIDOC_LINE~!</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/manipulation.js.html">manipulation.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l298"><code>source&#x2F;manipulation.js:298</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set HTML contents including parent element</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">!~YUIDOC_LINE~!</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>selector</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object or innerHTML
                 
             </div>
         </div>
@@ -2735,7 +3166,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l204"><code>source&#x2F;manipulation.js:204</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l203"><code>source&#x2F;manipulation.js:203</code></a>
         
         </p>
 
@@ -2843,7 +3274,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l229"><code>source&#x2F;manipulation.js:229</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l228"><code>source&#x2F;manipulation.js:228</code></a>
         
         </p>
 
@@ -2941,7 +3372,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l51"><code>source&#x2F;manipulation.js:51</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l50"><code>source&#x2F;manipulation.js:50</code></a>
         
         </p>
 
@@ -3429,6 +3860,137 @@
 </div>
 
                 
+                    <div id="method_slice" class="method item">
+    <h3 class="name"><code>slice</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>number</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>number</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l101"><code>source&#x2F;core-methods.js:101</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>slice the set</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">number</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <pre><code>start
+</code></pre>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">number</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <pre><code>end
+</code></pre>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_text" class="method item">
     <h3 class="name"><code>text</code></h3>
 
@@ -3479,7 +4041,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l300"><code>source&#x2F;manipulation.js:300</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l320"><code>source&#x2F;manipulation.js:320</code></a>
         
         </p>
 
@@ -3575,7 +4137,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l122"><code>source&#x2F;core-methods.js:122</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l61"><code>source&#x2F;core-methods.js:61</code></a>
         
         </p>
 
@@ -3755,7 +4317,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l111"><code>source&#x2F;core-methods.js:111</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l50"><code>source&#x2F;core-methods.js:50</code></a>
         
         </p>
 
@@ -3839,7 +4401,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l245"><code>source&#x2F;manipulation.js:245</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l244"><code>source&#x2F;manipulation.js:244</code></a>
         
         </p>
 
@@ -3897,8 +4459,8 @@
 </div>
 
                 
-                    <div id="method_wrap" class="method item">
-    <h3 class="name"><code>wrap</code></h3>
+                    <div id="method_wrapInner" class="method item">
+    <h3 class="name"><code>wrapInner</code></h3>
 
     
         <div class="args">
@@ -3947,7 +4509,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l261"><code>source&#x2F;manipulation.js:261</code></a>
+        <a href="..&#x2F;files&#x2F;source_manipulation.js.html#l260"><code>source&#x2F;manipulation.js:260</code></a>
         
         </p>
 

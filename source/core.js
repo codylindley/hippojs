@@ -13,20 +13,22 @@ var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 /**
 `hippo('li')` //Selector  
 `hippo('li','ul')` //Selector & Selector context  
-`hippo('li',document.body)` //Selector & Element context   
+`hippo('li',document.body)` //Selector & Element Node context   
 `hippo('<div></div>')` //HTML  
 `hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //Element  
+`hippo(document.body)` //Element Node  
 `hippo([document.body,document.head])` //Array  
 `hippo(document.body.children)` //NodeList  
 `hippo(document.all)` //HTMLCollection  
 `hippo(hippo())` //a hippo object itself 
-@class hippo
+@class hippo()
 @constructor
-@param selector|HTML {String|String}
-  A string containing a selector expression or a string containing HTML
-@param selector|Element|Document {String||Node}
-  A string selector or node (Element or Document), defaults to current document
+@param selector/HTML|Node|hippo() {String|Node|Object}
+  A string selector, node, or hippo() object, if you leave it empty default to HTML element
+@param selector|Node  {String|Node}
+  A string containing a selector expression or node (i.e. element or document)
+@default
+	HTML element
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 

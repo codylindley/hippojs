@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       compile: {
         'name': 'hippojs',
         'description': 'hippo.js is a wishful jQuery inspired DOM Library for use in modern browsers',
-        'version': '1.0',
+        'version': '0.1',
         'url': 'http://hippojs.com',
         'logo':'',
         options: {

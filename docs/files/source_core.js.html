@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0</em>
+            <em>API Docs for: 0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -41,7 +41,7 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/hippo.html">hippo</a></li>
+                <li><a href="..&#x2F;classes/hippo().html">hippo()</a></li>
             
                 <li><a href="..&#x2F;classes/hippo..html">hippo.</a></li>
             
@@ -113,20 +113,22 @@ var regXContainsHTML = &#x2F;^(?:[^#&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|#([\w\-]*)$
 &#x2F;**
 &#x60;hippo(&#x27;li&#x27;)&#x60; &#x2F;&#x2F;Selector  
 &#x60;hippo(&#x27;li&#x27;,&#x27;ul&#x27;)&#x60; &#x2F;&#x2F;Selector &amp; Selector context  
-&#x60;hippo(&#x27;li&#x27;,document.body)&#x60; &#x2F;&#x2F;Selector &amp; Element context   
+&#x60;hippo(&#x27;li&#x27;,document.body)&#x60; &#x2F;&#x2F;Selector &amp; Element Node context   
 &#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;)&#x60; &#x2F;&#x2F;HTML  
 &#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;,&#x27;window.frames[0].document&#x27;)&#x60; &#x2F;&#x2F;HTML &amp; Document context  
-&#x60;hippo(document.body)&#x60; &#x2F;&#x2F;Element  
+&#x60;hippo(document.body)&#x60; &#x2F;&#x2F;Element Node  
 &#x60;hippo([document.body,document.head])&#x60; &#x2F;&#x2F;Array  
 &#x60;hippo(document.body.children)&#x60; &#x2F;&#x2F;NodeList  
 &#x60;hippo(document.all)&#x60; &#x2F;&#x2F;HTMLCollection  
 &#x60;hippo(hippo())&#x60; &#x2F;&#x2F;a hippo object itself 
-@class hippo
+@class hippo()
 @constructor
-@param selector|HTML {String|String}
-  A string containing a selector expression or a string containing HTML
-@param selector|Element|Document {String||Node}
-  A string selector or node (Element or Document), defaults to current document
+@param selector&#x2F;HTML|Node|hippo() {String|Node|Object}
+  A string selector, node, or hippo() object, if you leave it empty default to HTML element
+@param selector|Node  {String|Node}
+  A string containing a selector expression or node (i.e. element or document)
+@default
+	HTML element
 @return {Object} hippo() object e.g. &#x60;{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}&#x60;
 **&#x2F;
 

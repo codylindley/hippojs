@@ -2,7 +2,7 @@
     "project": {
         "name": "hippojs",
         "description": "hippo.js is a wishful jQuery inspired DOM Library for use in modern browsers",
-        "version": "1.0",
+        "version": "0.1",
         "url": "http://hippojs.com",
         "logo": ""
     },
@@ -14,7 +14,7 @@
             },
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {}
         },
@@ -25,7 +25,7 @@
             },
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {}
         },
@@ -35,7 +35,7 @@
                 "core.js": 1
             },
             "classes": {
-                "hippo": 1
+                "hippo()": 1
             },
             "fors": {},
             "namespaces": {}
@@ -60,7 +60,7 @@
             },
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {}
         }
@@ -71,7 +71,7 @@
             "submodules": {},
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {},
             "tag": "module",
@@ -84,7 +84,7 @@
             "submodules": {},
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {},
             "tag": "module",
@@ -96,7 +96,7 @@
             "name": "core.js",
             "submodules": {},
             "classes": {
-                "hippo": 1
+                "hippo()": 1
             },
             "fors": {},
             "namespaces": {},
@@ -125,7 +125,7 @@
             "submodules": {},
             "classes": {},
             "fors": {
-                "hippo": 1
+                "hippo()": 1
             },
             "namespaces": {},
             "tag": "module",
@@ -135,9 +135,9 @@
         }
     },
     "classes": {
-        "hippo": {
-            "name": "hippo",
-            "shortname": "hippo",
+        "hippo()": {
+            "name": "hippo()",
+            "shortname": "hippo()",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -147,20 +147,21 @@
             "namespace": "",
             "file": "source/core.js",
             "line": 13,
-            "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo object itself",
+            "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element Node context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element Node  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo object itself",
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "selector|HTML",
-                    "description": "\n  A string containing a selector expression or a string containing HTML",
-                    "type": "String|String"
+                    "name": "selector/HTML|Node|hippo()",
+                    "description": "\n  A string selector, node, or hippo() object, if you leave it empty default to HTML element",
+                    "type": "String|Node|Object"
                 },
                 {
-                    "name": "selector|Element|Document",
-                    "description": "\n  A string selector or node (Element or Document), defaults to current document",
-                    "type": "String||Node"
+                    "name": "selector|Node",
+                    "description": "\n  A string containing a selector expression or node (i.e. element or document)",
+                    "type": "String|Node"
                 }
             ],
+            "default": "HTML element",
             "return": {
                 "description": "hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`",
                 "type": "Object"
@@ -207,7 +208,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -227,7 +228,7 @@
             "return": {
                 "description": "either an array containing all attributes or a single value from a specific attribute passed in"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -248,7 +249,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -268,7 +269,7 @@
                 "description": "",
                 "type": "Boolean"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -289,7 +290,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -310,7 +311,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -331,7 +332,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
@@ -352,33 +353,98 @@
                 "description": "",
                 "type": "Boolean"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "attribute.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 8,
-            "description": "add element to set",
+            "line": 12,
+            "description": "Check if any of the elements in the set matches the CSS selector",
             "itemtype": "method",
-            "name": "add",
+            "name": "is",
             "params": [
                 {
-                    "name": "UNKNOWN",
+                    "name": "selector",
                     "description": "",
-                    "type": "Selector|node|htmlString"
+                    "type": "String"
                 }
             ],
-            "chainable": 1,
             "return": {
-                "description": "hippo() object with new element added",
-                "type": "Object"
+                "description": "",
+                "type": "Boolean"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 25,
+            "line": 31,
+            "description": "Check if any of the elements childrens, in the set, matches the CSS selector",
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 50,
+            "description": "total elements in the hippo object",
+            "itemtype": "method",
+            "name": "total",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 61,
+            "description": "convert hippo object of DOM elements into JavaScript array of elements",
+            "itemtype": "method",
+            "name": "toArray",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 72,
+            "description": "get a DOM node from the hippo object at a specific index (zero based).",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Node"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 88,
             "description": "loop over each element",
             "itemtype": "method",
             "name": "each",
@@ -394,32 +460,73 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 38,
-            "description": "Check if the first element matches the CSS selector",
+            "line": 101,
+            "description": "slice the set",
             "itemtype": "method",
-            "name": "matchesSelector",
+            "name": "slice",
             "params": [
                 {
-                    "name": "selector",
-                    "description": "",
-                    "type": "String"
+                    "name": "number",
+                    "description": "\n\tstart",
+                    "type": "Number"
+                },
+                {
+                    "name": "number",
+                    "description": "\n\tend",
+                    "type": "Number"
                 }
             ],
+            "chainable": 1,
             "return": {
-                "description": "",
-                "type": "Boolean"
+                "description": "hippo() object",
+                "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 50,
+            "line": 117,
+            "description": "reduce set to a single element",
+            "itemtype": "method",
+            "name": "eq",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 130,
+            "description": "reduce set to the children elements of each element in the set",
+            "itemtype": "method",
+            "name": "children",
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 148,
             "description": "loop over each element, finding its descendants that match the passed in selector",
             "itemtype": "method",
             "name": "find",
@@ -435,12 +542,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 72,
+            "line": 170,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -456,58 +563,33 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 111,
-            "description": "total elements in the hippo object",
+            "line": 209,
+            "description": "add element to set",
             "itemtype": "method",
-            "name": "total",
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "class": "hippo",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 122,
-            "description": "convert hippo object of DOM elements into JavaScript array of elements",
-            "itemtype": "method",
-            "name": "toArray",
-            "return": {
-                "description": "",
-                "type": "Array"
-            },
-            "class": "hippo",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 133,
-            "description": "get a DOM node from the hippo object at a specific index (zero based).",
-            "itemtype": "method",
-            "name": "get",
+            "name": "add",
             "params": [
                 {
-                    "name": "index",
-                    "description": "",
-                    "type": "Number"
+                    "name": "selector/HTML|Node|Hippo()",
+                    "description": "\n  A string selector, node, or hippo() object, if you leave it empty default to HTML element",
+                    "type": "String||Node||Object"
                 }
             ],
+            "chainable": 1,
             "return": {
-                "description": "",
-                "type": "Node"
+                "description": "hippo() object with new element added",
+                "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 145,
+            "line": 227,
             "description": "Get the last element of the current set",
             "itemtype": "method",
             "name": "last",
@@ -515,12 +597,12 @@
                 "description": "",
                 "type": "Node"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 156,
+            "line": 238,
             "description": "Get the first element of the current set",
             "itemtype": "method",
             "name": "first",
@@ -528,12 +610,12 @@
                 "description": "",
                 "type": "Node"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
             "file": "source/core-methods.js",
-            "line": 167,
+            "line": 250,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",
@@ -549,7 +631,7 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "core-methods.js"
         },
         {
@@ -697,12 +779,12 @@
                 "description": "\n   hippo() object containing orignal elements removed",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 37,
+            "line": 36,
             "description": "remove DOM contents of each element in the set",
             "itemtype": "method",
             "name": "empty",
@@ -711,12 +793,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 51,
+            "line": 50,
             "description": "remove each element in the set",
             "itemtype": "method",
             "name": "remove",
@@ -725,12 +807,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 67,
+            "line": 66,
             "description": "Add content to the DOM before each element in the set",
             "itemtype": "method",
             "name": "before",
@@ -746,12 +828,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 94,
+            "line": 93,
             "description": "Add content to the DOM before the element selected by the selector expression",
             "itemtype": "method",
             "name": "insertBefore",
@@ -767,12 +849,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 115,
+            "line": 114,
             "description": "Add content to the DOM after each element in the set",
             "itemtype": "method",
             "name": "after",
@@ -788,12 +870,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 142,
+            "line": 141,
             "description": "Add content to the DOM after the element selected by the selector expression",
             "itemtype": "method",
             "name": "insertAfter",
@@ -809,12 +891,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 163,
+            "line": 162,
             "description": "Append content to the DOM inside each individual element in the set",
             "itemtype": "method",
             "name": "append",
@@ -830,12 +912,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 188,
+            "line": 187,
             "description": "Append content to the DOM inside the selector",
             "itemtype": "method",
             "name": "appendTo",
@@ -851,12 +933,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 204,
+            "line": 203,
             "description": "prepend content to the DOM inside each individual element in the set",
             "itemtype": "method",
             "name": "prepend",
@@ -872,12 +954,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 229,
+            "line": 228,
             "description": "prepend content to the DOM inside the selector",
             "itemtype": "method",
             "name": "prependTo",
@@ -893,12 +975,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 245,
+            "line": 244,
             "description": "Wrap each element of the set separately in a DOM structure",
             "itemtype": "method",
             "name": "wrap",
@@ -914,15 +996,15 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 261,
+            "line": 260,
             "description": "Wrap each element of the set separately in a DOM structure",
             "itemtype": "method",
-            "name": "wrap",
+            "name": "wrapInner",
             "params": [
                 {
                     "name": "!~YUIDOC_LINE~!",
@@ -935,12 +1017,12 @@
                 "description": "hippo() object",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 278,
+            "line": 277,
             "description": "Set HTML contents of elements in the set, or get innerHTML of first element",
             "itemtype": "method",
             "name": "html",
@@ -957,12 +1039,34 @@
                 "description": "hippo() object or innerHTML",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         },
         {
             "file": "source/manipulation.js",
-            "line": 300,
+            "line": 298,
+            "description": "Set HTML contents including parent element",
+            "itemtype": "method",
+            "name": "outerHtml",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "selector",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object or innerHTML",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 320,
             "description": "Set text contents of elements in the set, or get textContent of first element",
             "itemtype": "method",
             "name": "text",
@@ -979,7 +1083,7 @@
                 "description": "hippo() object or textContent",
                 "type": "Object"
             },
-            "class": "hippo",
+            "class": "hippo()",
             "module": "manipulation.js"
         }
     ]

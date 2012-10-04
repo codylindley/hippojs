@@ -1,8 +1,13 @@
 module('core-methods.js');
 
-test('hippo().matchesSelector(selector)', function(){
+test('hippo().is(selector)', function(){
+	var hippoLi = hippo('li','#qunit-fixture').first();
+	equal(hippoLi.is('.firstLi'),true);
+});
+
+test('hippo().has(selector)', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
-	equal(hippoLi.matchesSelector('.firstLi'),true,'is the first element in the set have class .firstLi');
+	equal(hippoLi.has('.firstLi'),true);
 });
 
 test('hippo().filter(selector||Function)', function(){

@@ -2,7 +2,7 @@
     "name": "hippo",
     "title": "hippo",
     "description": "hippo.js is a wishful jQuery inspired DOM Library for use in modern browsers",
-    "version": "1.0",
+    "version": "0.1",
     "homepage": "http://hippojs.com",
     "author": {
         "name": "Cody Lindley",

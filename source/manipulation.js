@@ -9,7 +9,7 @@ contains methods for operating on elements
 replace the elements in the set with an html string, selected node from the DOM, a node, or each element in a hippo set
 
  @method replaceWith
- @for hippo
+ @for hippo()
  @param {String|Node|Selector|Object}
    html string, text string, Node, or Selector, or Hippo Object
  @chainable
@@ -18,7 +18,6 @@ replace the elements in the set with an html string, selected node from the DOM,
 **/
 hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak memory
 	if(!value){return this;}
-
 	return this.each(function(){
 		if(regXContainsHTML.exec(value) !== null){ //html string
 			this.outerHTML = value;
@@ -38,7 +37,7 @@ hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak m
 remove DOM contents of each element in the set
 
  @method empty
- @for hippo
+ @for hippo()
  @chainable
  @returns {Object} hippo() object
 **/
@@ -52,7 +51,7 @@ hippo.fn.empty = function(){ //unclear if modern browser still leak memory
 remove each element in the set
 
  @method remove
- @for hippo
+ @for hippo()
  @chainable
  @returns {Object} hippo() object
 **/
@@ -68,7 +67,7 @@ hippo.fn.remove = function(){ //unclear if modern browser still leak memory
  Add content to the DOM before each element in the set
 
  @method before
- @for hippo
+ @for hippo()
  @param {String|Node|Selector|Object}
    html string, Node, or Selector, or Hippo Object
  @chainable
@@ -95,7 +94,7 @@ hippo.fn.before = function(htmlStringOrNodeOrSelector){
  Add content to the DOM before the element selected by the selector expression
 
  @method insertBefore
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -116,7 +115,7 @@ hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
  Add content to the DOM after each element in the set
 
  @method after
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -143,7 +142,7 @@ hippo.fn.after = function(htmlStringOrNodeOrSelector){
  Add content to the DOM after the element selected by the selector expression
 
  @method insertAfter
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -164,7 +163,7 @@ hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
  Append content to the DOM inside each individual element in the set
 
  @method append
- @for hippo
+ @for hippo()
  @param {String|Node}
    html string/text string or Element Node
  @chainable
@@ -189,7 +188,7 @@ hippo.fn.append = function(htmlStringOrtextStringOrNode){
  Append content to the DOM inside the selector
 
  @method appendTo
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @chainable
@@ -205,7 +204,7 @@ hippo.fn.appendTo = function(selector){
  prepend content to the DOM inside each individual element in the set
 
  @method prepend
- @for hippo
+ @for hippo()
  @param {String|Node}
    html string/text string or Element Node
  @chainable
@@ -230,7 +229,7 @@ hippo.fn.prepend = function(htmlStringOrtextStringOrNode){
  prepend content to the DOM inside the selector
 
  @method prependTo
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @chainable
@@ -246,7 +245,7 @@ hippo.fn.prependTo = function(selector){
 Wrap each element of the set separately in a DOM structure
 
  @method wrap
- @for hippo
+ @for hippo()
  @param {String}
    html string
  @chainable
@@ -261,8 +260,8 @@ hippo.fn.wrap = function(string){
 /**
 Wrap each element of the set separately in a DOM structure
 
- @method wrap
- @for hippo
+ @method wrapInner
+ @for hippo()
  @param {String}
    html string
  @chainable
@@ -279,7 +278,7 @@ hippo.fn.wrapInner = function(string){
  Set HTML contents of elements in the set, or get innerHTML of first element
 
  @method html
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @optional
@@ -296,12 +295,33 @@ hippo.fn.wrapInner = function(string){
 	}
 };
 
+/**
+ Set HTML contents including parent element
+
+ @method outerHtml
+ @for hippo()
+ @param {String}
+   selector
+ @optional
+ @chainable
+ @returns {Object} hippo() object or innerHTML
+**/
+ hippo.fn.outerHtml = function(htmlStringOrTextString){
+	if(htmlStringOrTextString){
+		return this.each(function(){
+			this.outerHTML = htmlStringOrTextString;
+		});
+	}else{
+		return this[0].outerHTML;
+	}
+};
+
 
 /**
  Set text contents of elements in the set, or get textContent of first element
 
  @method text
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @optional

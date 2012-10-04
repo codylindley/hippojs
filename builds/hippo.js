@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-10-04
+/*hippo - v0.1 - 2012-10-04
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -18,20 +18,22 @@ var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 /**
 `hippo('li')` //Selector  
 `hippo('li','ul')` //Selector & Selector context  
-`hippo('li',document.body)` //Selector & Element context   
+`hippo('li',document.body)` //Selector & Element Node context   
 `hippo('<div></div>')` //HTML  
 `hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //Element  
+`hippo(document.body)` //Element Node  
 `hippo([document.body,document.head])` //Array  
 `hippo(document.body.children)` //NodeList  
 `hippo(document.all)` //HTMLCollection  
 `hippo(hippo())` //a hippo object itself 
-@class hippo
+@class hippo()
 @constructor
-@param selector|HTML {String|String}
-  A string containing a selector expression or a string containing HTML
-@param selector|Element|Document {String||Node}
-  A string selector or node (Element or Document), defaults to current document
+@param selector/HTML|Node|hippo() {String|Node|Object}
+  A string selector, node, or hippo() object, if you leave it empty default to HTML element
+@param selector|Node  {String|Node}
+  A string containing a selector expression or node (i.e. element or document)
+@default
+	HTML element
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 
@@ -252,28 +254,91 @@ contains methods for operating on the wrapped set of elements in the hippo objec
 @module core-methods.js
 **/
 
-/**
-add element to set
+///////////////////////////////////////////////////////////////////////////
+//operates on the set, but does not return a hippo() object
+///////////////////////////////////////////////////////////////////////////
 
-@method add
-@for hippo
-@param {selector|node|htmlString}
-@chainable
-@returns {Object} hippo() object with new element added
+/**
+Check if any of the elements in the set matches the CSS selector
+
+@method is
+@for hippo()
+@param selector {String}
+@returns {Boolean}
 **/
-hippo.fn.add = function(htmlStringOrNodeOrSelector,addToStart){
-	var newSet  = [].slice.call(this); //turn hippo object into array
-	//push or unshift new element into array
-	newSet[addToStart?'unshift':'push'](hippo(htmlStringOrNodeOrSelector)[0]);
-	//create new hippo object from array and return it
-    return hippo(newSet);
+hippo.fn.is = function(selector){
+	var check = true;
+    this.each(function(name,value){
+		if(!hippo.matchesSelector(value,selector)){
+			check = false;
+			return;
+		}
+    });
+    return check;
 };
+
+/**
+Check if any of the elements childrens, in the set, matches the CSS selector
+
+@method has
+@for hippo()
+@param selector {String}
+@returns {Boolean}
+**/
+hippo.fn.has = function(selector){
+	var check = false;
+    this.each(function(name,value){
+		if(this.parentNode.querySelectorAll(selector).length === 1){
+			check = true;
+			return;
+		}
+    });
+    return check;
+};
+
+/**
+total elements in the hippo object
+
+@method total
+@for hippo()
+@returns {Number}
+**/
+hippo.fn.total = function(){
+	return this.length;
+};
+
+/**
+convert hippo object of DOM elements into JavaScript array of elements
+ 
+@method toArray
+@for hippo()
+@returns {Array}
+**/
+hippo.fn.toArray = function(){
+	return [].slice.call(this);
+};
+
+/**
+get a DOM node from the hippo object at a specific index (zero based).
+ 
+@method get
+@for hippo()
+@param index {Number}
+@returns {Node}
+**/
+hippo.fn.get = function(index){
+	return index === undefined ? this[0] : this[index];
+};
+
+///////////////////////////////////////////////////////////////////////////
+//operates on the set, changing the set, but still returns a hippo() object
+///////////////////////////////////////////////////////////////////////////
 
 /**
 loop over each element
 
 @method each
-@for hippo
+@for hippo()
 @param callback {Function}
 @chainable
 @returns {Object} hippo() object
@@ -283,22 +348,57 @@ hippo.fn.each = function(callback){
 };
 
 /**
-Check if the first element matches the CSS selector
+slice the set
 
-@method matchesSelector
-@for hippo
-@param selector {String}
-@returns {Boolean}
+@method slice
+@for hippo()
+@param number {Number}
+	start
+@param number {Number}
+	end
+@chainable
+@returns {Object} hippo() object
 **/
-hippo.fn.matchesSelector = function(selector){
-    return hippo.matchesSelector(this[0],selector);
+hippo.fn.slice = function(start,end){
+    return hippo(this.toArray().slice(start,end));
+};
+
+/**
+reduce set to a single element
+
+@method eq
+@for hippo()
+@param number {Number}
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.eq = function(index){
+    return hippo(this.get(index));
+};
+
+/**
+reduce set to the children elements of each element in the set 
+
+@method children
+@for hippo()
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.children = function(index){
+	var set = [];
+    this.each(function(name,value){
+		hippo(this.children).each(function(name,value){
+			set.push(value);
+		});
+    });
+    return hippo(set);
 };
 
 /**
 loop over each element, finding its descendants that match the passed in selector
 
 @method find
-@for hippo
+@for hippo()
 @param Selector {String}
 @chainable
 @returns {Object} hippo() object
@@ -320,7 +420,7 @@ hippo.fn.find = function(selector){
 filter elements by selector expression or callback function
  
 @method filter
-@for hippo
+@for hippo()
 @param selector|function {String|Function}
 @chainable
 @returns {Object} hippo() object
@@ -356,44 +456,28 @@ hippo.fn.filter = function(callbackFilter){
 };
 
 /**
-total elements in the hippo object
+add element to set
 
-@method total
-@for hippo
-@returns {Number}
+@method add
+@for hippo()
+@param selector/HTML|Node|Hippo() {String||Node||Object}
+  A string selector, node, or hippo() object, if you leave it empty default to HTML element
+@chainable
+@returns {Object} hippo() object with new element added
 **/
-hippo.fn.total = function(){
-	return this.length;
-};
-
-/**
-convert hippo object of DOM elements into JavaScript array of elements
- 
-@method toArray
-@for hippo
-@returns {Array}
-**/
-hippo.fn.toArray = function(){
-	return [].slice.call(this);
-};
-
-/**
-get a DOM node from the hippo object at a specific index (zero based).
- 
-@method get
-@for hippo
-@param index {Number}
-@returns {Node}
-**/
-hippo.fn.get = function(index){
-	return index === undefined ? this[0] : this[index];
+hippo.fn.add = function(htmlStringOrNodeOrSelector,addToStart){
+	var newSet  = [].slice.call(this); //turn hippo object into array
+	//push or unshift new element into array
+	newSet[addToStart?'unshift':'push'](hippo(htmlStringOrNodeOrSelector)[0]);
+	//create new hippo object from array and return it
+    return hippo(newSet);
 };
 
 /**
 Get the last element of the current set
  
 @method last
-@for hippo
+@for hippo()
 @returns {Node}
 **/
 hippo.fn.last = function(){
@@ -404,18 +488,19 @@ hippo.fn.last = function(){
 Get the first element of the current set
  
 @method first
-@for hippo
+@for hippo()
 @returns {Node}
 **/
 hippo.fn.first = function(){
 	return hippo(this[0]);
 };
 
+
 /**
 clone element nodes in hippo object
  
 @method clone
-@for hippo
+@for hippo()
 @param callback {Boolean}
   default is false, passing true does a deep clone, meaning not just the first selected element but all of its children too
 @chainable
@@ -435,7 +520,7 @@ contains methods for operating on elements
 replace the elements in the set with an html string, selected node from the DOM, a node, or each element in a hippo set
 
  @method replaceWith
- @for hippo
+ @for hippo()
  @param {String|Node|Selector|Object}
    html string, text string, Node, or Selector, or Hippo Object
  @chainable
@@ -444,7 +529,6 @@ replace the elements in the set with an html string, selected node from the DOM,
 **/
 hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak memory
 	if(!value){return this;}
-
 	return this.each(function(){
 		if(regXContainsHTML.exec(value) !== null){ //html string
 			this.outerHTML = value;
@@ -464,7 +548,7 @@ hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak m
 remove DOM contents of each element in the set
 
  @method empty
- @for hippo
+ @for hippo()
  @chainable
  @returns {Object} hippo() object
 **/
@@ -478,7 +562,7 @@ hippo.fn.empty = function(){ //unclear if modern browser still leak memory
 remove each element in the set
 
  @method remove
- @for hippo
+ @for hippo()
  @chainable
  @returns {Object} hippo() object
 **/
@@ -494,7 +578,7 @@ hippo.fn.remove = function(){ //unclear if modern browser still leak memory
  Add content to the DOM before each element in the set
 
  @method before
- @for hippo
+ @for hippo()
  @param {String|Node|Selector|Object}
    html string, Node, or Selector, or Hippo Object
  @chainable
@@ -521,7 +605,7 @@ hippo.fn.before = function(htmlStringOrNodeOrSelector){
  Add content to the DOM before the element selected by the selector expression
 
  @method insertBefore
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -542,7 +626,7 @@ hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
  Add content to the DOM after each element in the set
 
  @method after
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -569,7 +653,7 @@ hippo.fn.after = function(htmlStringOrNodeOrSelector){
  Add content to the DOM after the element selected by the selector expression
 
  @method insertAfter
- @for hippo
+ @for hippo()
  @param {String|Node|Selector}
    html string, Node, or Selector
  @chainable
@@ -590,7 +674,7 @@ hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
  Append content to the DOM inside each individual element in the set
 
  @method append
- @for hippo
+ @for hippo()
  @param {String|Node}
    html string/text string or Element Node
  @chainable
@@ -615,7 +699,7 @@ hippo.fn.append = function(htmlStringOrtextStringOrNode){
  Append content to the DOM inside the selector
 
  @method appendTo
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @chainable
@@ -631,7 +715,7 @@ hippo.fn.appendTo = function(selector){
  prepend content to the DOM inside each individual element in the set
 
  @method prepend
- @for hippo
+ @for hippo()
  @param {String|Node}
    html string/text string or Element Node
  @chainable
@@ -656,7 +740,7 @@ hippo.fn.prepend = function(htmlStringOrtextStringOrNode){
  prepend content to the DOM inside the selector
 
  @method prependTo
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @chainable
@@ -672,7 +756,7 @@ hippo.fn.prependTo = function(selector){
 Wrap each element of the set separately in a DOM structure
 
  @method wrap
- @for hippo
+ @for hippo()
  @param {String}
    html string
  @chainable
@@ -687,8 +771,8 @@ hippo.fn.wrap = function(string){
 /**
 Wrap each element of the set separately in a DOM structure
 
- @method wrap
- @for hippo
+ @method wrapInner
+ @for hippo()
  @param {String}
    html string
  @chainable
@@ -705,7 +789,7 @@ hippo.fn.wrapInner = function(string){
  Set HTML contents of elements in the set, or get innerHTML of first element
 
  @method html
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @optional
@@ -722,12 +806,33 @@ hippo.fn.wrapInner = function(string){
 	}
 };
 
+/**
+ Set HTML contents including parent element
+
+ @method outerHtml
+ @for hippo()
+ @param {String}
+   selector
+ @optional
+ @chainable
+ @returns {Object} hippo() object or innerHTML
+**/
+ hippo.fn.outerHtml = function(htmlStringOrTextString){
+	if(htmlStringOrTextString){
+		return this.each(function(){
+			this.outerHTML = htmlStringOrTextString;
+		});
+	}else{
+		return this[0].outerHTML;
+	}
+};
+
 
 /**
  Set text contents of elements in the set, or get textContent of first element
 
  @method text
- @for hippo
+ @for hippo()
  @param {String}
    selector
  @optional

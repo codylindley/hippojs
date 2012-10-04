@@ -4,11 +4,7 @@
         "description": "hippo.js is a wishful jQuery inspired DOM Library for use in modern browsers",
         "version": "1.0",
         "url": "http://hippojs.com",
-        "logo": "",
-        "options": {
-            "paths": "source",
-            "outdir": "docs"
-        }
+        "logo": ""
     },
     "files": {
         "source/attribute.js": {
@@ -686,19 +682,19 @@
         {
             "file": "source/manipulation.js",
             "line": 8,
-            "description": "need description",
+            "description": "replace the elements in the set with an html string, selected node from the DOM, a node, or each element in a hippo set",
             "itemtype": "method",
             "name": "replaceWith",
             "params": [
                 {
-                    "name": "value",
-                    "description": "",
-                    "type": "String"
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string, text string, Node, or Selector, or Hippo Object",
+                    "type": "String|Node|Selector|Object"
                 }
             ],
             "chainable": 1,
             "return": {
-                "description": "hippo() object",
+                "description": "\n   hippo() object containing orignal elements removed",
                 "type": "Object"
             },
             "class": "hippo",
@@ -706,8 +702,8 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 24,
-            "description": "need description",
+            "line": 37,
+            "description": "remove DOM contents of each element in the set",
             "itemtype": "method",
             "name": "empty",
             "chainable": 1,
@@ -720,8 +716,8 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 38,
-            "description": "need description",
+            "line": 51,
+            "description": "remove each element in the set",
             "itemtype": "method",
             "name": "remove",
             "chainable": 1,
@@ -734,15 +730,15 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 52,
+            "line": 67,
             "description": "Add content to the DOM before each element in the set",
             "itemtype": "method",
             "name": "before",
             "params": [
                 {
                     "name": "!~YUIDOC_LINE~!",
-                    "description": "html string, Node, or Selector",
-                    "type": "String|Node|Selector"
+                    "description": "html string, Node, or Selector, or Hippo Object",
+                    "type": "String|Node|Selector|Object"
                 }
             ],
             "chainable": 1,
@@ -755,7 +751,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 74,
+            "line": 94,
             "description": "Add content to the DOM before the element selected by the selector expression",
             "itemtype": "method",
             "name": "insertBefore",
@@ -776,7 +772,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 95,
+            "line": 115,
             "description": "Add content to the DOM after each element in the set",
             "itemtype": "method",
             "name": "after",
@@ -797,7 +793,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 117,
+            "line": 142,
             "description": "Add content to the DOM after the element selected by the selector expression",
             "itemtype": "method",
             "name": "insertAfter",
@@ -818,7 +814,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 138,
+            "line": 163,
             "description": "Append content to the DOM inside each individual element in the set",
             "itemtype": "method",
             "name": "append",
@@ -839,7 +835,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 158,
+            "line": 188,
             "description": "Append content to the DOM inside the selector",
             "itemtype": "method",
             "name": "appendTo",
@@ -860,7 +856,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 174,
+            "line": 204,
             "description": "prepend content to the DOM inside each individual element in the set",
             "itemtype": "method",
             "name": "prepend",
@@ -881,7 +877,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 194,
+            "line": 229,
             "description": "prepend content to the DOM inside the selector",
             "itemtype": "method",
             "name": "prependTo",
@@ -902,7 +898,49 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 210,
+            "line": 245,
+            "description": "Wrap each element of the set separately in a DOM structure",
+            "itemtype": "method",
+            "name": "wrap",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 261,
+            "description": "Wrap each element of the set separately in a DOM structure",
+            "itemtype": "method",
+            "name": "wrap",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "html string",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo",
+            "module": "manipulation.js"
+        },
+        {
+            "file": "source/manipulation.js",
+            "line": 278,
             "description": "Set HTML contents of elements in the set, or get innerHTML of first element",
             "itemtype": "method",
             "name": "html",
@@ -924,7 +962,7 @@
         },
         {
             "file": "source/manipulation.js",
-            "line": 232,
+            "line": 300,
             "description": "Set text contents of elements in the set, or get textContent of first element",
             "itemtype": "method",
             "name": "text",

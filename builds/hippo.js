@@ -1,4 +1,4 @@
-/*hippo - v1.0 - 2012-10-02
+/*hippo - v1.0 - 2012-10-04
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -422,7 +422,7 @@ clone element nodes in hippo object
 @returns {Object} hippo() object
 **/
 hippo.fn.clone = function(copy){
-	return this.constructor(this[0].cloneNode(copy?copy:false));
+	return hippo(this[0].cloneNode(copy?copy:false));
 };
 
 /**
@@ -432,29 +432,42 @@ contains methods for operating on elements
 **/
 
 /**
-need description
+replace the elements in the set with an html string, selected node from the DOM, a node, or each element in a hippo set
 
  @method replaceWith
  @for hippo
- @param value {String}
+ @param {String|Node|Selector|Object}
+   html string, text string, Node, or Selector, or Hippo Object
  @chainable
- @returns {Object} hippo() object
- **/
+ @returns {Object}
+   hippo() object containing orignal elements removed
+**/
 hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak memory
-	var stringHtml = doc.querySelector(value).outerHTML;
+	if(!value){return this;}
+
 	return this.each(function(){
-			this.outerHTML = stringHtml;
+		if(regXContainsHTML.exec(value) !== null){ //html string
+			this.outerHTML = value;
+		}else if(typeof value === 'string' && doc.querySelectorAll(value).length === 0){//text node
+			this.outerHTML = value;
+		}else if(typeof value === 'string'){ //selector
+			this.outerHTML = hippo(value)[0].outerHTML;
+		}else if(value.nodeName){ //node
+			this.outerHTML = value.outerHTML;
+		}else{//if hippo object
+			this.outerHTML = value[0].outerHTML;	
+		}
 	});
 };
 
 /**
-need description
+remove DOM contents of each element in the set
 
  @method empty
  @for hippo
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.empty = function(){ //unclear if modern browser still leak memory
 	return this.each(function(){
 		this.innerHTML = '';
@@ -462,16 +475,18 @@ hippo.fn.empty = function(){ //unclear if modern browser still leak memory
 };
 
 /**
- need description
+remove each element in the set
 
  @method remove
  @for hippo
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.remove = function(){ //unclear if modern browser still leak memory
 	return this.each(function(){
-		this.parentNode.removeChild(this);
+		if(this.parentNode){
+			this.parentNode.removeChild(this);
+		}
 	});
 };
 
@@ -480,19 +495,24 @@ hippo.fn.remove = function(){ //unclear if modern browser still leak memory
 
  @method before
  @for hippo
- @param {String|Node|Selector}
-   html string, Node, or Selector
+ @param {String|Node|Selector|Object}
+   html string, Node, or Selector, or Hippo Object
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.before = function(htmlStringOrNodeOrSelector){
 	return this.each(function(){
 		if(regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){ //html string
 			this.insertAdjacentHTML('beforebegin',htmlStringOrNodeOrSelector);
 		}else if(typeof htmlStringOrNodeOrSelector === 'string'){ //selector
 			this.insertAdjacentHTML('beforebegin',hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
-		}else{ //node
+		}else if(htmlStringOrNodeOrSelector.nodeName){ //node
 			this.insertAdjacentHTML('beforebegin',htmlStringOrNodeOrSelector.outerHTML);
+		}else{//if hippo object
+			var that = this;
+			htmlStringOrNodeOrSelector.each(function(name,value){
+				that.insertAdjacentHTML('beforebegin',value.outerHTML);
+			});
 		}
 	});
 };
@@ -506,7 +526,7 @@ hippo.fn.before = function(htmlStringOrNodeOrSelector){
    html string, Node, or Selector
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
 	//deal with inserting a doc frag, infront of another doc frag i.e. hippo('<li></li>').insertBefore('<li class="test"><li>')
 	if(this[0].parentNode.className === 'hippo-doc-frag-wrapper' && regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){
@@ -527,15 +547,20 @@ hippo.fn.insertBefore = function(htmlStringOrNodeOrSelector){
    html string, Node, or Selector
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.after = function(htmlStringOrNodeOrSelector){
 	return this.each(function(){
 		if(regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){ //html string
 			this.insertAdjacentHTML('afterend',htmlStringOrNodeOrSelector);
 		}else if(typeof htmlStringOrNodeOrSelector === 'string'){ //selector
 			this.insertAdjacentHTML('afterend',hippo(htmlStringOrNodeOrSelector)[0].outerHTML);
-		}else{ //node
+		}else if(htmlStringOrNodeOrSelector.nodeName){ //node
 			this.insertAdjacentHTML('afterend',htmlStringOrNodeOrSelector.outerHTML);
+		}else{//if hippo object
+			var that = this;
+			htmlStringOrNodeOrSelector.each(function(name,value){
+				that.insertAdjacentHTML('afterend',value.outerHTML);
+			});
 		}
 	});
 };
@@ -549,7 +574,7 @@ hippo.fn.after = function(htmlStringOrNodeOrSelector){
    html string, Node, or Selector
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
 	//deal with inserting a doc frag, infront of another doc frag i.e. hippo('<li></li>').insertBefore('<li class="test"><li>')
 	if(this[0].parentNode.className === 'hippo-doc-frag-wrapper' && regXContainsHTML.exec(htmlStringOrNodeOrSelector) !== null){
@@ -570,13 +595,18 @@ hippo.fn.insertAfter = function(htmlStringOrNodeOrSelector){
    html string/text string or Element Node
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.append = function(htmlStringOrtextStringOrNode){
 	return this.each(function(){
 		if(typeof htmlStringOrtextStringOrNode === 'string'){ //selector
 			this.insertAdjacentHTML('beforeend',htmlStringOrtextStringOrNode);
-		}else{ //node
+		}else if(htmlStringOrtextStringOrNode.nodeName){ //node
 			this.insertAdjacentHTML('beforeend',htmlStringOrtextStringOrNode.outerHTML);
+		}else{//if hippo object
+			var that = this;
+			htmlStringOrtextStringOrNode.each(function(name,value){
+				that.insertAdjacentHTML('beforeend',value.outerHTML);
+			});
 		}
 	});
 };
@@ -590,7 +620,7 @@ hippo.fn.append = function(htmlStringOrtextStringOrNode){
    selector
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.appendTo = function(selector){
 	return this.each(function(){
 		hippo(selector).append(this);
@@ -606,13 +636,18 @@ hippo.fn.appendTo = function(selector){
    html string/text string or Element Node
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.prepend = function(htmlStringOrtextStringOrNode){
 	return this.each(function(){
 		if(typeof htmlStringOrtextStringOrNode === 'string'){ //selector
 			this.insertAdjacentHTML('afterbegin',htmlStringOrtextStringOrNode);
-		}else{ //node
+		}else if(htmlStringOrtextStringOrNode.nodeName){ //node
 			this.insertAdjacentHTML('afterbegin',htmlStringOrtextStringOrNode.outerHTML);
+		}else{//if hippo object
+			var that = this;
+			htmlStringOrtextStringOrNode.each(function(name,value){
+				that.insertAdjacentHTML('afterbegin',value.outerHTML);
+			});
 		}
 	});
 };
@@ -626,11 +661,44 @@ hippo.fn.prepend = function(htmlStringOrtextStringOrNode){
    selector
  @chainable
  @returns {Object} hippo() object
- **/
+**/
 hippo.fn.prependTo = function(selector){
 	return this.each(function(){
 		hippo(selector).prepend(this);
 	});
+};
+
+/**
+Wrap each element of the set separately in a DOM structure
+
+ @method wrap
+ @for hippo
+ @param {String}
+   html string
+ @chainable
+ @returns {Object} hippo() object
+**/
+hippo.fn.wrap = function(string){
+	return this.each(function(){
+		$(this).replaceWith(hippo(string).append(this));
+	});
+};
+
+/**
+Wrap each element of the set separately in a DOM structure
+
+ @method wrap
+ @for hippo
+ @param {String}
+   html string
+ @chainable
+ @returns {Object} hippo() object
+**/
+hippo.fn.wrapInner = function(string){
+	return this.each(function(){
+		this.innerHTML = hippo(string).append(this)[0].outerHTML;
+	});
+
 };
 
 /**
@@ -643,7 +711,7 @@ hippo.fn.prependTo = function(selector){
  @optional
  @chainable
  @returns {Object} hippo() object or innerHTML
- **/
+**/
  hippo.fn.html = function(htmlStringOrTextString){
 	if(htmlStringOrTextString){
 		return this.each(function(){
@@ -665,14 +733,14 @@ hippo.fn.prependTo = function(selector){
  @optional
  @chainable
  @returns {Object} hippo() object or textContent
- **/
+**/
 hippo.fn.text = function(textString){
 	if(textString){
 		return this.each(function(){
 			this.textContent = textString;
 		});
 	}else{
-		return this[0].textContent;
+		return this[0].textContent.trim();
 	}
 };
 

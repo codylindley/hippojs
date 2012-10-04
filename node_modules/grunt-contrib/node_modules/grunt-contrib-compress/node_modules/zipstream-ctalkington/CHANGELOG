@@ -1,0 +1,4 @@
+2012.09.13, v0.3.3
+
+* forked with all outstanding bugs fixed.
+* switched to nodeunit for testing.

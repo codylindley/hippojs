@@ -1,5 +1,53 @@
 module('manipulation.js');
 
+//replaceWith(textnode)
+test('hippo.replaceWith()',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').replaceWith('test');
+	equal(fixture.text(),'test');
+});
+
+test('hippo.replaceWith(String)',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').replaceWith('<i>test</i>');
+	equal(fixture[0].firstElementChild.tagName,'I');
+});
+
+test('hippo.replaceWith(Node)',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').replaceWith(hippo('<p>test</p>')[0]);
+	equal(fixture[0].firstElementChild.tagName,'P');
+});
+
+test('hippo.replaceWith(Selector)',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').replaceWith('.firstLi');
+	equal(fixture[0].firstElementChild.tagName,'LI');
+});
+
+test('hippo.replaceWith(hippo())',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').replaceWith(hippo('.firstLi'));
+	equal(fixture[0].firstElementChild.tagName,'LI');
+});
+
+//remove()
+
+test('hippo.remove()',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').remove();
+	equal(fixture.find('ul').total(),0);
+});
+
+//empty()
+
+test('hippo.empty()',function(){
+	var fixture = hippo('#qunit-fixture');
+	hippo('#qunit-fixture ul').empty();
+	equal(fixture.find('li').total(),0);
+});
+
+
 //before()
 test('hippo.before(htmlstring)',function(){
 	hippo('li:first-child','#qunit-fixture').before('<li class="testBefore"></li>');

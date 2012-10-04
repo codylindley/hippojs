@@ -175,5 +175,5 @@ clone element nodes in hippo object
 @returns {Object} hippo() object
 **/
 hippo.fn.clone = function(copy){
-	return this.constructor(this[0].cloneNode(copy?copy:false));
+	return hippo(this[0].cloneNode(copy?copy:false));
 };

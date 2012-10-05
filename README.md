@@ -20,12 +20,12 @@ hippo('li') //Selector
 hippo('li','ul') //Selector & Selector context  
 hippo('li',document.body) //Selector & Element Node context   
 hippo('<div></div>') //HTML  
-hippo('<div></div>','window.frames[0].document') //HTML & Document cotext  
+hippo('<div></div>','window.frames[0].document') //HTML & Document context  
 hippo(document.body) //Element Node  
 hippo([document.body,document.head])` //Array  
 hippo(document.body.children) //NodeList  
 hippo(document.all) //HTMLCollection  
-hippo(hippo()) //a hippo object itself 
+hippo(hippo()) //a hippo object
 ```
 ###### Hippo Helper/Utilites Functions
 ```

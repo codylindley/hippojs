@@ -5,7 +5,7 @@
 
 
 A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers 
-(i.e. think of it similar to [zepto.js](http://zeptojs.com/) but with support for ie9+)
+(i.e. think of it similar to [zepto.js](http://zeptojs.com/) with a focus on the DOM and support for ie9+)
 
 ---
 

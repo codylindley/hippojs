@@ -29,6 +29,14 @@ test('hippo.matchesSelector(node,selector)',function(){
 	equal(hippo.matchesSelector(document.body,'li'),false);
 });
 
+test('hippo.collectElements(node,property)',function(){
+	equal(hippo.collectElements(hippo('li','#qunit-fixture').first().get(),'parentNode').length,4);
+});
+
+test('hippo.uniqElements([nodes]])',function(){
+	equal(hippo.uniqElements([document.body, document.body, document.scripts[0], document.scripts[0]]).length,2);
+});
+
 test('hippo.each(Object||Array,Function)', function(){
 
 	hippo.each( [0,1,2],function(i, n){

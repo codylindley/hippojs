@@ -10,7 +10,7 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers
 ---
 
 ###API Draft 
-(warning: API is in flux. This is less api documentation and more road map for now)
+(warning: API is in flux. This is less api documentation and more road map for now. * = not developed or tested yet.)
 
 
 ###### Hippo() Constructor, creates a set of Element nodes

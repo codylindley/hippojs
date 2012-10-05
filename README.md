@@ -1,8 +1,10 @@
 
 ![Augustine of Hippo](https://raw.github.com/codylindley/hippojs/master/saint-augustine.jpeg)
 
+###hippos.js
 
-##A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers 
+
+A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers 
 (i.e. think of it similar to [zepto.js](http://zeptojs.com/) but with support for ie9+)
 
 ---

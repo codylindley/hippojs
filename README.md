@@ -56,12 +56,12 @@ hippo().last()
 hippo().first()
 hippo().index()
 hippo().siblingIndex()
-hippo().ancestors() //create new set containg all ancetors
-hippo().descendants() //create new set containg all decendants
-hippo().parents() //create new set, containg all parents (ie. parentNode)
-hippo().nextSiblings() //create a new set, containg all next siblings
-hippo().prevSiblings() //create a new set, containg all previous siblings
-hippo().siblings() //create a new set, containg all siblings
+hippo().ancestors() //create new set containg all ancestors
+hippo().descendants() //create new set containg all descendants
+*hippo().parents() //create new set, containg all parents (ie. parentNode)
+*hippo().nextSiblings() //create a new set, containg all next siblings
+*hippo().prevSiblings() //create a new set, containg all previous siblings
+*hippo().siblings() //create a new set, containg all siblings
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods
@@ -95,13 +95,13 @@ hippo().text()
 ```
 ###### Hippo() Traversing Methods
 ```
-hippo().parent() //travers to parent
-hippo().parentsUntil() //traverse all parents, until all match is found
-hippo().ancestorsUntil() //traverse all ancestors, until a match is found
-hippo().descendantsUntil() //traverse all desendants, until a match is found
-hippo().next() //traverse to next sibling
-hippo().nextUntil() //traverse to next sibling, until a match is found
-hippo().prev() //traverse to previous sibling
-hippo().prevUntil() //travers to previous sibling, until a match is found
+*hippo().parent() //travers to parent
+*hippo().parentsUntil() //traverse all parents, until all match is found
+*hippo().ancestorsUntil() //traverse all ancestors, until a match is found
+*hippo().descendantsUntil() //traverse all descendants, until a match is found
+*hippo().next() //traverse to next sibling
+*hippo().nextUntil() //traverse to next sibling, until a match is found
+*hippo().prev() //traverse to previous sibling
+*hippo().prevUntil() //travers to previous sibling, until a match is found
 ```
 

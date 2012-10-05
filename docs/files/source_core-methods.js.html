@@ -129,6 +129,68 @@ hippo.fn.is = function(selector){
 };
 
 &#x2F;**
+Check if any of the elements in the set has no children
+
+@method isEmpty
+@for hippo()
+@returns {Boolean}
+**&#x2F;
+hippo.fn.isEmpty = function(){
+	var check = true;
+    this.each(function(name,value){
+		if(this.innerHTML.trim() !== &#x27;&#x27;){
+          check = false;
+          return;
+        }
+    });
+    return check;
+};
+
+&#x2F;**
+Check if any of the elements in the set has no children
+
+@method index
+@for hippo()
+@param selector {String}
+@param Node {Object}
+@returns {Number}
+**&#x2F;
+hippo.fn.index = function(param){
+	var index = -1;
+    this.each(function(name,value){
+		if(typeof param === &#x27;string&#x27;){
+			if(hippo.matchesSelector(this,param)){
+				index = name;
+				return;
+			}
+		}else{
+			if(this === param){
+				index = name;
+				return;
+			}
+		}
+    });
+	return index;   
+};
+
+&#x2F;**
+Check if any of the elements in the set has no children
+
+@method siblingsIndex
+@for hippo()
+@returns {Number}
+**&#x2F;
+hippo.fn.siblingIndex = function(){
+	if(this[0] === undefined){return -1;}
+	var index = 0;
+	var element = this[0];
+	while(element &amp;&amp; (element = element.previousElementSibling)){
+			index++;
+	}
+	return index;
+};
+
+&#x2F;**
 Check if any of the elements childrens, in the set, matches the CSS selector
 
 @method has
@@ -235,7 +297,7 @@ reduce set to the children elements of each element in the set
 @chainable
 @returns {Object} hippo() object
 **&#x2F;
-hippo.fn.children = function(index){
+hippo.fn.children = function(){
 	var set = [];
     this.each(function(name,value){
 		hippo(this.children).each(function(name,value){

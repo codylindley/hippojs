@@ -379,6 +379,57 @@
         {
             "file": "source/core-methods.js",
             "line": 31,
+            "description": "Check if any of the elements in the set has no children",
+            "itemtype": "method",
+            "name": "isEmpty",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 49,
+            "description": "Check if any of the elements in the set has no children",
+            "itemtype": "method",
+            "name": "index",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "Node",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 76,
+            "description": "Check if any of the elements in the set has no children",
+            "itemtype": "method",
+            "name": "siblingsIndex",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 93,
             "description": "Check if any of the elements childrens, in the set, matches the CSS selector",
             "itemtype": "method",
             "name": "has",
@@ -398,7 +449,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 50,
+            "line": 112,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -411,7 +462,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 61,
+            "line": 123,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -424,7 +475,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 72,
+            "line": 134,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
@@ -444,7 +495,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 88,
+            "line": 150,
             "description": "loop over each element",
             "itemtype": "method",
             "name": "each",
@@ -465,7 +516,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 101,
+            "line": 163,
             "description": "slice the set",
             "itemtype": "method",
             "name": "slice",
@@ -491,7 +542,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 117,
+            "line": 179,
             "description": "reduce set to a single element",
             "itemtype": "method",
             "name": "eq",
@@ -512,7 +563,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 130,
+            "line": 192,
             "description": "reduce set to the children elements of each element in the set",
             "itemtype": "method",
             "name": "children",
@@ -526,7 +577,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 148,
+            "line": 210,
             "description": "loop over each element, finding its descendants that match the passed in selector",
             "itemtype": "method",
             "name": "find",
@@ -547,7 +598,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 170,
+            "line": 232,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -568,7 +619,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 209,
+            "line": 271,
             "description": "add element to set",
             "itemtype": "method",
             "name": "add",
@@ -589,7 +640,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 227,
+            "line": 289,
             "description": "Get the last element of the current set",
             "itemtype": "method",
             "name": "last",
@@ -602,7 +653,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 238,
+            "line": 300,
             "description": "Get the first element of the current set",
             "itemtype": "method",
             "name": "first",
@@ -615,7 +666,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 250,
+            "line": 312,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",
@@ -750,6 +801,32 @@
                 },
                 {
                     "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "source/helpers.js",
+            "line": 123,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "collectElements",
+            "static": 1,
+            "params": [
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "Node"
+                },
+                {
+                    "name": "property",
                     "description": "",
                     "type": "String"
                 }

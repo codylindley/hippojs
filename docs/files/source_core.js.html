@@ -195,7 +195,11 @@ var CreateHippoObject = function(elements,context){
 		nodes = elements;
 	}else{&#x2F;&#x2F;if its a string create a nodelist, use context if provided
 		&#x2F;&#x2F;if its a string selector create a context first, then run query again, or use current document
-		nodes = (typeof context === &#x27;string&#x27; ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
+		if(typeof context === &#x27;string&#x27; &amp;&amp; d.querySelectorAll(context)[0] === undefined){
+			nodes = [];
+		}else{
+			nodes = (typeof context === &#x27;string&#x27; ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
+		}
 	}
 	&#x2F;&#x2F;loop over array or nodelist and fill object
 	for (var i = 0; i &lt; nodes.length; i++) {

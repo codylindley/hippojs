@@ -1,4 +1,4 @@
-/*hippo - v0.1 - 2012-10-04
+/*hippo - v0.1 - 2012-10-05
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -100,7 +100,11 @@ var CreateHippoObject = function(elements,context){
 		nodes = elements;
 	}else{//if its a string create a nodelist, use context if provided
 		//if its a string selector create a context first, then run query again, or use current document
-		nodes = (typeof context === 'string' ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
+		if(typeof context === 'string' && d.querySelectorAll(context)[0] === undefined){
+			nodes = [];
+		}else{
+			nodes = (typeof context === 'string' ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
+		}
 	}
 	//loop over array or nodelist and fill object
 	for (var i = 0; i < nodes.length; i++) {
@@ -246,6 +250,28 @@ hippo.matchesSelector = function(node,selector){
 	return (doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(node,selector);
 };
 
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method collectElements
+@static
+@for hippo.
+@param element {Node}
+@param property {String}
+@return {Boolean}
+**/
+hippo.collectElements = function(element,property){
+	var list = [];
+	while((element = element[property])){
+		if(element.nodeType == 1){
+			list.push(element);
+		}
+	}
+	return list;
+};
+
+
+
 
 
 /**
@@ -275,6 +301,68 @@ hippo.fn.is = function(selector){
 		}
     });
     return check;
+};
+
+/**
+Check if any of the elements in the set has no children
+
+@method isEmpty
+@for hippo()
+@returns {Boolean}
+**/
+hippo.fn.isEmpty = function(){
+	var check = true;
+    this.each(function(name,value){
+		if(this.innerHTML.trim() !== ''){
+          check = false;
+          return;
+        }
+    });
+    return check;
+};
+
+/**
+Check if any of the elements in the set has no children
+
+@method index
+@for hippo()
+@param selector {String}
+@param Node {Object}
+@returns {Number}
+**/
+hippo.fn.index = function(param){
+	var index = -1;
+    this.each(function(name,value){
+		if(typeof param === 'string'){
+			if(hippo.matchesSelector(this,param)){
+				index = name;
+				return;
+			}
+		}else{
+			if(this === param){
+				index = name;
+				return;
+			}
+		}
+    });
+	return index;   
+};
+
+/**
+Check if any of the elements in the set has no children
+
+@method siblingsIndex
+@for hippo()
+@returns {Number}
+**/
+hippo.fn.siblingIndex = function(){
+	if(this[0] === undefined){return -1;}
+	var index = 0;
+	var element = this[0];
+	while(element && (element = element.previousElementSibling)){
+			index++;
+	}
+	return index;
 };
 
 /**
@@ -384,7 +472,7 @@ reduce set to the children elements of each element in the set
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.children = function(index){
+hippo.fn.children = function(){
 	var set = [];
     this.each(function(name,value){
 		hippo(this.children).each(function(name,value){

@@ -132,7 +132,7 @@ return true if the array passed in is constructed from the Array() Constructor
 **/
 hippo.collectElements = function(element,property){
 	var list = [];
-	while(element = element[property]){
+	while((element = element[property])){
 		if(element.nodeType == 1){
 			list.push(element);
 		}

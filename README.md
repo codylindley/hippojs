@@ -71,17 +71,20 @@ hippo().clone()
 ```
 ###### Hippo() Attribute Methods
 ```
-//does not return hippo object, non-chainable
 hippo().getAttr()
 hippo().hasAttr()
-hippo().hasClass()
-
-//returns hippo object, chainable
 hippo().setAttr()
 hippo().removeAttr()
+*hippo().hasAttr()
 hippo().toggleClass()
+hippo().hasClass()
 hippo().addClass()
-hippo().removeAttr()
+hippo().removeClass()
+*hippo().getClass()
+*hippo().hasData()
+*hippo().setData()
+*hippo().getData()
+*hippo().removeData()
 ```
 ###### Hippo() Manipulation Methods
 ```

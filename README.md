@@ -9,10 +9,10 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers
 
 ---
 
-####API
+###API
 
 
-####### Hippo() Constructor, creates a set of Element nodes
+###### Hippo() Constructor, creates a set of Element nodes
 
 ```
 hippo('li') //Selector  
@@ -26,7 +26,7 @@ hippo(document.body.children) //NodeList
 hippo(document.all) //HTMLCollection  
 hippo(hippo()) //a hippo object itself 
 ```
-####### Hippo Helper/Utilites Functions
+###### Hippo Helper/Utilites Functions
 ```
 hippo.version  
 hippo.each()  
@@ -35,7 +35,7 @@ hippo.isArray()
 hippo.isFunction()  
 hippo.matchesSelector()
 ```
-####### Hippo() Set Operatation Methods
+###### Hippo() Set Operatation Methods
 ```
 hippo().is()  
 hippo().has()  
@@ -54,7 +54,7 @@ hippo().clone()
 hippo().ancestors()  
 hippo().ancestorsUntil()  
 ```
-####### Hippo() Attribute Methods
+###### Hippo() Attribute Methods
 ```
 hippo().setAttr()  
 hippo().getAttr()  
@@ -65,7 +65,7 @@ hippo().removeAttr()
 hippo().toggleClass()  
 hippo().hasClass()  
 ```
-####### Hippo() Manipulation Methods
+###### Hippo() Manipulation Methods
 ```
 hippo().replaceWith()  
 hippo().empty()  
@@ -83,7 +83,7 @@ hippo().html()
 hippo().outerHtml()  
 hippo().text()  
 ```
-####### Hippo() Traversing Methods
+###### Hippo() Traversing Methods
 ```
 hippo().up()  
 hippo().upUntil()  

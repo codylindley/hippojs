@@ -4,13 +4,13 @@
 ###hippos.js
 
 
-A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers 
+A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers. 
 (i.e. think of it similar to [zepto.js](http://zeptojs.com/) with a focus on the DOM and support for ie9+)
 
 ---
 
 ###API Draft 
-(warning: API is in flux. This is less api documentation and more road map for now. * = not developed or tested yet.)
+(warning: API is in flux. This is less api documentation and more road map for now. * = not developed or tested yet. And yes I know its not small or fast yet.)
 
 
 ###### Hippo() Constructor, creates a set of Element nodes

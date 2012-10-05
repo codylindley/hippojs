@@ -19,13 +19,13 @@ Check if any of the elements in the set matches the CSS selector
 **/
 hippo.fn.is = function(selector){
 	var check = true;
-    this.each(function(name,value){
+	this.each(function(name,value){
 		if(!hippo.matchesSelector(value,selector)){
 			check = false;
 			return;
 		}
-    });
-    return check;
+	});
+	return check;
 };
 
 /**
@@ -37,13 +37,13 @@ Check if any of the elements in the set has no children
 **/
 hippo.fn.isEmpty = function(){
 	var check = true;
-    this.each(function(name,value){
+	this.each(function(name,value){
 		if(this.innerHTML.trim() !== ''){
-          check = false;
-          return;
-        }
-    });
-    return check;
+			check = false;
+			return;
+		}
+	});
+	return check;
 };
 
 /**
@@ -57,7 +57,7 @@ Check if any of the elements in the set has no children
 **/
 hippo.fn.index = function(param){
 	var index = -1;
-    this.each(function(name,value){
+	this.each(function(name,value){
 		if(typeof param === 'string'){
 			if(hippo.matchesSelector(this,param)){
 				index = name;
@@ -69,8 +69,8 @@ hippo.fn.index = function(param){
 				return;
 			}
 		}
-    });
-	return index;   
+	});
+	return index;
 };
 
 /**
@@ -100,13 +100,13 @@ Check if any of the elements childrens, in the set, matches the CSS selector
 **/
 hippo.fn.has = function(selector){
 	var check = false;
-    this.each(function(name,value){
+	this.each(function(name,value){
 		if(this.parentNode.querySelectorAll(selector).length === 1){
 			check = true;
 			return;
 		}
-    });
-    return check;
+	});
+	return check;
 };
 
 /**
@@ -157,7 +157,7 @@ loop over each element
 @returns {Object} hippo() object
 **/
 hippo.fn.each = function(callback){
-    return hippo.each(this, callback);
+	return hippo.each(this, callback);
 };
 
 /**
@@ -173,7 +173,7 @@ slice the set
 @returns {Object} hippo() object
 **/
 hippo.fn.slice = function(start,end){
-    return hippo(this.toArray().slice(start,end));
+	return hippo(this.toArray().slice(start,end));
 };
 
 /**
@@ -186,7 +186,7 @@ reduce set to a single element
 @returns {Object} hippo() object
 **/
 hippo.fn.eq = function(index){
-    return hippo(this.get(index));
+	return hippo(this.get(index));
 };
 
 /**
@@ -199,12 +199,12 @@ reduce set to the children elements of each element in the set
 **/
 hippo.fn.children = function(){
 	var set = [];
-    this.each(function(name,value){
+	this.each(function(name,value){
 		hippo(this.children).each(function(name,value){
 			set.push(value);
 		});
-    });
-    return hippo(set);
+	});
+	return hippo(set);
 };
 
 /**
@@ -218,15 +218,15 @@ loop over each element, finding its descendants that match the passed in selecto
 **/
 hippo.fn.find = function(selector){
 	results = [];
-    this.each(function(){
+	this.each(function(){
 		var collection = this.querySelectorAll(selector);// get nodelist containing elements that match selector
 		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
 			hippo.each(collection,function(name,value){
 				results.push(value);
 			});
 		}
-    });
-    return this.constructor(results); //construct new hippo object from array
+	});
+	return this.constructor(results); //construct new hippo object from array
 };
 
 /**
@@ -283,7 +283,7 @@ hippo.fn.add = function(htmlStringOrNodeOrSelector,addToStart){
 	//push or unshift new element into array
 	newSet[addToStart?'unshift':'push'](hippo(htmlStringOrNodeOrSelector)[0]);
 	//create new hippo object from array and return it
-    return hippo(newSet);
+	return hippo(newSet);
 };
 
 /**
@@ -321,4 +321,45 @@ clone element nodes in hippo object
 **/
 hippo.fn.clone = function(copy){
 	return hippo(this[0].cloneNode(copy?copy:false));
+};
+
+/**
+clone element nodes in hippo object
+ 
+@method ancestors()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.ancestors = function(){
+	var elms = doc.getElementsByTagName('*');
+	var list = [];
+	this.each(function(name,value){
+		var stop = value.parentNode;
+		hippo.each(elms,function(name,value){
+			if(value !== stop){
+				list.push(value);
+			}else if(value === stop){
+				if(value === document.documentElement){list.push(document.documentElement);}
+				return false;
+			}
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+clone element nodes in hippo object
+ 
+@method descendants()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.descendants = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(value.getElementsByTagName("*"),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
 };

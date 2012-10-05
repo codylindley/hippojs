@@ -24,6 +24,11 @@ test('hippo.version returns string',function(){
 	equal(typeof hippo.version,'string','hippo.version returns string');
 });
 
+test('hippo.matchesSelector(node,selector)',function(){
+	equal(hippo.matchesSelector(document.body,'body'),true);
+	equal(hippo.matchesSelector(document.body,'li'),false);
+});
+
 test('hippo.each(Object||Array,Function)', function(){
 
 	hippo.each( [0,1,2],function(i, n){

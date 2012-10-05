@@ -128,7 +128,7 @@ return true if the array passed in is constructed from the Array() Constructor
 @for hippo.
 @param element {Node}
 @param property {String}
-@return {Boolean}
+@return {Array}
 **/
 hippo.collectElements = function(element,property){
 	var list = [];
@@ -138,6 +138,40 @@ hippo.collectElements = function(element,property){
 		}
 	}
 	return list;
+};
+
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method uniqElements
+@static
+@for hippo.
+@param array {Array}}
+@return {Array}
+**/
+hippo.uniqElements = function(results){
+	var hasDuplicate;
+	var elem;
+	var i = 1;
+	var sortOrder = function(a, b){
+		if (a === b){
+			hasDuplicate = true;
+			return 0;
+		}
+		return ( !a.compareDocumentPosition || !b.compareDocumentPosition ?
+			a.compareDocumentPosition :
+			a.compareDocumentPosition(b) & 4
+		) ? -1 : 1;
+	};
+
+	results.sort(sortOrder);
+
+	for ( ; (elem = results[i]); i++ ) {
+		if ( elem === results[ i - 1 ] ) {
+			results.splice( i--, 1 );
+		}
+	}
+	return results;
 };
 
 

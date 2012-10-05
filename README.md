@@ -35,6 +35,8 @@ hippo.type()
 hippo.isArray()
 hippo.isFunction()
 hippo.matchesSelector()
+hippo.collectElements()
+hippo.uniqueElements()
 ```
 ###### Hippo() Set Operatation Methods
 ```
@@ -55,10 +57,11 @@ hippo().first()
 hippo().index()
 hippo().siblingIndex()
 hippo().ancestors() //create new set containg all ancetors
-hippo().decedants() //create new set containg all decendants
+hippo().descendants() //create new set containg all decendants
 hippo().parents() //create new set, containg all parents (ie. parentNode)
 hippo().nextSiblings() //create a new set, containg all next siblings
 hippo().prevSiblings() //create a new set, containg all previous siblings
+hippo().siblings() //create a new set, containg all siblings
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods
@@ -93,9 +96,9 @@ hippo().text()
 ###### Hippo() Traversing Methods
 ```
 hippo().parent() //travers to parent
-hippo().parentsUntil() //traverse all parents, until all matche is found
+hippo().parentsUntil() //traverse all parents, until all match is found
 hippo().ancestorsUntil() //traverse all ancestors, until a match is found
-hippo().desendantsUntil() //traverse all desendants, until a match is found
+hippo().descendantsUntil() //traverse all desendants, until a match is found
 hippo().next() //traverse to next sibling
 hippo().nextUntil() //traverse to next sibling, until a match is found
 hippo().prev() //traverse to previous sibling

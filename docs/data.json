@@ -686,6 +686,32 @@
             "module": "core-methods.js"
         },
         {
+            "file": "source/core-methods.js",
+            "line": 326,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "ancestors()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 350,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "descendants()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
             "file": "source/helpers.js",
             "line": 15,
             "description": "Returns the version of hippo",
@@ -833,7 +859,28 @@
             ],
             "return": {
                 "description": "",
-                "type": "Boolean"
+                "type": "Array"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "source/helpers.js",
+            "line": 143,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "uniqElements",
+            "static": 1,
+            "params": [
+                {
+                    "name": "array",
+                    "description": "}",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
             },
             "class": "hippo.",
             "module": "helpers.js"

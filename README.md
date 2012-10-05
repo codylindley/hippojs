@@ -21,7 +21,7 @@ hippo('li','ul') //Selector & Selector context
 hippo('li',document.body) //Selector & Element Node context   
 hippo('<div></div>') //HTML  
 hippo('<div></div>','window.frames[0].document') //HTML & Document cotext  
-hippo(document.body)` //Element Node  
+hippo(document.body) //Element Node  
 hippo([document.body,document.head])` //Array  
 hippo(document.body.children) //NodeList  
 hippo(document.all) //HTMLCollection  

@@ -263,7 +263,7 @@ return true if the array passed in is constructed from the Array() Constructor
 hippo.collectElements = function(element,property){
 	var list = [];
 	while((element = element[property])){
-		if(element.nodeType == 1){
+		if(element.nodeType === Node.ELEMENT_NODE){
 			list.push(element);
 		}
 	}
@@ -356,12 +356,11 @@ hippo.fn.isEmpty = function(){
 };
 
 /**
-Check if any of the elements in the set has no children
+get the index, in the set, of the element passed in
 
 @method index
 @for hippo()
-@param selector {String}
-@param Node {Object}
+@param selector|node {String|Object}
 @returns {Number}
 **/
 hippo.fn.index = function(param){
@@ -383,7 +382,7 @@ hippo.fn.index = function(param){
 };
 
 /**
-Check if any of the elements in the set has no children
+get the index of the selected element, among is siblings
 
 @method siblingsIndex
 @for hippo()
@@ -672,6 +671,81 @@ hippo.fn.descendants = function(){
 	});
 	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
 };
+
+/**
+clone element nodes in hippo object
+ 
+@method parents()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.parents = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,'parentNode'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+clone element nodes in hippo object
+ 
+@method nextSiblings()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.nextSiblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,'nextElementSibling'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+clone element nodes in hippo object
+ 
+@method prevSiblings()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.prevSiblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,'previousElementSibling'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+clone element nodes in hippo object
+ 
+@method siblings()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.siblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,'previousElementSibling'),function(name,value){
+			list.push(value);
+		});
+		hippo.each(hippo.collectElements(value,'nextElementSibling'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+
+
+
 
 /**
 contains methods for operating on elements

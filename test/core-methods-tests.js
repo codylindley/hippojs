@@ -1,5 +1,30 @@
 module('core-methods.js');
 
+test('hippo().ancestors()', function(){
+	equal(hippo('body').ancestors().total(),1);
+});
+
+test('hippo().descendants()', function(){
+	equal(hippo('#qunit-fixture ul').descendants().total(),3);
+	equal(hippo('#qunit-fixture ul,#qunit-fixture').descendants().total(),5);
+});
+
+test('hippo().nextSiblings()', function(){
+	equal(hippo('li','#qunit-fixture').first().nextSiblings().total(),2);
+});
+
+test('hippo().siblings()', function(){
+	equal(hippo('li','#qunit-fixture').first().siblings().total(),2);
+});
+
+test('hippo().prevSiblings()', function(){
+	equal(hippo('li','#qunit-fixture').last().prevSiblings().total(),2);
+});
+
+test('hippo().parents()', function(){
+	equal(hippo('body').parents().total(),1);
+});
+
 test('hippo().is(selector)', function(){
 	var hippoLi = hippo('li','#qunit-fixture').first();
 	equal(hippoLi.is('.firstLi'),true);
@@ -23,7 +48,7 @@ test('hippo().index()', function(){
 	equal(hippo('li','#qunit-fixture').index($('.lastLi')[0]),2);
 });
 
-test('hippo().index()', function(){
+test('hippo().siblingIndex()', function(){
 	equal(hippo('li.firstLi','#qunit-fixture').siblingIndex(),0);
 	equal(hippo('li.lastLi','#qunit-fixture').siblingIndex(),2);
 	equal(hippo('li.nothing','#qunit-fixture').siblingIndex(),-1);

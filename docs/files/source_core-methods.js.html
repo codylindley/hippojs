@@ -147,12 +147,11 @@ hippo.fn.isEmpty = function(){
 };
 
 &#x2F;**
-Check if any of the elements in the set has no children
+get the index, in the set, of the element passed in
 
 @method index
 @for hippo()
-@param selector {String}
-@param Node {Object}
+@param selector|node {String|Object}
 @returns {Number}
 **&#x2F;
 hippo.fn.index = function(param){
@@ -174,7 +173,7 @@ hippo.fn.index = function(param){
 };
 
 &#x2F;**
-Check if any of the elements in the set has no children
+get the index of the selected element, among is siblings
 
 @method siblingsIndex
 @for hippo()
@@ -463,6 +462,81 @@ hippo.fn.descendants = function(){
 	});
 	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
 };
+
+&#x2F;**
+clone element nodes in hippo object
+ 
+@method parents()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.parents = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,&#x27;parentNode&#x27;),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+&#x2F;**
+clone element nodes in hippo object
+ 
+@method nextSiblings()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.nextSiblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,&#x27;nextElementSibling&#x27;),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+&#x2F;**
+clone element nodes in hippo object
+ 
+@method prevSiblings()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.prevSiblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,&#x27;previousElementSibling&#x27;),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+&#x2F;**
+clone element nodes in hippo object
+ 
+@method siblings()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.siblings = function(){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,&#x27;previousElementSibling&#x27;),function(name,value){
+			list.push(value);
+		});
+		hippo.each(hippo.collectElements(value,&#x27;nextElementSibling&#x27;),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+
+
+
     </pre>
 </div>
 

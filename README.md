@@ -56,12 +56,13 @@ hippo().last()
 hippo().first()
 hippo().index()
 hippo().siblingIndex()
-hippo().ancestors() //create new set containg all ancestors
-hippo().descendants() //create new set containg all descendants
-*hippo().parents() //create new set, containg all parents (ie. parentNode)
-*hippo().nextSiblings() //create a new set, containg all next siblings
-*hippo().prevSiblings() //create a new set, containg all previous siblings
-*hippo().siblings() //create a new set, containg all siblings
+hippo().ancestors() //create new set containg all ancestors elements
+hippo().descendants() //create new set containg all descendants elements
+hippo().parents() //create new set, containg all parents elements
+*hippo().childs() //create new set, containg all first child elements
+hippo().nextSiblings() //create a new set, containg all next sibling elements
+hippo().prevSiblings() //create a new set, containg all previous sibling elements
+hippo().siblings() //create a new set, containg all sibling elements
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods
@@ -95,13 +96,15 @@ hippo().text()
 ```
 ###### Hippo() Traversing Methods
 ```
-*hippo().parent() //travers to parent
-*hippo().parentsUntil() //traverse all parents, until all match is found
-*hippo().ancestorsUntil() //traverse all ancestors, until a match is found
-*hippo().descendantsUntil() //traverse all descendants, until a match is found
-*hippo().next() //traverse to next sibling
-*hippo().nextUntil() //traverse to next sibling, until a match is found
-*hippo().prev() //traverse to previous sibling
-*hippo().prevUntil() //travers to previous sibling, until a match is found
+*hippo().up() //travese to first parent element
+*hippo().upTo() //traverse all parent elments, finding the one that matches the selector
+*hippo().down() //traverse to first child element
+*hippo().downTo() //traverse all firstChild elements, finding the one that matches the selector
+*hippo().anestorsTo() //traverse all ancestors, finding the one that matches the selector
+*hippo().descendantsTo() //traverse all descendants, finding the one that matches the selector
+*hippo().next() //traverse to next sibling element
+*hippo().nextTo() //traverse to next sibling element, until a match is found
+*hippo().prev() //traverse to previous sibling element
+*hippo().prevTo() //travers to previous sibling element, until a match is found
 ```
 

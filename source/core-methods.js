@@ -29,6 +29,68 @@ hippo.fn.is = function(selector){
 };
 
 /**
+Check if any of the elements in the set has no children
+
+@method isEmpty
+@for hippo()
+@returns {Boolean}
+**/
+hippo.fn.isEmpty = function(){
+	var check = true;
+    this.each(function(name,value){
+		if(this.innerHTML.trim() !== ''){
+          check = false;
+          return;
+        }
+    });
+    return check;
+};
+
+/**
+Check if any of the elements in the set has no children
+
+@method index
+@for hippo()
+@param selector {String}
+@param Node {Object}
+@returns {Number}
+**/
+hippo.fn.index = function(param){
+	var index = -1;
+    this.each(function(name,value){
+		if(typeof param === 'string'){
+			if(hippo.matchesSelector(this,param)){
+				index = name;
+				return;
+			}
+		}else{
+			if(this === param){
+				index = name;
+				return;
+			}
+		}
+    });
+	return index;   
+};
+
+/**
+Check if any of the elements in the set has no children
+
+@method siblingsIndex
+@for hippo()
+@returns {Number}
+**/
+hippo.fn.siblingIndex = function(){
+	if(this[0] === undefined){return -1;}
+	var index = 0;
+	var element = this[0];
+	while(element && (element = element.previousElementSibling)){
+			index++;
+	}
+	return index;
+};
+
+/**
 Check if any of the elements childrens, in the set, matches the CSS selector
 
 @method has
@@ -135,7 +197,7 @@ reduce set to the children elements of each element in the set
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.children = function(index){
+hippo.fn.children = function(){
 	var set = [];
     this.each(function(name,value){
 		hippo(this.children).each(function(name,value){

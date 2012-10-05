@@ -39,6 +39,7 @@ hippo.matchesSelector()
 ###### Hippo() Set Operatation Methods
 ```
 hippo().is()  
+hippo().isEmpty()  
 hippo().has()  
 hippo().total()  
 hippo().toArray()  
@@ -51,9 +52,9 @@ hippo().filter()
 hippo().add()  
 hippo().last()  
 hippo().first()  
-hippo().clone()  
-hippo().ancestors()  
-hippo().ancestorsUntil()  
+hippo().index()  
+hippo().siblingIndex()  
+hippo().clone()   
 ```
 ###### Hippo() Attribute Methods
 ```

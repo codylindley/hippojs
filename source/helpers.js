@@ -120,3 +120,25 @@ hippo.matchesSelector = function(node,selector){
 	return (doc.matchesSelector||d.mozMatchesSelector||d.webkitMatchesSelector||d.oMatchesSelector||d.msMatchesSelector).call(node,selector);
 };
 
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method collectElements
+@static
+@for hippo.
+@param element {Node}
+@param property {String}
+@return {Boolean}
+**/
+hippo.collectElements = function(element,property){
+	var list = [];
+	while(element = element[property]){
+		if(element.nodeType == 1){
+			list.push(element);
+		}
+	}
+	return list;
+};
+
+
+

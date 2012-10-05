@@ -2,13 +2,12 @@
 ![Augustine of Hippo](https://raw.github.com/codylindley/hippojs/master/saint-augustine.jpeg)
 
 
-A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers (i.e. think of it as [zepto.js](http://zeptojs.com/) with support for ie9+)
+###A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers (i.e. think of it as [zepto.js](http://zeptojs.com/) with support for ie9+)
 
-===
+---
 
-API
+##API
 
-===
 
 ###### Hippo() Constructor, creates a set of Element nodes
 
@@ -25,16 +24,16 @@ hippo(document.all) //HTMLCollection
 hippo(hippo()) //a hippo object itself 
 ```
 ###### Hippo Helper/Utilites Functions
-
+```
 hippo.version  
 hippo.each()  
 hippo.type()  
 hippo.isArray()  
 hippo.isFunction()  
 hippo.matchesSelector()
-
+```
 ###### Hippo() Set Operatation Methods
-
+```
 hippo().is()  
 hippo().has()  
 hippo().total()  
@@ -51,9 +50,9 @@ hippo().first()
 hippo().clone()  
 hippo().ancestors()  
 hippo().ancestorsUntil()  
-
+```
 ###### Hippo() Attribute Methods
-
+```
 hippo().setAttr()  
 hippo().getAttr()  
 hippo().removeAttr()  
@@ -62,9 +61,9 @@ hippo().addClass()
 hippo().removeAttr()  
 hippo().toggleClass()  
 hippo().hasClass()  
-
+```
 ###### Hippo() Manipulation Methods
-
+```
 hippo().replaceWith()  
 hippo().empty()  
 hippo().before()  
@@ -80,9 +79,9 @@ hippo().wrapInner()
 hippo().html()  
 hippo().outerHtml()  
 hippo().text()  
-
+```
 ###### Hippo() Traversing Methods
-
+```
 hippo().up()  
 hippo().upUntil()  
 hippo().down()  
@@ -93,5 +92,5 @@ hippo().nextAll()
 hippo().prev()  
 hippo().prevUntil()  
 hippo().prevAll()  
-
+```
 

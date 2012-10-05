@@ -40,11 +40,17 @@ hippo.uniqueElements()
 ```
 ###### Hippo() Set Operatation Methods
 ```
+//does not return hippo object, non-chainable
 hippo().is()
 hippo().isEmpty()
 hippo().has()
 hippo().total()
 hippo().toArray()
+hippo().get()
+hippo().index()
+hippo().siblingIndex()
+
+//returns hippo object, chainable 
 hippo().each()
 hippo().slice()
 hippo().eq()
@@ -54,8 +60,6 @@ hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
-hippo().index()
-hippo().siblingIndex()
 hippo().ancestors() //create new set containg all ancestors elements
 hippo().descendants() //create new set containg all descendants elements
 hippo().parents() //create new set, containg all parents elements
@@ -67,14 +71,17 @@ hippo().clone()
 ```
 ###### Hippo() Attribute Methods
 ```
-hippo().setAttr()
+//does not return hippo object, non-chainable
 hippo().getAttr()
-hippo().removeAttr()
 hippo().hasAttr()
-hippo().addClass()
+hippo().hasClass()
+
+//returns hippo object, chainable
+hippo().setAttr()
 hippo().removeAttr()
 hippo().toggleClass()
-hippo().hasClass()
+hippo().addClass()
+hippo().removeAttr()
 ```
 ###### Hippo() Manipulation Methods
 ```

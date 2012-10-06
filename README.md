@@ -4,7 +4,7 @@
 ###hippos.js
 
 
-A wishful, likley naive, jQuery inspired DOM Library for use in modern browsers. 
+A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 browsers. 
 (i.e. think of it similar to [zepto.js](http://zeptojs.com/) with a focus on the DOM and support for ie9+)
 
 ---
@@ -75,14 +75,14 @@ hippo().getAttr()
 hippo().hasAttr()
 hippo().setAttr()
 hippo().removeAttr()
-hippo().toggleClass()
+*hippo().getClass()
 hippo().hasClass()
 hippo().addClass()
 hippo().removeClass()
-*hippo().getClass()
+hippo().toggleClass()
+*hippo().getData()
 *hippo().hasData()
 *hippo().setData()
-*hippo().getData()
 *hippo().removeData()
 ```
 ###### Hippo() Manipulation Methods

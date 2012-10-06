@@ -31,19 +31,27 @@ hippo.fn.setAttr = function(attr,value){
 };
 
 /**
- gets attribute value, or array of attribute values from first element in the set
+ gets attribute value, or object of attribute values from first element in the set
 
  @method addAttr
  @for hippo()
  @param attribute {String}
  @optional
- @returns either an array containing all attributes or a single value from a specific attribute passed in
+ @returns either an object containing all attributes or a single value from a specific attribute passed in
  **/
 hippo.fn.getAttr = function(attr){
 	if(attr){
 		return this[0].getAttribute(attr);
 	}else{
-		return [].slice.call(this[0].attributes);
+		var attrArray = [].slice.call(this[0].attributes);
+
+		var attrObject = {};
+
+		hippo.each(attrArray,function(name,value){
+			attrObject[value.nodeName] = value.nodeValue;
+		});
+
+		return attrObject;
 	}
 };
 
@@ -145,9 +153,79 @@ hippo.fn.toggleClass = function(classString){
  @method hasClass
  @for hippo()
  @param class {String}
- @chainable
+
  @returns {Boolean}
  **/
 hippo.fn.hasClass = function(classString){
 	return this[0].classList.contains(classString);
 };
+
+/**
+ gets class value, or array of class values from first element in the set
+
+ @method getClass
+ @for hippo()
+ @param boolean {Boolean}
+ @returns either an array containing all attributes or a single value from a specific attribute passed in
+ **/
+hippo.fn.getClass = function(getArray){
+	if(getArray){
+		return this[0].getAttribute('class');
+	}else{
+		return [].slice.call(this[0].classList);
+	}
+};
+
+/**
+ needs description
+
+ @method getData
+ @for hippo()
+ @param data value {String}
+ @optional
+ @returns either an object containing all attributes or a single value from a specific attribute passed in
+ **/
+hippo.fn.getData = function(dataValue){
+	if(dataValue){
+		return hippo(this[0]).getAttribute('data-'+dataValue);
+	}else{
+		var attrArray = [].slice.call(this[0].attributes).filter(function(item){
+				return item.nodeName.substr(0,4) === 'data-';
+		});
+
+		var attrObject = {};
+
+		hippo.each(attrArray,function(name,value){
+			attrObject[value.nodeName] = value.nodeValue;
+		});
+
+		return attrObject;
+	}
+};
+
+/**
+needs description
+
+ @method setData
+ @for hippo()
+ @param attribute(s) {String|Object}
+ @param value {String}
+ @optional
+ @returns {Object} hippo() object
+**/
+hippo.fn.setData = function(dataName,value){
+	var isString = typeof dataName === 'string';
+	return this.each(function(){
+		var that = this;
+		if(attrIsString){
+			this.setAttribute('data-'+'dataName',value); //account for boolean attributes where we need to set disable='disabled';
+		}else{
+			hippo.each(dataName,function(name,value){
+				that.setAttribute('data-'+'dataName',value);
+			});
+		}
+	});
+};
+
+
+

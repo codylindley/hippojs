@@ -49,7 +49,7 @@ test('hippo().getAttr()',function(){
 	var hippoLi = hippo('<li></li>');
 	hippoLi.setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
 	equal(hippoLi.getAttr('foo'),'bar','get a attr');
-	equal(typeof hippoLi.getAttr().length,'number','get all attributes in array');
+	equal(hippoLi.getAttr().foo,'bar','get all attributes in array');
 	hippoLi.removeAttr('doo ioo foo');
 });
 

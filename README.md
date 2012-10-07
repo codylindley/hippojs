@@ -18,7 +18,7 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 * Be lightweight, not middleweight.
 * Be easy to update or change by keeping the code simple, readable, and heavily commented so at the very least the code teaches.
 * Be jQuery-like in its plugin architecture but with the heart of zepto.js.
-* 
+* Be fixable by mere humans with some JavaScript chops
 
 ---
 

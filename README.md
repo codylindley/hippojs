@@ -13,11 +13,12 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 
 * Be all about the DOM allowing CSS to be CSS and XHR, XHR. Native DOM first!
 * Don't try and be [underscore.js](http://underscorejs.org/) or [lodash](http://lodash.com/). If you need that, use those.
-* Be about modern browsers (including ie9+).
+* Be about modern browsers (including ie9+) allowing polyfills to deal with the past.
 * Be modular so as to permit custom builds using [grunt.js](http://gruntjs.com/).
 * Be lightweight, not middleweight.
 * Be easy to update or change by keeping the code simple, readable, and heavily commented so at the very least the code teaches.
 * Be jQuery-like in its plugin architecture but with the heart of zepto.js.
+* 
 
 ---
 

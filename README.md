@@ -1,7 +1,7 @@
 
 ![Augustine of Hippo](https://raw.github.com/codylindley/hippojs/master/saint-augustine.jpeg)
 
-###hippos.js
+###hippo.js
 
 
 A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 browsers. 

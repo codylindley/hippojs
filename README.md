@@ -16,7 +16,7 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 * Be about modern browsers (including ie9+).
 * Be modular so as to permit custom builds using [grunt.js](http://gruntjs.com/).
 * Be lightweight, not middleweight.
-* Be easy to update or change by keeping the code simple, readable, and heavily comment so at the very least the code teaches.
+* Be easy to update or change by keeping the code simple, readable, and heavily commented so at the very least the code teaches.
 * Be jQuery-like in its plugin architecture but with the heart of zepto.js.
 
 ---

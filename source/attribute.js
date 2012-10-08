@@ -81,7 +81,7 @@ hippo.fn.removeAttr = function(attr){
  @method hasAttr
  @for hippo()
  @param class {String}
- @returns {Boolean} 
+ @returns {Boolean}
  **/
 hippo.fn.hasAttr = function(attr){
 	return this[0].hasAttribute(attr);
@@ -254,7 +254,7 @@ hippo.fn.removeData = function(dataName){
  @method hasData
  @for hippo()
  @param class {String}
- @returns {Boolean} 
+ @returns {Boolean}
  **/
 hippo.fn.hasData = function(dataValue){
 	return this[0].hasAttribute('data-'+dataValue);

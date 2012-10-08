@@ -29,14 +29,23 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 
 ```
 hippo('li') //Selector
+
 hippo('li','ul') //Selector & Selector context
+
 hippo('li',document.body) //Selector & Element Node context 
+
 hippo('<div></div>') //HTML
+
 hippo('<div></div>','window.frames[0].document') //HTML & Document context
+
 hippo(document.body) //Element Node
+
 hippo([document.body,document.head])` //Array
+
 hippo(document.body.children) //NodeList
+
 hippo(document.all) //HTMLCollection
+
 hippo(hippo()) //a hippo object
 ```
 ###### Hippo Helper/Utilities Functions
@@ -66,19 +75,11 @@ hippo().siblingIndex()
 hippo().each()
 hippo().slice()
 hippo().eq()
-hippo().children()
 hippo().find()
 hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
-hippo().ancestors() //create new set containing all ancestors elements
-hippo().descendants() //create new set containing all descendants elements
-hippo().parents() //create new set, containing all parents elements
-hippo().childs() //create new set, containing all first child elements
-hippo().nextSiblings() //create a new set, containing all next sibling elements
-hippo().prevSiblings() //create a new set, containing all previous sibling elements
-hippo().siblings() //create a new set, containing all sibling elements
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods
@@ -87,11 +88,13 @@ hippo().getAttr()
 hippo().hasAttr()
 hippo().setAttr()
 hippo().removeAttr()
+
 hippo().getClass()
 hippo().hasClass()
 hippo().addClass()
 hippo().removeClass()
 hippo().toggleClass()
+
 hippo().getData()
 hippo().hasData()
 hippo().setData()
@@ -101,31 +104,50 @@ hippo().removeData()
 ```
 hippo().replaceWith()
 hippo().empty()
+
 hippo().before()
 hippo().insertBefore()
+
 hippo().after()
 hippo().insertAfter()
+
 hippo().append()
 hippo().appendTo()
+
 hippo().prepend()
 hippo().prependTo()
+
 hippo().wrap()
 hippo().wrapInner()
+
 hippo().html()
 hippo().outerHtml()
+
 hippo().text()
 ```
 ###### Hippo() Traversing Methods
 ```
-*hippo().up() //travese to first parent element
-*hippo().upTo() //traverse all parent elments, finding the one that matches the selector
-*hippo().down() //traverse to first child element
-*hippo().downTo() //traverse all firstChild elements, finding the one that matches the selector
-*hippo().anestorsTo() //traverse all ancestors, finding the one that matches the selector
-*hippo().descendantsTo() //traverse all descendants, finding the one that matches the selector
-*hippo().next() //traverse to next sibling element
-*hippo().nextTo() //traverse to next sibling element, until a match is found
-*hippo().prev() //traverse to previous sibling element
-*hippo().prevTo() //travers to previous sibling element, until a match is found
+hippo().parent() //first parent element
+hippo().parents(selector) //all parent elements
+hippo().parentsUntil(selector)
+
+hippo().child() //first child element
+hippo().childs(selector) //all child elements
+hippo().childsUntil(selector) 
+
+hippo().nextSib() //next sibling
+hippo().nextSibs() //all next siblings
+hippo().nextSibsUntil() 
+
+hippo().prevSib() //previous sibling
+hippo().prevSibs() //all previous siblings
+hippo().prevSibsUntil()
+
+hippo().children(selector) //all children
+hippo().childrenUntil(selector)
+
+hippo().ancestors(selector) all ancestors elements
+hippo().descendants(selector) all descendants elements
+hippo().siblings(selector) all sibling elements
 ```
 

@@ -1,40 +1,5 @@
 module('core-methods.js');
 
-test('hippo().childs()', function(){
-	equal(hippo('#qunit-fixture').childs().total(),2);
-	equal(hippo('#qunit-fixture').childs().last().hasClass('firstLi'),true);
-});
-
-test('hippo().childs("last")', function(){
-	equal(hippo('#qunit-fixture').childs('last').total(),1);
-	equal(hippo('#qunit-fixture').childs('last').last().is('iframe'),true);
-});
-
-test('hippo().ancestors()', function(){
-	equal(hippo('body').ancestors().total(),1);
-});
-
-test('hippo().descendants()', function(){
-	equal(hippo('#qunit-fixture ul').descendants().total(),3);
-	equal(hippo('#qunit-fixture ul,#qunit-fixture').descendants().total(),5);
-});
-
-test('hippo().nextSiblings()', function(){
-	equal(hippo('li','#qunit-fixture').first().nextSiblings().total(),2);
-});
-
-test('hippo().siblings()', function(){
-	equal(hippo('li','#qunit-fixture').first().siblings().total(),2);
-});
-
-test('hippo().prevSiblings()', function(){
-	equal(hippo('li','#qunit-fixture').last().prevSiblings().total(),2);
-});
-
-test('hippo().parents()', function(){
-	equal(hippo('body').parents().total(),1);
-});
-
 test('hippo().is(selector)', function(){
 	var hippoLi = hippo('li','#qunit-fixture').first();
 	equal(hippoLi.is('.firstLi'),true);
@@ -76,11 +41,6 @@ test('hippo().eq()', function(){
 	var hippoLi = hippo('li','#qunit-fixture').eq(0);
 	equal(hippoLi.total(),1);
 	equal(hippoLi.hasClass('firstLi'),true);
-});
-
-test('hippo().children()', function(){
-	var hippoLi = hippo('ul','#qunit-fixture').children();
-	equal(hippoLi.total(),3);
 });
 
 test('hippo().filter(selector||Function)', function(){

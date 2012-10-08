@@ -63,6 +63,17 @@
                 "hippo()": 1
             },
             "namespaces": {}
+        },
+        "source/traversing.js": {
+            "name": "source/traversing.js",
+            "modules": {
+                "traversing.js": 1
+            },
+            "classes": {},
+            "fors": {
+                "hippo()": 1
+            },
+            "namespaces": {}
         }
     },
     "modules": {
@@ -130,6 +141,19 @@
             "namespaces": {},
             "tag": "module",
             "file": "source/manipulation.js",
+            "line": 2,
+            "description": "contains methods for operating on elements"
+        },
+        "traversing.js": {
+            "name": "traversing.js",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "hippo()": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "source/traversing.js",
             "line": 2,
             "description": "contains methods for operating on elements"
         }
@@ -786,105 +810,6 @@
             "module": "core-methods.js"
         },
         {
-            "file": "source/core-methods.js",
-            "line": 325,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "ancestors()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 349,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "descendants()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 366,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "parents()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 383,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "nextSiblings()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 400,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "prevSiblings()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 417,
-            "description": "clone element nodes in hippo object",
-            "itemtype": "method",
-            "name": "siblings()",
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 437,
-            "description": "return all first child elements or last child elements",
-            "itemtype": "method",
-            "name": "childs()",
-            "params": [
-                {
-                    "name": "first",
-                    "description": "passing the string 'first' or 'last' to get the first or last child nodes",
-                    "type": "String",
-                    "optional": true
-                }
-            ],
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
             "file": "source/helpers.js",
             "line": 15,
             "description": "Returns the version of hippo",
@@ -1403,6 +1328,105 @@
             },
             "class": "hippo()",
             "module": "manipulation.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 8,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "ancestors()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 32,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "descendants()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 49,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "parents()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 66,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "nextSiblings()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 83,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "prevSiblings()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 100,
+            "description": "clone element nodes in hippo object",
+            "itemtype": "method",
+            "name": "siblings()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 120,
+            "description": "return all first child elements or last child elements",
+            "itemtype": "method",
+            "name": "childs()",
+            "params": [
+                {
+                    "name": "first",
+                    "description": "passing the string 'first' or 'last' to get the first or last child nodes",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
         }
     ]
 }

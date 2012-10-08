@@ -9,7 +9,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "core-methods.js",
         "core.js",
         "helpers.js",
-        "manipulation.js"
+        "manipulation.js",
+        "traversing.js"
     ],
     "allModules": [
         {
@@ -35,6 +36,11 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "manipulation.js",
             "name": "manipulation.js",
+            "description": "contains methods for operating on elements"
+        },
+        {
+            "displayName": "traversing.js",
+            "name": "traversing.js",
             "description": "contains methods for operating on elements"
         }
     ]

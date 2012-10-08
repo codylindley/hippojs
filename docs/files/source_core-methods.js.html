@@ -59,6 +59,8 @@
             
                 <li><a href="..&#x2F;modules/manipulation.js.html">manipulation.js</a></li>
             
+                <li><a href="..&#x2F;modules/traversing.js.html">traversing.js</a></li>
+            
             </ul>
         </div>
     </div>
@@ -421,138 +423,6 @@ clone element nodes in hippo object
 hippo.fn.clone = function(copy){
 	return hippo(this[0].cloneNode(copy?copy:false));
 };
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method ancestors()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.ancestors = function(){
-	var elms = doc.getElementsByTagName(&#x27;*&#x27;);
-	var list = [];
-	this.each(function(name,value){
-		var stop = value.parentNode;
-		hippo.each(elms,function(name,value){
-			if(value !== stop){
-				list.push(value);
-			}else if(value === stop){
-				if(value === document.documentElement){list.push(document.documentElement);}
-				return false;
-			}
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method descendants()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.descendants = function(){
-	var list = [];
-	this.each(function(name,value){
-		hippo.each(value.getElementsByTagName(&quot;*&quot;),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method parents()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.parents = function(){
-	var list = [];
-	this.each(function(name,value){
-		hippo.each(hippo.collectElements(value,&#x27;parentNode&#x27;),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method nextSiblings()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.nextSiblings = function(){
-	var list = [];
-	this.each(function(name,value){
-		hippo.each(hippo.collectElements(value,&#x27;nextElementSibling&#x27;),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method prevSiblings()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.prevSiblings = function(){
-	var list = [];
-	this.each(function(name,value){
-		hippo.each(hippo.collectElements(value,&#x27;previousElementSibling&#x27;),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-clone element nodes in hippo object
- 
-@method siblings()
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.siblings = function(){
-	var list = [];
-	this.each(function(name,value){
-		hippo.each(hippo.collectElements(value,&#x27;previousElementSibling&#x27;),function(name,value){
-			list.push(value);
-		});
-		hippo.each(hippo.collectElements(value,&#x27;nextElementSibling&#x27;),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
-&#x2F;**
-return all first child elements or last child elements
- 
-@method childs()
-@param {String} [first] passing the string &#x27;first&#x27; or &#x27;last&#x27; to get the first or last child nodes
-@for hippo()
-@returns {Object} hippo() object
-**&#x2F;
-hippo.fn.childs = function(firstOrLast){
-	var list = [];
-	var nodeProp = firstOrLast ? (firstOrLast === &#x27;first&#x27; ? &#x27;firstElementChild&#x27; : &#x27;lastElementChild&#x27;) : &#x27;firstElementChild&#x27;;
-	this.each(function(name,value){
-		hippo.each(hippo.collectElements(value,nodeProp),function(name,value){
-			list.push(value);
-		});
-	});
-	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
-};
-
 
 
 

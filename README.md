@@ -80,24 +80,25 @@ hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
+*hippo().andSelf()
+*hippo.next()
+*hippo.prev()
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods
 ```
-hippo().getAttr()
+hippo().attr()
 hippo().hasAttr()
-hippo().setAttr()
 hippo().removeAttr()
 
 hippo().getClass()
-hippo().hasClass()
 hippo().addClass()
+hippo().hasClass()
 hippo().removeClass()
 hippo().toggleClass()
 
-hippo().getData()
+hippo().data()
 hippo().hasData()
-hippo().setData()
 hippo().removeData()
 ```
 ###### Hippo() Manipulation Methods
@@ -127,27 +128,29 @@ hippo().text()
 ```
 ###### Hippo() Traversing Methods
 ```
-hippo().parent() //first parent element
+*hippo().parent() //first parent element
 hippo().parents(selector) //all parent elements
-hippo().parentsUntil(selector)
+*hippo().parentsUntil(selector)
 
-hippo().child() //first child element
+*hippo().child() //first child element
 hippo().childs(selector) //all child elements
-hippo().childsUntil(selector) 
+*hippo().childsUntil(selector) 
 
-hippo().nextSib() //next sibling
-hippo().nextSibs() //all next siblings
-hippo().nextSibsUntil() 
+*hippo().nextSib() //next sibling
+hippo().nextSibs(selector) //all next siblings
+*hippo().nextSibsUntil(selector) 
 
-hippo().prevSib() //previous sibling
-hippo().prevSibs() //all previous siblings
-hippo().prevSibsUntil()
+*hippo().prevSib() //previous sibling
+hippo().prevSibs(selector) //all previous siblings
+*hippo().prevSibsUntil(selector)
 
 hippo().children(selector) //all children
 hippo().childrenUntil(selector)
 
 hippo().ancestors(selector) all ancestors elements
+*hippo().ancestorsUntil(selector)
 hippo().descendants(selector) all descendants elements
+*hippo().descendantsUntil(selector) all descendants elements
 hippo().siblings(selector) all sibling elements
 ```
 

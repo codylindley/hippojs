@@ -1,9 +1,9 @@
 module('attributes.js');
 
-test('hippo().getData()',function(){
+test('getting hippo().data()',function(){
 	var html = hippo('<p data-foo="foo" data-bar="bar"></p>');
-	equal(html.getData('foo'),'foo');
-	equal(html.getData().dataFoo,'foo');
+	equal(html.data('foo'),'foo');
+	equal(html.data().dataFoo,'foo');
 });
 
 test('hippo().hasData()',function(){
@@ -11,8 +11,9 @@ test('hippo().hasData()',function(){
 	equal(html.hasData('foo'),true);
 });
 
-test('hippo().setData()',function(){
-	var html = hippo('<p></p>').setData('foo').setData({'bar':'bar'});
+test('setting hippo().data()',function(){
+	var html = hippo('<p></p>').data('foo','foo');
+	html.data({'bar':'bar'});
 	equal(html.hasData('foo'),true);
 	equal(html.hasData('bar'),true);
 });
@@ -55,36 +56,36 @@ test('hippo().toggleClass()',function(){
 	equal(hippoLi.toggleClass('testClass').hasClass('testClass'),true,'togglle class, add it');
 });
 
-test('hippo().setAttr()',function(){
+test('setting hippo().attr()',function(){
 	var hippoLi = hippo('<li></li>');
-	hippoLi.setAttr('inert','inert');
-	hippoLi.setAttr({'foo':'bar'});
-	equal(hippoLi.getAttr('inert'),'inert','add a attr');
-	equal(hippoLi.getAttr('foo'),'bar','add a {attr:value}');
+	hippoLi.attr('inert','inert');
+	hippoLi.attr({'foo':'bar'});
+	equal(hippoLi.attr('inert'),'inert','add a attr');
+	equal(hippoLi.attr('foo'),'bar','add a {attr:value}');
 	hippoLi.removeAttr('doo ioo foo');
 });
 
 test('hippo().removeAttr()',function(){
 	var hippoLi = hippo('<li></li>');
-	hippoLi.setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
+	hippoLi.attr({'foo':'bar','doo':'noo','ioo':'koo'});
 	hippoLi.removeAttr('foo');
 	hippoLi.removeAttr('doo ioo');
-	equal(hippoLi.getAttr('foo'),undefined,'remove single attr');
-	equal(hippoLi.getAttr('ioo'),undefined,'remove more than one');
-	equal(hippoLi.getAttr('doo'),undefined,'remove more than one');
+	equal(hippoLi.attr('foo'),undefined,'remove single attr');
+	equal(hippoLi.attr('ioo'),undefined,'remove more than one');
+	equal(hippoLi.attr('doo'),undefined,'remove more than one');
 });
 
-test('hippo().getAttr()',function(){
+test('getting hippo().attr()',function(){
 	var hippoLi = hippo('<li></li>');
-	hippoLi.setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
-	equal(hippoLi.getAttr('foo'),'bar','get a attr');
-	equal(hippoLi.getAttr().foo,'bar','get all attributes in object');
+	hippoLi.attr({'foo':'bar','doo':'noo','ioo':'koo'});
+	equal(hippoLi.attr('foo'),'bar','get a attr');
+	equal(hippoLi.attr().foo,'bar','get all attributes in object');
 	hippoLi.removeAttr('doo ioo foo');
 });
 
 test('hippo().hasAttr()',function(){
 	var hippoLi = hippo('<li></li>');
-	hippoLi.setAttr('inert','inert');
+	hippoLi.attr('inert','inert');
 	equal(hippoLi.hasAttr('inert'),true,'has a attr');
 	hippoLi.removeAttr('inert');
 });

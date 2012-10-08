@@ -110,7 +110,7 @@ contains methods for operating on the element attributes
 &#x2F;**
  sets attribute value for all elements in the set
 
- @method setAttr
+ @method attr
  @for hippo()
  @param attribute(s) {String|Object}
  @param value {String}
@@ -118,33 +118,27 @@ contains methods for operating on the element attributes
  @chainable
  @returns {Object} hippo() object
  **&#x2F;
-hippo.fn.setAttr = function(attr,value){
-	var attrIsString = typeof attr === &#x27;string&#x27;;
-	return this.each(function(){
-		var that = this;
-		if(attrIsString){
-			this.setAttribute(attr,(value?value:attr)); &#x2F;&#x2F;account for boolean attributes where we need to set disable=&#x27;disabled&#x27;;
-		}else{
-			hippo.each(attr,function(name,value){
-				that.setAttribute(name,value);
+hippo.fn.attr = function(attr,value){
+
+	if(attr &amp;&amp; value || typeof attr === &#x27;object&#x27;){ &#x2F;&#x2F;setting
+			var attrIsString = typeof attr === &#x27;string&#x27;;
+			return this.each(function(){
+				var that = this;
+				if(attrIsString){
+					this.setAttribute(attr,(value?value:attr)); &#x2F;&#x2F;account for boolean attributes where we need to set disable=&#x27;disabled&#x27;;
+				}else{
+					hippo.each(attr,function(name,value){
+						that.setAttribute(name,value);
+					});
+				}
 			});
-		}
-	});
-};
 
-&#x2F;**
- gets attribute value, or object of attribute values from first element in the set
+	}else if(attr){ &#x2F;&#x2F;getting specific attr
 
- @method addAttr
- @for hippo()
- @param attribute {String}
- @optional
- @returns either an object containing all attributes or a single value from a specific attribute passed in
- **&#x2F;
-hippo.fn.getAttr = function(attr){
-	if(attr){
 		return this[0].getAttribute(attr);
-	}else{
+
+	}else{ &#x2F;&#x2F;getting all attr
+
 		var attrArray = [].slice.call(this[0].attributes);
 
 		var attrObject = {};
@@ -154,7 +148,9 @@ hippo.fn.getAttr = function(attr){
 		});
 
 		return attrObject;
+
 	}
+
 };
 
 &#x2F;**
@@ -279,18 +275,36 @@ hippo.fn.getClass = function(getArray){
 };
 
 &#x2F;**
- needs description
+needs description
 
- @method getData
+ @method setData
  @for hippo()
- @param data value {String}
+ @param attribute(s) {String|Object}
+ @param value {String}
  @optional
- @returns either an object containing all attributes or a single value from a specific attribute passed in
- **&#x2F;
-hippo.fn.getData = function(dataValue){
-	if(dataValue){
-		return hippo(this[0]).getAttr(&#x27;data-&#x27;+dataValue);
-	}else{
+ @returns {Object} hippo() object
+**&#x2F;
+hippo.fn.data = function(dataName,value){
+
+	if(dataName &amp;&amp; value || typeof dataName === &#x27;object&#x27;){ &#x2F;&#x2F;setting
+
+		var isString = typeof dataName === &#x27;string&#x27;;
+		return this.each(function(){
+			var that = this;
+			if(isString){
+				this.setAttribute(&#x27;data-&#x27;+dataName,value); &#x2F;&#x2F;account for boolean attributes where we need to set disable=&#x27;disabled&#x27;;
+			}else{
+				hippo.each(dataName,function(name,value){
+					that.setAttribute(&#x27;data-&#x27;+name,value);
+				});
+			}
+		});
+
+	}else if(dataName){ &#x2F;&#x2F;getting
+
+		return hippo(this[0]).attr(&#x27;data-&#x27;+dataName);
+
+	}else{ &#x2F;&#x2F;getting all data
 
 		var attrArray = [].slice.call(this[0].attributes).filter(function(item){
 				return item.nodeName.substr(0,5) === &#x27;data-&#x27;;
@@ -303,31 +317,9 @@ hippo.fn.getData = function(dataValue){
 		});
 
 		return attrObject;
+
 	}
-};
 
-&#x2F;**
-needs description
-
- @method setData
- @for hippo()
- @param attribute(s) {String|Object}
- @param value {String}
- @optional
- @returns {Object} hippo() object
-**&#x2F;
-hippo.fn.setData = function(dataName,value){
-	var isString = typeof dataName === &#x27;string&#x27;;
-	return this.each(function(){
-		var that = this;
-		if(isString){
-			this.setAttribute(&#x27;data-&#x27;+dataName,value); &#x2F;&#x2F;account for boolean attributes where we need to set disable=&#x27;disabled&#x27;;
-		}else{
-			hippo.each(dataName,function(name,value){
-				that.setAttribute(&#x27;data-&#x27;+name,value);
-			});
-		}
-	});
 };
 
 &#x2F;**

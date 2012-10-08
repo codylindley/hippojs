@@ -94,13 +94,13 @@ Check if any of the elements childrens, in the set, matches the CSS selector
 
 @method has
 @for hippo()
-@param selector {String}
+@param {String|Node} 
 @returns {Boolean}
 **/
 hippo.fn.has = function(selector){
 	var check = false;
 	this.each(function(name,value){
-		if(this.parentNode.querySelectorAll(selector).length === 1){
+		if(typeof selector === 'string' ? this.parentNode.querySelectorAll(selector).length === 1 : this.parentNode.contains(selector)){
 			check = true;
 			return;
 		}
@@ -186,24 +186,6 @@ reduce set to a single element
 **/
 hippo.fn.eq = function(index){
 	return hippo(this.get(index));
-};
-
-/**
-reduce set to the children elements of each element in the set 
-
-@method children
-@for hippo()
-@chainable
-@returns {Object} hippo() object
-**/
-hippo.fn.children = function(){
-	var set = [];
-	this.each(function(name,value){
-		hippo(this.children).each(function(name,value){
-			set.push(value);
-		});
-	});
-	return hippo(set);
 };
 
 /**

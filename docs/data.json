@@ -213,7 +213,7 @@
             "line": 8,
             "description": "sets attribute value for all elements in the set",
             "itemtype": "method",
-            "name": "setAttr",
+            "name": "attr",
             "params": [
                 {
                     "name": "attribute(s)",
@@ -237,27 +237,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 33,
-            "description": "gets attribute value, or object of attribute values from first element in the set",
-            "itemtype": "method",
-            "name": "addAttr",
-            "params": [
-                {
-                    "name": "attribute",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "optional": 1,
-            "return": {
-                "description": "either an object containing all attributes or a single value from a specific attribute passed in"
-            },
-            "class": "hippo()",
-            "module": "attribute.js"
-        },
-        {
-            "file": "source/attribute.js",
-            "line": 58,
+            "line": 54,
             "description": "remove attribute value from all elements in the set",
             "itemtype": "method",
             "name": "removeAttr",
@@ -278,7 +258,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 78,
+            "line": 74,
             "description": "does the first element in the set have the attribute value",
             "itemtype": "method",
             "name": "hasAttr",
@@ -298,7 +278,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 90,
+            "line": 86,
             "description": "Adds class attribute value",
             "itemtype": "method",
             "name": "addClass",
@@ -319,7 +299,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 110,
+            "line": 106,
             "description": "removes class attribute value",
             "itemtype": "method",
             "name": "removeClass",
@@ -340,7 +320,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 130,
+            "line": 126,
             "description": "toggle class attribute value",
             "itemtype": "method",
             "name": "toggleClass",
@@ -361,7 +341,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 150,
+            "line": 146,
             "description": "is class attribute value already defined",
             "itemtype": "method",
             "name": "hasClass",
@@ -381,7 +361,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 163,
+            "line": 159,
             "description": "gets class value, or array of class values from first element in the set",
             "itemtype": "method",
             "name": "getClass",
@@ -400,27 +380,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 179,
-            "description": "needs description",
-            "itemtype": "method",
-            "name": "getData",
-            "params": [
-                {
-                    "name": "data",
-                    "description": "value",
-                    "type": "String"
-                }
-            ],
-            "optional": 1,
-            "return": {
-                "description": "either an object containing all attributes or a single value from a specific attribute passed in"
-            },
-            "class": "hippo()",
-            "module": "attribute.js"
-        },
-        {
-            "file": "source/attribute.js",
-            "line": 207,
+            "line": 175,
             "description": "needs description",
             "itemtype": "method",
             "name": "setData",
@@ -446,7 +406,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 231,
+            "line": 223,
             "description": "remove data value from all elements in the set",
             "itemtype": "method",
             "name": "removeData",
@@ -467,7 +427,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 251,
+            "line": 243,
             "description": "does the first element in the set have the data attribute value",
             "itemtype": "method",
             "name": "hasData",
@@ -559,9 +519,9 @@
             "name": "has",
             "params": [
                 {
-                    "name": "selector",
+                    "name": "UNKNOWN",
                     "description": "",
-                    "type": "String"
+                    "type": "String|Node"
                 }
             ],
             "return": {
@@ -688,20 +648,6 @@
         {
             "file": "source/core-methods.js",
             "line": 191,
-            "description": "reduce set to the children elements of each element in the set",
-            "itemtype": "method",
-            "name": "children",
-            "chainable": 1,
-            "return": {
-                "description": "hippo() object",
-                "type": "Object"
-            },
-            "class": "hippo()",
-            "module": "core-methods.js"
-        },
-        {
-            "file": "source/core-methods.js",
-            "line": 209,
             "description": "loop over each element, finding its descendants that match the passed in selector",
             "itemtype": "method",
             "name": "find",
@@ -722,7 +668,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 231,
+            "line": 213,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -743,7 +689,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 270,
+            "line": 252,
             "description": "add element to set",
             "itemtype": "method",
             "name": "add",
@@ -764,7 +710,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 288,
+            "line": 270,
             "description": "Get the last element of the current set",
             "itemtype": "method",
             "name": "last",
@@ -777,7 +723,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 299,
+            "line": 281,
             "description": "Get the first element of the current set",
             "itemtype": "method",
             "name": "first",
@@ -790,7 +736,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 311,
+            "line": 293,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",
@@ -1373,7 +1319,7 @@
             "line": 66,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
-            "name": "nextSiblings()",
+            "name": "nextSibs()",
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1386,7 +1332,7 @@
             "line": 83,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
-            "name": "prevSiblings()",
+            "name": "prevSibs()",
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1421,6 +1367,20 @@
                     "optional": true
                 }
             ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 139,
+            "description": "reduce set to the children elements of each element in the set",
+            "itemtype": "method",
+            "name": "children",
+            "chainable": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"

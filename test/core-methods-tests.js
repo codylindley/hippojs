@@ -8,6 +8,7 @@ test('hippo().is(selector)', function(){
 test('hippo().has(selector)', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
 	equal(hippoLi.has('.firstLi'),true);
+	equal(hippo('#qunit-fixture').has(hippo('.firstLi').get()),true);
 });
 
 test('hippo().slice()', function(){

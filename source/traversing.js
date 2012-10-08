@@ -66,7 +66,7 @@ hippo.fn.parents = function(){
 /**
 clone element nodes in hippo object
  
-@method nextSiblings()
+@method nextSibs()
 @for hippo()
 @returns {Object} hippo() object
 **/
@@ -83,7 +83,7 @@ hippo.fn.nextSibs = function(){
 /**
 clone element nodes in hippo object
  
-@method prevSiblings()
+@method prevSibs()
 @for hippo()
 @returns {Object} hippo() object
 **/
@@ -134,4 +134,22 @@ hippo.fn.childs = function(firstOrLast){
 		});
 	});
 	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+reduce set to the children elements of each element in the set 
+
+@method children
+@for hippo()
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.children = function(){
+	var set = [];
+	this.each(function(name,value){
+		hippo(this.children).each(function(name,value){
+			set.push(value);
+		});
+	});
+	return hippo(set);
 };

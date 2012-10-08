@@ -40,7 +40,7 @@ hippo(document.body.children) //NodeList
 hippo(document.all) //HTMLCollection
 hippo(hippo()) //a hippo object
 ```
-###### Hippo Helper/Utilites Functions
+###### Hippo Helper/Utilities Functions
 ```
 hippo.version
 hippo.each()
@@ -51,7 +51,7 @@ hippo.matchesSelector()
 hippo.collectElements()
 hippo.uniqueElements()
 ```
-###### Hippo() Set Operatation Methods
+###### Hippo() Set Operation Methods
 ```
 //does not return hippo object, non-chainable
 hippo().is()
@@ -73,13 +73,13 @@ hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
-hippo().ancestors() //create new set containg all ancestors elements
-hippo().descendants() //create new set containg all descendants elements
-hippo().parents() //create new set, containg all parents elements
-*hippo().childs() //create new set, containg all first child elements
-hippo().nextSiblings() //create a new set, containg all next sibling elements
-hippo().prevSiblings() //create a new set, containg all previous sibling elements
-hippo().siblings() //create a new set, containg all sibling elements
+hippo().ancestors() //create new set containing all ancestors elements
+hippo().descendants() //create new set containing all descendants elements
+hippo().parents() //create new set, containing all parents elements
+*hippo().childs() //create new set, containing all first child elements
+hippo().nextSiblings() //create a new set, containing all next sibling elements
+hippo().prevSiblings() //create a new set, containing all previous sibling elements
+hippo().siblings() //create a new set, containing all sibling elements
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods

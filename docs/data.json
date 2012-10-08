@@ -258,7 +258,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 74,
+            "line": 89,
             "description": "does the first element in the set have the attribute value",
             "itemtype": "method",
             "name": "hasAttr",
@@ -278,7 +278,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 86,
+            "line": 112,
             "description": "Adds class attribute value",
             "itemtype": "method",
             "name": "addClass",
@@ -299,7 +299,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 106,
+            "line": 132,
             "description": "removes class attribute value",
             "itemtype": "method",
             "name": "removeClass",
@@ -320,7 +320,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 126,
+            "line": 158,
             "description": "toggle class attribute value",
             "itemtype": "method",
             "name": "toggleClass",
@@ -341,7 +341,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 146,
+            "line": 178,
             "description": "is class attribute value already defined",
             "itemtype": "method",
             "name": "hasClass",
@@ -361,7 +361,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 159,
+            "line": 202,
             "description": "gets class value, or array of class values from first element in the set",
             "itemtype": "method",
             "name": "getClass",
@@ -380,7 +380,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 175,
+            "line": 218,
             "description": "needs description",
             "itemtype": "method",
             "name": "setData",
@@ -406,7 +406,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 223,
+            "line": 266,
             "description": "remove data value from all elements in the set",
             "itemtype": "method",
             "name": "removeData",
@@ -427,7 +427,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 243,
+            "line": 303,
             "description": "does the first element in the set have the data attribute value",
             "itemtype": "method",
             "name": "hasData",

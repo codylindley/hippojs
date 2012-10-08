@@ -164,13 +164,28 @@ hippo.fn.attr = function(attr,value){
  @returns {Object} hippo() object
  **&#x2F;
 hippo.fn.removeAttr = function(attr){
-	var attrArray = attr.split(&#x2F;\s+&#x2F;);
-	return this.each(function(){
-		var that = this;
-		hippo.each(attrArray,function(name,value){
-			that.removeAttribute(value);
+
+	if(attr){
+
+		var attrArray = attr.split(&#x2F;\s+&#x2F;);
+		return this.each(function(){
+			var that = this;
+			hippo.each(attrArray,function(name,value){
+				that.removeAttribute(value);
+			});
 		});
-	});
+
+	}else{ &#x2F;&#x2F;remove all
+
+		return this.each(function(){
+			var that = this;
+			hippo.each([].slice.call(this.attributes),function(name,value){
+				that.removeAttribute(value.nodeName);
+			});
+		});
+
+	}
+
 };
 
 &#x2F;**
@@ -182,7 +197,18 @@ hippo.fn.removeAttr = function(attr){
  @returns {Boolean}
  **&#x2F;
 hippo.fn.hasAttr = function(attr){
-	return this[0].hasAttribute(attr);
+	var attrValueArray = attr.split(&#x2F;\s+&#x2F;);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(attrValueArray,function(name,value){
+			if(that.hasAttribute(value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 &#x2F;**
@@ -216,13 +242,19 @@ hippo.fn.addClass = function(classString){
  @returns {Object} hippo() object
  **&#x2F;
 hippo.fn.removeClass = function(classString){
-	var classStringArray = classString.split(&#x2F;\s+&#x2F;);
-	return this.each(function(){
-		var that = this;
-		hippo.each(classStringArray,function(name,value){
-			that.classList.remove(value);
+	if(classString){
+		var classStringArray = classString.split(&#x2F;\s+&#x2F;);
+		return this.each(function(){
+			var that = this;
+			hippo.each(classStringArray,function(name,value){
+				that.classList.remove(value);
+			});
 		});
-	});
+	}else{ &#x2F;&#x2F;remove all
+		return this.each(function(){
+			this.className = &#x27;&#x27;;
+		});
+	}
 };
 
 &#x2F;**
@@ -255,7 +287,18 @@ hippo.fn.toggleClass = function(classString){
  @returns {Boolean}
  **&#x2F;
 hippo.fn.hasClass = function(classString){
-	return this[0].classList.contains(classString);
+	var classStringArray = classString.split(&#x2F;\s+&#x2F;);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(classStringArray,function(name,value){
+			if(that.classList.contains(value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 &#x2F;**
@@ -266,10 +309,10 @@ hippo.fn.hasClass = function(classString){
  @param boolean {Boolean}
  @returns either an array containing all attributes or a single value from a specific attribute passed in
  **&#x2F;
-hippo.fn.getClass = function(getArray){
-	if(getArray){
+hippo.fn.getClass = function(className){
+	if(className){
 		return this[0].getAttribute(&#x27;class&#x27;);
-	}else{
+	}else{ &#x2F;&#x2F;return list of all classs in array
 		return [].slice.call(this[0].classList);
 	}
 };
@@ -333,13 +376,30 @@ hippo.fn.data = function(dataName,value){
  @returns {Object} hippo() object
  **&#x2F;
 hippo.fn.removeData = function(dataName){
-	var attrArray = dataName.split(&#x2F;\s+&#x2F;);
-	return this.each(function(){
-		var that = this;
-		hippo.each(attrArray,function(name,value){
-			that.removeAttribute(&#x27;data-&#x27;+value);
+
+	if(dataName){
+
+		var attrArray = dataName.split(&#x2F;\s+&#x2F;);
+		return this.each(function(){
+			var that = this;
+			hippo.each(attrArray,function(name,value){
+				that.removeAttribute(&#x27;data-&#x27;+value);
+			});
 		});
-	});
+
+	}else{ &#x2F;&#x2F;remove all data- attrs
+
+		return this.each(function(){
+			var that = this;
+			hippo.each([].slice.call(this.attributes),function(name,value){
+				if(value.nodeName.substr(0,5) === &#x27;data-&#x27;){
+					that.removeAttribute(value.nodeName);
+				}
+			});
+		});
+
+	}
+
 };
 
 &#x2F;**
@@ -351,7 +411,18 @@ hippo.fn.removeData = function(dataName){
  @returns {Boolean}
  **&#x2F;
 hippo.fn.hasData = function(dataValue){
-	return this[0].hasAttribute(&#x27;data-&#x27;+dataValue);
+	var dataValueArray = dataValue.split(&#x2F;\s+&#x2F;);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(dataValueArray,function(name,value){
+			if(that.hasAttribute(&#x27;data-&#x27;+value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 

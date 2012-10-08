@@ -62,13 +62,28 @@ hippo.fn.attr = function(attr,value){
  @returns {Object} hippo() object
  **/
 hippo.fn.removeAttr = function(attr){
-	var attrArray = attr.split(/\s+/);
-	return this.each(function(){
-		var that = this;
-		hippo.each(attrArray,function(name,value){
-			that.removeAttribute(value);
+
+	if(attr){
+
+		var attrArray = attr.split(/\s+/);
+		return this.each(function(){
+			var that = this;
+			hippo.each(attrArray,function(name,value){
+				that.removeAttribute(value);
+			});
 		});
-	});
+
+	}else{ //remove all
+
+		return this.each(function(){
+			var that = this;
+			hippo.each([].slice.call(this.attributes),function(name,value){
+				that.removeAttribute(value.nodeName);
+			});
+		});
+
+	}
+
 };
 
 /**
@@ -80,7 +95,18 @@ hippo.fn.removeAttr = function(attr){
  @returns {Boolean}
  **/
 hippo.fn.hasAttr = function(attr){
-	return this[0].hasAttribute(attr);
+	var attrValueArray = attr.split(/\s+/);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(attrValueArray,function(name,value){
+			if(that.hasAttribute(value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 /**
@@ -114,13 +140,19 @@ hippo.fn.addClass = function(classString){
  @returns {Object} hippo() object
  **/
 hippo.fn.removeClass = function(classString){
-	var classStringArray = classString.split(/\s+/);
-	return this.each(function(){
-		var that = this;
-		hippo.each(classStringArray,function(name,value){
-			that.classList.remove(value);
+	if(classString){
+		var classStringArray = classString.split(/\s+/);
+		return this.each(function(){
+			var that = this;
+			hippo.each(classStringArray,function(name,value){
+				that.classList.remove(value);
+			});
 		});
-	});
+	}else{ //remove all
+		return this.each(function(){
+			this.className = '';
+		});
+	}
 };
 
 /**
@@ -153,7 +185,18 @@ hippo.fn.toggleClass = function(classString){
  @returns {Boolean}
  **/
 hippo.fn.hasClass = function(classString){
-	return this[0].classList.contains(classString);
+	var classStringArray = classString.split(/\s+/);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(classStringArray,function(name,value){
+			if(that.classList.contains(value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 /**
@@ -164,10 +207,10 @@ hippo.fn.hasClass = function(classString){
  @param boolean {Boolean}
  @returns either an array containing all attributes or a single value from a specific attribute passed in
  **/
-hippo.fn.getClass = function(getArray){
-	if(getArray){
+hippo.fn.getClass = function(className){
+	if(className){
 		return this[0].getAttribute('class');
-	}else{
+	}else{ //return list of all classs in array
 		return [].slice.call(this[0].classList);
 	}
 };
@@ -231,13 +274,30 @@ hippo.fn.data = function(dataName,value){
  @returns {Object} hippo() object
  **/
 hippo.fn.removeData = function(dataName){
-	var attrArray = dataName.split(/\s+/);
-	return this.each(function(){
-		var that = this;
-		hippo.each(attrArray,function(name,value){
-			that.removeAttribute('data-'+value);
+
+	if(dataName){
+
+		var attrArray = dataName.split(/\s+/);
+		return this.each(function(){
+			var that = this;
+			hippo.each(attrArray,function(name,value){
+				that.removeAttribute('data-'+value);
+			});
 		});
-	});
+
+	}else{ //remove all data- attrs
+
+		return this.each(function(){
+			var that = this;
+			hippo.each([].slice.call(this.attributes),function(name,value){
+				if(value.nodeName.substr(0,5) === 'data-'){
+					that.removeAttribute(value.nodeName);
+				}
+			});
+		});
+
+	}
+
 };
 
 /**
@@ -249,7 +309,18 @@ hippo.fn.removeData = function(dataName){
  @returns {Boolean}
  **/
 hippo.fn.hasData = function(dataValue){
-	return this[0].hasAttribute('data-'+dataValue);
+	var dataValueArray = dataValue.split(/\s+/);
+	var has = false;
+	this.each(function(){
+		var that = this;
+		hippo.each(dataValueArray,function(name,value){
+			if(that.hasAttribute('data-'+value)){
+				has = true;
+				return;
+			}
+		});
+	});
+	return has;
 };
 
 

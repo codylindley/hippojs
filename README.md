@@ -87,19 +87,19 @@ hippo().clone()
 ```
 ###### Hippo() Attribute Methods
 ```
-hippo().attr()
-hippo().hasAttr()
-hippo().removeAttr()
+hippo().attr() //gets, sets, and returns list
+hippo().hasAttr() //one, or multiple
+hippo().removeAttr() //remove one, multiple, or all
 
-hippo().getClass()
+hippo().getClass() //gets one, or array containing all
 hippo().addClass()
-hippo().hasClass()
-hippo().removeClass()
+hippo().hasClass() //one, or multiple
+hippo().removeClass() //remove one, multiple, or all
 hippo().toggleClass()
 
-hippo().data()
-hippo().hasData()
-hippo().removeData()
+hippo().data() //gets, sets, and returns list
+hippo().hasData() //one, or multiple
+hippo().removeData() //remove one, multiple, or all
 ```
 ###### Hippo() Manipulation Methods
 ```

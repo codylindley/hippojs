@@ -63,7 +63,7 @@ hippo.fn.attr = function(attr,value){
  **/
 hippo.fn.removeAttr = function(attr){
 
-	if(attr){
+	if(attr){//remove one or multiple
 
 		var attrArray = attr.split(/\s+/);
 		return this.each(function(){
@@ -140,7 +140,7 @@ hippo.fn.addClass = function(classString){
  @returns {Object} hippo() object
  **/
 hippo.fn.removeClass = function(classString){
-	if(classString){
+	if(classString){//remove one or multiple
 		var classStringArray = classString.split(/\s+/);
 		return this.each(function(){
 			var that = this;
@@ -275,7 +275,7 @@ hippo.fn.data = function(dataName,value){
  **/
 hippo.fn.removeData = function(dataName){
 
-	if(dataName){
+	if(dataName){//remove one or multiple
 
 		var attrArray = dataName.split(/\s+/);
 		return this.each(function(){

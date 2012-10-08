@@ -53,10 +53,42 @@ clone element nodes in hippo object
 @for hippo()
 @returns {Object} hippo() object
 **/
-hippo.fn.parents = function(){
+hippo.fn.parents = function(selector){
 	var list = [];
 	this.each(function(name,value){
 		hippo.each(hippo.collectElements(value,'parentNode'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list)).filter(selector);
+};
+
+/**
+get parent element
+ 
+@method parent()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.parent = function(){
+	var list = [];
+	this.each(function(name,value){
+			list.push(this.parentNode);
+	});
+	return hippo(list);
+};
+
+/**
+get parent element
+ 
+@method parentsUntil()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.parentsUntil = function(selector){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,'parentNode',selector),function(name,value){
 			list.push(value);
 		});
 	});

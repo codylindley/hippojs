@@ -147,10 +147,10 @@ hippo().prevSibs(selector) //all previous siblings
 hippo().children(selector) //all children
 hippo().childrenUntil(selector)
 
-hippo().ancestors(selector) all ancestors elements
+hippo().ancestors(selector) //all ancestors elements
 *hippo().ancestorsUntil(selector)
-hippo().descendants(selector) all descendants elements
-*hippo().descendantsUntil(selector) all descendants elements
-hippo().siblings(selector) all sibling elements
+hippo().descendants(selector) //all descendants elements
+*hippo().descendantsUntil(selector) //all descendants elements
+hippo().siblings(selector) //all sibling elements
 ```
 

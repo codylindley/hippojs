@@ -227,5 +227,37 @@ hippo.fn.setData = function(dataName,value){
 	});
 };
 
+/**
+ remove data value from all elements in the set
+
+ @method removeData
+ @for hippo()
+ @param value {String}
+   pass more than one value by providing a space inbetween values
+ @chainable
+ @returns {Object} hippo() object
+ **/
+hippo.fn.removeData = function(dataName){
+	var attrArray = dataName.split(/\s+/);
+	return this.each(function(){
+		var that = this;
+		hippo.each(attrArray,function(name,value){
+			that.removeAttribute('data-'+value);
+		});
+	});
+};
+
+/**
+ does the first element in the set have the data attribute value
+
+ @method hasData
+ @for hippo()
+ @param class {String}
+ @returns {Boolean} 
+ **/
+hippo.fn.hasData = function(dataValue){
+	return this[0].hasAttribute('data-'+dataValue);
+};
+
 
 

@@ -1,5 +1,15 @@
 module('core-methods.js');
 
+test('hippo().childs()', function(){
+	equal(hippo('#qunit-fixture').childs().total(),2);
+	equal(hippo('#qunit-fixture').childs().last().hasClass('firstLi'),true);
+});
+
+test('hippo().childs("last")', function(){
+	equal(hippo('#qunit-fixture').childs('last').total(),1);
+	equal(hippo('#qunit-fixture').childs('last').last().is('iframe'),true);
+});
+
 test('hippo().ancestors()', function(){
 	equal(hippo('body').ancestors().total(),1);
 });

@@ -75,7 +75,7 @@ hippo().first()
 hippo().ancestors() //create new set containing all ancestors elements
 hippo().descendants() //create new set containing all descendants elements
 hippo().parents() //create new set, containing all parents elements
-*hippo().childs() //create new set, containing all first child elements
+hippo().childs() //create new set, containing all first child elements
 hippo().nextSiblings() //create a new set, containing all next sibling elements
 hippo().prevSiblings() //create a new set, containing all previous sibling elements
 hippo().siblings() //create a new set, containing all sibling elements
@@ -87,15 +87,15 @@ hippo().getAttr()
 hippo().hasAttr()
 hippo().setAttr()
 hippo().removeAttr()
-*hippo().getClass()
+hippo().getClass()
 hippo().hasClass()
 hippo().addClass()
 hippo().removeClass()
 hippo().toggleClass()
-*hippo().getData()
-*hippo().hasData()
-*hippo().setData()
-*hippo().removeData()
+hippo().getData()
+hippo().hasData()
+hippo().setData()
+hippo().removeData()
 ```
 ###### Hippo() Manipulation Methods
 ```

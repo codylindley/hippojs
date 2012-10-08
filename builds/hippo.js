@@ -1,4 +1,4 @@
-/*hippo - v0.1 - 2012-10-05
+/*hippo - v0.1 - 2012-10-08
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -302,6 +302,19 @@ hippo.uniqElements = function(results){
 		}
 	}
 	return results;
+};
+
+/**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method camelCaseDashs
+@static
+@for hippo.
+@param {String}
+@return {String}
+**/
+hippo.camelCaseDashs = function(string){
+	return string.replace(/^-ms-/,"ms-").replace(/-([\da-z])/gi, function(all,letter){return(letter + '').toUpperCase();});
 };
 
 
@@ -737,6 +750,25 @@ hippo.fn.siblings = function(){
 			list.push(value);
 		});
 		hippo.each(hippo.collectElements(value,'nextElementSibling'),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+return all first child elements or last child elements
+ 
+@method childs()
+@param {String} [first] passing the string 'first' or 'last' to get the first or last child nodes
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.childs = function(firstOrLast){
+	var list = [];
+	var nodeProp = firstOrLast ? (firstOrLast === 'first' ? 'firstElementChild' : 'lastElementChild') : 'firstElementChild';
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,nodeProp),function(name,value){
 			list.push(value);
 		});
 	});

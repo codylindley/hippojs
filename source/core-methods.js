@@ -434,5 +434,24 @@ hippo.fn.siblings = function(){
 	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
 };
 
+/**
+return all first child elements or last child elements
+ 
+@method childs()
+@param {String} [first] passing the string 'first' or 'last' to get the first or last child nodes
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.childs = function(firstOrLast){
+	var list = [];
+	var nodeProp = firstOrLast ? (firstOrLast === 'first' ? 'firstElementChild' : 'lastElementChild') : 'firstElementChild';
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,nodeProp),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
 
 

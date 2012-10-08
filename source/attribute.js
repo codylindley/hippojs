@@ -187,16 +187,17 @@ hippo.fn.getClass = function(getArray){
  **/
 hippo.fn.getData = function(dataValue){
 	if(dataValue){
-		return hippo(this[0]).getAttribute('data-'+dataValue);
+		return hippo(this[0]).getAttr('data-'+dataValue);
 	}else{
+
 		var attrArray = [].slice.call(this[0].attributes).filter(function(item){
-				return item.nodeName.substr(0,4) === 'data-';
+				return item.nodeName.substr(0,5) === 'data-';
 		});
 
 		var attrObject = {};
 
 		hippo.each(attrArray,function(name,value){
-			attrObject[value.nodeName] = value.nodeValue;
+			attrObject[hippo.camelCaseDashs(value.nodeName)] = value.nodeValue;
 		});
 
 		return attrObject;
@@ -217,11 +218,11 @@ hippo.fn.setData = function(dataName,value){
 	var isString = typeof dataName === 'string';
 	return this.each(function(){
 		var that = this;
-		if(attrIsString){
-			this.setAttribute('data-'+'dataName',value); //account for boolean attributes where we need to set disable='disabled';
+		if(isString){
+			this.setAttribute('data-'+dataName,value); //account for boolean attributes where we need to set disable='disabled';
 		}else{
 			hippo.each(dataName,function(name,value){
-				that.setAttribute('data-'+'dataName',value);
+				that.setAttribute('data-'+name,value);
 			});
 		}
 	});

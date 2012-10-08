@@ -1,5 +1,34 @@
 module('attributes.js');
 
+test('hippo().getData()',function(){
+	var html = hippo('<p data-foo="foo" data-bar="bar"></p>');
+	equal(html.getData('foo'),'foo');
+	equal(html.getData().dataFoo,'foo');
+});
+
+test('hippo().hasData()',function(){
+	var html = hippo('<p data-foo="foo" data-bar="bar"></p>');
+	equal(html.hasData('foo'),true);
+});
+
+test('hippo().setData()',function(){
+	var html = hippo('<p></p>').setData('foo').setData({'bar':'bar'});
+	equal(html.hasData('foo'),true);
+	equal(html.hasData('bar'),true);
+});
+
+test('hippo().removeData(string)',function(){
+	var html = hippo('<p data-foo="foo" data-bar="bar"></p>');
+	equal(html.removeData('foo').hasData('foo'),false);
+	equal(html.removeData('bar').hasData('bar'),false);
+});
+
+test('hippo().removeData("string string")',function(){
+	var html = hippo('<p data-foo="foo" data-bar="bar"></p>');
+	equal(html.removeData('foo bar').hasData('foo'),false);
+	equal(html.hasData('bar'),false);
+});
+
 test('hippo().addClass()',function(){
 	var hippoLi = hippo('<li></li>');
 	hippoLi.addClass('testClass');
@@ -49,7 +78,7 @@ test('hippo().getAttr()',function(){
 	var hippoLi = hippo('<li></li>');
 	hippoLi.setAttr({'foo':'bar','doo':'noo','ioo':'koo'});
 	equal(hippoLi.getAttr('foo'),'bar','get a attr');
-	equal(hippoLi.getAttr().foo,'bar','get all attributes in array');
+	equal(hippoLi.getAttr().foo,'bar','get all attributes in object');
 	hippoLi.removeAttr('doo ioo foo');
 });
 

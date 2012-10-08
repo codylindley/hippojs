@@ -214,7 +214,7 @@
         {
             "file": "source/attribute.js",
             "line": 33,
-            "description": "gets attribute value, or array of attribute values from first element in the set",
+            "description": "gets attribute value, or object of attribute values from first element in the set",
             "itemtype": "method",
             "name": "addAttr",
             "params": [
@@ -226,14 +226,14 @@
             ],
             "optional": 1,
             "return": {
-                "description": "either an array containing all attributes or a single value from a specific attribute passed in"
+                "description": "either an object containing all attributes or a single value from a specific attribute passed in"
             },
             "class": "hippo()",
             "module": "attribute.js"
         },
         {
             "file": "source/attribute.js",
-            "line": 50,
+            "line": 58,
             "description": "remove attribute value from all elements in the set",
             "itemtype": "method",
             "name": "removeAttr",
@@ -254,7 +254,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 70,
+            "line": 78,
             "description": "does the first element in the set have the attribute value",
             "itemtype": "method",
             "name": "hasAttr",
@@ -274,7 +274,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 82,
+            "line": 90,
             "description": "Adds class attribute value",
             "itemtype": "method",
             "name": "addClass",
@@ -295,7 +295,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 102,
+            "line": 110,
             "description": "removes class attribute value",
             "itemtype": "method",
             "name": "removeClass",
@@ -316,7 +316,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 122,
+            "line": 130,
             "description": "toggle class attribute value",
             "itemtype": "method",
             "name": "toggleClass",
@@ -337,7 +337,7 @@
         },
         {
             "file": "source/attribute.js",
-            "line": 142,
+            "line": 150,
             "description": "is class attribute value already defined",
             "itemtype": "method",
             "name": "hasClass",
@@ -348,7 +348,112 @@
                     "type": "String"
                 }
             ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "hippo()",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 163,
+            "description": "gets class value, or array of class values from first element in the set",
+            "itemtype": "method",
+            "name": "getClass",
+            "params": [
+                {
+                    "name": "boolean",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "either an array containing all attributes or a single value from a specific attribute passed in"
+            },
+            "class": "hippo()",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 179,
+            "description": "needs description",
+            "itemtype": "method",
+            "name": "getData",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "value",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "return": {
+                "description": "either an object containing all attributes or a single value from a specific attribute passed in"
+            },
+            "class": "hippo()",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 207,
+            "description": "needs description",
+            "itemtype": "method",
+            "name": "setData",
+            "params": [
+                {
+                    "name": "attribute(s)",
+                    "description": "",
+                    "type": "String|Object"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 231,
+            "description": "remove data value from all elements in the set",
+            "itemtype": "method",
+            "name": "removeData",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "\n  pass more than one value by providing a space inbetween values",
+                    "type": "String"
+                }
+            ],
             "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "attribute.js"
+        },
+        {
+            "file": "source/attribute.js",
+            "line": 251,
+            "description": "does the first element in the set have the data attribute value",
+            "itemtype": "method",
+            "name": "hasData",
+            "params": [
+                {
+                    "name": "class",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Boolean"
@@ -759,6 +864,27 @@
             "module": "core-methods.js"
         },
         {
+            "file": "source/core-methods.js",
+            "line": 437,
+            "description": "return all first child elements or last child elements",
+            "itemtype": "method",
+            "name": "childs()",
+            "params": [
+                {
+                    "name": "first",
+                    "description": "passing the string 'first' or 'last' to get the first or last child nodes",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
             "file": "source/helpers.js",
             "line": 15,
             "description": "Returns the version of hippo",
@@ -928,6 +1054,27 @@
             "return": {
                 "description": "",
                 "type": "Array"
+            },
+            "class": "hippo.",
+            "module": "helpers.js"
+        },
+        {
+            "file": "source/helpers.js",
+            "line": 177,
+            "description": "return true if the array passed in is constructed from the Array() Constructor",
+            "itemtype": "method",
+            "name": "camelCaseDashs",
+            "static": 1,
+            "params": [
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
             },
             "class": "hippo.",
             "module": "helpers.js"

@@ -274,6 +274,19 @@ hippo.uniqElements = function(results){
 	return results;
 };
 
+&#x2F;**
+return true if the array passed in is constructed from the Array() Constructor
+
+@method camelCaseDashs
+@static
+@for hippo.
+@param {String}
+@return {String}
+**&#x2F;
+hippo.camelCaseDashs = function(string){
+	return string.replace(&#x2F;^-ms-&#x2F;,&quot;ms-&quot;).replace(&#x2F;-([\da-z])&#x2F;gi, function(all,letter){return(letter + &#x27;&#x27;).toUpperCase();});
+};
+
 
 
 

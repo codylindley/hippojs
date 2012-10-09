@@ -79,7 +79,7 @@ hippo.fn.parent = function(){
 };
 
 /**
-get parent element
+get parent element for each element in the set
  
 @method parentsUntil()
 @for hippo()
@@ -147,6 +147,21 @@ hippo.fn.siblings = function(){
 		});
 	});
 	return hippo(this.length === 1 ? list : hippo.uniqElements(list));
+};
+
+/**
+get child element for each element in the set
+ 
+@method child()
+@for hippo()
+@returns {Object} hippo() object
+**/
+hippo.fn.child = function(){
+	var list = [];
+	this.each(function(name,value){
+			list.push(this.firstElementChild);
+	});
+	return hippo(list);
 };
 
 /**

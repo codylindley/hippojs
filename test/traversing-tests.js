@@ -1,5 +1,9 @@
 module('traversing.js');
 
+test('hippo().child()', function(){
+	equal(hippo('#qunit-fixture').child().is('ul'),true);
+});
+
 test('hippo().childs()', function(){
 	equal(hippo('#qunit-fixture').childs().total(),2);
 	equal(hippo('#qunit-fixture').childs().last().hasClass('firstLi'),true);

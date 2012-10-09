@@ -80,9 +80,6 @@ hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
-*hippo().andSelf()
-*hippo.next()
-*hippo.prev()
 hippo().clone()
 ```
 ###### Hippo() Attribute Methods

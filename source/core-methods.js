@@ -304,4 +304,7 @@ hippo.fn.clone = function(copy){
 	return hippo(this[0].cloneNode(copy?copy:false));
 };
 
+/**
+reduce set to the next selected element
+
 

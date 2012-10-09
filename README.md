@@ -125,9 +125,9 @@ hippo().text()
 ```
 ###### Hippo() Traversing Methods
 ```
-*hippo().parent() //first parent element
+hippo().parent() //first parent element
 hippo().parents(selector) //all parent elements
-*hippo().parentsUntil(selector)
+hippo().parentsUntil(selector)
 
 *hippo().child() //first child element
 hippo().childs(selector) //all child elements

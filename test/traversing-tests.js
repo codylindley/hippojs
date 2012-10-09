@@ -31,8 +31,16 @@ test('hippo().prevSibs()', function(){
 	equal(hippo('li','#qunit-fixture').last().prevSibs().total(),2);
 });
 
+test('hippo().parent()', function(){
+	equal(hippo('.firstLi').parent().is('ul'),true);
+});
+
 test('hippo().parents()', function(){
-	equal(hippo('body').parents().total(),1);
+	equal(hippo('.firstLi').parents().total(),4);
+});
+
+test('hippo().parentsUntil()', function(){
+	equal(hippo('li.firstLi').parentsUntil('#qunit-fixture').total(),2);
 });
 
 test('hippo().children()', function(){

@@ -155,10 +155,42 @@ clone element nodes in hippo object
 @for hippo()
 @returns {Object} hippo() object
 **&#x2F;
-hippo.fn.parents = function(){
+hippo.fn.parents = function(selector){
 	var list = [];
 	this.each(function(name,value){
 		hippo.each(hippo.collectElements(value,&#x27;parentNode&#x27;),function(name,value){
+			list.push(value);
+		});
+	});
+	return hippo(this.length === 1 ? list : hippo.uniqElements(list)).filter(selector);
+};
+
+&#x2F;**
+get parent element
+ 
+@method parent()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.parent = function(){
+	var list = [];
+	this.each(function(name,value){
+			list.push(this.parentNode);
+	});
+	return hippo(list);
+};
+
+&#x2F;**
+get parent element
+ 
+@method parentsUntil()
+@for hippo()
+@returns {Object} hippo() object
+**&#x2F;
+hippo.fn.parentsUntil = function(selector){
+	var list = [];
+	this.each(function(name,value){
+		hippo.each(hippo.collectElements(value,&#x27;parentNode&#x27;,selector),function(name,value){
 			list.push(value);
 		});
 	});

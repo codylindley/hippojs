@@ -910,7 +910,7 @@
         },
         {
             "file": "source/helpers.js",
-            "line": 143,
+            "line": 145,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
             "name": "uniqElements",
@@ -931,7 +931,7 @@
         },
         {
             "file": "source/helpers.js",
-            "line": 177,
+            "line": 179,
             "description": "return true if the array passed in is constructed from the Array() Constructor",
             "itemtype": "method",
             "name": "camelCaseDashs",
@@ -1317,6 +1317,32 @@
         {
             "file": "source/traversing.js",
             "line": 66,
+            "description": "get parent element",
+            "itemtype": "method",
+            "name": "parent()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 81,
+            "description": "get parent element",
+            "itemtype": "method",
+            "name": "parentsUntil()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 98,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "nextSibs()",
@@ -1329,7 +1355,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 83,
+            "line": 115,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "prevSibs()",
@@ -1342,7 +1368,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 100,
+            "line": 132,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "siblings()",
@@ -1355,7 +1381,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 120,
+            "line": 152,
             "description": "return all first child elements or last child elements",
             "itemtype": "method",
             "name": "childs()",
@@ -1376,7 +1402,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 139,
+            "line": 171,
             "description": "reduce set to the children elements of each element in the set",
             "itemtype": "method",
             "name": "children",

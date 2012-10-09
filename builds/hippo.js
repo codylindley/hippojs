@@ -1,4 +1,4 @@
-/*hippo - v0.1 - 2012-10-08
+/*hippo - v0.1 - 2012-10-09
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
@@ -260,11 +260,13 @@ return true if the array passed in is constructed from the Array() Constructor
 @param property {String}
 @return {Array}
 **/
-hippo.collectElements = function(element,property){
+hippo.collectElements = function(element,property,selector){
 	var list = [];
 	while((element = element[property])){
 		if(element.nodeType === Node.ELEMENT_NODE){
 			list.push(element);
+			//if the last selector matches then return list early
+			if(selector && hippo.matchesSelector(element,selector)){return list;}
 		}
 	}
 	return list;

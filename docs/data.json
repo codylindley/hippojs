@@ -481,7 +481,7 @@
         {
             "file": "source/core-methods.js",
             "line": 56,
-            "description": "get the index, from the set, of the element or selector passed in",
+            "description": "get the index, from the set, of the first element or selector passed in",
             "itemtype": "method",
             "name": "index",
             "params": [
@@ -501,6 +501,26 @@
         {
             "file": "source/core-methods.js",
             "line": 82,
+            "description": "get the index, from the set, of the last element or selector passed in",
+            "itemtype": "method",
+            "name": "lastIndex",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "or element node",
+                    "type": "String|Node"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 95,
             "description": "get the index of the first element in the set, among its siblings",
             "itemtype": "method",
             "name": "siblingsIndex",
@@ -513,8 +533,8 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 99,
-            "description": "Check if any of the elements childrens, in the set, matches the CSS selector",
+            "line": 112,
+            "description": "Check if any of the elements children, in the set, matches the CSS selector",
             "itemtype": "method",
             "name": "has",
             "params": [
@@ -533,7 +553,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 118,
+            "line": 131,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -546,7 +566,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 129,
+            "line": 142,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -559,7 +579,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 140,
+            "line": 153,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
@@ -579,7 +599,21 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 156,
+            "line": 169,
+            "description": "reverse order of ser",
+            "itemtype": "method",
+            "name": "reverse",
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 181,
             "description": "loop over each element",
             "itemtype": "method",
             "name": "each",
@@ -600,7 +634,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 169,
+            "line": 194,
             "description": "slice the set",
             "itemtype": "method",
             "name": "slice",
@@ -627,7 +661,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 184,
+            "line": 209,
             "description": "reduce set to a single element at a specific index",
             "itemtype": "method",
             "name": "at",
@@ -648,7 +682,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 197,
+            "line": 222,
             "description": "loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set",
             "itemtype": "method",
             "name": "find",
@@ -669,7 +703,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 219,
+            "line": 244,
             "description": "loop over each element, removing descendants matching the selector, return desendants in hippo set",
             "itemtype": "method",
             "name": "exclude()",
@@ -690,7 +724,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 241,
+            "line": 266,
             "description": "loop over each element, removing elements do not match selector",
             "itemtype": "method",
             "name": "not()",
@@ -711,7 +745,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 260,
+            "line": 285,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
@@ -732,7 +766,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 299,
+            "line": 324,
             "description": "add element to set",
             "itemtype": "method",
             "name": "add",
@@ -753,7 +787,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 317,
+            "line": 342,
             "description": "Get the last element of the current set",
             "itemtype": "method",
             "name": "last",
@@ -766,7 +800,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 328,
+            "line": 353,
             "description": "Get the first element of the current set",
             "itemtype": "method",
             "name": "first",
@@ -779,7 +813,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 340,
+            "line": 365,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",

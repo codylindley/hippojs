@@ -58,6 +58,8 @@ hippo.isFunction()
 hippo.matchesSelector()
 hippo.collectElements()
 hippo.uniqueElements()
+*hippo.loadCss()
+*hippo.loadJs()
 ```
 ###### Hippo() Set Operation Methods
 ```
@@ -69,6 +71,7 @@ hippo().total()
 hippo().toArray()
 hippo().get()
 hippo().index()
+hippo().lastIndex()
 hippo().siblingIndex()
 
 //returns hippo object, chainable 
@@ -82,7 +85,14 @@ hippo().filter()
 hippo().add()
 hippo().last()
 hippo().first()
+hippo().reverse()
 hippo().clone()
+*hippo().push()
+*hippo().pop()
+*hippo().shift()
+*hippo().unshift()
+*hippo().even()
+*hippo().odd()
 ```
 ###### Hippo() Attribute Methods
 ```

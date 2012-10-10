@@ -54,7 +54,7 @@ hippo.fn.isEmpty = function(){
 };
 
 /**
-get the index, from the set, of the element or selector passed in
+get the index, from the set, of the first element or selector passed in
 
 @method index
 @for hippo()
@@ -65,18 +65,31 @@ hippo.fn.index = function(selectorOrNode){
 	var index = -1;
 	this.each(function(name,value){
 		if(typeof selectorOrNode === 'string'){
-			if(hippo.matchesSelector(this,selectorOrNode)){
+			if(hippo.matchesSelector(value,selectorOrNode)){
 				index = name;
-				return;
+				return false;
 			}
 		}else{
 			if(this === selectorOrNode){
 				index = name;
-				return;
+				return false;
 			}
 		}
 	});
 	return index;
+};
+
+/**
+get the index, from the set, of the last element or selector passed in
+
+@method lastIndex
+@for hippo()
+@param {String|Node} selector or element node
+@returns {Number}
+**/
+hippo.fn.lastIndex = function(selectorOrNode){
+	var fromStart = this.reverse().index(selectorOrNode);
+	return (this.length - 1) - fromStart;
 };
 
 /**
@@ -97,7 +110,7 @@ hippo.fn.siblingIndex = function(){
 };
 
 /**
-Check if any of the elements childrens, in the set, matches the CSS selector
+Check if any of the elements children, in the set, matches the CSS selector
 
 @method has
 @for hippo()
@@ -152,6 +165,18 @@ hippo.fn.get = function(index){
 ///////////////////////////////////////////////////////////////////////////
 //operates on the set, changing the set, but still returns a hippo() object
 ///////////////////////////////////////////////////////////////////////////
+
+/**
+reverse order of ser
+
+@method reverse
+@for hippo()
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.reverse = function(){
+	return this.toArray().reverse();
+};
 
 /**
 loop over each element

@@ -114,7 +114,7 @@
             "tag": "module",
             "file": "source/core.js",
             "line": 13,
-            "description": "setup hippo() function, constuctor, and prototype shortcut"
+            "description": "setup hippo() function, constructor, and prototype shortcut"
         },
         "helpers.js": {
             "name": "helpers.js",
@@ -171,21 +171,21 @@
             "namespace": "",
             "file": "source/core.js",
             "line": 13,
-            "description": "`hippo('li')` //Selector  \n`hippo('li','ul')` //Selector & Selector context  \n`hippo('li',document.body)` //Selector & Element Node context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //Element Node  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo object itself",
+            "description": "`hippo('li')` //selector  \n`hippo('li','ul')` //selector & selector context  \n`hippo('li',document.body)` //selector & element node context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //element node  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo() object itself",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "selector/HTML|Node|hippo()",
-                    "description": "\n  A string selector, node, or hippo() object, if you leave it empty default to HTML element",
+                    "description": "A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element",
                     "type": "String|Node|Object"
                 },
                 {
                     "name": "selector|Node",
-                    "description": "\n  A string containing a selector expression or node (i.e. element or document)",
+                    "description": "A string containing a selector expression, element node, or document node",
                     "type": "String|Node"
                 }
             ],
-            "default": "HTML element",
+            "default": "`<html>` element",
             "return": {
                 "description": "hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`",
                 "type": "Object"
@@ -448,14 +448,14 @@
         {
             "file": "source/core-methods.js",
             "line": 12,
-            "description": "Check if any of the elements in the set matches the CSS selector",
+            "description": "do any of the elements in the set match the passed in selector",
             "itemtype": "method",
             "name": "is",
             "params": [
                 {
                     "name": "selector",
-                    "description": "",
-                    "type": "String"
+                    "description": "or element node",
+                    "type": "String|Object"
                 }
             ],
             "return": {
@@ -467,8 +467,8 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 31,
-            "description": "Check if any of the elements in the set has no children",
+            "line": 38,
+            "description": "Check if any of the elements in the set are empty from in regards to children elements",
             "itemtype": "method",
             "name": "isEmpty",
             "return": {
@@ -480,15 +480,15 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 49,
-            "description": "get the index, in the set, of the element passed in",
+            "line": 56,
+            "description": "get the index, from the set, of the element or selector passed in",
             "itemtype": "method",
             "name": "index",
             "params": [
                 {
-                    "name": "selector|node",
-                    "description": "",
-                    "type": "String|Object"
+                    "name": "selector",
+                    "description": "or element node",
+                    "type": "String|Node"
                 }
             ],
             "return": {
@@ -500,8 +500,8 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 75,
-            "description": "get the index of the selected element, among is siblings",
+            "line": 82,
+            "description": "get the index of the first element in the set, among its siblings",
             "itemtype": "method",
             "name": "siblingsIndex",
             "return": {
@@ -513,14 +513,14 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 92,
+            "line": 99,
             "description": "Check if any of the elements childrens, in the set, matches the CSS selector",
             "itemtype": "method",
             "name": "has",
             "params": [
                 {
-                    "name": "UNKNOWN",
-                    "description": "",
+                    "name": "selector",
+                    "description": "or element node",
                     "type": "String|Node"
                 }
             ],
@@ -533,7 +533,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 111,
+            "line": 118,
             "description": "total elements in the hippo object",
             "itemtype": "method",
             "name": "total",
@@ -546,7 +546,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 122,
+            "line": 129,
             "description": "convert hippo object of DOM elements into JavaScript array of elements",
             "itemtype": "method",
             "name": "toArray",
@@ -559,7 +559,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 133,
+            "line": 140,
             "description": "get a DOM node from the hippo object at a specific index (zero based).",
             "itemtype": "method",
             "name": "get",
@@ -579,7 +579,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 149,
+            "line": 156,
             "description": "loop over each element",
             "itemtype": "method",
             "name": "each",
@@ -600,22 +600,23 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 162,
+            "line": 169,
             "description": "slice the set",
             "itemtype": "method",
             "name": "slice",
             "params": [
                 {
-                    "name": "number",
-                    "description": "\n\tstart",
+                    "name": "starting",
+                    "description": "index",
                     "type": "Number"
                 },
                 {
-                    "name": "number",
-                    "description": "\n\tend",
+                    "name": "ending",
+                    "description": "index",
                     "type": "Number"
                 }
             ],
+            "optional": 1,
             "chainable": 1,
             "return": {
                 "description": "hippo() object",
@@ -626,13 +627,13 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 178,
-            "description": "reduce set to a single element",
+            "line": 184,
+            "description": "reduce set to a single element at a specific index",
             "itemtype": "method",
-            "name": "eq",
+            "name": "at",
             "params": [
                 {
-                    "name": "number",
+                    "name": "index",
                     "description": "",
                     "type": "Number"
                 }
@@ -647,8 +648,8 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 191,
-            "description": "loop over each element, finding its descendants that match the passed in selector",
+            "line": 197,
+            "description": "loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set",
             "itemtype": "method",
             "name": "find",
             "params": [
@@ -668,13 +669,55 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 213,
+            "line": 219,
+            "description": "loop over each element, removing descendants matching the selector, return desendants in hippo set",
+            "itemtype": "method",
+            "name": "exclude()",
+            "params": [
+                {
+                    "name": "Selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 241,
+            "description": "loop over each element, removing elements do not match selector",
+            "itemtype": "method",
+            "name": "not()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "core-methods.js"
+        },
+        {
+            "file": "source/core-methods.js",
+            "line": 260,
             "description": "filter elements by selector expression or callback function",
             "itemtype": "method",
             "name": "filter",
             "params": [
                 {
-                    "name": "selector|function",
+                    "name": "selector|callback",
                     "description": "",
                     "type": "String|Function"
                 }
@@ -689,7 +732,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 252,
+            "line": 299,
             "description": "add element to set",
             "itemtype": "method",
             "name": "add",
@@ -710,7 +753,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 270,
+            "line": 317,
             "description": "Get the last element of the current set",
             "itemtype": "method",
             "name": "last",
@@ -723,7 +766,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 281,
+            "line": 328,
             "description": "Get the first element of the current set",
             "itemtype": "method",
             "name": "first",
@@ -736,7 +779,7 @@
         },
         {
             "file": "source/core-methods.js",
-            "line": 293,
+            "line": 340,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "clone",
@@ -1281,6 +1324,14 @@
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "ancestors()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1290,10 +1341,38 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 32,
+            "line": 34,
+            "description": "clone element nodes in hippo object, until selector",
+            "itemtype": "method",
+            "name": "ancestorsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 64,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "descendants()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1303,10 +1382,39 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 49,
+            "line": 83,
+            "description": "clone element nodes in hippo object, until selector",
+            "itemtype": "method",
+            "name": "descendantsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 103,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "parents()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1316,7 +1424,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 66,
+            "line": 122,
             "description": "get parent element",
             "itemtype": "method",
             "name": "parent()",
@@ -1329,10 +1437,18 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 81,
-            "description": "get parent element",
+            "line": 137,
+            "description": "get parent element for each element in the set",
             "itemtype": "method",
             "name": "parentsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1342,10 +1458,31 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 98,
-            "description": "clone element nodes in hippo object",
+            "line": 156,
+            "description": "get next sibling",
+            "itemtype": "method",
+            "name": "nextSib()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 171,
+            "description": "get next sibling, filter by selector",
             "itemtype": "method",
             "name": "nextSibs()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
             "return": {
                 "description": "hippo() object",
                 "type": "Object"
@@ -1355,8 +1492,41 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 115,
-            "description": "clone element nodes in hippo object",
+            "line": 190,
+            "description": "get next siblings until the selector",
+            "itemtype": "method",
+            "name": "nextSibsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 208,
+            "description": "get previous sibling",
+            "itemtype": "method",
+            "name": "prevSib()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 223,
+            "description": "get previous sibling, filter by selector",
             "itemtype": "method",
             "name": "prevSibs()",
             "return": {
@@ -1368,7 +1538,27 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 132,
+            "line": 240,
+            "description": "get previous siblings until the selector",
+            "itemtype": "method",
+            "name": "prevSibsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 258,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "siblings()",
@@ -1381,16 +1571,49 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 152,
+            "line": 278,
+            "description": "get child element for each element in the set",
+            "itemtype": "method",
+            "name": "child()",
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 293,
             "description": "return all first child elements or last child elements",
             "itemtype": "method",
             "name": "childs()",
             "params": [
                 {
-                    "name": "first",
-                    "description": "passing the string 'first' or 'last' to get the first or last child nodes",
-                    "type": "String",
-                    "optional": true
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 312,
+            "description": "get child element for each element in the set",
+            "itemtype": "method",
+            "name": "childsUntil()",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -1402,10 +1625,31 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 171,
+            "line": 330,
             "description": "reduce set to the children elements of each element in the set",
             "itemtype": "method",
             "name": "children",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "hippo() object",
+                "type": "Object"
+            },
+            "class": "hippo()",
+            "module": "traversing.js"
+        },
+        {
+            "file": "source/traversing.js",
+            "line": 349,
+            "description": "reduce set to the children elements of each element in the set, until selector",
+            "itemtype": "method",
+            "name": "childrenUntil",
             "chainable": 1,
             "return": {
                 "description": "hippo() object",

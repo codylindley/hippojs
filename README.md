@@ -74,8 +74,10 @@ hippo().siblingIndex()
 //returns hippo object, chainable 
 hippo().each()
 hippo().slice()
-hippo().eq()
-hippo().find()
+hippo().at()
+hippo().find(selector)
+*hippo().exclude(selector)
+*hippo().not()
 hippo().filter()
 hippo().add()
 hippo().last()
@@ -102,6 +104,7 @@ hippo().removeData() //remove one, multiple, or all
 ```
 hippo().replaceWith()
 hippo().empty()
+hippo().remove()
 
 hippo().before()
 hippo().insertBefore()
@@ -129,17 +132,17 @@ hippo().parent() //first parent element
 hippo().parents(selector) //all parent elements
 hippo().parentsUntil(selector)
 
-*hippo().child() //first child element
+hippo().child() //first child element
 hippo().childs(selector) //all child elements
-*hippo().childsUntil(selector) 
+hippo().childsUntil(selector) 
 
-*hippo().nextSib() //next sibling
+hippo().nextSib() //next sibling
 hippo().nextSibs(selector) //all next siblings
-*hippo().nextSibsUntil(selector) 
+hippo().nextSibsUntil(selector) 
 
-*hippo().prevSib() //previous sibling
+hippo().prevSib() //previous sibling
 hippo().prevSibs(selector) //all previous siblings
-*hippo().prevSibsUntil(selector)
+hippo().prevSibsUntil(selector)
 
 hippo().children(selector) //all children
 hippo().childrenUntil(selector)

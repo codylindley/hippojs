@@ -5,35 +5,32 @@
 (function(){
 
 /**
-* setup hippo() function, constuctor, and prototype shortcut
+* setup hippo() function, constructor, and prototype shortcut
 *
 * @module core.js
 */
 
-//private vars 
+//private vars
 var rootObject = this;
 var doc = rootObject.document;
 var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
-`hippo('li')` //Selector  
-`hippo('li','ul')` //Selector & Selector context  
-`hippo('li',document.body)` //Selector & Element Node context   
+`hippo('li')` //selector  
+`hippo('li','ul')` //selector & selector context  
+`hippo('li',document.body)` //selector & element node context   
 `hippo('<div></div>')` //HTML  
 `hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //Element Node  
+`hippo(document.body)` //element node  
 `hippo([document.body,document.head])` //Array  
 `hippo(document.body.children)` //NodeList  
 `hippo(document.all)` //HTMLCollection  
-`hippo(hippo())` //a hippo object itself 
+`hippo(hippo())` //a hippo() object itself 
 @class hippo()
 @constructor
-@param selector/HTML|Node|hippo() {String|Node|Object}
-  A string selector, node, or hippo() object, if you leave it empty default to HTML element
-@param selector|Node  {String|Node}
-  A string containing a selector expression or node (i.e. element or document)
-@default
-	HTML element
+@param {String|Node|Object} selector/HTML|Node|hippo() A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element
+@default `<html>` element
+@param {String|Node} selector|Node A string containing a selector expression, element node, or document node
 @return {Object} hippo() object e.g. `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`
 **/
 
@@ -46,17 +43,17 @@ var CreateHippoObject = function(elements,context){
 
 	//take care of context, could be a selector, an element, this document, or iframe document
 	var d;
-	if(context && context.nodeType){
+	if(context && context.nodeType){ //context was passed and its a node
 		if(context.nodeType === 1){//its an element context
-			d = context.ownerDocument;
+			d = context.ownerDocument; //so get the elements document
 		}else{//its a document (could be this document or iframe)
-			d = context.body.ownerDocument;
+			d = context.body.ownerDocument; //so get document from document
 		}
-	}else{//its a selector
+	}else{//its a selector i.e. a string so use the store doc
 		d = doc;//point at scoped document i.e. var doc = document in next scope up
 	}
 
-	//if no elements, return html element
+	//if no elements parameter passed, return html element
 	if(!elements){
 		this.length = 1;
 		this[0] = document.documentElement;
@@ -67,7 +64,7 @@ var CreateHippoObject = function(elements,context){
 	if(typeof elements === 'string' &&
 		elements.charAt(0) === "<" &&
 		elements.charAt( elements.length - 1 ) === ">" &&
-		elements.length >= 3){//yup html string
+		elements.length >= 3){//yup its forsure html string
 			//create div & docfrag, append div to docfrag, then set its div's innerHTML to the string, then get first child
 			var divElm = d.createElement('div');
 			divElm.className = 'hippo-doc-frag-wrapper';
@@ -76,7 +73,7 @@ var CreateHippoObject = function(elements,context){
 			var queryDiv = docFrag.querySelector('div');
 			queryDiv.innerHTML = elements;
 			var numberOfChildren = queryDiv.children.length;
-			//loop over nodelist and fill object
+			//loop over nodelist and fill object, needs to be done because a string of html can be passed with siblings
 			for (var z = 0; z < numberOfChildren; z++) {
 				this[z] = queryDiv.children[z];
 			}
@@ -97,23 +94,22 @@ var CreateHippoObject = function(elements,context){
 	var nodes;
 
 	if(typeof elements !== 'string'){//its not a string so its an array or nodelist
-		nodes = elements;
+		nodes = elements; //so... is already something that can be looped with for loop
 	}else{//if its a string create a nodelist, use context if provided
-		//if its a string selector create a context first, then run query again, or use current document
-		if(typeof context === 'string' && d.querySelectorAll(context)[0] === undefined){
-			nodes = [];
-		}else{
+		if(typeof context === 'string' && d.querySelectorAll(context)[0] === undefined){//bad context return nothing
+			nodes = []; //no context
+		}else{//its a string selector, create a context first, then run query again, or use current document
 			nodes = (typeof context === 'string' ? d.querySelectorAll(context)[0] : d).querySelectorAll(elements);
 		}
 	}
-	//loop over array or nodelist and fill object
+	//loop over array or nodelist created above and fill hippo object
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
-	//give the object a length value
+	//give the hippo object a length value
 	this.length = nodes.length;
 
-	//return object
+	//return hippo object
 	return this; //return e.g. {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}
 };
 
@@ -124,7 +120,7 @@ if(!('$' in rootObject)){
 }
 
 
-//setup prototype
+//setup prototype shortcut and setup constructor reference
 hippo.fn = CreateHippoObject.prototype = {
     constructor:hippo
 };
@@ -334,26 +330,33 @@ contains methods for operating on the wrapped set of elements in the hippo objec
 ///////////////////////////////////////////////////////////////////////////
 
 /**
-Check if any of the elements in the set matches the CSS selector
+do any of the elements in the set match the passed in selector
 
 @method is
 @for hippo()
-@param selector {String}
+@param {String|Object} selector or element node
 @returns {Boolean}
 **/
-hippo.fn.is = function(selector){
+hippo.fn.is = function(selectorOrNode){
 	var check = true;
 	this.each(function(name,value){
-		if(!hippo.matchesSelector(value,selector)){
-			check = false;
-			return;
+		if(selectorOrNode.nodeValue){
+			if(value === selectorOrNode){
+				check = false;
+				return;
+			}
+		}else{
+			if(!hippo.matchesSelector(value,selectorOrNode)){
+				check = false;
+				return;
+			}
 		}
 	});
 	return check;
 };
 
 /**
-Check if any of the elements in the set has no children
+Check if any of the elements in the set are empty from in regards to children elements
 
 @method isEmpty
 @for hippo()
@@ -371,23 +374,23 @@ hippo.fn.isEmpty = function(){
 };
 
 /**
-get the index, in the set, of the element passed in
+get the index, from the set, of the element or selector passed in
 
 @method index
 @for hippo()
-@param selector|node {String|Object}
+@param {String|Node} selector or element node
 @returns {Number}
 **/
-hippo.fn.index = function(param){
+hippo.fn.index = function(selectorOrNode){
 	var index = -1;
 	this.each(function(name,value){
-		if(typeof param === 'string'){
-			if(hippo.matchesSelector(this,param)){
+		if(typeof selectorOrNode === 'string'){
+			if(hippo.matchesSelector(this,selectorOrNode)){
 				index = name;
 				return;
 			}
 		}else{
-			if(this === param){
+			if(this === selectorOrNode){
 				index = name;
 				return;
 			}
@@ -397,7 +400,7 @@ hippo.fn.index = function(param){
 };
 
 /**
-get the index of the selected element, among is siblings
+get the index of the first element in the set, among its siblings
 
 @method siblingsIndex
 @for hippo()
@@ -418,15 +421,15 @@ Check if any of the elements childrens, in the set, matches the CSS selector
 
 @method has
 @for hippo()
-@param {String|Node} 
+@param {String|Node} selector or element node
 @returns {Boolean}
 **/
-hippo.fn.has = function(selector){
+hippo.fn.has = function(selectorOrNode){
 	var check = false;
 	this.each(function(name,value){
-		if(typeof selector === 'string' ? this.parentNode.querySelectorAll(selector).length === 1 : this.parentNode.contains(selector)){
+		if(typeof selectorOrNode === 'string' ? this.parentNode.querySelectorAll(selectorOrNode).length === 1 : this.parentNode.contains(selectorOrNode)){
 			check = true;
-			return;
+			return false;
 		}
 	});
 	return check;
@@ -488,10 +491,9 @@ slice the set
 
 @method slice
 @for hippo()
-@param number {Number}
-	start
-@param number {Number}
-	end
+@param {Number} starting index
+@param {Number} ending index
+@optional
 @chainable
 @returns {Object} hippo() object
 **/
@@ -500,20 +502,20 @@ hippo.fn.slice = function(start,end){
 };
 
 /**
-reduce set to a single element
+reduce set to a single element at a specific index
 
-@method eq
+@method at
 @for hippo()
-@param number {Number}
+@param {Number} index
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.eq = function(index){
+hippo.fn.at = function(index){
 	return hippo(this.get(index));
 };
 
 /**
-loop over each element, finding its descendants that match the passed in selector
+loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set
 
 @method find
 @for hippo()
@@ -531,7 +533,48 @@ hippo.fn.find = function(selector){
 			});
 		}
 	});
-	return this.constructor(results); //construct new hippo object from array
+	return hippo(this.length === 1 ? results : hippo.uniqElements(results));
+};
+
+/**
+loop over each element, removing descendants matching the selector, return desendants in hippo set
+
+@method exclude()
+@for hippo()
+@param Selector {String}
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.exclude = function(selector){
+	results = [];
+	this.each(function(){
+		var collection = this.querySelectorAll('*:not('+selector+')');// get nodelist containing elements that match selector
+		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
+			hippo.each(collection,function(name,value){
+				results.push(value);
+			});
+		}
+	});
+	return hippo(this.length === 1 ? results : hippo.uniqElements(results)); //construct new hippo object from array
+};
+
+/**
+loop over each element, removing elements do not match selector
+
+@method not()
+@for hippo()
+@param {String} selector
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.not = function(selector){
+	var results = []; //store function that return true
+	this.each(function(name,value){ //loop over each element
+		if(!hippo.matchesSelector(value,selector)){
+			results.push(value);
+		}
+	});
+	return hippo(results); //construct new hippo object from array
 };
 
 /**
@@ -539,32 +582,32 @@ filter elements by selector expression or callback function
  
 @method filter
 @for hippo()
-@param selector|function {String|Function}
+@param {String|Function} selector|callback 
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.filter = function(callbackFilter){
-	var d = doc.body;
+hippo.fn.filter = function(selectorOrCallback){
+
 	var results = []; //store function that return true
 
-	if(hippo.isFunction(callbackFilter)){
+	if(hippo.isFunction(selectorOrCallback)){
 
 		this.each(function(name,value){ //loop over each element
-			if(callbackFilter.call(value)){// call callBackFilter function setting this value to element in hippo object
+			if(selectorOrCallback.call(value)){// call callBackFilter function setting this value to element in hippo object
 				//if the function returns true push to the array
 				results.push(value);
 			}
 		});
-		return this.constructor(results);//construct new hippo object from array
+		return hippo(results);//construct new hippo object from array
 
-	}else if(typeof callbackFilter === 'string'){
+	}else if(typeof selectorOrCallback === 'string'){
 		
 		this.each(function(name,value){ //loop over each element
-			if(hippo.matchesSelector(value,callbackFilter)){
+			if(hippo.matchesSelector(value,selectorOrCallback)){
 				results.push(value);
 			}
 		});
-		return this.constructor(results); //construct new hippo object from array
+		return hippo(results); //construct new hippo object from array
 
 	}else{
 

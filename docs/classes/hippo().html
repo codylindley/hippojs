@@ -120,16 +120,16 @@
 
 
 <div class="box intro">
-    <p><code>hippo('li')</code> //Selector <br />
-<code>hippo('li','ul')</code> //Selector &amp; Selector context <br />
-<code>hippo('li',document.body)</code> //Selector &amp; Element Node context <br />
+    <p><code>hippo('li')</code> //selector <br />
+<code>hippo('li','ul')</code> //selector &amp; selector context <br />
+<code>hippo('li',document.body)</code> //selector &amp; element node context <br />
 <code>hippo('&lt;div&gt;&lt;/div&gt;')</code> //HTML <br />
 <code>hippo('&lt;div&gt;&lt;/div&gt;','window.frames[0].document')</code> //HTML &amp; Document context <br />
-<code>hippo(document.body)</code> //Element Node <br />
+<code>hippo(document.body)</code> //element node <br />
 <code>hippo([document.body,document.head])</code> //Array <br />
 <code>hippo(document.body.children)</code> //NodeList <br />
 <code>hippo(document.all)</code> //HTMLCollection <br />
-<code>hippo(hippo())</code> //a hippo object itself</p>
+<code>hippo(hippo())</code> //a hippo() object itself</p>
 </div>
 
 
@@ -216,7 +216,7 @@
                     
 
                     <div class="param-description">
-                        <p>A string selector, node, or hippo() object, if you leave it empty default to HTML element</p>
+                        <p>A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element</p>
                     </div>
 
                     
@@ -231,7 +231,7 @@
                     
 
                     <div class="param-description">
-                        <p>A string containing a selector expression or node (i.e. element or document)</p>
+                        <p>A string containing a selector expression, element node, or document node</p>
                     </div>
 
                     
@@ -313,6 +313,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_ancestorsUntil()">ancestorsUntil()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_append">append</a>
 
                                 
@@ -321,6 +328,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_appendTo">appendTo</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_at">at</a>
 
                                 
                                 
@@ -341,6 +355,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_child()">child()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_children">children</a>
 
                                 
@@ -348,7 +369,21 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_childrenUntil">childrenUntil</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_childs()">childs()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_childsUntil()">childsUntil()</a>
 
                                 
                                 
@@ -369,6 +404,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_descendantsUntil()">descendantsUntil()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_each">each</a>
 
                                 
@@ -383,7 +425,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_eq">eq</a>
+                                <a href="#method_exclude()">exclude()</a>
 
                                 
                                 
@@ -502,7 +544,28 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_nextSib()">nextSib()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_nextSibs()">nextSibs()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_nextSibsUntil()">nextSibsUntil()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_not()">not()</a>
 
                                 
                                 
@@ -551,7 +614,21 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_prevSib()">prevSib()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_prevSibs()">prevSibs()</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_prevSibsUntil()">prevSibsUntil()</a>
 
                                 
                                 
@@ -728,7 +805,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l252"><code>source&#x2F;core-methods.js:252</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l299"><code>source&#x2F;core-methods.js:299</code></a>
         
         </p>
 
@@ -1006,7 +1083,17 @@
     <h3 class="name"><code>ancestors()</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1054,6 +1141,135 @@
         <p>clone element nodes in hippo object</p>
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_ancestorsUntil()" class="method item">
+    <h3 class="name"><code>ancestorsUntil()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l34"><code>source&#x2F;traversing.js:34</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>clone element nodes in hippo object, until selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1263,6 +1479,114 @@
 
                     <div class="param-description">
                         <p>selector</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_at" class="method item">
+    <h3 class="name"><code>at</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l184"><code>source&#x2F;core-methods.js:184</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>reduce set to a single element at a specific index</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">index</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     
@@ -1528,8 +1852,189 @@
 </div>
 
                 
+                    <div id="method_child()" class="method item">
+    <h3 class="name"><code>child()</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l278"><code>source&#x2F;traversing.js:278</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get child element for each element in the set</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_children" class="method item">
     <h3 class="name"><code>children</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l330"><code>source&#x2F;traversing.js:330</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>reduce set to the children elements of each element in the set</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_childrenUntil" class="method item">
+    <h3 class="name"><code>childrenUntil</code></h3>
 
     
         <span class="paren">()</span>
@@ -1568,7 +2073,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l171"><code>source&#x2F;traversing.js:171</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l349"><code>source&#x2F;traversing.js:349</code></a>
         
         </p>
 
@@ -1579,7 +2084,7 @@
     </div>
 
     <div class="description">
-        <p>reduce set to the children elements of each element in the set</p>
+        <p>reduce set to the children elements of each element in the set, until selector</p>
     </div>
 
     
@@ -1612,7 +2117,7 @@
             
                 <li class="arg">
                     
-                        <code class="optional">[first]</code>
+                        <code>selector</code>
                     
                 </li>
             
@@ -1651,7 +2156,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l152"><code>source&#x2F;traversing.js:152</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l293"><code>source&#x2F;traversing.js:293</code></a>
         
         </p>
 
@@ -1673,15 +2178,120 @@
             
                 <li class="param">
                     
-                        <code class="param-name optional">[first]</code>
+                        <code class="param-name">selector</code>
                         <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>passing the string 'first' or 'last' to get the first or last child nodes</p>
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_childsUntil()" class="method item">
+    <h3 class="name"><code>childsUntil()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l312"><code>source&#x2F;traversing.js:312</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get child element for each element in the set</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     
@@ -1760,7 +2370,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l293"><code>source&#x2F;core-methods.js:293</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l340"><code>source&#x2F;core-methods.js:340</code></a>
         
         </p>
 
@@ -1822,7 +2432,17 @@
     <h3 class="name"><code>descendants()</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1856,7 +2476,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l32"><code>source&#x2F;traversing.js:32</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l64"><code>source&#x2F;traversing.js:64</code></a>
         
         </p>
 
@@ -1870,6 +2490,135 @@
         <p>clone element nodes in hippo object</p>
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_descendantsUntil()" class="method item">
+    <h3 class="name"><code>descendantsUntil()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l83"><code>source&#x2F;traversing.js:83</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>clone element nodes in hippo object, until selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1941,7 +2690,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l149"><code>source&#x2F;core-methods.js:149</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l156"><code>source&#x2F;core-methods.js:156</code></a>
         
         </p>
 
@@ -2074,8 +2823,8 @@
 </div>
 
                 
-                    <div id="method_eq" class="method item">
-    <h3 class="name"><code>eq</code></h3>
+                    <div id="method_exclude()" class="method item">
+    <h3 class="name"><code>exclude()</code></h3>
 
     
         <div class="args">
@@ -2083,7 +2832,7 @@
             
                 <li class="arg">
                     
-                        <code>number</code>
+                        <code>Selector</code>
                     
                 </li>
             
@@ -2124,7 +2873,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l178"><code>source&#x2F;core-methods.js:178</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l219"><code>source&#x2F;core-methods.js:219</code></a>
         
         </p>
 
@@ -2135,7 +2884,7 @@
     </div>
 
     <div class="description">
-        <p>reduce set to a single element</p>
+        <p>loop over each element, removing descendants matching the selector, return desendants in hippo set</p>
     </div>
 
     
@@ -2146,8 +2895,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">number</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">Selector</code>
+                        <span class="type">String</span>
                     
 
                     
@@ -2191,7 +2940,7 @@
             
                 <li class="arg">
                     
-                        <code>selector|function</code>
+                        <code>selector|callback</code>
                     
                 </li>
             
@@ -2232,7 +2981,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l213"><code>source&#x2F;core-methods.js:213</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l260"><code>source&#x2F;core-methods.js:260</code></a>
         
         </p>
 
@@ -2254,7 +3003,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">selector|function</code>
+                        <code class="param-name">selector|callback</code>
                         <span class="type">String | Function</span>
                     
 
@@ -2340,7 +3089,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l191"><code>source&#x2F;core-methods.js:191</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l197"><code>source&#x2F;core-methods.js:197</code></a>
         
         </p>
 
@@ -2351,7 +3100,7 @@
     </div>
 
     <div class="description">
-        <p>loop over each element, finding its descendants that match the passed in selector</p>
+        <p>loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set</p>
     </div>
 
     
@@ -2436,7 +3185,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l281"><code>source&#x2F;core-methods.js:281</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l328"><code>source&#x2F;core-methods.js:328</code></a>
         
         </p>
 
@@ -2518,7 +3267,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l133"><code>source&#x2F;core-methods.js:133</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l140"><code>source&#x2F;core-methods.js:140</code></a>
         
         </p>
 
@@ -2688,7 +3437,7 @@
             
                 <li class="arg">
                     
-                        <code>UNKNOWN</code>
+                        <code>selector</code>
                     
                 </li>
             
@@ -2727,7 +3476,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l92"><code>source&#x2F;core-methods.js:92</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l99"><code>source&#x2F;core-methods.js:99</code></a>
         
         </p>
 
@@ -2749,14 +3498,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">UNKNOWN</code>
+                        <code class="param-name">selector</code>
                         <span class="type">String | Node</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>or element node</p>
                     </div>
 
                     
@@ -3216,7 +3965,7 @@
             
                 <li class="arg">
                     
-                        <code>selector|node</code>
+                        <code>selector</code>
                     
                 </li>
             
@@ -3255,7 +4004,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l49"><code>source&#x2F;core-methods.js:49</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l56"><code>source&#x2F;core-methods.js:56</code></a>
         
         </p>
 
@@ -3266,7 +4015,7 @@
     </div>
 
     <div class="description">
-        <p>get the index, in the set, of the element passed in</p>
+        <p>get the index, from the set, of the element or selector passed in</p>
     </div>
 
     
@@ -3277,14 +4026,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">selector|node</code>
-                        <span class="type">String | Object</span>
+                        <code class="param-name">selector</code>
+                        <span class="type">String | Node</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>or element node</p>
                     </div>
 
                     
@@ -3587,7 +4336,7 @@
     </div>
 
     <div class="description">
-        <p>Check if any of the elements in the set matches the CSS selector</p>
+        <p>do any of the elements in the set match the passed in selector</p>
     </div>
 
     
@@ -3599,13 +4348,13 @@
                 <li class="param">
                     
                         <code class="param-name">selector</code>
-                        <span class="type">String</span>
+                        <span class="type">String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>or element node</p>
                     </div>
 
                     
@@ -3671,7 +4420,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l31"><code>source&#x2F;core-methods.js:31</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l38"><code>source&#x2F;core-methods.js:38</code></a>
         
         </p>
 
@@ -3682,7 +4431,7 @@
     </div>
 
     <div class="description">
-        <p>Check if any of the elements in the set has no children</p>
+        <p>Check if any of the elements in the set are empty from in regards to children elements</p>
     </div>
 
     
@@ -3743,7 +4492,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l270"><code>source&#x2F;core-methods.js:270</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l317"><code>source&#x2F;core-methods.js:317</code></a>
         
         </p>
 
@@ -3777,8 +4526,8 @@
 </div>
 
                 
-                    <div id="method_nextSibs()" class="method item">
-    <h3 class="name"><code>nextSibs()</code></h3>
+                    <div id="method_nextSib()" class="method item">
+    <h3 class="name"><code>nextSib()</code></h3>
 
     
         <span class="paren">()</span>
@@ -3815,7 +4564,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l98"><code>source&#x2F;traversing.js:98</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l156"><code>source&#x2F;traversing.js:156</code></a>
         
         </p>
 
@@ -3826,9 +4575,329 @@
     </div>
 
     <div class="description">
-        <p>clone element nodes in hippo object</p>
+        <p>get next sibling</p>
     </div>
 
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_nextSibs()" class="method item">
+    <h3 class="name"><code>nextSibs()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l171"><code>source&#x2F;traversing.js:171</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get next sibling, filter by selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_nextSibsUntil()" class="method item">
+    <h3 class="name"><code>nextSibsUntil()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l190"><code>source&#x2F;traversing.js:190</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get next siblings until the selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_not()" class="method item">
+    <h3 class="name"><code>not()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l241"><code>source&#x2F;core-methods.js:241</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>loop over each element, removing elements do not match selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -3996,7 +5065,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l66"><code>source&#x2F;traversing.js:66</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l122"><code>source&#x2F;traversing.js:122</code></a>
         
         </p>
 
@@ -4035,7 +5104,17 @@
     <h3 class="name"><code>parents()</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -4069,7 +5148,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l49"><code>source&#x2F;traversing.js:49</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l103"><code>source&#x2F;traversing.js:103</code></a>
         
         </p>
 
@@ -4083,6 +5162,29 @@
         <p>clone element nodes in hippo object</p>
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -4108,7 +5210,17 @@
     <h3 class="name"><code>parentsUntil()</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -4142,7 +5254,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l81"><code>source&#x2F;traversing.js:81</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l137"><code>source&#x2F;traversing.js:137</code></a>
         
         </p>
 
@@ -4153,9 +5265,32 @@
     </div>
 
     <div class="description">
-        <p>get parent element</p>
+        <p>get parent element for each element in the set</p>
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -4393,6 +5528,79 @@
 </div>
 
                 
+                    <div id="method_prevSib()" class="method item">
+    <h3 class="name"><code>prevSib()</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l208"><code>source&#x2F;traversing.js:208</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get previous sibling</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_prevSibs()" class="method item">
     <h3 class="name"><code>prevSibs()</code></h3>
 
@@ -4431,7 +5639,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l115"><code>source&#x2F;traversing.js:115</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l223"><code>source&#x2F;traversing.js:223</code></a>
         
         </p>
 
@@ -4442,9 +5650,115 @@
     </div>
 
     <div class="description">
-        <p>clone element nodes in hippo object</p>
+        <p>get previous sibling, filter by selector</p>
     </div>
 
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_prevSibsUntil()" class="method item">
+    <h3 class="name"><code>prevSibsUntil()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/traversing.js.html">traversing.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l240"><code>source&#x2F;traversing.js:240</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>get previous siblings until the selector</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -5138,7 +6452,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l132"><code>source&#x2F;traversing.js:132</code></a>
+        <a href="..&#x2F;files&#x2F;source_traversing.js.html#l258"><code>source&#x2F;traversing.js:258</code></a>
         
         </p>
 
@@ -5211,7 +6525,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l75"><code>source&#x2F;core-methods.js:75</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l82"><code>source&#x2F;core-methods.js:82</code></a>
         
         </p>
 
@@ -5222,7 +6536,7 @@
     </div>
 
     <div class="description">
-        <p>get the index of the selected element, among is siblings</p>
+        <p>get the index of the first element in the set, among its siblings</p>
     </div>
 
     
@@ -5254,13 +6568,13 @@
             
                 <li class="arg">
                     
-                        <code>number</code>
+                        <code>starting</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>number</code>
+                        <code>ending</code>
                     
                 </li>
             
@@ -5301,7 +6615,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l162"><code>source&#x2F;core-methods.js:162</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l169"><code>source&#x2F;core-methods.js:169</code></a>
         
         </p>
 
@@ -5323,15 +6637,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">number</code>
+                        <code class="param-name">starting</code>
                         <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <pre><code>start
-</code></pre>
+                        <p>index</p>
                     </div>
 
                     
@@ -5339,15 +6652,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">number</code>
+                        <code class="param-name">ending</code>
                         <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <pre><code>end
-</code></pre>
+                        <p>index</p>
                     </div>
 
                     
@@ -5522,7 +6834,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l122"><code>source&#x2F;core-methods.js:122</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l129"><code>source&#x2F;core-methods.js:129</code></a>
         
         </p>
 
@@ -5702,7 +7014,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l111"><code>source&#x2F;core-methods.js:111</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l118"><code>source&#x2F;core-methods.js:118</code></a>
         
         </p>
 

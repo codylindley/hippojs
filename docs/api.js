@@ -26,7 +26,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "core.js",
             "name": "core.js",
-            "description": "setup hippo() function, constuctor, and prototype shortcut"
+            "description": "setup hippo() function, constructor, and prototype shortcut"
         },
         {
             "displayName": "helpers.js",

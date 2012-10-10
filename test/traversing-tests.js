@@ -7,11 +7,11 @@ test('hippo().child()', function(){
 test('hippo().childs()', function(){
 	equal(hippo('#qunit-fixture').childs().total(),2);
 	equal(hippo('#qunit-fixture').childs().last().hasClass('firstLi'),true);
+	equal(hippo('#qunit-fixture').childs('li').is('li'),true);
 });
 
-test('hippo().childs("last")', function(){
-	equal(hippo('#qunit-fixture').childs('last').total(),1);
-	equal(hippo('#qunit-fixture').childs('last').last().is('iframe'),true);
+test('hippo().childsUntil()', function(){
+	equal(hippo('#qunit-fixture').childsUntil('ul').total(),1);
 });
 
 test('hippo().ancestors()', function(){
@@ -41,6 +41,7 @@ test('hippo().parent()', function(){
 
 test('hippo().parents()', function(){
 	equal(hippo('.firstLi').parents().total(),4);
+	equal(hippo('#qunit-fixture ul li').parents('ul').is('ul'),true);
 });
 
 test('hippo().parentsUntil()', function(){

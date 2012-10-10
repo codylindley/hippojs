@@ -10,26 +10,33 @@ contains methods for operating on the wrapped set of elements in the hippo objec
 ///////////////////////////////////////////////////////////////////////////
 
 /**
-Check if any of the elements in the set matches the CSS selector
+do any of the elements in the set match the passed in selector
 
 @method is
 @for hippo()
-@param selector {String}
+@param {String|Object} selector or element node
 @returns {Boolean}
 **/
-hippo.fn.is = function(selector){
+hippo.fn.is = function(selectorOrNode){
 	var check = true;
 	this.each(function(name,value){
-		if(!hippo.matchesSelector(value,selector)){
-			check = false;
-			return;
+		if(selectorOrNode.nodeValue){
+			if(value === selectorOrNode){
+				check = false;
+				return;
+			}
+		}else{
+			if(!hippo.matchesSelector(value,selectorOrNode)){
+				check = false;
+				return;
+			}
 		}
 	});
 	return check;
 };
 
 /**
-Check if any of the elements in the set has no children
+Check if any of the elements in the set are empty from in regards to children elements
 
 @method isEmpty
 @for hippo()
@@ -47,23 +54,23 @@ hippo.fn.isEmpty = function(){
 };
 
 /**
-get the index, in the set, of the element passed in
+get the index, from the set, of the element or selector passed in
 
 @method index
 @for hippo()
-@param selector|node {String|Object}
+@param {String|Node} selector or element node
 @returns {Number}
 **/
-hippo.fn.index = function(param){
+hippo.fn.index = function(selectorOrNode){
 	var index = -1;
 	this.each(function(name,value){
-		if(typeof param === 'string'){
-			if(hippo.matchesSelector(this,param)){
+		if(typeof selectorOrNode === 'string'){
+			if(hippo.matchesSelector(this,selectorOrNode)){
 				index = name;
 				return;
 			}
 		}else{
-			if(this === param){
+			if(this === selectorOrNode){
 				index = name;
 				return;
 			}
@@ -73,7 +80,7 @@ hippo.fn.index = function(param){
 };
 
 /**
-get the index of the selected element, among is siblings
+get the index of the first element in the set, among its siblings
 
 @method siblingsIndex
 @for hippo()
@@ -94,15 +101,15 @@ Check if any of the elements childrens, in the set, matches the CSS selector
 
 @method has
 @for hippo()
-@param {String|Node} 
+@param {String|Node} selector or element node
 @returns {Boolean}
 **/
-hippo.fn.has = function(selector){
+hippo.fn.has = function(selectorOrNode){
 	var check = false;
 	this.each(function(name,value){
-		if(typeof selector === 'string' ? this.parentNode.querySelectorAll(selector).length === 1 : this.parentNode.contains(selector)){
+		if(typeof selectorOrNode === 'string' ? this.parentNode.querySelectorAll(selectorOrNode).length === 1 : this.parentNode.contains(selectorOrNode)){
 			check = true;
-			return;
+			return false;
 		}
 	});
 	return check;
@@ -164,10 +171,9 @@ slice the set
 
 @method slice
 @for hippo()
-@param number {Number}
-	start
-@param number {Number}
-	end
+@param {Number} starting index
+@param {Number} ending index
+@optional
 @chainable
 @returns {Object} hippo() object
 **/
@@ -176,20 +182,20 @@ hippo.fn.slice = function(start,end){
 };
 
 /**
-reduce set to a single element
+reduce set to a single element at a specific index
 
-@method eq
+@method at
 @for hippo()
-@param number {Number}
+@param {Number} index
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.eq = function(index){
+hippo.fn.at = function(index){
 	return hippo(this.get(index));
 };
 
 /**
-loop over each element, finding its descendants that match the passed in selector
+loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set
 
 @method find
 @for hippo()
@@ -207,7 +213,48 @@ hippo.fn.find = function(selector){
 			});
 		}
 	});
-	return this.constructor(results); //construct new hippo object from array
+	return hippo(this.length === 1 ? results : hippo.uniqElements(results));
+};
+
+/**
+loop over each element, removing descendants matching the selector, return desendants in hippo set
+
+@method exclude()
+@for hippo()
+@param Selector {String}
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.exclude = function(selector){
+	results = [];
+	this.each(function(){
+		var collection = this.querySelectorAll('*:not('+selector+')');// get nodelist containing elements that match selector
+		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
+			hippo.each(collection,function(name,value){
+				results.push(value);
+			});
+		}
+	});
+	return hippo(this.length === 1 ? results : hippo.uniqElements(results)); //construct new hippo object from array
+};
+
+/**
+loop over each element, removing elements do not match selector
+
+@method not()
+@for hippo()
+@param {String} selector
+@chainable
+@returns {Object} hippo() object
+**/
+hippo.fn.not = function(selector){
+	var results = []; //store function that return true
+	this.each(function(name,value){ //loop over each element
+		if(!hippo.matchesSelector(value,selector)){
+			results.push(value);
+		}
+	});
+	return hippo(results); //construct new hippo object from array
 };
 
 /**
@@ -215,32 +262,32 @@ filter elements by selector expression or callback function
  
 @method filter
 @for hippo()
-@param selector|function {String|Function}
+@param {String|Function} selector|callback 
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.filter = function(callbackFilter){
-	var d = doc.body;
+hippo.fn.filter = function(selectorOrCallback){
+
 	var results = []; //store function that return true
 
-	if(hippo.isFunction(callbackFilter)){
+	if(hippo.isFunction(selectorOrCallback)){
 
 		this.each(function(name,value){ //loop over each element
-			if(callbackFilter.call(value)){// call callBackFilter function setting this value to element in hippo object
+			if(selectorOrCallback.call(value)){// call callBackFilter function setting this value to element in hippo object
 				//if the function returns true push to the array
 				results.push(value);
 			}
 		});
-		return this.constructor(results);//construct new hippo object from array
+		return hippo(results);//construct new hippo object from array
 
-	}else if(typeof callbackFilter === 'string'){
+	}else if(typeof selectorOrCallback === 'string'){
 		
 		this.each(function(name,value){ //loop over each element
-			if(hippo.matchesSelector(value,callbackFilter)){
+			if(hippo.matchesSelector(value,selectorOrCallback)){
 				results.push(value);
 			}
 		});
-		return this.constructor(results); //construct new hippo object from array
+		return hippo(results); //construct new hippo object from array
 
 	}else{
 

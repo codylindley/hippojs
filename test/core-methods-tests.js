@@ -75,10 +75,10 @@ test('hippo().find(selector)', function(){
 	equal(hippo('<li><strong>test</strong></li><li><strong>test</strong></li>').find('strong').total(),2);
 });
 
-test('hippo().exclude(selector)', function(){
-	var hippoLi = hippo('#qunit-fixture ul').exclude('.firstLi');
+test('hippo().findExclude(selector)', function(){
+	var hippoLi = hippo('#qunit-fixture ul').findExclude('.firstLi');
 	equal(hippoLi.find('.firstLi').total(),0);
-	equal(hippo('<li><strong>test</strong></li><li><strong>test</strong></li>').exclude('strong').total(),0);
+	equal(hippo('<li><strong>test</strong></li><li><strong>test</strong></li>').findExclude('strong').total(),0);
 });
 
 test('hippo().total()', function(){

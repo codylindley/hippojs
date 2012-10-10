@@ -244,13 +244,13 @@ hippo.fn.find = function(selector){
 /**
 loop over each element, removing descendants matching the selector, return desendants in hippo set
 
-@method exclude()
+@method findExclude()
 @for hippo()
 @param Selector {String}
 @chainable
 @returns {Object} hippo() object
 **/
-hippo.fn.exclude = function(selector){
+hippo.fn.findExclude = function(selector){
 	results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll('*:not('+selector+')');// get nodelist containing elements that match selector

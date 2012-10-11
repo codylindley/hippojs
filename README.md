@@ -40,7 +40,7 @@ hippo('<div></div>','window.frames[0].document') //HTML & Document context
 
 hippo(document.body) //Element Node
 
-hippo([document.body,document.head])` //Array
+hippo([document.body,document.head]) //Array
 
 hippo(document.body.children) //NodeList
 
@@ -49,7 +49,7 @@ hippo(document.all) //HTMLCollection
 hippo(hippo()) //a hippo object
 ```
 ###### Hippo Helper/Utilities Functions
-```
+```js
 hippo.version
 hippo.each()
 hippo.type()
@@ -62,7 +62,7 @@ hippo.uniqueElements()
 *hippo.loadJs()
 ```
 ###### Hippo() Set Operation Methods
-```
+```js
 //does not return hippo object, non-chainable
 hippo().is()
 hippo().isEmpty()
@@ -95,7 +95,7 @@ hippo().clone()
 *hippo().odd()
 ```
 ###### Hippo() Attribute Methods
-```
+```js
 hippo().attr() //gets, sets, and returns list
 hippo().hasAttr() //one, or multiple
 hippo().removeAttr() //remove one, multiple, or all
@@ -111,7 +111,7 @@ hippo().hasData() //one, or multiple
 hippo().removeData() //remove one, multiple, or all
 ```
 ###### Hippo() Manipulation Methods
-```
+```js
 hippo().replaceWith()
 hippo().empty()
 hippo().remove()
@@ -137,7 +137,7 @@ hippo().outerHtml()
 hippo().text()
 ```
 ###### Hippo() Traversing Methods
-```
+```js
 hippo().parent() //first parent element
 hippo().parents(selector) //all parent elements
 hippo().parentsUntil(selector)

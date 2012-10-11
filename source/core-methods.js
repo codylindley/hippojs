@@ -89,7 +89,11 @@ get the index, from the set, of the last element or selector passed in
 **/
 hippo.fn.lastIndex = function(selectorOrNode){
 	var fromStart = this.reverse().index(selectorOrNode);
-	return (this.length - 1) - fromStart;
+	if(fromStart === -1){
+		return -1;
+	}else{
+		return (this.length - 1) - fromStart;
+	}
 };
 
 /**
@@ -151,7 +155,7 @@ hippo.fn.toArray = function(){
 };
 
 /**
-get a DOM node from the hippo object at a specific index (zero based).
+get DOM node itself from the hippo object at a specific index (zero based).
  
 @method get
 @for hippo()
@@ -175,11 +179,11 @@ reverse order of ser
 @returns {Object} hippo() object
 **/
 hippo.fn.reverse = function(){
-	return this.toArray().reverse();
+	return hippo(this.toArray().reverse());
 };
 
 /**
-loop over each element
+loop over each element in the set
 
 @method each
 @for hippo()
@@ -192,7 +196,7 @@ hippo.fn.each = function(callback){
 };
 
 /**
-slice the set
+slice the set using a start and ending index
 
 @method slice
 @for hippo()
@@ -264,7 +268,7 @@ hippo.fn.findExclude = function(selector){
 };
 
 /**
-loop over each element, removing elements do not match selector
+loop over each element, removing elements that do not match selector
 
 @method not()
 @for hippo()
@@ -287,7 +291,7 @@ filter elements by selector expression or callback function
  
 @method filter
 @for hippo()
-@param {String|Function} selector|callback 
+@param {String|Function} selector|callback
 @chainable
 @returns {Object} hippo() object
 **/
@@ -373,7 +377,11 @@ clone element nodes in hippo object
 @returns {Object} hippo() object
 **/
 hippo.fn.clone = function(copy){
-	return hippo(this[0].cloneNode(copy?copy:false));
+	var results = [];
+	this.each(function(name,value){
+		results.push(value.cloneNode(copy?copy:false));
+	});
+	return hippo(results); //construct new hippo object from array
 };
 
 

@@ -27,9 +27,16 @@ test('hippo().index()', function(){
 	equal(hippo('li','#qunit-fixture').index('.firstLi'),0);
 	equal(hippo('li','#qunit-fixture').index('.lastLi'),2);
 	equal(hippo('li','#qunit-fixture').index('middle'),-1);
-	equal(hippo('li','#qunit-fixture').index($('.lastLi')[0]),2);
+	equal(hippo('li','#qunit-fixture').index(hippo('.lastLi')[0]),2);
 
 	equal(hippo('<li class="foo"></li><li class="boo"></li><li class="goo"></li>').index('.boo'),1);
+});
+
+test('hippo().lastIndex()', function(){
+	equal(hippo('li','#qunit-fixture').lastIndex('li'),2);
+	equal(hippo('li','#qunit-fixture').lastIndex('a'),-1);
+
+	equal(hippo('<li class="foo"></li><li class="foo"></li><li class="foo"></li>').lastIndex('.foo'),2);
 });
 
 test('hippo().siblingIndex()', function(){
@@ -84,6 +91,13 @@ test('hippo().findExclude(selector)', function(){
 test('hippo().total()', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
 	equal(hippoLi.total(),3,'total li\'s in fixture, should be 3');
+	equal(hippo('<li><strong>test</strong></li><li><strong>test</strong></li>').total(),2);
+});
+
+test('hippo().reverse()', function(){
+	var hippoLi = hippo('li','#qunit-fixture');
+	equal(hippoLi.reverse().first().is('.lastLi'),true);
+	equal(hippo('<li>1</li><li>2</li>').reverse().text(),2);
 });
 
 test('hippo().toArray()', function(){
@@ -97,6 +111,8 @@ test('hippo().get()', function(){
 	ok(hippoLi.get(0),'get first node in hippo object');
 	ok(hippoLi.get(1),'get second node in hippo object');
 	ok(hippoLi.get(2),'get third node in hippo object');
+	equal(hippo('<li><strong>test</strong></li><strong>test</strong>').get().nodeName,'LI');
+	equal(hippo('<li><strong>test</strong></li><strong>test</strong>').get(1).nodeName,'STRONG');
 });
 
 test('hippo().clone()', function(){
@@ -104,6 +120,7 @@ test('hippo().clone()', function(){
 	var hippoLiClonedTrue = hippo('#qunit-fixture ul').clone(true);
 	equal(hippoLiCloned.total(),1,'only clones one element node');
 	equal(hippoLiClonedTrue.get(0).children.length,3,'clones selected node and all its children');
+	equal(hippo('<li><strong>test</strong></li><strong>test</strong>').clone().total(),2);
 });
 
 test('hippo().add()', function(){
@@ -117,9 +134,11 @@ test('hippo().add()', function(){
 test('hippo().last()', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
 	equal(hippoLi.last().hasClass('lastLi'),true);
+	equal(hippo('<li>1</li><li>2</li>').last().text(),'2');
 });
 
 test('hippo().first()', function(){
 	var hippoLi = hippo('li','#qunit-fixture');
 	equal(hippoLi.first().hasClass('firstLi'),true);
+	equal(hippo('<li>1</li><li>2</li>').first().text(),'1');
 });

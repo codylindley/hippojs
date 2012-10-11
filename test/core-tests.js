@@ -3,6 +3,9 @@ module('core.js');
 test('invoke hippo() with no parameter',function(){
 	equal(hippo.type(hippo()),'object','hippo() returns an object');
 	equal(hippo()[0].tagName.toLowerCase(),'html','defaults to HTML element');
+	equal( hippo(undefined).length, 1, "hippo(undefined)" );
+	equal( hippo(null).length, 1, "hippo(null)" );
+	equal( hippo('').length, 1, "hippo('')" );
 });
 
 test('invoke hippo(\'li\') with selector string',function(){

@@ -27,7 +27,7 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 
 ###### Hippo() Constructor, creates a set of Element nodes
 
-```
+```js
 hippo('li') //Selector
 
 hippo('li','ul') //Selector & Selector context

@@ -425,13 +425,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_exclude()">exclude()</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_filter">filter</a>
 
                                 
@@ -440,6 +433,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_find">find</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_findExclude()">findExclude()</a>
 
                                 
                                 
@@ -819,7 +819,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l324"><code>source&#x2F;core-methods.js:324</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l328"><code>source&#x2F;core-methods.js:328</code></a>
         
         </p>
 
@@ -1571,7 +1571,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l209"><code>source&#x2F;core-methods.js:209</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l213"><code>source&#x2F;core-methods.js:213</code></a>
         
         </p>
 
@@ -2384,7 +2384,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l365"><code>source&#x2F;core-methods.js:365</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l369"><code>source&#x2F;core-methods.js:369</code></a>
         
         </p>
 
@@ -2704,7 +2704,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l181"><code>source&#x2F;core-methods.js:181</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l185"><code>source&#x2F;core-methods.js:185</code></a>
         
         </p>
 
@@ -2715,7 +2715,7 @@
     </div>
 
     <div class="description">
-        <p>loop over each element</p>
+        <p>loop over each element in the set</p>
     </div>
 
     
@@ -2837,114 +2837,6 @@
 </div>
 
                 
-                    <div id="method_exclude()" class="method item">
-    <h3 class="name"><code>exclude()</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>Selector</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l244"><code>source&#x2F;core-methods.js:244</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>loop over each element, removing descendants matching the selector, return desendants in hippo set</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">Selector</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    hippo() object
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method_filter" class="method item">
     <h3 class="name"><code>filter</code></h3>
 
@@ -2995,7 +2887,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l285"><code>source&#x2F;core-methods.js:285</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l289"><code>source&#x2F;core-methods.js:289</code></a>
         
         </p>
 
@@ -3103,7 +2995,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l222"><code>source&#x2F;core-methods.js:222</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l226"><code>source&#x2F;core-methods.js:226</code></a>
         
         </p>
 
@@ -3115,6 +3007,114 @@
 
     <div class="description">
         <p>loop over each element, finding its descendants that match the passed in selector, return matched desendants in hippo set</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">Selector</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    hippo() object
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_findExclude()" class="method item">
+    <h3 class="name"><code>findExclude()</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>Selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/core-methods.js.html">core-methods.js</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l248"><code>source&#x2F;core-methods.js:248</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>loop over each element, removing descendants matching the selector, return desendants in hippo set</p>
     </div>
 
     
@@ -3199,7 +3199,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l353"><code>source&#x2F;core-methods.js:353</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l357"><code>source&#x2F;core-methods.js:357</code></a>
         
         </p>
 
@@ -3281,7 +3281,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l153"><code>source&#x2F;core-methods.js:153</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l157"><code>source&#x2F;core-methods.js:157</code></a>
         
         </p>
 
@@ -3292,7 +3292,7 @@
     </div>
 
     <div class="description">
-        <p>get a DOM node from the hippo object at a specific index (zero based).</p>
+        <p>get DOM node itself from the hippo object at a specific index (zero based).</p>
     </div>
 
     
@@ -3490,7 +3490,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l112"><code>source&#x2F;core-methods.js:112</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l116"><code>source&#x2F;core-methods.js:116</code></a>
         
         </p>
 
@@ -4506,7 +4506,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l342"><code>source&#x2F;core-methods.js:342</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l346"><code>source&#x2F;core-methods.js:346</code></a>
         
         </p>
 
@@ -4980,7 +4980,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l266"><code>source&#x2F;core-methods.js:266</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l270"><code>source&#x2F;core-methods.js:270</code></a>
         
         </p>
 
@@ -4991,7 +4991,7 @@
     </div>
 
     <div class="description">
-        <p>loop over each element, removing elements do not match selector</p>
+        <p>loop over each element, removing elements that do not match selector</p>
     </div>
 
     
@@ -6446,7 +6446,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l169"><code>source&#x2F;core-methods.js:169</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l173"><code>source&#x2F;core-methods.js:173</code></a>
         
         </p>
 
@@ -6719,7 +6719,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l95"><code>source&#x2F;core-methods.js:95</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l99"><code>source&#x2F;core-methods.js:99</code></a>
         
         </p>
 
@@ -6809,7 +6809,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l194"><code>source&#x2F;core-methods.js:194</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l198"><code>source&#x2F;core-methods.js:198</code></a>
         
         </p>
 
@@ -6820,7 +6820,7 @@
     </div>
 
     <div class="description">
-        <p>slice the set</p>
+        <p>slice the set using a start and ending index</p>
     </div>
 
     
@@ -7028,7 +7028,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l142"><code>source&#x2F;core-methods.js:142</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l146"><code>source&#x2F;core-methods.js:146</code></a>
         
         </p>
 
@@ -7208,7 +7208,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l131"><code>source&#x2F;core-methods.js:131</code></a>
+        <a href="..&#x2F;files&#x2F;source_core-methods.js.html#l135"><code>source&#x2F;core-methods.js:135</code></a>
         
         </p>
 

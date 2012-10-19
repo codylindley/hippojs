@@ -1,9 +1,9 @@
-/*hippo - v0.1 - 2012-10-11
+/*hippo - v0.1 - 2012-10-19
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
-
+/*global hippo:true */
 /**
 * setup hippo() function, constructor, and prototype shortcut
 *
@@ -124,7 +124,7 @@ if(!('$' in rootObject)){
 hippo.fn = CreateHippoObject.prototype = {
     constructor:hippo
 };
-
+/*global hippo:true */
 /**
 utilities for hippo.js
 
@@ -318,7 +318,7 @@ hippo.camelCaseDashs = function(string){
 
 
 
-
+/*global hippo:true */
 /**
 contains methods for operating on the wrapped set of elements in the hippo object
 
@@ -553,7 +553,7 @@ loop over each element, finding its descendants that match the passed in selecto
 @returns {Object} hippo() object
 **/
 hippo.fn.find = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll(selector);// get nodelist containing elements that match selector
 		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
@@ -575,7 +575,7 @@ loop over each element, removing descendants matching the selector, return desen
 @returns {Object} hippo() object
 **/
 hippo.fn.findExclude = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll('*:not('+selector+')');// get nodelist containing elements that match selector
 		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
@@ -706,7 +706,7 @@ hippo.fn.clone = function(copy){
 
 
 
-
+/*global hippo:true */
 /**
 contains methods for operating on elements
 
@@ -736,7 +736,7 @@ hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak m
 		}else if(value.nodeName){ //node
 			this.outerHTML = value.outerHTML;
 		}else{//if hippo object
-			this.outerHTML = value[0].outerHTML;	
+			this.outerHTML = value[0].outerHTML;
 		}
 	});
 };
@@ -961,7 +961,7 @@ Wrap each element of the set separately in a DOM structure
 **/
 hippo.fn.wrap = function(string){
 	return this.each(function(){
-		$(this).replaceWith(hippo(string).append(this));
+		hippo(this).replaceWith(hippo(string).append(this));
 	});
 };
 

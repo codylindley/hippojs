@@ -1,4 +1,4 @@
-
+/*global hippo:true */
 /**
 utilities for hippo.js
 

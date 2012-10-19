@@ -1,4 +1,4 @@
-
+/*global hippo:true */
 /**
 * setup hippo() function, constructor, and prototype shortcut
 *

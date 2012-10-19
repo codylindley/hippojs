@@ -1,4 +1,4 @@
-
+/*global hippo:true */
 /**
 contains methods for operating on the element attributes
 

@@ -98,7 +98,7 @@ return true if the array passed in is constructed from the Array() Constructor
 @method isFunction
 @static
 @for hippo.
-@param JavasScript value 
+@param JavasScript value
 @return {Boolean}
 **/
 hippo.isFunction = function(funcReference){
@@ -133,7 +133,7 @@ return true if the array passed in is constructed from the Array() Constructor
 hippo.collectElements = function(element,property,selector){
 	var list = [];
 	while((element = element[property])){
-		if(element.nodeType === Node.ELEMENT_NODE){
+		if(element.nodeType === rootObject.Node.ELEMENT_NODE){
 			list.push(element);
 			//if the last selector matches then return list early
 			if(selector && hippo.matchesSelector(element,selector)){return list;}

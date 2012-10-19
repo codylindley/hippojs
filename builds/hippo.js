@@ -3,6 +3,8 @@
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
+
+"use strict";
 /*global hippo:true */
 /**
 * setup hippo() function, constructor, and prototype shortcut
@@ -16,16 +18,17 @@ var doc = rootObject.document;
 var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
-`hippo('li')` //selector  
-`hippo('li','ul')` //selector & selector context  
-`hippo('li',document.body)` //selector & element node context   
-`hippo('<div></div>')` //HTML  
-`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //element node  
-`hippo([document.body,document.head])` //Array  
-`hippo(document.body.children)` //NodeList  
-`hippo(document.all)` //HTMLCollection  
-`hippo(hippo())` //a hippo() object itself 
+`hippo('li')` //selector
+`hippo('li','ul')` //selector & selector context
+`hippo('li',document.body)` //selector & element node context
+`hippo('<div></div>')` //HTML
+`hippo('<div></div>','window.frames[0].document')` //HTML & Document context
+`hippo(document.body)` //element node
+`hippo([document.body,document.head])` //Array
+`hippo(document.body.children)` //NodeList
+`hippo(document.all)` //HTMLCollection
+`hippo(hippo())` //a hippo() object itself
+
 @class hippo()
 @constructor
 @param {String|Node|Object} selector/HTML|Node|hippo() A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element
@@ -56,7 +59,7 @@ var CreateHippoObject = function(elements,context){
 	//if no elements parameter passed, return html element
 	if(!elements){
 		this.length = 1;
-		this[0] = document.documentElement;
+		this[0] = doc.documentElement;
 		return this;
 	}
 
@@ -224,7 +227,7 @@ return true if the array passed in is constructed from the Array() Constructor
 @method isFunction
 @static
 @for hippo.
-@param JavasScript value 
+@param JavasScript value
 @return {Boolean}
 **/
 hippo.isFunction = function(funcReference){
@@ -259,7 +262,7 @@ return true if the array passed in is constructed from the Array() Constructor
 hippo.collectElements = function(element,property,selector){
 	var list = [];
 	while((element = element[property])){
-		if(element.nodeType === Node.ELEMENT_NODE){
+		if(element.nodeType === rootObject.Node.ELEMENT_NODE){
 			list.push(element);
 			//if the last selector matches then return list early
 			if(selector && hippo.matchesSelector(element,selector)){return list;}

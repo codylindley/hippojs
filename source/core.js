@@ -11,16 +11,17 @@ var doc = rootObject.document;
 var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
-`hippo('li')` //selector  
-`hippo('li','ul')` //selector & selector context  
-`hippo('li',document.body)` //selector & element node context   
-`hippo('<div></div>')` //HTML  
-`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //element node  
-`hippo([document.body,document.head])` //Array  
-`hippo(document.body.children)` //NodeList  
-`hippo(document.all)` //HTMLCollection  
-`hippo(hippo())` //a hippo() object itself 
+`hippo('li')` //selector
+`hippo('li','ul')` //selector & selector context
+`hippo('li',document.body)` //selector & element node context
+`hippo('<div></div>')` //HTML
+`hippo('<div></div>','window.frames[0].document')` //HTML & Document context
+`hippo(document.body)` //element node
+`hippo([document.body,document.head])` //Array
+`hippo(document.body.children)` //NodeList
+`hippo(document.all)` //HTMLCollection
+`hippo(hippo())` //a hippo() object itself
+
 @class hippo()
 @constructor
 @param {String|Node|Object} selector/HTML|Node|hippo() A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element
@@ -51,7 +52,7 @@ var CreateHippoObject = function(elements,context){
 	//if no elements parameter passed, return html element
 	if(!elements){
 		this.length = 1;
-		this[0] = document.documentElement;
+		this[0] = doc.documentElement;
 		return this;
 	}
 

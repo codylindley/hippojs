@@ -171,7 +171,7 @@
             "namespace": "",
             "file": "source/core.js",
             "line": 13,
-            "description": "`hippo('li')` //selector  \n`hippo('li','ul')` //selector & selector context  \n`hippo('li',document.body)` //selector & element node context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //element node  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo() object itself",
+            "description": "`hippo('li')` //selector\n`hippo('li','ul')` //selector & selector context\n`hippo('li',document.body)` //selector & element node context\n`hippo('<div></div>')` //HTML\n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context\n`hippo(document.body)` //element node\n`hippo([document.body,document.head])` //Array\n`hippo(document.body.children)` //NodeList\n`hippo(document.all)` //HTMLCollection\n`hippo(hippo())` //a hippo() object itself",
             "is_constructor": 1,
             "params": [
                 {

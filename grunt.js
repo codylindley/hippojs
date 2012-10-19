@@ -30,6 +30,29 @@ module.exports = function(grunt) {
       afterconcat: ['builds/hippo.js']
     },
     uglify: {},
+    jshint: {
+      options: {
+        "evil": true,
+        "regexdash": true,
+        "browser": true,
+        "wsh": true,
+        "curly":true,
+        "eqnull":true,
+        "expr":true,
+        "noarg":true,
+        "quotemoark":"single",
+        "trailing": true,
+        "smarttabs":true,
+        "trailing":true,
+        "undef":true,
+        "es5" : true,
+        "unused": true,
+        "sub": true
+      },
+      globals: {
+        'hippo': true
+      }
+    },
     yuidoc: {
       compile: {
         'name': 'hippojs',

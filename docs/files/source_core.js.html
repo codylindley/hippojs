@@ -113,16 +113,17 @@ var doc = rootObject.document;
 var regXContainsHTML = &#x2F;^(?:[^#&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|#([\w\-]*)$)&#x2F;;
 
 &#x2F;**
-&#x60;hippo(&#x27;li&#x27;)&#x60; &#x2F;&#x2F;selector  
-&#x60;hippo(&#x27;li&#x27;,&#x27;ul&#x27;)&#x60; &#x2F;&#x2F;selector &amp; selector context  
-&#x60;hippo(&#x27;li&#x27;,document.body)&#x60; &#x2F;&#x2F;selector &amp; element node context   
-&#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;)&#x60; &#x2F;&#x2F;HTML  
-&#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;,&#x27;window.frames[0].document&#x27;)&#x60; &#x2F;&#x2F;HTML &amp; Document context  
-&#x60;hippo(document.body)&#x60; &#x2F;&#x2F;element node  
-&#x60;hippo([document.body,document.head])&#x60; &#x2F;&#x2F;Array  
-&#x60;hippo(document.body.children)&#x60; &#x2F;&#x2F;NodeList  
-&#x60;hippo(document.all)&#x60; &#x2F;&#x2F;HTMLCollection  
-&#x60;hippo(hippo())&#x60; &#x2F;&#x2F;a hippo() object itself 
+&#x60;hippo(&#x27;li&#x27;)&#x60; &#x2F;&#x2F;selector
+&#x60;hippo(&#x27;li&#x27;,&#x27;ul&#x27;)&#x60; &#x2F;&#x2F;selector &amp; selector context
+&#x60;hippo(&#x27;li&#x27;,document.body)&#x60; &#x2F;&#x2F;selector &amp; element node context
+&#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;)&#x60; &#x2F;&#x2F;HTML
+&#x60;hippo(&#x27;&lt;div&gt;&lt;&#x2F;div&gt;&#x27;,&#x27;window.frames[0].document&#x27;)&#x60; &#x2F;&#x2F;HTML &amp; Document context
+&#x60;hippo(document.body)&#x60; &#x2F;&#x2F;element node
+&#x60;hippo([document.body,document.head])&#x60; &#x2F;&#x2F;Array
+&#x60;hippo(document.body.children)&#x60; &#x2F;&#x2F;NodeList
+&#x60;hippo(document.all)&#x60; &#x2F;&#x2F;HTMLCollection
+&#x60;hippo(hippo())&#x60; &#x2F;&#x2F;a hippo() object itself
+
 @class hippo()
 @constructor
 @param {String|Node|Object} selector&#x2F;HTML|Node|hippo() A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element
@@ -153,7 +154,7 @@ var CreateHippoObject = function(elements,context){
 	&#x2F;&#x2F;if no elements parameter passed, return html element
 	if(!elements){
 		this.length = 1;
-		this[0] = document.documentElement;
+		this[0] = doc.documentElement;
 		return this;
 	}
 

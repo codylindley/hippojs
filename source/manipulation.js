@@ -1,4 +1,4 @@
-
+/*global hippo:true */
 /**
 contains methods for operating on elements
 
@@ -28,7 +28,7 @@ hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak m
 		}else if(value.nodeName){ //node
 			this.outerHTML = value.outerHTML;
 		}else{//if hippo object
-			this.outerHTML = value[0].outerHTML;	
+			this.outerHTML = value[0].outerHTML;
 		}
 	});
 };
@@ -253,7 +253,7 @@ Wrap each element of the set separately in a DOM structure
 **/
 hippo.fn.wrap = function(string){
 	return this.each(function(){
-		$(this).replaceWith(hippo(string).append(this));
+		hippo(this).replaceWith(hippo(string).append(this));
 	});
 };
 

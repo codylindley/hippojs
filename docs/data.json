@@ -171,7 +171,7 @@
             "namespace": "",
             "file": "source/core.js",
             "line": 13,
-            "description": "`hippo('li')` //selector  \n`hippo('li','ul')` //selector & selector context  \n`hippo('li',document.body)` //selector & element node context   \n`hippo('<div></div>')` //HTML  \n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  \n`hippo(document.body)` //element node  \n`hippo([document.body,document.head])` //Array  \n`hippo(document.body.children)` //NodeList  \n`hippo(document.all)` //HTMLCollection  \n`hippo(hippo())` //a hippo() object itself",
+            "description": "`hippo('li')` //selector\n`hippo('li','ul')` //selector & selector context\n`hippo('li',document.body)` //selector & element node context\n`hippo('<div></div>')` //HTML\n`hippo('<div></div>','window.frames[0].document')` //HTML & Document context\n`hippo(document.body)` //element node\n`hippo([document.body,document.head])` //Array\n`hippo(document.body.children)` //NodeList\n`hippo(document.all)` //HTMLCollection\n`hippo(hippo())` //a hippo() object itself",
             "is_constructor": 1,
             "params": [
                 {
@@ -1395,7 +1395,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 64,
+            "line": 63,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "descendants()",
@@ -1416,7 +1416,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 83,
+            "line": 82,
             "description": "clone element nodes in hippo object, until selector",
             "itemtype": "method",
             "name": "descendantsUntil()",
@@ -1437,7 +1437,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 103,
+            "line": 102,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "parents()",
@@ -1458,7 +1458,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 122,
+            "line": 121,
             "description": "get parent element",
             "itemtype": "method",
             "name": "parent()",
@@ -1471,7 +1471,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 137,
+            "line": 136,
             "description": "get parent element for each element in the set",
             "itemtype": "method",
             "name": "parentsUntil()",
@@ -1492,7 +1492,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 156,
+            "line": 155,
             "description": "get next sibling",
             "itemtype": "method",
             "name": "nextSib()",
@@ -1505,7 +1505,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 171,
+            "line": 170,
             "description": "get next sibling, filter by selector",
             "itemtype": "method",
             "name": "nextSibs()",
@@ -1526,7 +1526,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 190,
+            "line": 189,
             "description": "get next siblings until the selector",
             "itemtype": "method",
             "name": "nextSibsUntil()",
@@ -1546,7 +1546,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 208,
+            "line": 207,
             "description": "get previous sibling",
             "itemtype": "method",
             "name": "prevSib()",
@@ -1559,7 +1559,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 223,
+            "line": 222,
             "description": "get previous sibling, filter by selector",
             "itemtype": "method",
             "name": "prevSibs()",
@@ -1572,7 +1572,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 240,
+            "line": 239,
             "description": "get previous siblings until the selector",
             "itemtype": "method",
             "name": "prevSibsUntil()",
@@ -1592,7 +1592,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 258,
+            "line": 257,
             "description": "clone element nodes in hippo object",
             "itemtype": "method",
             "name": "siblings()",
@@ -1605,7 +1605,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 278,
+            "line": 277,
             "description": "get child element for each element in the set",
             "itemtype": "method",
             "name": "child()",
@@ -1618,7 +1618,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 293,
+            "line": 292,
             "description": "return all first child elements or last child elements",
             "itemtype": "method",
             "name": "childs()",
@@ -1639,7 +1639,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 312,
+            "line": 311,
             "description": "get child element for each element in the set",
             "itemtype": "method",
             "name": "childsUntil()",
@@ -1659,7 +1659,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 330,
+            "line": 329,
             "description": "reduce set to the children elements of each element in the set",
             "itemtype": "method",
             "name": "children",
@@ -1680,7 +1680,7 @@
         },
         {
             "file": "source/traversing.js",
-            "line": 349,
+            "line": 348,
             "description": "reduce set to the children elements of each element in the set, until selector",
             "itemtype": "method",
             "name": "childrenUntil",

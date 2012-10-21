@@ -1,9 +1,11 @@
-/*hippo - v0.1 - 2012-10-11
+/*hippo - v0.1 - 2012-10-19
 * http://hippojs.com
 * Copyright (c) 2012 Cody Lindley; Licensed MIT */
 
 (function(){
 
+"use strict";
+/*global hippo:true */
 /**
 * setup hippo() function, constructor, and prototype shortcut
 *
@@ -16,16 +18,17 @@ var doc = rootObject.document;
 var regXContainsHTML = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
 
 /**
-`hippo('li')` //selector  
-`hippo('li','ul')` //selector & selector context  
-`hippo('li',document.body)` //selector & element node context   
-`hippo('<div></div>')` //HTML  
-`hippo('<div></div>','window.frames[0].document')` //HTML & Document context  
-`hippo(document.body)` //element node  
-`hippo([document.body,document.head])` //Array  
-`hippo(document.body.children)` //NodeList  
-`hippo(document.all)` //HTMLCollection  
-`hippo(hippo())` //a hippo() object itself 
+`hippo('li')` //selector
+`hippo('li','ul')` //selector & selector context
+`hippo('li',document.body)` //selector & element node context
+`hippo('<div></div>')` //HTML
+`hippo('<div></div>','window.frames[0].document')` //HTML & Document context
+`hippo(document.body)` //element node
+`hippo([document.body,document.head])` //Array
+`hippo(document.body.children)` //NodeList
+`hippo(document.all)` //HTMLCollection
+`hippo(hippo())` //a hippo() object itself
+
 @class hippo()
 @constructor
 @param {String|Node|Object} selector/HTML|Node|hippo() A string selector, html string, element node, or hippo() object, if you leave it empty default to HTML element
@@ -56,7 +59,7 @@ var CreateHippoObject = function(elements,context){
 	//if no elements parameter passed, return html element
 	if(!elements){
 		this.length = 1;
-		this[0] = document.documentElement;
+		this[0] = doc.documentElement;
 		return this;
 	}
 
@@ -124,7 +127,7 @@ if(!('$' in rootObject)){
 hippo.fn = CreateHippoObject.prototype = {
     constructor:hippo
 };
-
+/*global hippo:true */
 /**
 utilities for hippo.js
 
@@ -224,7 +227,7 @@ return true if the array passed in is constructed from the Array() Constructor
 @method isFunction
 @static
 @for hippo.
-@param JavasScript value 
+@param JavasScript value
 @return {Boolean}
 **/
 hippo.isFunction = function(funcReference){
@@ -259,7 +262,7 @@ return true if the array passed in is constructed from the Array() Constructor
 hippo.collectElements = function(element,property,selector){
 	var list = [];
 	while((element = element[property])){
-		if(element.nodeType === Node.ELEMENT_NODE){
+		if(element.nodeType === rootObject.Node.ELEMENT_NODE){
 			list.push(element);
 			//if the last selector matches then return list early
 			if(selector && hippo.matchesSelector(element,selector)){return list;}
@@ -318,7 +321,7 @@ hippo.camelCaseDashs = function(string){
 
 
 
-
+/*global hippo:true */
 /**
 contains methods for operating on the wrapped set of elements in the hippo object
 
@@ -553,7 +556,7 @@ loop over each element, finding its descendants that match the passed in selecto
 @returns {Object} hippo() object
 **/
 hippo.fn.find = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll(selector);// get nodelist containing elements that match selector
 		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
@@ -575,7 +578,7 @@ loop over each element, removing descendants matching the selector, return desen
 @returns {Object} hippo() object
 **/
 hippo.fn.findExclude = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll('*:not('+selector+')');// get nodelist containing elements that match selector
 		if(collection.length){//if a match is found, then loop over nodlist pushing elements to array
@@ -706,7 +709,7 @@ hippo.fn.clone = function(copy){
 
 
 
-
+/*global hippo:true */
 /**
 contains methods for operating on elements
 
@@ -736,7 +739,7 @@ hippo.fn.replaceWith = function(value){ //unclear if modern browser still leak m
 		}else if(value.nodeName){ //node
 			this.outerHTML = value.outerHTML;
 		}else{//if hippo object
-			this.outerHTML = value[0].outerHTML;	
+			this.outerHTML = value[0].outerHTML;
 		}
 	});
 };
@@ -961,7 +964,7 @@ Wrap each element of the set separately in a DOM structure
 **/
 hippo.fn.wrap = function(string){
 	return this.each(function(){
-		$(this).replaceWith(hippo(string).append(this));
+		hippo(this).replaceWith(hippo(string).append(this));
 	});
 };
 

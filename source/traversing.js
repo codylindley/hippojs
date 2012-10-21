@@ -1,4 +1,4 @@
-
+/*global hippo:true */
 /**
 contains methods for operating on elements
 
@@ -59,7 +59,6 @@ hippo.fn.ancestorsUntil = function(selector){
 		});
 	});
 
-	console.log(elms);
 	return hippo(this.length === 1 ? list.reverse() : hippo.uniqElements(list.reverse()));
 };
 
@@ -291,7 +290,7 @@ hippo.fn.child = function(){
 	});
 	return hippo(list);
 };
-
+/*global hippo:true */
 /**
 return all first child elements or last child elements
  
@@ -330,7 +329,7 @@ hippo.fn.childsUntil = function(selector){
 };
 
 /**
-get children elements of each element in the set, fitler by selector 
+reduce set to the children elements of each element in the set
 
 @method children
 @for hippo()

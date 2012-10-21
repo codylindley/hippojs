@@ -100,7 +100,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-
+&#x2F;*global hippo:true *&#x2F;
 &#x2F;**
 contains methods for operating on the wrapped set of elements in the hippo object
 
@@ -335,7 +335,7 @@ loop over each element, finding its descendants that match the passed in selecto
 @returns {Object} hippo() object
 **&#x2F;
 hippo.fn.find = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll(selector);&#x2F;&#x2F; get nodelist containing elements that match selector
 		if(collection.length){&#x2F;&#x2F;if a match is found, then loop over nodlist pushing elements to array
@@ -357,7 +357,7 @@ loop over each element, removing descendants matching the selector, return desen
 @returns {Object} hippo() object
 **&#x2F;
 hippo.fn.findExclude = function(selector){
-	results = [];
+	var results = [];
 	this.each(function(){
 		var collection = this.querySelectorAll(&#x27;*:not(&#x27;+selector+&#x27;)&#x27;);&#x2F;&#x2F; get nodelist containing elements that match selector
 		if(collection.length){&#x2F;&#x2F;if a match is found, then loop over nodlist pushing elements to array

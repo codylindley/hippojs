@@ -16,8 +16,9 @@ A wishful, likley naive, jQuery inspired DOM Library for use in modern ES5 brows
 * Be modular so as to permit custom builds using [grunt.js](http://gruntjs.com/).
 * Be lightweight, not middleweight.
 * Be easy to update or change by keeping the code simple, readable, and heavily commented so at the very least the code teaches.
-* Be jQuery-like in its plugin architecture but with the heart of zepto.js.
+* Be jQuery-like in its plugin architecture but with the heart and soult of zepto.js.
 * Be fixable by mere humans with some JavaScript chops
+* Be a vaiable solution for inclusion in other micro libraries that require sophisticated (beyond what the native dom api offers) DOM manipulation and nothing else
 
 ---
 
@@ -51,7 +52,7 @@ hippo(hippo()) //a hippo object
 ###### Hippo Helper/Utilities Functions
 ```js
 hippo.version
-hippo.each()
+hippo.each(object/array,callback function)
 hippo.type()
 hippo.isArray()
 hippo.isFunction()
@@ -69,15 +70,15 @@ hippo().isEmpty()
 hippo().has()
 hippo().total()
 hippo().toArray()
-hippo().get()
-hippo().index()
+hippo().get(index)
+hippo().index(selectorOrNodeElement)
 hippo().lastIndex()
 hippo().siblingIndex()
 
 //returns hippo object, chainable 
 hippo().each()
 hippo().slice()
-hippo().at()
+hippo().at(index)
 hippo().find(selector)
 hippo().exclude(selector)
 hippo().not()
@@ -158,9 +159,9 @@ hippo().children(selector) //all children
 hippo().childrenUntil(selector)
 
 hippo().ancestors(selector) //all ancestors elements
-*hippo().ancestorsUntil(selector)
+hippo().ancestorsUntil(selector)
 hippo().descendants(selector) //all descendants elements
-*hippo().descendantsUntil(selector) //all descendants elements
+hippo().descendantsUntil(selector) //all descendants elements
 hippo().siblings(selector) //all sibling elements
 ```
 

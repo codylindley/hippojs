@@ -6,7 +6,7 @@ contains methods for operating on elements
 **/
 
 /**
-clone element nodes in hippo object
+get all ancestors elements filter by selector
  
 @method ancestors()
 @for hippo()
@@ -28,11 +28,13 @@ hippo.fn.ancestors = function(selector){
 			}
 		});
 	});
+
+	//remove any duplicate elements, reverse list so closes ancestor is first, fitler if needed
 	return hippo(this.length === 1 ? list.reverse() : hippo.uniqElements(list.reverse())).filter(selector);
 };
 
 /**
-clone element nodes in hippo object, until selector
+get all ancestors element, until selector
  
 @method ancestorsUntil()
 @for hippo()
@@ -62,7 +64,7 @@ hippo.fn.ancestorsUntil = function(selector){
 };
 
 /**
-clone element nodes in hippo object
+get all descendant elements
  
 @method descendants()
 @for hippo()
@@ -81,7 +83,7 @@ hippo.fn.descendants = function(selector){
 };
 
 /**
-clone element nodes in hippo object, until selector
+get all descendant elements, until selector
  
 @method descendantsUntil()
 @for hippo()
@@ -101,7 +103,7 @@ hippo.fn.descendantsUntil = function(selector){
 };
 
 /**
-clone element nodes in hippo object
+get all parent elements, filter by selector
  
 @method parents()
 @for hippo()
@@ -135,7 +137,7 @@ hippo.fn.parent = function(){
 };
 
 /**
-get parent element for each element in the set
+get parent elements for each element in the set, until selector
  
 @method parentsUntil()
 @for hippo()
@@ -256,7 +258,7 @@ hippo.fn.prevSibsUntil = function(selector){
 };
 
 /**
-clone element nodes in hippo object
+get all siblings
  
 @method siblings()
 @for hippo()
@@ -310,7 +312,7 @@ hippo.fn.childs = function(selector){
 };
 
 /**
-get child element for each element in the set
+get child element for each element in the set, until selector
  
 @method childsUntil()
 @param {String} selector
@@ -328,7 +330,7 @@ hippo.fn.childsUntil = function(selector){
 };
 
 /**
-reduce set to the children elements of each element in the set 
+get children elements of each element in the set, fitler by selector 
 
 @method children
 @for hippo()
@@ -347,7 +349,7 @@ hippo.fn.children = function(selector){
 };
 
 /**
-reduce set to the children elements of each element in the set, until selector
+get the children elements of each element in the set, until selector
 
 @method childrenUntil
 @for hippo()

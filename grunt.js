@@ -33,15 +33,14 @@ module.exports = function(grunt) {
     jshint: {
       options: {
         "evil": true,
-        "regexdash": true,
-        "browser": true,
-        "wsh": true,
+        "regexdash":true,
+        "browser":true,
+        "wsh":true,
         "curly":true,
         "eqnull":true,
         "expr":true,
         "noarg":true,
         "quotemoark":"single",
-        "trailing": true,
         "smarttabs":true,
         "trailing":true,
         "undef":true,
